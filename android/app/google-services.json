@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1014119641458",
+    "project_id": "z-flow-new",
+    "storage_bucket": "z-flow-new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014119641458:android:a1de67ea9bd6f5dfde6deb",
+        "android_client_info": {
+          "package_name": "com.example.z_flow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014119641458-8qpf1t0tnbvqrs6jrg1d5898in1un521.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.z_flow",
+            "certificate_hash": "f56b16852352592fc9301194310416e38a6d109e"
+          }
+        },
+        {
+          "client_id": "1014119641458-alh43dqi6f292gtm55njsh6juh7jul9i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD1weQwghcEQUoc0UW9ZjY9YFiMjjLqKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014119641458-alh43dqi6f292gtm55njsh6juh7jul9i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1014119641458-2ct5k1a2oql025tu60qij3tdavf7kveq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.zFlow"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
