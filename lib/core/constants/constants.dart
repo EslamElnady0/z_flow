@@ -8,6 +8,8 @@ import 'package:z_flow/features/home/presentation/ui%20models/bottom_nav_bar_ite
 import '../../features/on boarding/data/on_boarding_model.dart';
 
 class Constants {
+  static const String tasksBox = 'tasksBox';
+  static const String habitsBox = 'habitsBox';
   static final List<OnboardingModel> onBoardingScreens = [
     OnboardingModel(
         image: Assets.firstOnBoarding,
