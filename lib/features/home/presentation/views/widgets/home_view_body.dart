@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/features/home/presentation/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/calender_body.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/habits_body.dart';
+import 'package:z_flow/features/home/presentation/views/habits%20views/habits_body.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/profile_body.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/time_management_body.dart';
-import 'tasks_body.dart';
+import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_management_body.dart';
+import '../tasks views/tasks_body.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});

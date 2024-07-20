@@ -6,7 +6,7 @@ import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/image_switcher.dart';
 
-import 'text_switcher.dart';
+import '../widgets/text_switcher.dart';
 
 class TimeManagementBody extends StatelessWidget {
   const TimeManagementBody({super.key});

@@ -3,20 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
-import 'custom_add_button.dart';
-import 'custom_task_item.dart';
+import '../widgets/custom_add_button.dart';
+import '../widgets/custom_task_item.dart';
 
-class TasksBody extends StatelessWidget {
-  const TasksBody({
-    super.key,
-  });
+class HabitsBody extends StatelessWidget {
+  const HabitsBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          AppTexts.onGoingTasks,
+          AppTexts.habitsToAccomplishToday,
           style: Styles.style16W600grey,
         ),
         SizedBox(
@@ -37,7 +35,7 @@ class TasksBody extends StatelessWidget {
         ),
         const Spacer(),
         const CustomAddButton(
-          text: AppTexts.addNewTask,
+          text: AppTexts.addNewHabit,
         ),
         SizedBox(
           height: 104.h,
