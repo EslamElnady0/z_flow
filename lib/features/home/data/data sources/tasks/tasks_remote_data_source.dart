@@ -1,36 +1,63 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
+import 'package:z_flow/core/constants/constants.dart';
+
 import '../../models/task model/task_model.dart';
 
 abstract class TasksRemoteDataSource {
-  Future<List<TaskModel>> getTasks();
-  Future<void> addTask(TaskModel task);
-  Future<void> deleteTask(TaskModel task);
-  Future<void> updateTask(TaskModel task);
-  Future<void> deleteAllDoneTasks();
+  Future<List<TaskModel>> getTasks({required String uid});
+  Future<void> addTask({required TaskModel task, required String uid});
+  Future<void> deleteTask({required TaskModel task, required String uid});
+  Future<void> updateTask({required TaskModel task, required String uid});
 }
 
 class TasksRemoteDataSourceImpl implements TasksRemoteDataSource {
   @override
-  Future<void> addTask(TaskModel task) {
-    throw UnimplementedError();
+  Future<void> addTask({required TaskModel task, required String uid}) async {
+    await getIt
+        .get<FirebaseFirestore>()
+        .collection(Constants.usersCollection)
+        .doc(uid)
+        .collection(Constants.tasksCollection)
+        .doc(task.id.toString())
+        .set(task.toJson());
   }
 
   @override
-  Future<void> deleteAllDoneTasks() {
-    throw UnimplementedError();
+  Future<void> deleteTask(
+      {required TaskModel task, required String uid}) async {
+    await getIt
+        .get<FirebaseFirestore>()
+        .collection(Constants.usersCollection)
+        .doc(uid)
+        .collection(Constants.tasksCollection)
+        .doc(task.id.toString())
+        .delete();
   }
 
   @override
-  Future<void> deleteTask(TaskModel task) {
-    throw UnimplementedError();
+  Future<List<TaskModel>> getTasks({required String uid}) async {
+    var tasks = await getIt
+        .get<FirebaseFirestore>()
+        .collection(Constants.usersCollection)
+        .doc(uid)
+        .collection(Constants.tasksCollection)
+        .get()
+        .then((value) =>
+            value.docs.map((e) => TaskModel.fromJson(e.data())).toList());
+
+    return tasks;
   }
 
   @override
-  Future<List<TaskModel>> getTasks() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> updateTask(TaskModel task) {
-    throw UnimplementedError();
+  Future<void> updateTask(
+      {required TaskModel task, required String uid}) async {
+    await getIt
+        .get<FirebaseFirestore>()
+        .collection(Constants.usersCollection)
+        .doc(uid)
+        .collection(Constants.tasksCollection)
+        .doc(task.id.toString())
+        .update(task.toJson());
   }
 }

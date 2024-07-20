@@ -47,4 +47,18 @@ class TaskModel extends HiveObject {
       'id': id
     };
   }
+
+  factory TaskModel.fromJson(Map<String, dynamic> json) {
+    return TaskModel(
+      title: json['title'],
+      notes: json['notes'],
+      createdAt: json['createdAt'],
+      deadline: json['deadline'],
+      sideTask: json['sideTask'],
+      isFavourited: json['isFavourited'],
+      isDone: json['isDone'],
+      isDoneBefore: json['isDoneBefore'],
+      id: json['id'],
+    );
+  }
 }

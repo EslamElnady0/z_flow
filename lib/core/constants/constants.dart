@@ -10,6 +10,10 @@ import '../../features/on boarding/data/on_boarding_model.dart';
 class Constants {
   static const String tasksBox = 'tasksBox';
   static const String habitsBox = 'habitsBox';
+  static const String usersCollection = 'users';
+  static const String tasksCollection = 'tasks';
+  static const String habitsCollection = 'habits';
+  static const String targetsCollection = 'targets';
   static final List<OnboardingModel> onBoardingScreens = [
     OnboardingModel(
         image: Assets.firstOnBoarding,

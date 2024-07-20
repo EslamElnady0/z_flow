@@ -47,4 +47,18 @@ class HabitModel extends HiveObject {
       'id': id
     };
   }
+
+  factory HabitModel.fromJson(Map<String, dynamic> json) {
+    return HabitModel(
+      title: json['title'],
+      deadline: json['deadline'],
+      createdAt: json['createdAt'],
+      iteration: json['iteration'],
+      isFavourited: json['isFavourited'],
+      isIterable: json['isIterable'],
+      isDone: json['isDone'],
+      isDoneBefore: json['isDoneBefore'],
+      id: json['id'],
+    );
+  }
 }
