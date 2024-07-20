@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
+import '../../../../../core/routes/app_router.dart';
 import '../widgets/custom_add_button.dart';
 import '../widgets/custom_task_item.dart';
 
@@ -36,8 +37,11 @@ class TasksBody extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        const CustomAddButton(
+        CustomAddButton(
           text: AppTexts.addNewTask,
+          onTap: () {
+            Navigator.of(context).pushNamed(AppRouter.addTask);
+          },
         ),
         SizedBox(
           height: 104.h,

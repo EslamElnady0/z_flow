@@ -12,7 +12,7 @@ class AppTexts {
   static const String onGoingTasks = "Ongoing Tasks";
   static const String gregorianCalendar = "Gregorian calendar!";
   static const String yourTasksForThatDay = "Your tasks for that day";
-  static const String addNewTask = "Add a new task !";
+  static const String addNewTask = "Add a new task";
   static const String hereYouCanFindOutYourTime =
       "Here you can find out your time!";
   static const String twentyFourHoursADay7Days = "24 hours a day, 7 days!";
@@ -22,7 +22,7 @@ class AppTexts {
   static const String limitationsOfUse = "Limitations of use";
   static const String habitsToAccomplishToday = "Habits to accomplish today!";
   static const String habitsYouCompletedToday = "Habits you completed today!";
-  static const String addNewHabit = "Add a new habit !";
+  static const String addNewHabit = "Add a new habit";
   static const String welcome = "Welcome ";
   static const String user = "User! ";
   static const String toZFlow = "to ZFlow";
@@ -40,4 +40,29 @@ class AppTexts {
   static const String lastName = "LastName";
   static const String confirmPassword = "Confirm Password";
   static const String forgotPassword = "Forgot your password?";
+  static const String easilyAddYourTasks =
+      "Easily add your tasks, detail them, add notes and set an end date!";
+  static const String task = "Task..";
+  static const String note = "Note";
+  static const String endsIn = "Ends in..";
+  static const String subTask = "Subtask";
+  static const String addSubTask = "Add a subtask";
+  static const String save = "Save";
+  static const String cancel = "Cancel";
+  static const String favourite = "Favorite";
+  static const String edit = "Edit";
+  static const String delete = "Delete";
+
+  static const String youCompletedYourTask =
+      "You’ve successfully completed your task. Keep up the great work and continue making progress toward your goals!";
+  static const String youAreAboutToAddHabit =
+      "You are now about to add a new habit!";
+  static const String habit = "Habit..";
+  static const String habitDays = "Habit days..";
+  static const String remiderToHabit = "Reminder of this habit";
+  static const String daily = "Daily";
+  static const String sixDaysAweek = "6 days a week";
+  static const String fiveDaysAweek = "5 days a week";
+  static const String fourDaysAweek = "4 days a week";
+  static const String greatJob = "Great Job!";
 }
