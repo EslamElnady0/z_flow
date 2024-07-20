@@ -4,21 +4,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
 
-class CustomAuthTextField extends StatelessWidget {
+class CustomDataEntryTextField extends StatelessWidget {
   final String hintText;
-  final IconData icon;
+  final Widget icon;
   final bool? isPassword;
+  final int? minLines;
+  final int? maxLines;
   final void Function(String)? onChanged;
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  const CustomAuthTextField({
+  const CustomDataEntryTextField({
     super.key,
     required this.hintText,
+    this.minLines,
     required this.icon,
     this.isPassword,
     required this.controller,
     this.onChanged,
     this.validator,
+    this.maxLines,
   });
 
   @override
@@ -28,23 +32,25 @@ class CustomAuthTextField extends StatelessWidget {
       validator: validator,
       controller: controller,
       obscureText: isPassword ?? false,
+      minLines: minLines ?? 1,
+      maxLines: maxLines ?? 1,
       cursorColor: Colors.white,
       style: Styles.style16W500grey.copyWith(color: Colors.white),
       decoration: InputDecoration(
           errorStyle: TextStyle(fontSize: 12.sp),
-          suffixIcon: Icon(
-            icon,
-            size: 22.r,
-            color: Colors.grey,
+          suffixIcon: icon,
+          suffixIconConstraints: BoxConstraints(
+            maxHeight: 40.h,
+            maxWidth: 40.w,
           ),
           hintText: hintText,
           hintStyle: TextStyle(
               color: Colors.grey, fontWeight: FontWeight.w500, fontSize: 16.sp),
           contentPadding:
               EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
-          border: Constants.authTextFieldBorder,
+          border: Constants.dataEntryTextFieldBorder,
           focusedBorder: Constants.authTextFieldBorder,
-          enabledBorder: Constants.authTextFieldBorder),
+          enabledBorder: Constants.dataEntryTextFieldBorder),
     );
   }
 }

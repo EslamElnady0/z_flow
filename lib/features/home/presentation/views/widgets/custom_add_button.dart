@@ -17,18 +17,20 @@ class CustomAddButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 56.h,
-        width: 247.w,
         decoration: BoxDecoration(
           gradient: Constants.customItemsGradient,
           borderRadius: BorderRadius.circular(18.r),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               Assets.addIcon,
               height: 24.h,
               width: 24.w,
+            ),
+            SizedBox(
+              width: 12.w,
             ),
             Text(
               text,

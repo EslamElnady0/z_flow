@@ -57,7 +57,10 @@ class Constants {
   static BoxShadow shadow =
       const BoxShadow(offset: Offset(0, 4), blurRadius: 4);
 
-  static OutlineInputBorder textFieldBorder = OutlineInputBorder(
+  static OutlineInputBorder authTextFieldBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
       borderSide: const BorderSide(color: Colors.white, width: 1.5));
+  static OutlineInputBorder dataEntryTextFieldBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12.r),
+      borderSide: const BorderSide(color: Color(0xffD9D9D9), width: 1));
 }

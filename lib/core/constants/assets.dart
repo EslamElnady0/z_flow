@@ -23,6 +23,8 @@ class Assets {
   static const String addIcon = "assets/images/svgs/add.svg";
   static const String googleLogo = "assets/images/svgs/google_logo.svg";
   static const String settingsIcon = "assets/images/svgs/settings.svg";
+  static const String editIcon = "assets/images/svgs/edit.svg";
+  static const String subTaskIcon = "assets/images/svgs/subTask.svg";
 
   ///
 }
