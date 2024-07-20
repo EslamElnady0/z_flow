@@ -34,8 +34,11 @@ class HabitsBody extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        const CustomAddButton(
-          text: AppTexts.addNewHabit,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 64.w),
+          child: const CustomAddButton(
+            text: AppTexts.addNewHabit,
+          ),
         ),
         SizedBox(
           height: 104.h,

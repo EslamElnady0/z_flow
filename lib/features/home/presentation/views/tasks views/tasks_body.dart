@@ -37,11 +37,14 @@ class TasksBody extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        CustomAddButton(
-          text: AppTexts.addNewTask,
-          onTap: () {
-            Navigator.of(context).pushNamed(AppRouter.addTask);
-          },
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 64.w),
+          child: CustomAddButton(
+            text: AppTexts.addNewTask,
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRouter.addTask);
+            },
+          ),
         ),
         SizedBox(
           height: 104.h,
