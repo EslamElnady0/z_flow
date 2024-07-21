@@ -111,17 +111,18 @@ class AuthRepoImpl implements AuthRepo {
     try {
       // GoogleAuthProvider provider = GoogleAuthProvider();
       // await firebaseAuth.signInWithProvider(provider);
-      // await addUserToFireStore(
-      //     user: UserModel(
-      //         email: firebaseAuth.currentUser!.email!,
-      //         firstName: "",
-      //         lastName: "",
-      //         uid: firebaseAuth.currentUser!.uid));
+
       final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
       final GoogleSignInAuthentication gAuth = await gUser!.authentication;
       final credentials = GoogleAuthProvider.credential(
           accessToken: gAuth.accessToken, idToken: gAuth.idToken);
       await firebaseAuth.signInWithCredential(credentials);
+      await addUserToFireStore(
+          user: UserModel(
+              email: firebaseAuth.currentUser!.email!,
+              firstName: "ee",
+              lastName: "",
+              uid: firebaseAuth.currentUser!.uid));
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {

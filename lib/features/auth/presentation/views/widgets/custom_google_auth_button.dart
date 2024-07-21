@@ -1,14 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
-
-import '../../../../../core/DI/service_locator.dart';
-import '../../../data/repos/auth_repo_impl.dart';
 
 class CustomGoogleAuthButton extends StatelessWidget {
   const CustomGoogleAuthButton({
@@ -19,10 +14,10 @@ class CustomGoogleAuthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       onTap: () async {
-        await AuthRepoImpl(
-                firebaseAuth: getIt.get<FirebaseAuth>(),
-                firestore: getIt.get<FirebaseFirestore>())
-            .signInWithGoogle();
+        // await AuthRepoImpl(
+        //         firebaseAuth: getIt.get<FirebaseAuth>(),
+        //         firestore: getIt.get<FirebaseFirestore>())
+        //     .signInWithGoogle();
       },
       height: 44.h,
       alignment: Alignment.center,
