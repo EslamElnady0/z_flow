@@ -9,27 +9,40 @@ class CustomDataEntryTextField extends StatelessWidget {
   final Widget icon;
   final bool? isPassword;
   final int? minLines;
+  final void Function()? onTap;
   final int? maxLines;
   final void Function(String)? onChanged;
   final TextEditingController controller;
+  final TextInputType? keyboardType;
   final String? Function(String?)? validator;
   const CustomDataEntryTextField({
     super.key,
     required this.hintText,
     this.minLines,
     required this.icon,
+    this.onTap,
     this.isPassword,
     required this.controller,
     this.onChanged,
     this.validator,
     this.maxLines,
+    this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       onChanged: onChanged,
-      validator: validator,
+      validator: validator ??
+          (value) {
+            if (value!.isEmpty) {
+              return "This field is required";
+            } else {
+              return null;
+            }
+          },
+      onTap: onTap,
       controller: controller,
       obscureText: isPassword ?? false,
       minLines: minLines ?? 1,

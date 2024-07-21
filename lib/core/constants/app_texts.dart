@@ -65,4 +65,8 @@ class AppTexts {
   static const String fiveDaysAweek = "5 days a week";
   static const String fourDaysAweek = "4 days a week";
   static const String greatJob = "Great Job!";
+  static const String editTask = "Edit the task";
+  static const String finishTask = "Finish the task";
+  static const String easilyEditTasks =
+      "Easily edit your tasks, detail them, add notes and set an end date!";
 }

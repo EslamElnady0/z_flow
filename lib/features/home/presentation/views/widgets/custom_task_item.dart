@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box.dart';
 
-import '../../../../../core/constants/colors.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
 
@@ -13,16 +13,7 @@ class CustomTaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Transform.scale(
-        scale: 1.2,
-        child: Checkbox(
-          value: true,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-          activeColor: ColorManager.primaryColor,
-          onChanged: (value) {},
-        ),
-      ),
+      const CustomCheckBox(),
       Container(
         alignment: Alignment.centerLeft,
         height: 50.h,

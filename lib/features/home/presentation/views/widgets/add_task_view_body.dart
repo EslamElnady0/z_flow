@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/core/constants/assets.dart';
-import 'package:z_flow/core/constants/constants.dart';
-import 'package:z_flow/core/styles/styles.dart';
-import 'package:z_flow/core/widgets/custom_button.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_add_button.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_data_entry_text_field.dart';
-import 'package:z_flow/features/on%20boarding/presentaion/views/widgets/custom_on_boarding_skip_button.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
-class AddTaskViewBody extends StatelessWidget {
+import '../../../../../core/constants/app_texts.dart';
+import 'task_data_form.dart';
+
+class AddTaskViewBody extends StatefulWidget {
   const AddTaskViewBody({super.key});
+
+  @override
+  State<AddTaskViewBody> createState() => _AddTaskViewBodyState();
+}
+
+class _AddTaskViewBodyState extends State<AddTaskViewBody> {
+  var formKey = GlobalKey<FormState>();
+  late TextEditingController taskController;
+  late TextEditingController endsInController;
+  late TextEditingController noteController;
+  late TextEditingController subTaskController;
+
+  @override
+  void initState() {
+    taskController = TextEditingController();
+    endsInController = TextEditingController();
+    noteController = TextEditingController();
+    subTaskController = TextEditingController();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    taskController.dispose();
+    endsInController.dispose();
+    noteController.dispose();
+    subTaskController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,94 +46,13 @@ class AddTaskViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 22.w),
-            child: Column(
-              children: [
-                const Divider(),
-                SizedBox(
-                  height: 12.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 22.w),
-                  child: Text(
-                    AppTexts.easilyAddYourTasks,
-                    style: Styles.style14w400,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(
-                  height: 14.h,
-                ),
-                CustomDataEntryTextField(
-                    hintText: AppTexts.task,
-                    icon: Padding(
-                      padding: EdgeInsets.only(right: 15.w),
-                      child: SvgPicture.asset(
-                        Assets.tasksIcon,
-                        height: 16.h,
-                        width: 16.w,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomDataEntryTextField(
-                    hintText: AppTexts.endsIn,
-                    icon: Padding(
-                      padding: EdgeInsets.only(right: 15.w),
-                      child: SvgPicture.asset(
-                        Assets.calenderIcon,
-                        height: 16.h,
-                        width: 16.w,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomDataEntryTextField(
-                    hintText: AppTexts.note,
-                    icon: Padding(
-                      padding: EdgeInsets.only(right: 15.w),
-                      child: SvgPicture.asset(
-                        Assets.editIcon,
-                        height: 16.h,
-                        width: 16.w,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    minLines: 5,
-                    maxLines: 5,
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomDataEntryTextField(
-                    hintText: AppTexts.subTask,
-                    icon: Padding(
-                      padding: EdgeInsets.only(right: 15.w),
-                      child: SvgPicture.asset(
-                        Assets.subTaskIcon,
-                        height: 16.h,
-                        width: 16.w,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomAddButton(
-                  text: AppTexts.addSubTask,
-                  onTap: () {},
-                ),
-                SizedBox(
-                  height: 40.h,
-                ),
-              ],
-            ),
+            child: TaskDataForm(
+                taskController: taskController,
+                endsInController: endsInController,
+                noteController: noteController,
+                subTaskController: subTaskController,
+                text: AppTexts.easilyAddYourTasks,
+                formKey: formKey),
           ),
         ),
         SliverFillRemaining(
@@ -117,22 +62,12 @@ class AddTaskViewBody extends StatelessWidget {
             child: Column(
               children: [
                 const Spacer(),
-                Row(
-                  children: [
-                    Expanded(
-                        child: CustomButton(
-                      text: AppTexts.save,
-                      gradient: Constants.customButtonGradient,
-                      raduis: 16.r,
-                    )),
-                    SizedBox(
-                      width: 50.w,
-                    ),
-                    const Expanded(
-                        child: CustomHollowButton(
-                      text: AppTexts.cancel,
-                    )),
-                  ],
+                SaveCancelActionsRow(
+                  onSavePressed: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.of(context).pop();
+                    }
+                  },
                 ),
                 SizedBox(
                   height: 60.h,
