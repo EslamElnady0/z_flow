@@ -27,6 +27,17 @@ class Assets {
   static const String subTaskIcon = "assets/images/svgs/subTask.svg";
   static const String starIcon = "assets/images/svgs/star.svg";
   static const String deleteIcon = "assets/images/svgs/deleteIcon.svg";
+  static const String addWidget = "assets/images/svgs/addWidget.svg";
+  static const String clock = "assets/images/svgs/clock.svg";
+  static const String dollar = "assets/images/svgs/dollar.svg";
+  static const String goals = "assets/images/svgs/goals.svg";
+  static const String list = "assets/images/svgs/list.svg";
+  static const String listWithArrows = "assets/images/svgs/listWithArrows.svg";
+  static const String reminder = "assets/images/svgs/reminder.svg";
+  static const String lockSafety = "assets/images/svgs/lockSafety.svg";
+  static const String settingDrawer = "assets/images/svgs/settingDrawer.svg";
+  static const String share = "assets/images/svgs/share.svg";
+  static const String starOutLined = "assets/images/svgs/starOutLined.svg";
 
   ///
 }

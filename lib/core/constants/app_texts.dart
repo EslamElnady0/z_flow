@@ -72,4 +72,16 @@ class AppTexts {
   static const String finishTask = "Finish the task";
   static const String easilyEditTasks =
       "Easily edit your tasks, detail them, add notes and set an end date!";
+  static const String startWorkSession = "Start a work session";
+  static const String myLists = "My lists";
+  static const String reminder = "Reminder";
+  static const String stayAway = "Stay Away";
+  static const String myGoals = "My goals";
+  static const String taskCats = "Task categories";
+  static const String favoriteTasks = "Favorite tasks";
+  static const String favoriteHabits = "Favorite Habits";
+  static const String addHomeWidget = "Add home widget";
+  static const String financialSupport = "Financial support";
+  static const String settings = "Settings";
+  static const String shareApp = "Share the app";
 }

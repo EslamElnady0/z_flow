@@ -12,6 +12,7 @@ class CustomScaffold extends StatelessWidget {
   final FloatingActionButtonAnimator? floatingActionButtonAnimator;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
   final bool? resizeToAvoidBottomInset;
+  final Key? scaffoldKey;
   const CustomScaffold(
       {super.key,
       this.appBar,
@@ -23,13 +24,15 @@ class CustomScaffold extends StatelessWidget {
       this.floatingActionButton,
       this.floatingActionButtonAnimator,
       this.floatingActionButtonLocation,
-      this.resizeToAvoidBottomInset});
+      this.resizeToAvoidBottomInset,
+      this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       appBar: appBar,
+      key: scaffoldKey,
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

@@ -9,6 +9,11 @@ class ColorManager {
     Color(0xff021123),
     Color(0xff010011),
   ];
+  static const List<Color> drawerGradientColors = [
+    Color(0xff0C1B44),
+    Color(0xff3A389A),
+    Color(0xff0C1B44),
+  ];
   static const List<Color> customButtonBackgroundGradientColors = [
     primaryColor,
     Color(0xff1472E3),

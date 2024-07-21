@@ -45,6 +45,11 @@ class Constants {
       stops: [0, 1],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter);
+  static const LinearGradient drawerGradient = LinearGradient(
+      colors: ColorManager.drawerGradientColors,
+      stops: [0, 0.5, 1],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter);
 
   static List<BottomNavBarItemModel> bottomNavBarItems = [
     BottomNavBarItemModel(title: AppTexts.tasks, icon: Assets.tasksIcon),
@@ -63,4 +68,55 @@ class Constants {
   static OutlineInputBorder dataEntryTextFieldBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
       borderSide: const BorderSide(color: Color(0xffD9D9D9), width: 1));
+
+  static List<Map<String, String>> drawerItems = [
+    {
+      "title": AppTexts.startWorkSession,
+      "icon": Assets.clock,
+    },
+    {
+      "title": AppTexts.myLists,
+      "icon": Assets.list,
+    },
+    {
+      "title": AppTexts.reminder,
+      "icon": Assets.reminder,
+    },
+    {
+      "title": AppTexts.stayAway,
+      "icon": Assets.lockSafety,
+    },
+    {
+      "title": AppTexts.myGoals,
+      "icon": Assets.goals,
+    },
+    {
+      "title": AppTexts.taskCats,
+      "icon": Assets.listWithArrows,
+    },
+    {
+      "title": AppTexts.favoriteTasks,
+      "icon": Assets.starOutLined,
+    },
+    {
+      "title": AppTexts.favoriteHabits,
+      "icon": Assets.starOutLined,
+    },
+    {
+      "title": AppTexts.addHomeWidget,
+      "icon": Assets.addWidget,
+    },
+    {
+      "title": AppTexts.financialSupport,
+      "icon": Assets.dollar,
+    },
+    {
+      "title": AppTexts.settings,
+      "icon": Assets.settingDrawer,
+    },
+    {
+      "title": AppTexts.shareApp,
+      "icon": Assets.share,
+    },
+  ];
 }
