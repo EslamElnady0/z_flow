@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:z_flow/features/auth/data/models/user_model.dart';
 
 import '../../../../core/errors/failure.dart';
@@ -108,14 +109,19 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, void>> signInWithGoogle() async {
     try {
-      GoogleAuthProvider provider = GoogleAuthProvider();
-      await firebaseAuth.signInWithProvider(provider);
-      await addUserToFireStore(
-          user: UserModel(
-              email: firebaseAuth.currentUser!.email!,
-              firstName: "",
-              lastName: "",
-              uid: firebaseAuth.currentUser!.uid));
+      // GoogleAuthProvider provider = GoogleAuthProvider();
+      // await firebaseAuth.signInWithProvider(provider);
+      // await addUserToFireStore(
+      //     user: UserModel(
+      //         email: firebaseAuth.currentUser!.email!,
+      //         firstName: "",
+      //         lastName: "",
+      //         uid: firebaseAuth.currentUser!.uid));
+      final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+      final credentials = GoogleAuthProvider.credential(
+          accessToken: gAuth.accessToken, idToken: gAuth.idToken);
+      await firebaseAuth.signInWithCredential(credentials);
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
