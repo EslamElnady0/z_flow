@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
-import 'build_overlay_menu.dart';
+import '../../../../../core/widgets/build_overlay_menu.dart';
+import 'task_options_menu_body.dart';
 
 class CustomTaskItem extends StatefulWidget {
   final GlobalKey actionKey;
@@ -51,7 +52,8 @@ class _CustomTaskItemState extends State<CustomTaskItem> {
               IconButton(
                 key: widget.actionKey,
                 onPressed: () {
-                  BuildOverlayMenu.showOverlay(context, widget.actionKey);
+                  BuildOverlayMenu.showOverlay(context, widget.actionKey,
+                      widget: const TaskOptionsMenuBody());
                 },
                 icon: Icon(Icons.more_vert, color: Colors.black, size: 20.r),
               )
