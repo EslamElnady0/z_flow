@@ -95,6 +95,7 @@ class AuthRepoImpl implements AuthRepo {
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
+        log(e.toString());
         return left(ServerFailure.fromFirebaseException(exception: e));
       } else {
         log(e.toString());

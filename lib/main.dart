@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/theme/main_theme.dart';
@@ -20,8 +21,9 @@ main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  setupServiceLocator();
+
   await Hive.initFlutter();
   Hive.registerAdapter(TaskModelAdapter());
   Hive.registerAdapter(HabitModelAdapter());

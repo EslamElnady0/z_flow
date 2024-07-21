@@ -13,6 +13,12 @@ class CustomGoogleAuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
+      onTap: () async {
+        // await AuthRepoImpl(
+        //         firebaseAuth: getIt.get<FirebaseAuth>(),
+        //         firestore: getIt.get<FirebaseFirestore>())
+        //     .signInWithGoogle();
+      },
       height: 44.h,
       alignment: Alignment.center,
       innerShadow: [
