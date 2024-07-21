@@ -38,7 +38,7 @@ class ZFlowApp extends StatelessWidget {
         theme: MainTheme.mainTheme,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: AppRouter.home,
+        initialRoute: AppRouter.editHabit,
       ),
     );
   }

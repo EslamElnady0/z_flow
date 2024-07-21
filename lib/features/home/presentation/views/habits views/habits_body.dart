@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
 import '../widgets/custom_add_button.dart';
@@ -36,7 +37,10 @@ class HabitsBody extends StatelessWidget {
         const Spacer(),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 64.w),
-          child: const CustomAddButton(
+          child: CustomAddButton(
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRouter.addHabit);
+            },
             text: AppTexts.addNewHabit,
           ),
         ),

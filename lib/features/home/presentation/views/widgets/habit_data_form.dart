@@ -2,36 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/core/constants/assets.dart';
-import 'package:z_flow/core/styles/styles.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_add_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box_container.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_data_entry_text_field.dart';
 
-class TaskDataForm extends StatefulWidget {
+import '../../../../../core/constants/app_texts.dart';
+import '../../../../../core/constants/assets.dart';
+import '../../../../../core/styles/styles.dart';
+import 'custom_data_entry_text_field.dart';
+
+class HabitDataForm extends StatefulWidget {
   final TextEditingController taskController;
   final TextEditingController endsInController;
   final TextEditingController noteController;
-  final TextEditingController subTaskController;
-  final bool isEdit;
+
   final String text;
   final GlobalKey<FormState> formKey;
-  const TaskDataForm(
+  const HabitDataForm(
       {super.key,
       required this.taskController,
       required this.endsInController,
       required this.noteController,
-      required this.subTaskController,
-      required this.formKey,
       required this.text,
-      this.isEdit = false});
+      required this.formKey});
 
   @override
-  State<TaskDataForm> createState() => _TaskDataFormState();
+  State<HabitDataForm> createState() => _HabitDataFormState();
 }
 
-class _TaskDataFormState extends State<TaskDataForm> {
+class _HabitDataFormState extends State<HabitDataForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -51,10 +48,10 @@ class _TaskDataFormState extends State<TaskDataForm> {
             ),
           ),
           SizedBox(
-            height: 14.h,
+            height: 40.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.task,
+              hintText: AppTexts.habit,
               icon: Padding(
                 padding: EdgeInsets.only(right: 15.w),
                 child: SvgPicture.asset(
@@ -120,40 +117,10 @@ class _TaskDataFormState extends State<TaskDataForm> {
           SizedBox(
             height: 16.h,
           ),
-          CustomDataEntryTextField(
-              hintText: AppTexts.subTask,
-              validator: (value) {
-                return null;
-              },
-              icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
-                child: SvgPicture.asset(
-                  Assets.subTaskIcon,
-                  height: 16.h,
-                  width: 16.w,
-                  color: Colors.grey,
-                ),
-              ),
-              controller: widget.subTaskController),
-          SizedBox(
-            height: 16.h,
+          CustomCheckBoxContainer(
+            text: AppTexts.remiderToHabit,
+            onChanged: (value) {},
           ),
-          CustomAddButton(
-            text: AppTexts.addSubTask,
-            onTap: () {},
-          ),
-          widget.isEdit
-              ? Column(
-                  children: [
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    const CustomCheckBoxContainer(
-                      text: AppTexts.finishTask,
-                    )
-                  ],
-                )
-              : const SizedBox(),
           SizedBox(
             height: 40.h,
           ),

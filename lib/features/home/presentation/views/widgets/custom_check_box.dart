@@ -5,7 +5,8 @@ import '../../../../../core/constants/colors.dart';
 import '../../../../../core/widgets/inner_shadow.dart';
 
 class CustomCheckBox extends StatelessWidget {
-  const CustomCheckBox({super.key});
+  final void Function(bool?)? onChanged;
+  const CustomCheckBox({super.key, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class CustomCheckBox extends StatelessWidget {
             }
           }),
           fillColor: const MaterialStatePropertyAll(Colors.white),
-          onChanged: (value) {},
+          onChanged: onChanged,
         ),
       ),
     );

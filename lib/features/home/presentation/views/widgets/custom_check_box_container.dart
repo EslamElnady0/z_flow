@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box.dart';
 
 class CustomCheckBoxContainer extends StatelessWidget {
-  const CustomCheckBoxContainer({super.key});
+  final String text;
+  final void Function(bool?)? onChanged;
+  const CustomCheckBoxContainer(
+      {super.key, required this.text, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,10 @@ class CustomCheckBoxContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            AppTexts.finishTask,
+            text,
             style: Styles.style18w600,
           ),
-          const CustomCheckBox()
+          CustomCheckBox(onChanged: onChanged)
         ],
       ),
     );
