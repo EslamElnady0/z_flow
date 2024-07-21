@@ -12,6 +12,7 @@ import 'package:z_flow/core/theme/main_theme.dart';
 import 'package:z_flow/core/widgets/build_custom_snack_bar.dart';
 import 'package:z_flow/firebase_options.dart';
 import 'core/constants/constants.dart';
+import 'core/core cubits/my_bloc_observer.dart';
 import 'features/home/data/models/habit model/habit_model.dart';
 import 'features/home/data/models/task model/task_model.dart';
 
@@ -29,6 +30,7 @@ main() async {
   Hive.registerAdapter(HabitModelAdapter());
   await Hive.openBox<TaskModel>(Constants.tasksBox);
   await Hive.openBox<HabitModel>(Constants.habitsBox);
+  Bloc.observer = MyBlocObserver();
   runApp(const ZFlowApp());
 }
 
