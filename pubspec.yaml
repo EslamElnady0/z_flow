@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cloud_firestore: ^5.1.0
+  connectivity_plus: ^6.0.3
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1
   firebase_auth: ^5.1.2
@@ -42,6 +43,7 @@ dependencies:
   get_it: ^7.7.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  internet_connection_checker: ^1.0.0+1
   intl: ^0.19.0
   smooth_page_indicator: ^1.1.0
   table_calendar: ^3.1.2

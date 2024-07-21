@@ -50,7 +50,7 @@ class TasksBody extends StatelessWidget {
           child: CustomAddButton(
             text: AppTexts.addNewTask,
             onTap: () {
-              Navigator.of(context).pushNamed(AppRouter.home);
+              Navigator.of(context).pushNamed(AppRouter.addTask);
             },
           ),
         ),
