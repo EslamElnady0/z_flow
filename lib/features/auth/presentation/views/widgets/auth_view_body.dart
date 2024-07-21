@@ -20,30 +20,48 @@ class AuthViewBody extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 18.w),
-          child: const AuthScreensHeader(),
+          child: AuthScreensHeader(
+            text: Text(
+              AppTexts.effortlesslyManage,
+              style: Styles.style14w400,
+              textAlign: TextAlign.center,
+            ),
+          ),
         ),
         SizedBox(
           height: 40.h,
         ),
-        CustomHollowButton(
-          margin: EdgeInsets.symmetric(horizontal: 18.w),
-          text: AppTexts.logIn,
-          style: Styles.style20W700white,
-          onTap: () {
-            Navigator.of(context).pushNamed(AppRouter.logIn);
-          },
+        Hero(
+          tag: "logIn-button",
+          child: Material(
+            type: MaterialType.transparency,
+            child: CustomHollowButton(
+              margin: EdgeInsets.symmetric(horizontal: 18.w),
+              text: AppTexts.logIn,
+              style: Styles.style20W700white,
+              onTap: () {
+                Navigator.of(context).pushNamed(AppRouter.logIn);
+              },
+            ),
+          ),
         ),
         SizedBox(
           height: 18.h,
         ),
-        CustomButton(
-          gradient: Constants.customButtonGradient,
-          text: AppTexts.signUp,
-          margin: EdgeInsets.symmetric(horizontal: 18.w),
-          raduis: 16.r,
-          onTap: () {
-            Navigator.of(context).pushNamed(AppRouter.signUp);
-          },
+        Hero(
+          tag: "signUp-button",
+          child: Material(
+            type: MaterialType.transparency,
+            child: CustomButton(
+              gradient: Constants.customButtonGradient,
+              text: AppTexts.signUp,
+              margin: EdgeInsets.symmetric(horizontal: 18.w),
+              raduis: 16.r,
+              onTap: () {
+                Navigator.of(context).pushNamed(AppRouter.signUp);
+              },
+            ),
+          ),
         ),
         SizedBox(
           height: 40.h,

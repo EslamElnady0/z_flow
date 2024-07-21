@@ -25,7 +25,14 @@ class CustomAuthTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChanged,
-      validator: validator,
+      validator: validator ??
+          (value) {
+            if (value!.isEmpty) {
+              return "This field is required";
+            } else {
+              return null;
+            }
+          },
       controller: controller,
       obscureText: isPassword ?? false,
       cursorColor: Colors.white,

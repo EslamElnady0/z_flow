@@ -20,6 +20,7 @@ class CustomAuthFooter extends StatelessWidget {
       children: [
         backExists
             ? GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -42,6 +43,7 @@ class CustomAuthFooter extends StatelessWidget {
         const Spacer(),
         skipExists
             ? GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: () {
                   Navigator.of(context).pushNamed(AppRouter.home);
                 },

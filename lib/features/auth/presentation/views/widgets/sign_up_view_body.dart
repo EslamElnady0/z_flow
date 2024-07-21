@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/core/constants/constants.dart';
-import 'package:z_flow/core/widgets/custom_button.dart';
-import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
-
-import 'auth_screens_header.dart';
 import 'custom_auth_footer.dart';
+import 'sign_up_form.dart';
 
-class SignUpViewBody extends StatelessWidget {
+class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
+
+  @override
+  State<SignUpViewBody> createState() => _SignUpViewBodyState();
+}
+
+class _SignUpViewBodyState extends State<SignUpViewBody> {
+  var formKey = GlobalKey<FormState>();
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+  late TextEditingController confirmPasswordController;
+  late TextEditingController firstNameController;
+  late TextEditingController lastNameController;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
+    firstNameController = TextEditingController();
+    lastNameController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,58 +44,15 @@ class SignUpViewBody extends StatelessWidget {
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const AuthScreensHeader(),
-                SizedBox(
-                  height: 20.h,
-                ),
-                CustomAuthTextField(
-                    hintText: AppTexts.firstName,
-                    icon: FontAwesomeIcons.circleUser,
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomAuthTextField(
-                    hintText: AppTexts.lastName,
-                    icon: FontAwesomeIcons.circleUser,
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomAuthTextField(
-                    hintText: AppTexts.email,
-                    icon: Icons.email_outlined,
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomAuthTextField(
-                    hintText: AppTexts.password,
-                    icon: Icons.lock_outline,
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 16.h,
-                ),
-                CustomAuthTextField(
-                    hintText: AppTexts.confirmPassword,
-                    icon: Icons.lock_outline,
-                    controller: TextEditingController()),
-                SizedBox(
-                  height: 30.h,
-                ),
-                CustomButton(
-                  gradient: Constants.customButtonGradient,
-                  text: AppTexts.signUp,
-                  raduis: 16.r,
-                  onTap: () {},
-                ),
-              ],
-            ),
-          ),
+              padding: EdgeInsets.symmetric(horizontal: 18.w),
+              child: SignUpForm(
+                formKey: formKey,
+                emailController: emailController,
+                passwordController: passwordController,
+                confirmPasswordController: confirmPasswordController,
+                firstNameController: firstNameController,
+                lastNameController: lastNameController,
+              )),
         ),
         SliverFillRemaining(
           hasScrollBody: false,

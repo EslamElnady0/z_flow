@@ -16,6 +16,7 @@ class AppTexts {
   static const String gregorianCalendar = "Gregorian calendar!";
   static const String yourTasksForThatDay = "Your tasks for that day";
   static const String addNewTask = "Add a new task";
+  static const String confirm = "Confirm";
   static const String hereYouCanFindOutYourTime =
       "Here you can find out your time!";
   static const String twentyFourHoursADay7Days = "24 hours a day, 7 days!";
@@ -41,6 +42,8 @@ class AppTexts {
   static const String password = "Password";
   static const String firstName = "FirstName";
   static const String lastName = "LastName";
+  static const String noWorries =
+      " No worries! Enter your email address to reset it and regain access to your account.";
   static const String confirmPassword = "Confirm Password";
   static const String forgotPassword = "Forgot your password?";
   static const String easilyAddYourTasks =
@@ -55,6 +58,14 @@ class AppTexts {
   static const String favourite = "Favorite";
   static const String edit = "Edit";
   static const String delete = "Delete";
+  static const String effortlesslyManage =
+      "Effortlessly manage your life with our apporganize tasks, track habits, optimize time, achieve goals, get reminders, save links, and start work sessions!";
+  static const String welcomeBack = "Welcome back!";
+  static const String pleaseLogin =
+      "Please log in to access your personalized dashboard and stay productive.";
+  static const String getStarted = "Get started today!";
+  static const String signUpToUnlock =
+      "Sign up to unlock personalized features and start managing your tasks and goals effectively.";
 
   static const String youCompletedYourTask =
       "You’ve successfully completed your task. Keep up the great work and continue making progress toward your goals!";

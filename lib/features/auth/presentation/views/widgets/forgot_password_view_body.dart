@@ -3,13 +3,34 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
-import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_footer.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
 
-class ForgotPasswordViewBody extends StatelessWidget {
+import 'forgot_password_header.dart';
+
+class ForgotPasswordViewBody extends StatefulWidget {
   const ForgotPasswordViewBody({super.key});
+
+  @override
+  State<ForgotPasswordViewBody> createState() => _ForgotPasswordViewBodyState();
+}
+
+class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
+  var formKey = GlobalKey<FormState>();
+  late TextEditingController emailController;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,43 +41,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 18.w),
             child: Column(
               children: [
-                SizedBox(
-                  height: 10.h,
-                ),
-                Hero(
-                  tag: "logo",
-                  child: Image.asset(
-                    Assets.logoFullWord,
-                    height: 64.h,
-                    width: 103.w,
-                  ),
-                ),
-                SizedBox(
-                  height: 18.h,
-                ),
-                Text(
-                  AppTexts.forgotPassword,
-                  style: Styles.style24W600.copyWith(color: Colors.white),
-                ),
-                SizedBox(
-                  height: 12.h,
-                ),
-                Text(
-                  "Reset your password if you've forgotten it. We'll help you regain access to your account.",
-                  textAlign: TextAlign.center,
-                  style: Styles.style14w400,
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Image.asset(
-                  Assets.passwordImage,
-                  height: 50.h,
-                  width: 238.w,
-                ),
-                SizedBox(
-                  height: 40.h,
-                ),
+                const ForgotPasswordHeader(),
                 Stack(
                   children: [
                     Padding(
@@ -69,10 +54,13 @@ class ForgotPasswordViewBody extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 222.h),
-                      child: CustomAuthTextField(
-                          hintText: AppTexts.email,
-                          icon: Icons.email_outlined,
-                          controller: TextEditingController()),
+                      child: Form(
+                        key: formKey,
+                        child: CustomAuthTextField(
+                            hintText: AppTexts.email,
+                            icon: Icons.email_outlined,
+                            controller: TextEditingController()),
+                      ),
                     ),
                   ],
                 ),
@@ -89,10 +77,19 @@ class ForgotPasswordViewBody extends StatelessWidget {
                 SizedBox(
                   height: 16.h,
                 ),
-                CustomButton(
-                  text: AppTexts.logIn,
-                  gradient: Constants.customButtonGradient,
-                  raduis: 16.r,
+                Hero(
+                  tag: "logIn-button",
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: CustomButton(
+                      text: AppTexts.confirm,
+                      gradient: Constants.customButtonGradient,
+                      raduis: 16.r,
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {}
+                      },
+                    ),
+                  ),
                 ),
                 const Spacer(),
                 SizedBox(
@@ -100,6 +97,9 @@ class ForgotPasswordViewBody extends StatelessWidget {
                 ),
                 const CustomAuthFooter(
                   skipExists: false,
+                ),
+                SizedBox(
+                  height: 20.h,
                 )
               ],
             ),
