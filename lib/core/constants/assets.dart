@@ -25,6 +25,8 @@ class Assets {
   static const String settingsIcon = "assets/images/svgs/settings.svg";
   static const String editIcon = "assets/images/svgs/edit.svg";
   static const String subTaskIcon = "assets/images/svgs/subTask.svg";
+  static const String starIcon = "assets/images/svgs/star.svg";
+  static const String deleteIcon = "assets/images/svgs/deleteIcon.svg";
 
   ///
 }

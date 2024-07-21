@@ -24,7 +24,15 @@ class HabitsBody extends StatelessWidget {
         SizedBox(
           height: 350.h,
           child: ListView.separated(
-            itemBuilder: (context, index) => const CustomTaskItem(),
+            itemBuilder: (context, index) {
+              GlobalKey actionKey = GlobalKey();
+              return Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.only(right: 10.w),
+                  child: CustomTaskItem(
+                    actionKey: actionKey,
+                  ));
+            },
             itemCount: 5,
             padding: EdgeInsets.zero,
             separatorBuilder: (context, index) {

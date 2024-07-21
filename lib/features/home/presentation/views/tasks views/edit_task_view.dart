@@ -19,7 +19,7 @@ class EditTaskView extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: EditTaskViewBody(),
+      body: const EditTaskViewBody(),
     );
   }
 }

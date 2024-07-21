@@ -27,14 +27,14 @@ class CustomCheckBox extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(3.r)),
           activeColor: ColorManager.primaryColor,
-          side: MaterialStateBorderSide.resolveWith((states) {
-            if (states.contains(MaterialState.selected)) {
-              return BorderSide(color: ColorManager.primaryColor);
+          side: WidgetStateBorderSide.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return const BorderSide(color: ColorManager.primaryColor);
             } else {
               return const BorderSide(color: Colors.white);
             }
           }),
-          fillColor: const MaterialStatePropertyAll(Colors.white),
+          fillColor: const WidgetStatePropertyAll(Colors.white),
           onChanged: onChanged,
         ),
       ),

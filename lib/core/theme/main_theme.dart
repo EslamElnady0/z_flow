@@ -6,7 +6,9 @@ class MainTheme {
       useMaterial3: true,
       primaryColor: ColorManager.primaryColor,
       iconTheme: const IconThemeData(color: Colors.white),
-      popupMenuTheme: const PopupMenuThemeData(iconColor: Colors.black),
+      popupMenuTheme: const PopupMenuThemeData(
+        iconColor: Colors.black,
+      ),
       appBarTheme: const AppBarTheme(
           backgroundColor: Colors.black,
           elevation: 0,
