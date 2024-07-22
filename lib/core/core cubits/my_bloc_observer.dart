@@ -8,4 +8,16 @@ class MyBlocObserver extends BlocObserver {
     super.onChange(bloc, change);
     log('${bloc.runtimeType} $change');
   }
+
+  @override
+  void onClose(BlocBase bloc) {
+    log('${bloc.runtimeType} closed');
+    super.onClose(bloc);
+  }
+
+  @override
+  void onCreate(BlocBase bloc) {
+    log('${bloc.runtimeType} created');
+    super.onCreate(bloc);
+  }
 }

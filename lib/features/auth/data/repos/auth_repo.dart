@@ -5,10 +5,11 @@ import 'package:z_flow/features/auth/data/models/user_model.dart';
 abstract class AuthRepo {
   Future<Either<Failure, void>> signInWithEmailAndPassword(
       {required String email, required String password});
-  Future<Either<Failure, void>> signUpWithEmailAndPassword({
-    required String email,
-    required String password,
-  });
+  Future<Either<Failure, void>> signUpWithEmailAndPassword(
+      {required String email,
+      required String password,
+      required String firstName,
+      required String lastName});
   Future<Either<Failure, void>> addUserToFireStore({required UserModel user});
   Future<Either<Failure, void>> signInWithGoogle();
   Future<Either<Failure, void>> signInAnonymous();

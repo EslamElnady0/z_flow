@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/styles/styles.dart';
-import 'package:z_flow/core/widgets/custom_button.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/auth_screens_header.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
-import '../../../../../core/constants/constants.dart';
 import '../../../../../core/routes/app_router.dart';
+import 'login_button_bloc_provider.dart';
 
 class LoginForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final TextEditingController emailController;
   final TextEditingController passwordController;
 
-  const LoginForm(
-      {super.key,
-      required this.formKey,
-      required this.emailController,
-      required this.passwordController});
+  const LoginForm({
+    super.key,
+    required this.formKey,
+    required this.emailController,
+    required this.passwordController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +55,7 @@ class LoginForm extends StatelessWidget {
             height: 25.h,
           ),
           CustomAuthTextField(
+              isPassword: true,
               hintText: AppTexts.password,
               icon: Icons.lock_outline,
               controller: passwordController),
@@ -79,18 +80,11 @@ class LoginForm extends StatelessWidget {
           Hero(
             tag: "logIn-button",
             child: Material(
-              type: MaterialType.transparency,
-              child: CustomButton(
-                gradient: Constants.customButtonGradient,
-                text: AppTexts.logIn,
-                raduis: 16.r,
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    //TODO: LOGIN LOGIC
-                  }
-                },
-              ),
-            ),
+                type: MaterialType.transparency,
+                child: LogInButtonBlocProvider(
+                    formKey: formKey,
+                    emailController: emailController,
+                    passwordController: passwordController)),
           ),
         ],
       ),

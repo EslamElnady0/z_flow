@@ -7,7 +7,6 @@ import 'package:z_flow/features/home/presentation/views/habits%20views/edit_habi
 import 'package:z_flow/features/home/presentation/views/tasks%20views/add_task_view.dart';
 import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
-
 import '../../features/auth/presentation/views/auth_view.dart';
 import '../../features/auth/presentation/views/forgot_password_view.dart';
 import '../../features/auth/presentation/views/log_in_view.dart';
@@ -36,7 +35,9 @@ class AppRouter {
       case auth:
         return MaterialPageRoute(builder: (context) => const AuthView());
       case logIn:
-        return MaterialPageRoute(builder: (context) => const LogInView());
+        return MaterialPageRoute(
+          builder: (context) => const LogInView(),
+        );
       case forgotPassword:
         return MaterialPageRoute(
             builder: (context) => const ForgotPasswordView());

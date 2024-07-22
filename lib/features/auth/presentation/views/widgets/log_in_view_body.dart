@@ -5,7 +5,9 @@ import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_foot
 import 'package:z_flow/features/auth/presentation/views/widgets/login_form.dart';
 
 class LogInViewBody extends StatefulWidget {
-  const LogInViewBody({super.key});
+  const LogInViewBody({
+    super.key,
+  });
 
   @override
   State<LogInViewBody> createState() => _LogInViewBodyState();

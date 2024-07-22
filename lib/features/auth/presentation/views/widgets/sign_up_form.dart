@@ -1,9 +1,8 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/core/constants/constants.dart';
-import 'package:z_flow/core/widgets/custom_button.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
+import 'package:z_flow/features/auth/presentation/views/widgets/sigup_button_bloc_provider.dart';
 
 import '../../../../../core/styles/styles.dart';
 import 'auth_screens_header.dart';
@@ -77,6 +76,7 @@ class SignUpForm extends StatelessWidget {
           CustomAuthTextField(
               hintText: AppTexts.password,
               icon: Icons.lock_outline,
+              isPassword: true,
               controller: passwordController),
           SizedBox(
             height: 16.h,
@@ -84,6 +84,7 @@ class SignUpForm extends StatelessWidget {
           CustomAuthTextField(
               hintText: AppTexts.confirmPassword,
               icon: Icons.lock_outline,
+              isPassword: true,
               controller: confirmPasswordController),
           SizedBox(
             height: 30.h,
@@ -91,16 +92,13 @@ class SignUpForm extends StatelessWidget {
           Hero(
             tag: "signUp-button",
             child: Material(
-              type: MaterialType.transparency,
-              child: CustomButton(
-                gradient: Constants.customButtonGradient,
-                text: AppTexts.signUp,
-                raduis: 16.r,
-                onTap: () {
-                  if (formKey.currentState!.validate()) {}
-                },
-              ),
-            ),
+                type: MaterialType.transparency,
+                child: SigupButtonBlocProvider(
+                    formKey: formKey,
+                    emailController: emailController,
+                    passwordController: passwordController,
+                    firstNameController: firstNameController,
+                    lastNameController: lastNameController)),
           ),
         ],
       ),

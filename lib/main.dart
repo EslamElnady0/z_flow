@@ -23,6 +23,8 @@ main() async {
     DeviceOrientation.portraitDown,
   ]);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  Bloc.observer = MyBlocObserver();
+
   setupServiceLocator();
 
   await Hive.initFlutter();
@@ -30,7 +32,6 @@ main() async {
   Hive.registerAdapter(HabitModelAdapter());
   await Hive.openBox<TaskModel>(Constants.tasksBox);
   await Hive.openBox<HabitModel>(Constants.habitsBox);
-  Bloc.observer = MyBlocObserver();
   runApp(const ZFlowApp());
 }
 

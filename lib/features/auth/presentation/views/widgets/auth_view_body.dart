@@ -40,7 +40,8 @@ class AuthViewBody extends StatelessWidget {
               text: AppTexts.logIn,
               style: Styles.style20W700white,
               onTap: () {
-                Navigator.of(context).pushNamed(AppRouter.logIn);
+                Navigator.of(context)
+                    .pushNamed(AppRouter.logIn, arguments: context);
               },
             ),
           ),
@@ -58,7 +59,8 @@ class AuthViewBody extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 18.w),
               raduis: 16.r,
               onTap: () {
-                Navigator.of(context).pushNamed(AppRouter.signUp);
+                Navigator.of(context)
+                    .pushNamed(AppRouter.signUp, arguments: context);
               },
             ),
           ),

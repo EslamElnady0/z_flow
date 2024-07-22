@@ -109,19 +109,20 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, void>> signInWithGoogle() async {
     try {
-      // GoogleAuthProvider provider = GoogleAuthProvider();
-      // await firebaseAuth.signInWithProvider(provider);
-
       final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+
       final GoogleSignInAuthentication gAuth = await gUser!.authentication;
       final credentials = GoogleAuthProvider.credential(
-          accessToken: gAuth.accessToken, idToken: gAuth.idToken);
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken,
+      );
+
       await firebaseAuth.signInWithCredential(credentials);
       await addUserToFireStore(
           user: UserModel(
               email: firebaseAuth.currentUser!.email!,
-              firstName: "ee",
-              lastName: "",
+              firstName: gUser.displayName!.split(" ")[0],
+              lastName: gUser.displayName!.split(" ")[1],
               uid: firebaseAuth.currentUser!.uid));
       return right(null);
     } catch (e) {
@@ -136,11 +137,21 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, void>> signUpWithEmailAndPassword(
-      {required String email, required String password}) async {
+  Future<Either<Failure, void>> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String firstName,
+    required String lastName,
+  }) async {
     try {
       await firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
+      UserModel user = UserModel(
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          uid: firebaseAuth.currentUser!.uid);
+      await addUserToFireStore(user: user);
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
