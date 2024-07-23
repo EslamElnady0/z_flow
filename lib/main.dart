@@ -46,7 +46,8 @@ class ZFlowApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: BlocProvider(
-        create: (context) => InternetCheckCubit()..checkInternetConnection(),
+        create: (context) =>
+            getIt.get<InternetCheckCubit>()..checkInternetConnection(),
         child: BlocListener<InternetCheckCubit, InternetCheckState>(
           listener: (context, state) {
             if (state is InternetCheckConnected) {

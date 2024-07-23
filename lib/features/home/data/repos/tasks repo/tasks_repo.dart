@@ -4,11 +4,27 @@ import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 import '../../../../../core/errors/failure.dart';
 
 abstract class TasksRepo {
-  Either<Failure, Future<List<TaskModel>>> getTasks();
+  Future<Either<Failure, List<TaskModel>>> getTasks({
+    required bool isConnected,
+    required String uid,
+    required bool isAnonymous,
+  });
 
-  Either<Failure, Future<void>> addTask(TaskModel task);
+  Future<Either<Failure, Future<void>>> addTask(
+      {required TaskModel task,
+      required bool isConnected,
+      required bool isAnonymous,
+      required String uid});
 
-  Either<Failure, Future<void>> deleteTask(TaskModel task);
+  Future<Either<Failure, Future<void>>> deleteTask(
+      {required TaskModel task,
+      required bool isConnected,
+      required bool isAnonymous,
+      required String uid});
 
-  Either<Failure, Future<void>> updateTask(TaskModel task);
+  Future<Either<Failure, Future<void>>> updateTask(
+      {required TaskModel task,
+      required bool isConnected,
+      required bool isAnonymous,
+      required String uid});
 }

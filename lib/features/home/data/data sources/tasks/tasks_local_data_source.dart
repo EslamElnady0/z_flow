@@ -4,7 +4,7 @@ import '../../../../../core/constants/constants.dart';
 import '../../models/task model/task_model.dart';
 
 abstract class TasksLocalDataSource {
-  List<TaskModel> getTasks();
+  List<TaskModel>? getTasks();
   Future<void> addTask(TaskModel task);
   void deleteTask(TaskModel task);
   void updateTask(TaskModel task);
@@ -13,9 +13,9 @@ abstract class TasksLocalDataSource {
 
 class TasksLocalDataSourceImpl implements TasksLocalDataSource {
   @override
-  List<TaskModel> getTasks() {
+  List<TaskModel>? getTasks() {
     var tasksBox = Hive.box<TaskModel>(Constants.tasksBox);
-    List<TaskModel> allTasks = tasksBox.values.toList();
+    List<TaskModel>? allTasks = tasksBox.values.toList();
 
     return allTasks;
   }
@@ -33,7 +33,7 @@ class TasksLocalDataSourceImpl implements TasksLocalDataSource {
 
   @override
   void updateTask(TaskModel task) {
-    throw UnimplementedError();
+    task.save();
   }
 
   @override
