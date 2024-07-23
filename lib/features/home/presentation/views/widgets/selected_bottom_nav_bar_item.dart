@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/styles/styles.dart';
-import '../../ui models/bottom_nav_bar_item_model.dart';
+import '../../ui logic/ui models/bottom_nav_bar_item_model.dart';
 
 class SelectedBottomNavBarItem extends StatelessWidget {
   final MapEntry<int, BottomNavBarItemModel> bottomNavModelEntry;

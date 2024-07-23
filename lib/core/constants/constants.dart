@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
-import 'package:z_flow/features/home/presentation/ui%20models/bottom_nav_bar_item_model.dart';
+import 'package:z_flow/features/home/presentation/ui%20logic/ui%20models/bottom_nav_bar_item_model.dart';
 
 import '../../features/on boarding/data/on_boarding_model.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:z_flow/features/home/presentation/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
+import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/calender_body.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/habits_body.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/profile_body.dart';

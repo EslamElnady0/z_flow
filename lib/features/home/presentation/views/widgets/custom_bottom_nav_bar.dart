@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/widgets/inner_shadow.dart';
-import 'package:z_flow/features/home/presentation/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
+import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
 import '../../../../../core/constants/colors.dart';
 import 'selected_bottom_nav_bar_item.dart';
 import 'unselected_bottom_nav_bar_item.dart';
