@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/utils/tasks%20utils/update_task.dart';
-import 'package:z_flow/features/home/presentation/view%20models/update%20task%20cubit/update_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';

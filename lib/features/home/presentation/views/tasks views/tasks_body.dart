@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/features/home/presentation/view%20models/get%20task%20cubit/get_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 
 import '../../../../../core/routes/app_router.dart';
 import '../../../../../core/utils/tasks utils/get_tasks.dart';

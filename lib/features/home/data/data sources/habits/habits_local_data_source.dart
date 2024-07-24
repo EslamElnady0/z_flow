@@ -4,7 +4,7 @@ import '../../../../../core/constants/constants.dart';
 import '../../models/habit model/habit_model.dart';
 
 abstract class HabitsLocalDataSource {
-  List<HabitModel> getHabits();
+  List<HabitModel>? getHabits();
   Future<void> addHabit(HabitModel habit);
   void deleteHabit(HabitModel habit);
   void updateHabit(HabitModel habit);
@@ -12,7 +12,7 @@ abstract class HabitsLocalDataSource {
 
 class HabitsLocalDataSourceImpl implements HabitsLocalDataSource {
   @override
-  List<HabitModel> getHabits() {
+  List<HabitModel>? getHabits() {
     var habitBox = Hive.box<HabitModel>(Constants.habitsBox);
     List<HabitModel> allHabits = habitBox.values.toList();
 

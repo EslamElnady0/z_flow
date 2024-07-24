@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 
-import '../../../data/repos/tasks repo/tasks_repo.dart';
+import '../../../../data/repos/tasks repo/tasks_repo.dart';
 
 part 'get_task_state.dart';
 

@@ -7,10 +7,10 @@ import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit
 import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_local_data_source.dart';
 import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_remote_data_source.dart';
 import 'package:z_flow/features/home/data/repos/tasks%20repo/tasks_repo_impl.dart';
-import 'package:z_flow/features/home/presentation/view%20models/add%20task%20cubit/add_task_cubit.dart';
-import 'package:z_flow/features/home/presentation/view%20models/delete%20task%20cubit/delete_task_cubit.dart';
-import 'package:z_flow/features/home/presentation/view%20models/get%20task%20cubit/get_task_cubit.dart';
-import 'package:z_flow/features/home/presentation/view%20models/update%20task%20cubit/update_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task%20cubit/add_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20task%20cubit/delete_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
 
 import '../../features/auth/presentation/view models/sign up cubit/sign_up_cubit.dart';
 

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../features/home/presentation/view models/get task cubit/get_task_cubit.dart';
+import '../../../features/home/presentation/view models/tasks/get task cubit/get_task_cubit.dart';
 import '../../DI/service_locator.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 

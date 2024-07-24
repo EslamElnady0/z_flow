@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:z_flow/features/home/data/repos/tasks%20repo/tasks_repo.dart';
 
-import '../../../data/models/task model/task_model.dart';
+import '../../../../data/models/task model/task_model.dart';
 
 part 'add_task_state.dart';
 

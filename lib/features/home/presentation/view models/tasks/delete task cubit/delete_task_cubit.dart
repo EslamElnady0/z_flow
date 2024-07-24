@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../data/models/task model/task_model.dart';
-import '../../../data/repos/tasks repo/tasks_repo.dart';
+import '../../../../data/models/task model/task_model.dart';
+import '../../../../data/repos/tasks repo/tasks_repo.dart';
 
 part 'delete_task_state.dart';
 

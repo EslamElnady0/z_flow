@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import '../../../../../core/errors/failure.dart';
 import '../../data sources/habits/habits_local_data_source.dart';
@@ -7,31 +10,110 @@ import '../../models/habit model/habit_model.dart';
 import 'habits_repo.dart';
 
 class HabitsRepoImpl implements HabitsRepo {
-  final HabitsLocalDataSourceImpl localDataSource;
-  final HabitsRemoteDataSourceImpl remoteDataSource;
-  HabitsRepoImpl(this.localDataSource, this.remoteDataSource);
+  final HabitsLocalDataSourceImpl habitsLocalDataSource;
+  final HabitsRemoteDataSourceImpl habitsRemoteDataSource;
+  HabitsRepoImpl(this.habitsLocalDataSource, this.habitsRemoteDataSource);
 
   @override
-  Either<Failure, Future<void>> addHabit(HabitModel habit) {
-    // TODO: implement addHabit
-    throw UnimplementedError();
+  Future<Either<Failure, Future<void>>> addHabit(
+      {required HabitModel habit,
+      required bool isConnected,
+      required bool isAnonymous,
+      required String uid}) async {
+    try {
+      if (isConnected && !isAnonymous) {
+        await habitsRemoteDataSource.addHabit(habit: habit, uid: uid);
+      }
+      await habitsLocalDataSource.addHabit(habit);
+
+      return right(Future.value(null));
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(ServerFailure.fromFirebaseException(exception: e));
+      } else {
+        log(e.toString());
+        return left(
+            ServerFailure(errMessage: "'Server Error, please try again'"));
+      }
+    }
   }
 
   @override
-  Either<Failure, Future<void>> deleteHabit(HabitModel habit) {
-    // TODO: implement deleteHabit
-    throw UnimplementedError();
+  Future<Either<Failure, Future<void>>> deleteHabit(
+      {required HabitModel habit,
+      required bool isConnected,
+      required bool isAnonymous,
+      required String uid}) async {
+    try {
+      if (isConnected && !isAnonymous) {
+        await habitsRemoteDataSource.deleteHabit(habit: habit, uid: uid);
+      }
+      habitsLocalDataSource.deleteHabit(habit);
+
+      return right(Future.value(null));
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(ServerFailure.fromFirebaseException(exception: e));
+      } else {
+        log(e.toString());
+        return left(
+            ServerFailure(errMessage: "'Server Error, please try again'"));
+      }
+    }
   }
 
   @override
-  Either<Failure, Future<List<HabitModel>>> getHabits() {
-    // TODO: implement getHabits
-    throw UnimplementedError();
+  Future<Either<Failure, List<HabitModel>>> getHabits(
+      {required bool isConnected,
+      required bool isAnonymous,
+      required String uid}) async {
+    try {
+      List<HabitModel>? habits = habitsLocalDataSource.getHabits();
+
+      if (habits!.isNotEmpty) {
+        return right(habits);
+      } else {
+        if (isConnected && !isAnonymous) {
+          habits = await habitsRemoteDataSource.getHabits(uid: uid);
+          for (var habit in habits) {
+            await habitsLocalDataSource.addHabit(habit);
+          }
+          return right(habits);
+        }
+        return right(habits);
+      }
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(ServerFailure.fromFirebaseException(exception: e));
+      } else {
+        log(e.toString());
+        return left(
+            ServerFailure(errMessage: "'Server Error, please try again'"));
+      }
+    }
   }
 
   @override
-  Either<Failure, Future<void>> updateHabit(HabitModel habit) {
-    // TODO: implement updateHabit
-    throw UnimplementedError();
+  Future<Either<Failure, Future<void>>> updateHabit(
+      {required HabitModel habit,
+      required bool isConnected,
+      required bool isAnonymous,
+      required String uid}) async {
+    try {
+      if (isConnected && !isAnonymous) {
+        await habitsRemoteDataSource.deleteHabit(habit: habit, uid: uid);
+      }
+      habitsLocalDataSource.deleteHabit(habit);
+
+      return right(Future.value(null));
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(ServerFailure.fromFirebaseException(exception: e));
+      } else {
+        log(e.toString());
+        return left(
+            ServerFailure(errMessage: "'Server Error, please try again'"));
+      }
+    }
   }
 }
