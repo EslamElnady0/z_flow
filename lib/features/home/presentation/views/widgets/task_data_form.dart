@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/styles/styles.dart';
+import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_add_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box_container.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_data_entry_text_field.dart';
@@ -14,6 +15,7 @@ class TaskDataForm extends StatefulWidget {
   final TextEditingController endsInController;
   final TextEditingController noteController;
   final TextEditingController subTaskController;
+  final TaskModel? task;
   final bool isEdit;
   final String text;
   final GlobalKey<FormState> formKey;
@@ -25,7 +27,8 @@ class TaskDataForm extends StatefulWidget {
       required this.subTaskController,
       required this.formKey,
       required this.text,
-      this.isEdit = false});
+      this.isEdit = false,
+      this.task});
 
   @override
   State<TaskDataForm> createState() => _TaskDataFormState();
@@ -151,7 +154,13 @@ class _TaskDataFormState extends State<TaskDataForm> {
                     SizedBox(
                       height: 16.h,
                     ),
-                    const CustomCheckBoxContainer(
+                    CustomCheckBoxContainer(
+                      onChanged: (value) async {
+                        setState(() {
+                          widget.task!.isDone = !(widget.task!.isDone);
+                        });
+                      },
+                      value: widget.task!.isDone,
                       text: AppTexts.finishTask,
                     )
                   ],

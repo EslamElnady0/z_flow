@@ -32,8 +32,8 @@ class HomeViewBody extends StatelessWidget {
                 BlocProvider(
                   create: (context) => getIt.get<DeleteTaskCubit>(),
                 ),
-                BlocProvider(
-                  create: (context) => getIt.get<UpdateTaskCubit>(),
+                BlocProvider.value(
+                  value: getIt.get<UpdateTaskCubit>(),
                 ),
               ],
               child: const TasksBody(),

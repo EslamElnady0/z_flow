@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
+import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/styles/styles.dart';
@@ -10,6 +11,7 @@ class EditTaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TaskModel task = ModalRoute.of(context)!.settings.arguments as TaskModel;
     return CustomScaffold(
       appBar: AppBar(
         title: Text(
@@ -19,7 +21,7 @@ class EditTaskView extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: const EditTaskViewBody(),
+      body: EditTaskViewBody(task: task),
     );
   }
 }

@@ -7,8 +7,9 @@ import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box
 class CustomCheckBoxContainer extends StatelessWidget {
   final String text;
   final void Function(bool?)? onChanged;
+  final bool value;
   const CustomCheckBoxContainer(
-      {super.key, required this.text, this.onChanged});
+      {super.key, required this.text, this.onChanged, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,10 @@ class CustomCheckBoxContainer extends StatelessWidget {
             text,
             style: Styles.style18w600,
           ),
-          CustomCheckBox(onChanged: onChanged)
+          CustomCheckBox(
+            onChanged: onChanged,
+            value: value,
+          )
         ],
       ),
     );

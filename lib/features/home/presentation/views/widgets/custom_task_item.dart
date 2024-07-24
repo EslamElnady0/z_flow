@@ -69,7 +69,7 @@ class _CustomTaskItemState extends State<CustomTaskItem> {
                 key: widget.actionKey,
                 onPressed: () {
                   BuildOverlayMenu.showOverlay(context, widget.actionKey,
-                      widget: const TaskOptionsMenuBody());
+                      widget: TaskOptionsMenuBody(task: widget.task));
                 },
                 icon: Icon(Icons.more_vert, color: Colors.black, size: 20.r),
               )

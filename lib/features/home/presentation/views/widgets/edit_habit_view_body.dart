@@ -62,12 +62,14 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
             child: Column(
               children: [
                 const Spacer(),
-                SaveCancelActionsRow(
+                BottomScreenActions(
+                  otherButtonText: AppTexts.delete,
                   onSavePressed: () {
                     if (formKey.currentState!.validate()) {
                       Navigator.of(context).pop();
                     }
                   },
+                  onOtherButtonPressed: () => Navigator.of(context).pop(),
                 ),
                 SizedBox(
                   height: 60.h,

@@ -6,9 +6,15 @@ import '../../../../../core/constants/constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../on boarding/presentaion/views/widgets/custom_on_boarding_skip_button.dart';
 
-class SaveCancelActionsRow extends StatelessWidget {
+class BottomScreenActions extends StatelessWidget {
   final void Function()? onSavePressed;
-  const SaveCancelActionsRow({super.key, this.onSavePressed});
+  final void Function() onOtherButtonPressed;
+  final String otherButtonText;
+  const BottomScreenActions(
+      {super.key,
+      this.onSavePressed,
+      required this.onOtherButtonPressed,
+      required this.otherButtonText});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +32,8 @@ class SaveCancelActionsRow extends StatelessWidget {
         ),
         Expanded(
             child: CustomHollowButton(
-          text: AppTexts.cancel,
-          onTap: Navigator.of(context).pop,
+          text: otherButtonText,
+          onTap: onOtherButtonPressed,
         )),
       ],
     );

@@ -63,7 +63,9 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
             child: Column(
               children: [
                 const Spacer(),
-                SaveCancelActionsRow(
+                BottomScreenActions(
+                  otherButtonText: AppTexts.cancel,
+                  onOtherButtonPressed: () => Navigator.of(context).pop(),
                   onSavePressed: () {
                     if (formKey.currentState!.validate()) {
                       addTask(

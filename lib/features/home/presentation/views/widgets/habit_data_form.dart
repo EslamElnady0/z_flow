@@ -117,10 +117,10 @@ class _HabitDataFormState extends State<HabitDataForm> {
           SizedBox(
             height: 16.h,
           ),
-          CustomCheckBoxContainer(
-            text: AppTexts.remiderToHabit,
-            onChanged: (value) {},
-          ),
+          // CustomCheckBoxContainer(
+          //   text: AppTexts.remiderToHabit,
+          //   onChanged: (value) {},
+          // ),
           SizedBox(
             height: 40.h,
           ),

@@ -62,7 +62,9 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
             child: Column(
               children: [
                 const Spacer(),
-                SaveCancelActionsRow(
+                BottomScreenActions(
+                  otherButtonText: AppTexts.cancel,
+                  onOtherButtonPressed: () => Navigator.of(context).pop(),
                   onSavePressed: () {
                     if (formKey.currentState!.validate()) {
                       Navigator.of(context).pop();
