@@ -6,24 +6,24 @@ import '../../../../data/models/habit model/habit_model.dart';
 
 part 'add_habits_state.dart';
 
-class AddHabitsCubit extends Cubit<AddHabitsState> {
-  AddHabitsCubit(this.habitRepo) : super(AddHabitsInitial());
+class AddHabitCubit extends Cubit<AddHabitsState> {
+  AddHabitCubit(this.habitRepo) : super(AddHabitInitial());
   final HabitsRepo habitRepo;
   Future<void> addHabit(
       {required HabitModel habit,
       required String uid,
       required bool isConnected,
       required bool isAnonymous}) async {
-    emit(AddHabitsLoading());
+    emit(AddHabitLoading());
     final result = await habitRepo.addHabit(
         habit: habit,
         isConnected: isConnected,
         isAnonymous: isAnonymous,
         uid: uid);
     result.fold((failure) {
-      emit(AddHabitsFailure(failure.errMessage));
+      emit(AddHabitFailure(failure.errMessage));
     }, (r) {
-      emit(AddHabitsSuccess());
+      emit(AddHabitSuccess());
     });
   }
 }

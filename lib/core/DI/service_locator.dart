@@ -4,6 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_check_cubit.dart';
 import 'package:z_flow/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
+import 'package:z_flow/features/home/data/data%20sources/habits/habits_local_data_source.dart';
+import 'package:z_flow/features/home/data/data%20sources/habits/habits_remote_data_source.dart';
 import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_local_data_source.dart';
 import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_remote_data_source.dart';
 import 'package:z_flow/features/home/data/repos/tasks%20repo/tasks_repo_impl.dart';
@@ -13,6 +15,11 @@ import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
 
 import '../../features/auth/presentation/view models/sign up cubit/sign_up_cubit.dart';
+import '../../features/home/data/repos/habits repo/habits_repo_impl.dart';
+import '../../features/home/presentation/view models/habits/add habit cubit/add_habits_cubit.dart';
+import '../../features/home/presentation/view models/habits/delete habit cubit/delete_habit_cubit.dart';
+import '../../features/home/presentation/view models/habits/get habits cubit/get_habit_cubit.dart';
+import '../../features/home/presentation/view models/habits/update habit cubit/update_habit_cubit.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -24,6 +31,8 @@ void setupServiceLocator() {
       firestore: getIt.get<FirebaseFirestore>()));
   getIt.registerSingleton(
       TasksRepoImpl(TasksLocalDataSourceImpl(), TasksRemoteDataSourceImpl()));
+  getIt.registerSingleton(HabitsRepoImpl(
+      HabitsLocalDataSourceImpl(), HabitsRemoteDataSourceImpl()));
 
 //////////////////////   Auth cubits     //////////////////////////////
   getIt.registerSingleton<InternetCheckCubit>(InternetCheckCubit());
@@ -41,5 +50,13 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<DeleteTaskCubit>(
       () => DeleteTaskCubit(getIt.get<TasksRepoImpl>()));
 
-/////////////////////////
+/////////////////////////   habits cubits   //////////////////////////////
+  getIt.registerLazySingleton<AddHabitCubit>(
+      () => AddHabitCubit(getIt.get<HabitsRepoImpl>()));
+  getIt.registerLazySingleton<UpdateHabitCubit>(
+      () => UpdateHabitCubit(getIt.get<HabitsRepoImpl>()));
+  getIt.registerLazySingleton<GetHabitCubit>(
+      () => GetHabitCubit(getIt.get<HabitsRepoImpl>()));
+  getIt.registerLazySingleton<DeleteHabitCubit>(
+      () => DeleteHabitCubit(getIt.get<HabitsRepoImpl>()));
 }

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/features/auth/presentation/views/sign_up_view.dart';
+import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/habits/update%20habit%20cubit/update_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task%20cubit/add_task_cubit.dart';
-import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20task%20cubit/delete_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/add_habit_view.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/edit_habit_view.dart';
@@ -64,19 +66,18 @@ class AppRouter {
             settings: RouteSettings(arguments: task));
       case addHabit:
         return MaterialPageRoute(
-            builder: (context) => MultiBlocProvider(
-                  providers: [
-                    BlocProvider.value(
-                      value: getIt.get<UpdateTaskCubit>(),
-                    ),
-                    BlocProvider.value(
-                      value: getIt.get<DeleteTaskCubit>(),
-                    ),
-                  ],
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt.get<GetTaskCubit>(),
                   child: const AddHabitView(),
                 ));
       case editHabit:
-        return MaterialPageRoute(builder: (context) => const EditHabitView());
+        HabitModel habit = settings.arguments as HabitModel;
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider.value(
+                  value: getIt.get<UpdateHabitCubit>(),
+                  child: const EditHabitView(),
+                ),
+            settings: RouteSettings(arguments: habit));
       case home:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(

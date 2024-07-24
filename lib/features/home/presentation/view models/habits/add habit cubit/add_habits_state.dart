@@ -3,13 +3,13 @@ part of 'add_habits_cubit.dart';
 @immutable
 sealed class AddHabitsState {}
 
-final class AddHabitsInitial extends AddHabitsState {}
+final class AddHabitInitial extends AddHabitsState {}
 
-final class AddHabitsLoading extends AddHabitsState {}
+final class AddHabitLoading extends AddHabitsState {}
 
-final class AddHabitsSuccess extends AddHabitsState {}
+final class AddHabitSuccess extends AddHabitsState {}
 
-final class AddHabitsFailure extends AddHabitsState {
+final class AddHabitFailure extends AddHabitsState {
   final String errMessage;
-  AddHabitsFailure(this.errMessage);
+  AddHabitFailure(this.errMessage);
 }
