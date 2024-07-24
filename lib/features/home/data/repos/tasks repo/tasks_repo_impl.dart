@@ -71,14 +71,11 @@ class TasksRepoImpl implements TasksRepo {
       } else {
         if (isConnected && !isAnonymous) {
           tasks = await tasksRemoteDataSource.getTasks(uid: uid);
-          if (tasks.isNotEmpty) {
-            for (var task in tasks) {
-              await tasksLocalDataSource.addTask(task);
-            }
-            return right(tasks);
-          } else {
-            return right(tasks);
+
+          for (var task in tasks) {
+            await tasksLocalDataSource.addTask(task);
           }
+          return right(tasks);
         }
         return right(tasks);
       }

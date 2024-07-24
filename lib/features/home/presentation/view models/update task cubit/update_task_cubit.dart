@@ -17,7 +17,7 @@ class UpdateTaskCubit extends Cubit<UpdateTaskState> {
       required bool isAnonymous,
       required String uid}) async {
     emit(UpdateTaskLoading());
-    var result = await tasksRepo.addTask(
+    var result = await tasksRepo.updateTask(
         task: task,
         isConnected: isConnected,
         isAnonymous: isAnonymous,

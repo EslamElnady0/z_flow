@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/routes/app_router.dart';
@@ -27,7 +29,13 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   void initState() {
     initSplashAnimations();
     Future.delayed(const Duration(seconds: 4), () {
-      Navigator.pushReplacementNamed(context, AppRouter.onBoarding);
+      getIt.get<FirebaseAuth>().authStateChanges().listen((User? user) {
+        if (user != null) {
+          Navigator.pushReplacementNamed(context, AppRouter.home);
+        } else {
+          Navigator.pushReplacementNamed(context, AppRouter.onBoarding);
+        }
+      });
     });
     super.initState();
   }

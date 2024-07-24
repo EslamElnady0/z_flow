@@ -48,9 +48,9 @@ class CalenderBody extends StatelessWidget {
                 return Container(
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.only(right: 10.w),
-                    child: CustomTaskItem(
-                      actionKey: actionKey,
-                    ));
+                    child: Container()); // CustomTaskItem(
+                //   actionKey: actionKey,
+                // )
               },
               itemCount: 5,
               padding: EdgeInsets.zero,

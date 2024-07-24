@@ -3,10 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/add%20task%20cubit/add_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/delete%20task%20cubit/delete_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/update%20task%20cubit/update_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/calender_body.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/habits_body.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/profile_body.dart';
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_management_body.dart';
+import '../../view models/get task cubit/get_task_cubit.dart';
 import '../tasks views/tasks_body.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -18,8 +21,21 @@ class HomeViewBody extends StatelessWidget {
       builder: (context, state) {
         switch (context.read<BottomNavBarCubit>().selectedIndex) {
           case 0:
-            return BlocProvider(
-              create: (context) => getIt.get<AddTaskCubit>(),
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider.value(
+                  value: getIt.get<AddTaskCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt.get<GetTaskCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt.get<DeleteTaskCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt.get<UpdateTaskCubit>(),
+                ),
+              ],
               child: const TasksBody(),
             );
           case 1:
