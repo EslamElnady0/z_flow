@@ -13,6 +13,7 @@ class Assets {
   static const String defaultProfile = "assets/images/defaultProfileImage.png";
   static const String forgettingPerson = "assets/images/forgettingPerson.png";
   static const String passwordImage = "assets/images/passwordImage.png";
+  static const String noTasksImage = "assets/images/noTasksImage.png";
 
   ////////////////        svgs              ///////////////////////
   static const String tasksIcon = "assets/images/svgs/tasks.svg";
