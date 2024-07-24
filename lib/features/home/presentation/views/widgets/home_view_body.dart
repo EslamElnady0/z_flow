@@ -26,8 +26,8 @@ class HomeViewBody extends StatelessWidget {
                 BlocProvider.value(
                   value: getIt.get<AddTaskCubit>(),
                 ),
-                BlocProvider(
-                  create: (context) => getIt.get<GetTaskCubit>(),
+                BlocProvider.value(
+                  value: getIt.get<GetTaskCubit>(),
                 ),
                 BlocProvider(
                   create: (context) => getIt.get<DeleteTaskCubit>(),
@@ -39,8 +39,19 @@ class HomeViewBody extends StatelessWidget {
               child: const TasksBody(),
             );
           case 1:
-            return BlocProvider.value(
-              value: getIt.get<AddTaskCubit>(),
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider.value(
+                  value: getIt.get<GetTaskCubit>()
+                    ..getSpecificDayTasks(DateTime.now()),
+                ),
+                BlocProvider(
+                  create: (context) => getIt.get<DeleteTaskCubit>(),
+                ),
+                BlocProvider.value(
+                  value: getIt.get<UpdateTaskCubit>(),
+                ),
+              ],
               child: const CalenderBody(),
             );
           case 2:

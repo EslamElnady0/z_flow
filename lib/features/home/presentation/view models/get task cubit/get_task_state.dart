@@ -9,6 +9,8 @@ final class GetTaskLoading extends GetTaskState {}
 
 final class GetTaskSuccess extends GetTaskState {}
 
+final class DaySelectedState extends GetTaskState {}
+
 final class GetTaskFailure extends GetTaskState {
   final String errMessage;
 

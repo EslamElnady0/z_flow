@@ -6,10 +6,8 @@ import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/features/home/presentation/view%20models/get%20task%20cubit/get_task_cubit.dart';
 
 import '../../../../../core/routes/app_router.dart';
-import '../../../../../core/styles/styles.dart';
 import '../../../../../core/utils/tasks utils/get_tasks.dart';
 import '../widgets/custom_add_button.dart';
-import '../widgets/custom_task_item.dart';
 import '../widgets/exitsing_tasks_body.dart';
 import '../widgets/no_tasks_body.dart';
 

@@ -15,5 +15,6 @@ Future<void> deleteTask({required TaskModel task}) async {
       uid: getIt.get<FirebaseAuth>().currentUser!.uid);
 
   getIt.get<GetTaskCubit>().tasks.remove(task);
+  getIt.get<GetTaskCubit>().specificDayTasksList.remove(task);
   await getTasks();
 }

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 
@@ -10,7 +11,10 @@ class GetTaskCubit extends Cubit<GetTaskState> {
   GetTaskCubit(this.tasksRepo) : super(GetTaskInitial());
 
   final TasksRepo tasksRepo;
+  DateTime today = DateTime.now();
+  DateTime focusedDay = DateTime.now();
 
+  List<TaskModel> specificDayTasksList = [];
   List<TaskModel> tasks = [];
 
   Future<void> getTasks(
@@ -27,5 +31,27 @@ class GetTaskCubit extends Cubit<GetTaskState> {
       tasks = tasksList;
       emit(GetTaskSuccess());
     });
+  }
+
+  void getSpecificDayTasks(
+    DateTime day,
+  ) {
+    for (var task in tasks) {
+      if (task.createdAt == DateFormat.yMMMd().format(day)) {
+        if (!specificDayTasksList.contains(task)) {
+          specificDayTasksList.add(task);
+        }
+      }
+    }
+
+    emit(GetTaskSuccess());
+  }
+
+  onDaySelected(DateTime day, DateTime focusDay) {
+    today = day;
+    // focusedDay = focusDay;
+    specificDayTasksList = [];
+    getSpecificDayTasks(focusDay);
+    emit(DaySelectedState());
   }
 }

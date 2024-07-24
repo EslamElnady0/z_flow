@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:z_flow/core/utils/tasks%20utils/add_task.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
@@ -79,7 +80,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                         title: taskController.text,
                         notes: noteController.text,
                         id: id,
-                        createdAt: DateTime.now().toString(),
+                        createdAt: DateFormat.yMMMd().format(DateTime.now()),
                         deadline: endsInController.text,
                       );
                       await addTask(

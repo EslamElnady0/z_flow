@@ -6,8 +6,14 @@ import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
 class CustomCalender extends StatelessWidget {
+  final void Function(DateTime, DateTime)? onDaySelected;
+  final bool Function(DateTime)? selectedDayPredicate;
+  final DateTime focusedDay;
   const CustomCalender({
     super.key,
+    this.onDaySelected,
+    this.selectedDayPredicate,
+    required this.focusedDay,
   });
 
   @override
@@ -21,10 +27,9 @@ class CustomCalender extends StatelessWidget {
           borderRadius: BorderRadius.circular(24.r),
           boxShadow: [Constants.shadow]),
       child: TableCalendar(
-        //  onDaySelected: context.read<GetTaskCubit>().onDaySelected,
+        onDaySelected: onDaySelected,
         rowHeight: 29.h,
-        // selectedDayPredicate: (day) =>
-        //     isSameDay(day, context.read<GetTaskCubit>().today),
+        selectedDayPredicate: selectedDayPredicate,
         availableGestures: AvailableGestures.all,
         daysOfWeekStyle: DaysOfWeekStyle(
             weekdayStyle: Styles.style10w600, weekendStyle: Styles.style10w600),
@@ -58,8 +63,7 @@ class CustomCalender extends StatelessWidget {
             titleCentered: true,
             formatButtonVisible: false,
             titleTextStyle: Styles.style24W600.copyWith(color: Colors.black)),
-        // focusedDay: context.read<GetTaskCubit>().today,
-        focusedDay: DateTime.now(),
+        focusedDay: focusedDay,
         firstDay: DateTime.utc(2012, 1, 1),
         lastDay: DateTime.utc(2036, 12, 31),
       ),
