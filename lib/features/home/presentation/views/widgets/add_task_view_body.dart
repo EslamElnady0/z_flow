@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:z_flow/core/utils/tasks%20utils/add_task.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
 import '../../../../../core/constants/app_texts.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../data/models/task model/task_model.dart';
 import 'task_data_form.dart';
 
 class AddTaskViewBody extends StatefulWidget {
@@ -66,14 +69,24 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                 BottomScreenActions(
                   otherButtonText: AppTexts.cancel,
                   onOtherButtonPressed: () => Navigator.of(context).pop(),
-                  onSavePressed: () {
+                  onSavePressed: () async {
                     if (formKey.currentState!.validate()) {
-                      addTask(
-                          context: context,
-                          taskController: taskController,
-                          subTaskController: subTaskController,
-                          noteController: noteController,
-                          endsInController: endsInController);
+                      var box = Hive.box(Constants.constantsBox);
+                      int id = box.get("id") ?? 0;
+                      TaskModel task = TaskModel(
+                        sideTask: subTaskController.text,
+                        title: taskController.text,
+                        notes: noteController.text,
+                        id: id,
+                        createdAt: DateTime.now().toString(),
+                        deadline: endsInController.text,
+                      );
+                      await addTask(
+                        task: task,
+                      );
+                      if (context.mounted) {
+                        Navigator.pop(context);
+                      }
                     }
                   },
                 ),

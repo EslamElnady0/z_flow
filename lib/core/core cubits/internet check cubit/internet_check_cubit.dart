@@ -8,7 +8,7 @@ part 'internet_check_state.dart';
 class InternetCheckCubit extends Cubit<InternetCheckState> {
   InternetCheckCubit() : super(InternetCheckInitial());
 
-  final Connectivity _connectivity = Connectivity();
+  final Connectivity connectivity = Connectivity();
 
   bool isDeviceConnected = false;
   // late StreamSubscription _connectivitySubscription;
@@ -37,7 +37,7 @@ class InternetCheckCubit extends Cubit<InternetCheckState> {
   // }
 
   checkInternetConnection() async {
-    _connectivity.onConnectivityChanged
+    connectivity.onConnectivityChanged
         .listen((List<ConnectivityResult> result) async {
       isDeviceConnected = await InternetConnectionChecker().hasConnection;
       if (isDeviceConnected) {
