@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:z_flow/core/utils/increament_id_methods.dart';
-import 'package:z_flow/core/utils/tasks%20utils/get_tasks.dart';
 import 'package:z_flow/features/home/presentation/view%20models/get%20task%20cubit/get_task_cubit.dart';
 
 import '../../../features/home/data/models/task model/task_model.dart';
@@ -15,6 +14,6 @@ Future<void> addTask({required TaskModel task}) async {
       isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
       uid: getIt.get<FirebaseAuth>().currentUser!.uid);
   getIt.get<GetTaskCubit>().tasks.add(task);
-  await getTasks();
+
   incrementTasksId();
 }

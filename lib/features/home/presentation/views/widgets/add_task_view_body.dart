@@ -7,6 +7,7 @@ import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_acti
 
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/constants.dart';
+import '../../../../../core/utils/tasks utils/get_tasks.dart';
 import '../../../data/models/task model/task_model.dart';
 import 'task_data_form.dart';
 
@@ -84,6 +85,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                       await addTask(
                         task: task,
                       );
+                      await getTasks();
                       if (context.mounted) {
                         Navigator.pop(context);
                       }
