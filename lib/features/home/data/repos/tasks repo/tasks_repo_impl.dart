@@ -19,10 +19,11 @@ class TasksRepoImpl implements TasksRepo {
       required bool isAnonymous,
       required String uid}) async {
     try {
-      await tasksLocalDataSource.addTask(task);
       if (isConnected && !isAnonymous) {
         await tasksRemoteDataSource.addTask(task: task, uid: uid);
       }
+      await tasksLocalDataSource.addTask(task);
+
       return right(Future.value(null));
     } catch (e) {
       if (e is FirebaseException) {

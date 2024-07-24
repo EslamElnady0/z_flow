@@ -69,6 +69,9 @@ class _TaskDataFormState extends State<TaskDataForm> {
             height: 16.h,
           ),
           CustomDataEntryTextField(
+              validator: (value) {
+                return null;
+              },
               hintText: AppTexts.endsIn,
               keyboardType: TextInputType.none,
               onTap: () {

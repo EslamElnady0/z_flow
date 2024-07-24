@@ -9,6 +9,7 @@ import '../../features/on boarding/data/on_boarding_model.dart';
 
 class Constants {
   static const String tasksBox = 'tasksBox';
+  static const String constantsBox = 'constantsBox';
   static const String habitsBox = 'habitsBox';
   static const String usersCollection = 'users';
   static const String tasksCollection = 'tasks';

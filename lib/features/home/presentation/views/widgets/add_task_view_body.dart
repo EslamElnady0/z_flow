@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/utils/tasks%20utils/add_task.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
 import '../../../../../core/constants/app_texts.dart';
@@ -65,7 +66,12 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                 SaveCancelActionsRow(
                   onSavePressed: () {
                     if (formKey.currentState!.validate()) {
-                      Navigator.of(context).pop();
+                      addTask(
+                          context: context,
+                          taskController: taskController,
+                          subTaskController: subTaskController,
+                          noteController: noteController,
+                          endsInController: endsInController);
                     }
                   },
                 ),

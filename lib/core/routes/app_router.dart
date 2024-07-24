@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/features/auth/presentation/views/sign_up_view.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/add%20task%20cubit/add_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/add_habit_view.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/edit_habit_view.dart';
 import 'package:z_flow/features/home/presentation/views/tasks%20views/add_task_view.dart';
@@ -44,7 +46,12 @@ class AppRouter {
       case signUp:
         return MaterialPageRoute(builder: (context) => const SignUpView());
       case addTask:
-        return MaterialPageRoute(builder: (context) => const AddTaskView());
+        return MaterialPageRoute(
+            //i think its gonna error here ->
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt.get<AddTaskCubit>(),
+                  child: const AddTaskView(),
+                ));
       case editTask:
         return MaterialPageRoute(builder: (context) => const EditTaskView());
       case addHabit:
