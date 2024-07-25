@@ -3,6 +3,7 @@ import 'package:z_flow/core/widgets/custom_scaffold.dart';
 
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/styles/styles.dart';
+import '../../../data/models/habit model/habit_model.dart';
 import '../widgets/edit_habit_view_body.dart';
 
 class EditHabitView extends StatelessWidget {
@@ -10,8 +11,9 @@ class EditHabitView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HabitModel habit = ModalRoute.of(context)!.settings.arguments as HabitModel;
     return CustomScaffold(
-      body: const EditHabitViewBody(),
+      body: EditHabitViewBody(habit: habit),
       appBar: AppBar(
         title: Text(
           AppTexts.editHabit,

@@ -4,5 +4,10 @@ import '../constants/constants.dart';
 
 void incrementTasksId() async {
   var box = Hive.box(Constants.constantsBox);
-  await box.put("id", (box.get("id") ?? 0) + 1);
+  await box.put("tasksId", (box.get("tasksId") ?? 0) + 1);
+}
+
+void incrementHabitsId() async {
+  var box = Hive.box(Constants.constantsBox);
+  await box.put("habitsId", (box.get("habitsId") ?? 0) + 1);
 }

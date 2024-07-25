@@ -27,8 +27,10 @@ class CustomGoogleAuthButton extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 buildCustomSnackBar(message: "Logged in successfully"),
               );
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
+              if (context.mounted) {
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
+              }
             } else if (state is LogInFailure) {
               ScaffoldMessenger.of(context).showSnackBar(buildCustomSnackBar(
                   message: state.errMessage,

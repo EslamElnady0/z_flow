@@ -2,25 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/styles/styles.dart';
 import 'custom_data_entry_text_field.dart';
 
 class HabitDataForm extends StatefulWidget {
-  final TextEditingController taskController;
+  final TextEditingController habitController;
   final TextEditingController endsInController;
   final TextEditingController noteController;
+  final HabitModel? habit;
 
   final String text;
   final GlobalKey<FormState> formKey;
   const HabitDataForm(
       {super.key,
-      required this.taskController,
+      required this.habitController,
       required this.endsInController,
       required this.noteController,
       required this.text,
-      required this.formKey});
+      required this.formKey,
+      this.habit});
 
   @override
   State<HabitDataForm> createState() => _HabitDataFormState();
@@ -59,7 +62,7 @@ class _HabitDataFormState extends State<HabitDataForm> {
                   color: Colors.grey,
                 ),
               ),
-              controller: widget.taskController),
+              controller: widget.habitController),
           SizedBox(
             height: 16.h,
           ),

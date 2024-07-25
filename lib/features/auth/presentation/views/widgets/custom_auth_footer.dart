@@ -50,9 +50,11 @@ class CustomAuthFooter extends StatelessWidget {
             skipExists
                 ? GestureDetector(
                     behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      context.read<LogInCubit>().signInAnonymous();
-                      Navigator.of(context).pushNamed(AppRouter.home);
+                    onTap: () async {
+                      await context.read<LogInCubit>().signInAnonymous();
+                      if (context.mounted) {
+                        Navigator.of(context).pushNamed(AppRouter.home);
+                      }
                     },
                     child: Row(
                       children: [

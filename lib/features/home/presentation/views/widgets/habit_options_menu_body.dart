@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:z_flow/core/utils/tasks%20utils/delete_task.dart';
+import 'package:z_flow/core/utils/habits%20utils/delete_habit.dart';
 import 'package:z_flow/core/widgets/build_overlay_menu.dart';
-import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
+import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/routes/app_router.dart';
 import 'custom_pop_up_menu_item.dart';
 
-class TaskOptionsMenuBody extends StatelessWidget {
-  final TaskModel task;
-  const TaskOptionsMenuBody({super.key, required this.task});
+class HabitOptionsMenuBody extends StatelessWidget {
+  final HabitModel habit;
+  const HabitOptionsMenuBody({super.key, required this.habit});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TaskOptionsMenuBody extends StatelessWidget {
         CustomPopUpMenuItem(
             onTap: () {
               BuildOverlayMenu.removeOverlay();
-              task.isFavourited = !task.isFavourited;
+              habit.isFavourited = !habit.isFavourited;
             },
             title: AppTexts.favourite,
             icon: SvgPicture.asset(
@@ -37,7 +37,7 @@ class TaskOptionsMenuBody extends StatelessWidget {
               BuildOverlayMenu.removeOverlay();
 
               Navigator.of(context)
-                  .pushNamed(AppRouter.editTask, arguments: task);
+                  .pushNamed(AppRouter.editHabit, arguments: habit);
             },
             title: AppTexts.edit,
             icon: SvgPicture.asset(
@@ -51,7 +51,7 @@ class TaskOptionsMenuBody extends StatelessWidget {
         CustomPopUpMenuItem(
             onTap: () {
               BuildOverlayMenu.removeOverlay();
-              deleteTask(task: task);
+              deleteHabit(habit: habit);
             },
             title: AppTexts.delete,
             icon: SvgPicture.asset(

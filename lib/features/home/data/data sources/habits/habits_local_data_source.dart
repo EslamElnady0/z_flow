@@ -32,6 +32,6 @@ class HabitsLocalDataSourceImpl implements HabitsLocalDataSource {
 
   @override
   void updateHabit(HabitModel habit) {
-    throw UnimplementedError();
+    habit.save();
   }
 }

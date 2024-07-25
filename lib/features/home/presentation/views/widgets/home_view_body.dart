@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/habits/add%20habit%20cubit/add_habits_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/habits/delete%20habit%20cubit/delete_habit_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/habits/update%20habit%20cubit/update_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task%20cubit/add_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20task%20cubit/delete_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
@@ -57,7 +61,23 @@ class HomeViewBody extends StatelessWidget {
           case 2:
             return const TimeManagementBody();
           case 3:
-            return const HabitsBody();
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider.value(
+                  value: getIt.get<AddHabitCubit>(),
+                ),
+                BlocProvider.value(
+                  value: getIt.get<GetHabitCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt.get<DeleteHabitCubit>(),
+                ),
+                BlocProvider.value(
+                  value: getIt.get<UpdateHabitCubit>(),
+                ),
+              ],
+              child: const HabitsBody(),
+            );
           case 4:
             return MultiBlocProvider(providers: [
               //TODO : ADD TASKS, HABITS AND AUTH CUBIT ?(IDK ABOUT LAST ONE)

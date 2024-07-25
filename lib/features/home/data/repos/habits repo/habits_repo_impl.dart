@@ -101,9 +101,9 @@ class HabitsRepoImpl implements HabitsRepo {
       required String uid}) async {
     try {
       if (isConnected && !isAnonymous) {
-        await habitsRemoteDataSource.deleteHabit(habit: habit, uid: uid);
+        await habitsRemoteDataSource.updateHabit(habit: habit, uid: uid);
       }
-      habitsLocalDataSource.deleteHabit(habit);
+      habitsLocalDataSource.updateHabit(habit);
 
       return right(Future.value(null));
     } catch (e) {
