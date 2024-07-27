@@ -15,5 +15,10 @@ Future<void> deleteHabit({required HabitModel habit}) async {
       uid: getIt.get<FirebaseAuth>().currentUser!.uid);
 
   getIt.get<GetHabitCubit>().habits.remove(habit);
+  getIt.get<GetHabitCubit>().doneHabits.remove(habit);
+  getIt.get<GetHabitCubit>().onGoinghabits.remove(habit);
+  //remove from fav
+
   await getHabits();
+  //get fav
 }

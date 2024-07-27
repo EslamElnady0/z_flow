@@ -33,7 +33,7 @@ class GetTaskCubit extends Cubit<GetTaskState> {
       tasks = tasksList;
       for (var i = 0; i < tasks.length; i++) {
         if (!tasks[i].isDone) {
-          if (!tasks.contains(tasks[i])) {
+          if (!onGoingTasks.contains(tasks[i])) {
             onGoingTasks.add(tasks[i]);
           }
         } else {

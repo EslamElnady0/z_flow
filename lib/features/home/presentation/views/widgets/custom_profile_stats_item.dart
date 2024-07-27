@@ -9,11 +9,15 @@ class CustomProfileStatsItem extends StatelessWidget {
   final String title;
   final String completedText;
   final String pendingText;
+  final List completed;
+  final List onGoing;
   const CustomProfileStatsItem({
     super.key,
     required this.title,
     required this.completedText,
     required this.pendingText,
+    required this.completed,
+    required this.onGoing,
   });
 
   @override
@@ -56,7 +60,7 @@ class CustomProfileStatsItem extends StatelessWidget {
                                 .copyWith(color: Colors.white)),
                         const Spacer(),
                         Text(
-                          "5",
+                          completed.length.toString(),
                           style: Styles.style16W600grey
                               .copyWith(color: ColorManager.primaryColorAccent),
                         )
@@ -75,7 +79,7 @@ class CustomProfileStatsItem extends StatelessWidget {
                                 .copyWith(color: Colors.white)),
                         const Spacer(),
                         Text(
-                          "5",
+                          onGoing.length.toString(),
                           style: Styles.style16W600grey
                               .copyWith(color: ColorManager.primaryColorAccent),
                         )

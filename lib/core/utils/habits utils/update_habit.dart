@@ -4,6 +4,7 @@ import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/update%20habit%20cubit/update_habit_cubit.dart';
 
+import '../../../features/home/presentation/view models/habits/get habits cubit/get_habit_cubit.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 
 Future<void> updateHabit({required HabitModel habit}) async {
@@ -12,5 +13,10 @@ Future<void> updateHabit({required HabitModel habit}) async {
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
       isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
       uid: getIt.get<FirebaseAuth>().currentUser!.uid);
+  if (habit.isDone) {
+    getIt.get<GetHabitCubit>().onGoinghabits.remove(habit);
+  } else {
+    getIt.get<GetHabitCubit>().doneHabits.remove(habit);
+  }
   await getHabits();
 }

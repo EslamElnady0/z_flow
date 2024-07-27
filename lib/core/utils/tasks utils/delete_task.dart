@@ -16,5 +16,9 @@ Future<void> deleteTask({required TaskModel task}) async {
 
   getIt.get<GetTaskCubit>().tasks.remove(task);
   getIt.get<GetTaskCubit>().specificDayTasksList.remove(task);
+  getIt.get<GetTaskCubit>().doneTasks.remove(task);
+  getIt.get<GetTaskCubit>().onGoingTasks.remove(task);
+  //remove from fav
   await getTasks();
+  //get fav
 }

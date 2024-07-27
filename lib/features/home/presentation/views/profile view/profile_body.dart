@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 
 import 'package:z_flow/features/home/presentation/views/widgets/account_section.dart';
 
 import '../../../../../core/constants/app_texts.dart';
+import '../../view models/tasks/get task cubit/get_task_cubit.dart';
 import '../widgets/custom_profile_stats_item.dart';
 import '../widgets/profile_custom_divider.dart';
 
@@ -18,10 +20,12 @@ class ProfileBody extends StatelessWidget {
         children: [
           const AccountSection(),
           const ProfileCustomDivider(),
-          const CustomProfileStatsItem(
+          CustomProfileStatsItem(
             title: AppTexts.tasks,
             completedText: AppTexts.completedTasks,
             pendingText: AppTexts.pendingTasks,
+            completed: getIt.get<GetTaskCubit>().doneTasks,
+            onGoing: getIt.get<GetTaskCubit>().onGoingTasks,
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 90.w),
@@ -33,6 +37,8 @@ class ProfileBody extends StatelessWidget {
             title: AppTexts.habits,
             completedText: AppTexts.completedHabits,
             pendingText: AppTexts.pendingHabits,
+            completed: [],
+            onGoing: [],
           ),
         ],
       ),
