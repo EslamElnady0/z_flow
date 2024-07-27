@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
-import 'package:z_flow/core/widgets/custom_scaffold.dart';
+import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20models/bottom_nav_bar_item_model.dart';
 
 import '../../features/on boarding/data/on_boarding_model.dart';
@@ -72,68 +72,25 @@ class Constants {
       borderSide: const BorderSide(color: Color(0xffD9D9D9), width: 1));
 
   static List<Map<String, String>> drawerItems = [
-    {
-      "title": AppTexts.startWorkSession,
-      "icon": Assets.clock,
-    },
-    {
-      "title": AppTexts.myLists,
-      "icon": Assets.list,
-    },
-    {
-      "title": AppTexts.reminder,
-      "icon": Assets.reminder,
-    },
-    {
-      "title": AppTexts.stayAway,
-      "icon": Assets.lockSafety,
-    },
-    {
-      "title": AppTexts.myGoals,
-      "icon": Assets.goals,
-    },
-    {
-      "title": AppTexts.taskCats,
-      "icon": Assets.listWithArrows,
-    },
+    {"title": AppTexts.startWorkSession, "icon": Assets.clock, "route": ""},
+    {"title": AppTexts.myLists, "icon": Assets.list, "route": ""},
+    {"title": AppTexts.reminder, "icon": Assets.reminder, "route": ""},
+    {"title": AppTexts.stayAway, "icon": Assets.lockSafety, "route": ""},
+    {"title": AppTexts.myGoals, "icon": Assets.goals, "route": ""},
+    {"title": AppTexts.taskCats, "icon": Assets.listWithArrows, "route": ""},
     {
       "title": AppTexts.favoriteTasks,
       "icon": Assets.starOutLined,
+      "route": AppRouter.favTasks
     },
     {
       "title": AppTexts.favoriteHabits,
       "icon": Assets.starOutLined,
+      "route": AppRouter.favHabits
     },
-    {
-      "title": AppTexts.addHomeWidget,
-      "icon": Assets.addWidget,
-    },
-    {
-      "title": AppTexts.financialSupport,
-      "icon": Assets.dollar,
-    },
-    {
-      "title": AppTexts.settings,
-      "icon": Assets.settingDrawer,
-    },
-    {
-      "title": AppTexts.shareApp,
-      "icon": Assets.share,
-    },
-  ];
-
-  static List<Widget> drawerScaffolds = [
-    CustomScaffold(), //work session
-    CustomScaffold(), //my lists
-    CustomScaffold(), //reminder
-    CustomScaffold(), //stay away
-    CustomScaffold(), //my goals
-    CustomScaffold(), //task categorties
-    CustomScaffold(), //favourite tasks
-    CustomScaffold(), //favourite habits
-    CustomScaffold(), //add home widget
-    CustomScaffold(), //financial support
-    CustomScaffold(), //settings
-    CustomScaffold(), //share app
+    {"title": AppTexts.addHomeWidget, "icon": Assets.addWidget, "route": ""},
+    {"title": AppTexts.financialSupport, "icon": Assets.dollar, "route": ""},
+    {"title": AppTexts.settings, "icon": Assets.settingDrawer, "route": ""},
+    {"title": AppTexts.shareApp, "icon": Assets.share, "route": ""},
   ];
 }

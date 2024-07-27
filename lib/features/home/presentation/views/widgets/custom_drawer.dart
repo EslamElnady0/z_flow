@@ -37,7 +37,10 @@ class CustomDrawer extends StatelessWidget {
                 itemCount: Constants.drawerItems.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, Constants.drawerItems[index]["route"]!);
+                      },
                       leading: SvgPicture.asset(
                         Constants.drawerItems[index]["icon"]!,
                       ),
