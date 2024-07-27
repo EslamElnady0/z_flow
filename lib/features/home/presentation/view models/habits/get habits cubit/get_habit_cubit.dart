@@ -11,6 +11,8 @@ class GetHabitCubit extends Cubit<GetHabitState> {
 
   final HabitsRepo habitRepo;
   List<HabitModel> habits = [];
+  List<HabitModel> onGoinghabits = [];
+  List<HabitModel> doneHabits = [];
 
   Future<void> getHabits(
       {required String uid,
@@ -21,8 +23,8 @@ class GetHabitCubit extends Cubit<GetHabitState> {
         isConnected: isConnected, isAnonymous: isAnonymous, uid: uid);
     result.fold((failure) {
       emit(GetHabitFailure(failure.errMessage));
-    }, (r) {
-      habits = r;
+    }, (habitsList) {
+      habits = habitsList;
       emit(GetHabitSucuess());
     });
   }

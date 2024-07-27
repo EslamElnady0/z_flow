@@ -16,6 +16,8 @@ class GetTaskCubit extends Cubit<GetTaskState> {
 
   List<TaskModel> specificDayTasksList = [];
   List<TaskModel> tasks = [];
+  List<TaskModel> onGoingTasks = [];
+  List<TaskModel> doneTasks = [];
 
   Future<void> getTasks(
       {required bool isConnected,
@@ -29,6 +31,17 @@ class GetTaskCubit extends Cubit<GetTaskState> {
       emit(GetTaskFailure(failure.errMessage));
     }, (tasksList) {
       tasks = tasksList;
+      for (var i = 0; i < tasks.length; i++) {
+        if (!tasks[i].isDone) {
+          if (!tasks.contains(tasks[i])) {
+            onGoingTasks.add(tasks[i]);
+          }
+        } else {
+          if (!doneTasks.contains(tasks[i])) {
+            doneTasks.add(tasks[i]);
+          }
+        }
+      }
       emit(GetTaskSuccess());
     });
   }
