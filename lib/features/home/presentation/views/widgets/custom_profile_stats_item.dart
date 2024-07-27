@@ -95,13 +95,17 @@ class CustomProfileStatsItem extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      const CircularProgressIndicator(
-                          color: ColorManager.primaryColorAccent,
-                          strokeWidth: 7,
-                          value: 0.75),
+                      CircularProgressIndicator(
+                        color: ColorManager.primaryColorAccent,
+                        strokeWidth: 7,
+                        value: completed.isEmpty
+                            ? 0
+                            : completed.length /
+                                (onGoing.length + completed.length),
+                      ),
                       Center(
                           child: Text(
-                        "75%",
+                        "${completed.isEmpty ? 0 : (completed.length / (onGoing.length + completed.length) * 100).round()}%",
                         style: Styles.style24W600
                             .copyWith(color: ColorManager.primaryColorAccent),
                       ))

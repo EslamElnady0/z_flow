@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
+import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
 
 import 'package:z_flow/features/home/presentation/views/widgets/account_section.dart';
 
@@ -33,12 +34,12 @@ class ProfileBody extends StatelessWidget {
               color: Colors.grey,
             ),
           ),
-          const CustomProfileStatsItem(
+          CustomProfileStatsItem(
             title: AppTexts.habits,
             completedText: AppTexts.completedHabits,
             pendingText: AppTexts.pendingHabits,
-            completed: [],
-            onGoing: [],
+            completed: getIt.get<GetHabitCubit>().doneHabits,
+            onGoing: getIt.get<GetHabitCubit>().onGoinghabits,
           ),
         ],
       ),

@@ -25,6 +25,17 @@ class GetHabitCubit extends Cubit<GetHabitState> {
       emit(GetHabitFailure(failure.errMessage));
     }, (habitsList) {
       habits = habitsList;
+      for (var i = 0; i < habits.length; i++) {
+        if (!habits[i].isDone) {
+          if (!onGoinghabits.contains(habits[i])) {
+            onGoinghabits.add(habits[i]);
+          }
+        } else {
+          if (!doneHabits.contains(habits[i])) {
+            doneHabits.add(habits[i]);
+          }
+        }
+      }
       emit(GetHabitSucuess());
     });
   }

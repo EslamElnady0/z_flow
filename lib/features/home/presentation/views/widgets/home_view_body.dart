@@ -79,11 +79,7 @@ class HomeViewBody extends StatelessWidget {
               child: const HabitsBody(),
             );
           case 4:
-            return MultiBlocProvider(providers: [
-              BlocProvider.value(value: getIt.get<GetTaskCubit>()),
-
-              // BlocProvider.value(value: getIt.get<GetHabitCubit>()),
-            ], child: const ProfileBody());
+            return const ProfileBody();
           default:
             return const Placeholder();
         }
