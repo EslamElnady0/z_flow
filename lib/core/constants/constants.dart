@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
+import 'package:z_flow/core/widgets/custom_scaffold.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20models/bottom_nav_bar_item_model.dart';
 
 import '../../features/on boarding/data/on_boarding_model.dart';
@@ -119,5 +120,20 @@ class Constants {
       "title": AppTexts.shareApp,
       "icon": Assets.share,
     },
+  ];
+
+  static List<Widget> drawerScaffolds = [
+    CustomScaffold(), //work session
+    CustomScaffold(), //my lists
+    CustomScaffold(), //reminder
+    CustomScaffold(), //stay away
+    CustomScaffold(), //my goals
+    CustomScaffold(), //task categorties
+    CustomScaffold(), //favourite tasks
+    CustomScaffold(), //favourite habits
+    CustomScaffold(), //add home widget
+    CustomScaffold(), //financial support
+    CustomScaffold(), //settings
+    CustomScaffold(), //share app
   ];
 }
