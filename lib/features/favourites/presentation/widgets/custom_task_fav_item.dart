@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/utils/habits%20utils/update_habit.dart';
-import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/habit_options_menu_body.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:z_flow/core/constants/assets.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
 import '../../../../../core/widgets/build_overlay_menu.dart';
+import '../../../../core/DI/service_locator.dart';
+import '../../../../core/utils/tasks utils/update_task.dart';
+import '../../../home/data/models/task model/task_model.dart';
+import '../../../home/presentation/views/widgets/task_options_menu_body.dart';
+import '../../data/view models/favourite tasks cubit/favourite_tasks_cubit.dart';
 
-class CustomHabitItem extends StatefulWidget {
+class CustomTaskFavItem extends StatefulWidget {
   final GlobalKey actionKey;
-  final HabitModel habit;
-  const CustomHabitItem({
+  final TaskModel task;
+  const CustomTaskFavItem({
     super.key,
     required this.actionKey,
-    required this.habit,
+    required this.task,
   });
 
   @override
-  State<CustomHabitItem> createState() => _CustomHabitItemState();
+  State<CustomTaskFavItem> createState() => _CustomTaskFavItemState();
 }
 
-class _CustomHabitItemState extends State<CustomHabitItem> {
+class _CustomTaskFavItemState extends State<CustomTaskFavItem> {
   @override
   void dispose() {
     BuildOverlayMenu.removeOverlay();
@@ -31,12 +34,25 @@ class _CustomHabitItemState extends State<CustomHabitItem> {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      CustomCheckBox(
-        value: widget.habit.isDone,
-        onChanged: (value) async {
-          widget.habit.isDone = !(widget.habit.isDone);
-          await updateHabit(habit: widget.habit);
+      SizedBox(
+        width: 17.w,
+      ),
+      GestureDetector(
+        onTap: () async {
+          widget.task.isFavourited = !widget.task.isFavourited;
+          if (!widget.task.isFavourited) {
+            getIt.get<FavouriteTasksCubit>().favTasks.remove(widget.task);
+          }
+          await updateTask(task: widget.task);
         },
+        child: SvgPicture.asset(
+          Assets.starStroke,
+          width: 27.w,
+          height: 27.h,
+        ),
+      ),
+      SizedBox(
+        width: 10.w,
       ),
       Expanded(
         child: Container(
@@ -53,7 +69,7 @@ class _CustomHabitItemState extends State<CustomHabitItem> {
               SizedBox(
                 width: 220.w,
                 child: Text(
-                  widget.habit.title,
+                  widget.task.title,
                   overflow: TextOverflow.ellipsis,
                   style: Styles.style16W600grey.copyWith(
                       fontWeight: FontWeight.w600, color: Colors.black),
@@ -63,14 +79,17 @@ class _CustomHabitItemState extends State<CustomHabitItem> {
                 key: widget.actionKey,
                 onPressed: () {
                   BuildOverlayMenu.showOverlay(context, widget.actionKey,
-                      widget: HabitOptionsMenuBody(habit: widget.habit));
+                      widget: TaskOptionsMenuBody(task: widget.task));
                 },
                 icon: Icon(Icons.more_vert, color: Colors.black, size: 20.r),
               )
             ],
           ),
         ),
-      )
+      ),
+      SizedBox(
+        width: 17.w,
+      ),
     ]);
   }
 }

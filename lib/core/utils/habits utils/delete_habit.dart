@@ -5,10 +5,11 @@ import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart'
 import 'package:z_flow/features/home/presentation/view%20models/habits/delete%20habit%20cubit/delete_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
 
+import '../../../features/favourites/data/view models/favourite habits cubit/favourite_habits_cubit.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 
 Future<void> deleteHabit({required HabitModel habit}) async {
-  getIt.get<DeleteHabitCubit>().deleteHabit(
+  await getIt.get<DeleteHabitCubit>().deleteHabit(
       habit: habit,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
       isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
@@ -17,8 +18,9 @@ Future<void> deleteHabit({required HabitModel habit}) async {
   getIt.get<GetHabitCubit>().habits.remove(habit);
   getIt.get<GetHabitCubit>().doneHabits.remove(habit);
   getIt.get<GetHabitCubit>().onGoinghabits.remove(habit);
-  //remove from fav
+  getIt.get<FavouriteHabitsCubit>().favHabits.remove(habit);
 
   await getHabits();
-  //get fav
+
+  getIt.get<FavouriteHabitsCubit>().getFavHabits();
 }

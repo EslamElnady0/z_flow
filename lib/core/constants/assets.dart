@@ -14,10 +14,13 @@ class Assets {
   static const String forgettingPerson = "assets/images/forgettingPerson.png";
   static const String passwordImage = "assets/images/passwordImage.png";
   static const String noTasksImage = "assets/images/noTasksImage.png";
+  static const String noHabitsImage = "assets/images/noHabitsImage.png";
+  static const String favPhoto = "assets/images/favouritePhoto.png";
 
   ////////////////        svgs              ///////////////////////
   static const String tasksIcon = "assets/images/svgs/tasks.svg";
   static const String calenderIcon = "assets/images/svgs/calender.svg";
+  static const String starStroke = "assets/images/svgs/starStroke.svg";
   static const String timeIcon = "assets/images/svgs/time.svg";
   static const String habitsIcon = "assets/images/svgs/habits.svg";
   static const String profileIcon = "assets/images/svgs/profile.svg";

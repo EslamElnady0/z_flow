@@ -8,6 +8,12 @@ class AppTexts {
   static const String calender = "Calender";
   static const String time = "Time";
   static const String habits = "Habits";
+  static const String favTasks = "Favorite tasks";
+  static const String favHabits = "Favorite Habits";
+  static const String hereYouCanSeeYourFavTasks =
+      "Here you can see you favourite tasks";
+  static const String hereYouCanSeeYourFavHabits =
+      "Here you can see you favourite habits";
   static const String profile = "Profile";
   static const String editHabit = "Edit the habit";
   static const String youCanEditHabit =

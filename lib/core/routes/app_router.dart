@@ -18,6 +18,8 @@ import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view
 import '../../features/auth/presentation/views/auth_view.dart';
 import '../../features/auth/presentation/views/forgot_password_view.dart';
 import '../../features/auth/presentation/views/log_in_view.dart';
+import '../../features/favourites/data/view models/favourite habits cubit/favourite_habits_cubit.dart';
+import '../../features/favourites/data/view models/favourite tasks cubit/favourite_tasks_cubit.dart';
 import '../../features/favourites/presentation/views/favourite_tasks_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
@@ -56,10 +58,23 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SignUpView());
       case favTasks:
         return MaterialPageRoute(
-            builder: (context) => const FavouriteTasksView());
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider.value(
+                      value: getIt.get<FavouriteTasksCubit>(),
+                    ),
+                    BlocProvider.value(
+                      value: getIt.get<UpdateTaskCubit>(),
+                    ),
+                  ],
+                  child: const FavouriteTasksView(),
+                ));
       case favHabits:
         return MaterialPageRoute(
-            builder: (context) => const FavouriteHabitsView());
+            builder: (context) => BlocProvider.value(
+                  value: getIt.get<FavouriteHabitsCubit>(),
+                  child: const FavouriteHabitsView(),
+                ));
       case addTask:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(

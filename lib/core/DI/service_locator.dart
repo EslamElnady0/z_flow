@@ -6,6 +6,8 @@ import 'package:z_flow/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/cubit/log_in_ano_cubit.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20out%20cubit/log_out_cubit.dart';
+import 'package:z_flow/features/favourites/data/view%20models/favourite%20habits%20cubit/favourite_habits_cubit.dart';
+import 'package:z_flow/features/favourites/data/view%20models/favourite%20tasks%20cubit/favourite_tasks_cubit.dart';
 import 'package:z_flow/features/home/data/data%20sources/habits/habits_local_data_source.dart';
 import 'package:z_flow/features/home/data/data%20sources/habits/habits_remote_data_source.dart';
 import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_local_data_source.dart';
@@ -65,4 +67,11 @@ void setupServiceLocator() {
       () => GetHabitCubit(getIt.get<HabitsRepoImpl>()));
   getIt.registerLazySingleton<DeleteHabitCubit>(
       () => DeleteHabitCubit(getIt.get<HabitsRepoImpl>()));
+
+//////////////////////////  fav cubits   //////////////////////////////
+
+  getIt.registerLazySingleton<FavouriteTasksCubit>(
+      () => FavouriteTasksCubit(getIt.get<GetTaskCubit>()));
+  getIt.registerLazySingleton<FavouriteHabitsCubit>(
+      () => FavouriteHabitsCubit(getIt.get<GetHabitCubit>()));
 }

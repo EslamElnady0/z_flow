@@ -11,7 +11,7 @@ class FavouriteHabitsCubit extends Cubit<FavouriteHabitsState> {
   GetHabitCubit getHabitCubit;
 
   List<HabitModel> favHabits = [];
-  void getFavTasks() {
+  void getFavHabits() {
     List<HabitModel> allHabits = getHabitCubit.habits;
     for (var i = 0; i < allHabits.length; i++) {
       if (allHabits[i].isFavourited) {
@@ -20,5 +20,6 @@ class FavouriteHabitsCubit extends Cubit<FavouriteHabitsState> {
         }
       }
     }
+    emit(FavouriteHabitsSuccess());
   }
 }

@@ -4,6 +4,7 @@ import 'package:z_flow/core/utils/habits%20utils/update_habit.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 
 import '../../../../../core/constants/app_texts.dart';
+import '../../../../../core/utils/habits utils/delete_habit.dart';
 import 'habit_data_form.dart';
 import 'save_cancel_actions_row.dart';
 
@@ -80,7 +81,12 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
                       }
                     }
                   },
-                  onOtherButtonPressed: () => Navigator.of(context).pop(),
+                  onOtherButtonPressed: () async {
+                    await deleteHabit(habit: widget.habit);
+                    if (context.mounted) {
+                      Navigator.of(context).pop();
+                    }
+                  },
                 ),
                 SizedBox(
                   height: 60.h,

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/utils/tasks%20utils/update_task.dart';
-import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
@@ -33,15 +31,11 @@ class _CustomTaskItemState extends State<CustomTaskItem> {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      BlocBuilder<UpdateTaskCubit, UpdateTaskState>(
-        builder: (context, state) {
-          return CustomCheckBox(
-            value: widget.task.isDone,
-            onChanged: (value) async {
-              widget.task.isDone = !(widget.task.isDone);
-              await updateTask(task: widget.task);
-            },
-          );
+      CustomCheckBox(
+        value: widget.task.isDone,
+        onChanged: (value) async {
+          widget.task.isDone = !(widget.task.isDone);
+          await updateTask(task: widget.task);
         },
       ),
       Expanded(

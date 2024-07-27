@@ -16,7 +16,7 @@ class DeleteHabitCubit extends Cubit<DeleteHabitState> {
       required bool isConnected,
       required bool isAnonymous}) async {
     emit(DeleteHabitLoading());
-    final result = await habitsRepo.deleteHabit(
+    var result = await habitsRepo.deleteHabit(
         habit: habit,
         isConnected: isConnected,
         isAnonymous: isAnonymous,

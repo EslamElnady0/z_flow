@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/utils/habits%20utils/update_habit.dart';
+import 'package:z_flow/features/favourites/data/view%20models/favourite%20habits%20cubit/favourite_habits_cubit.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/habit_options_menu_body.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
 import '../../../../../core/widgets/build_overlay_menu.dart';
+import '../../../../core/DI/service_locator.dart';
 
-class CustomHabitItem extends StatefulWidget {
+class CustomHabitFavItem extends StatefulWidget {
   final GlobalKey actionKey;
   final HabitModel habit;
-  const CustomHabitItem({
+  const CustomHabitFavItem({
     super.key,
     required this.actionKey,
     required this.habit,
   });
 
   @override
-  State<CustomHabitItem> createState() => _CustomHabitItemState();
+  State<CustomHabitFavItem> createState() => _CustomHabitFavItemState();
 }
 
-class _CustomHabitItemState extends State<CustomHabitItem> {
+class _CustomHabitFavItemState extends State<CustomHabitFavItem> {
   @override
   void dispose() {
     BuildOverlayMenu.removeOverlay();
@@ -31,12 +34,25 @@ class _CustomHabitItemState extends State<CustomHabitItem> {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      CustomCheckBox(
-        value: widget.habit.isDone,
-        onChanged: (value) async {
-          widget.habit.isDone = !(widget.habit.isDone);
+      SizedBox(
+        width: 17.w,
+      ),
+      GestureDetector(
+        onTap: () async {
+          widget.habit.isFavourited = !widget.habit.isFavourited;
+          if (!widget.habit.isFavourited) {
+            getIt.get<FavouriteHabitsCubit>().favHabits.remove(widget.habit);
+          }
           await updateHabit(habit: widget.habit);
         },
+        child: SvgPicture.asset(
+          Assets.starStroke,
+          width: 27.w,
+          height: 27.h,
+        ),
+      ),
+      SizedBox(
+        width: 10.w,
       ),
       Expanded(
         child: Container(
@@ -70,7 +86,10 @@ class _CustomHabitItemState extends State<CustomHabitItem> {
             ],
           ),
         ),
-      )
+      ),
+      SizedBox(
+        width: 17.w,
+      ),
     ]);
   }
 }

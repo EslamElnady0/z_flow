@@ -22,5 +22,6 @@ class FavouriteTasksCubit extends Cubit<FavouriteTasksState> {
       }
     }
     emit(FavouriteTasksSuccess());
+    print(favTasks.length);
   }
 }
