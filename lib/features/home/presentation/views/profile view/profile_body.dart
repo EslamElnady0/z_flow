@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/account_section.dart';
 
 import '../../../../../core/constants/app_texts.dart';
-import 'custom_profile_stats_item.dart';
-import 'profile_custom_divider.dart';
+import '../widgets/custom_profile_stats_item.dart';
+import '../widgets/profile_custom_divider.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});

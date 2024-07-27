@@ -9,9 +9,9 @@ import 'package:z_flow/features/home/presentation/view%20models/habits/update%20
 import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task%20cubit/add_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20task%20cubit/delete_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/calender_body.dart';
+import 'package:z_flow/features/home/presentation/views/calender%20view/calender_body.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/habits_body.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/profile_body.dart';
+import 'package:z_flow/features/home/presentation/views/profile%20view/profile_body.dart';
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_management_body.dart';
 import '../../view models/tasks/get task cubit/get_task_cubit.dart';
 import '../tasks views/tasks_body.dart';
