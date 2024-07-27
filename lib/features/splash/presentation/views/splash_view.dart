@@ -28,14 +28,12 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   @override
   void initState() {
     initSplashAnimations();
-    Future.delayed(const Duration(seconds: 4), () {
-      getIt.get<FirebaseAuth>().authStateChanges().listen((User? user) {
-        if (user != null) {
-          Navigator.pushReplacementNamed(context, AppRouter.home);
-        } else {
-          Navigator.pushReplacementNamed(context, AppRouter.onBoarding);
-        }
-      });
+    Future.delayed(const Duration(milliseconds: 4500), () {
+      if (getIt.get<FirebaseAuth>().currentUser == null) {
+        Navigator.pushReplacementNamed(context, AppRouter.onBoarding);
+      } else {
+        Navigator.pushReplacementNamed(context, AppRouter.home);
+      }
     });
     super.initState();
   }

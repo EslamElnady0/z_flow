@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_check_cubit.dart';
 import 'package:z_flow/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/cubit/log_in_ano_cubit.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/log%20out%20cubit/log_out_cubit.dart';
 import 'package:z_flow/features/home/data/data%20sources/habits/habits_local_data_source.dart';
 import 'package:z_flow/features/home/data/data%20sources/habits/habits_remote_data_source.dart';
 import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_local_data_source.dart';
@@ -38,6 +40,10 @@ void setupServiceLocator() {
   getIt.registerSingleton<InternetCheckCubit>(InternetCheckCubit());
   getIt.registerLazySingleton<LogInCubit>(
       () => LogInCubit(getIt.get<AuthRepoImpl>()));
+  getIt.registerLazySingleton<LogInAnoCubit>(
+      () => LogInAnoCubit(getIt.get<AuthRepoImpl>()));
+  getIt.registerLazySingleton<LogOutCubit>(
+      () => LogOutCubit(getIt.get<AuthRepoImpl>()));
   getIt.registerLazySingleton<SignUpCubit>(
       () => SignUpCubit(getIt.get<AuthRepoImpl>()));
 ///////////////////////  tasks cubits   //////////////////////////////

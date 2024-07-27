@@ -22,15 +22,17 @@ class CustomGoogleAuthButton extends StatelessWidget {
       value: getIt.get<LogInCubit>(),
       child: Builder(builder: (context) {
         return BlocListener<LogInCubit, LogInState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state is LogInSuccess) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                buildCustomSnackBar(message: "Logged in successfully"),
-              );
-              if (context.mounted) {
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
-              }
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    buildCustomSnackBar(message: "Logged in successfully"),
+                  );
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      AppRouter.home, (route) => false);
+                }
+              });
             } else if (state is LogInFailure) {
               ScaffoldMessenger.of(context).showSnackBar(buildCustomSnackBar(
                   message: state.errMessage,

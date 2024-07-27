@@ -18,16 +18,6 @@ class LogInCubit extends Cubit<LogInState> {
     });
   }
 
-  Future<void> signInAnonymous() async {
-    emit(LogInLoading());
-    var result = await authRepo.signInAnonymous();
-    result.fold((err) {
-      emit(LogInFailure(err.errMessage));
-    }, (right) {
-      emit(LogInSuccess());
-    });
-  }
-
   Future<void> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     emit(LogInLoading());

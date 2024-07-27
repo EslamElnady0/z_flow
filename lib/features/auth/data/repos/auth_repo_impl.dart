@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:z_flow/features/auth/data/models/user_model.dart';
 
@@ -56,6 +57,10 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, void>> logOut() async {
     try {
       if (firebaseAuth.currentUser != null) {
+        if (await GoogleSignIn().isSignedIn()) {
+          await GoogleSignIn().signOut();
+          return right(null);
+        }
         await firebaseAuth.signOut();
         return right(null);
       }
@@ -63,10 +68,12 @@ class AuthRepoImpl implements AuthRepo {
     } catch (e) {
       if (e is FirebaseException) {
         return left(ServerFailure.fromFirebaseException(exception: e));
+      } else if (e is PlatformException) {
+        return left(NetworkFailure.fromPlatformException(exception: e));
       } else {
         log(e.toString());
         return left(
-            ServerFailure(errMessage: "'Server Error, please try again'"));
+            ServerFailure(errMessage: "Server Error, please try again"));
       }
     }
   }
@@ -93,11 +100,14 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
         log(e.toString());
         return left(ServerFailure.fromFirebaseException(exception: e));
+      } else if (e is PlatformException) {
+        return left(NetworkFailure.fromPlatformException(exception: e));
       } else {
         log(e.toString());
         return left(
@@ -124,10 +134,13 @@ class AuthRepoImpl implements AuthRepo {
               firstName: gUser.displayName!.split(" ")[0],
               lastName: gUser.displayName!.split(" ")[1],
               uid: firebaseAuth.currentUser!.uid));
+      await firebaseAuth.currentUser!.updateDisplayName(gUser.displayName!);
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
         return left(ServerFailure.fromFirebaseException(exception: e));
+      } else if (e is PlatformException) {
+        return left(NetworkFailure.fromPlatformException(exception: e));
       } else {
         log(e.toString());
         return left(
@@ -152,10 +165,13 @@ class AuthRepoImpl implements AuthRepo {
           lastName: lastName,
           uid: firebaseAuth.currentUser!.uid);
       await addUserToFireStore(user: user);
+      await firebaseAuth.currentUser!.updateDisplayName("$firstName $lastName");
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
         return left(ServerFailure.fromFirebaseException(exception: e));
+      } else if (e is PlatformException) {
+        return left(NetworkFailure.fromPlatformException(exception: e));
       } else {
         log(e.toString());
         return left(

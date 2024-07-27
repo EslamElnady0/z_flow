@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
 import '../../../../../core/styles/styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
 
@@ -14,6 +16,9 @@ class ProfileGoogleSignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
+      onTap: () async {
+        await getIt.get<LogInCubit>().signInWithGoogle();
+      },
       height: 44.h,
       alignment: Alignment.center,
       raduis: 12.r,

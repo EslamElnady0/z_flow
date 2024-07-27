@@ -7,6 +7,6 @@ import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 Future<void> getHabits() async {
   await getIt.get<GetHabitCubit>().getHabits(
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
-      uid: getIt.get<FirebaseAuth>().currentUser!.uid);
+      isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+      uid: getIt.get<FirebaseAuth>().currentUser?.uid ?? "");
 }

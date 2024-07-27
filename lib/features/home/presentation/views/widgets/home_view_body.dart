@@ -80,7 +80,9 @@ class HomeViewBody extends StatelessWidget {
             );
           case 4:
             return MultiBlocProvider(providers: [
-              //TODO : ADD TASKS, HABITS AND AUTH CUBIT ?(IDK ABOUT LAST ONE)
+              BlocProvider.value(value: getIt.get<GetTaskCubit>()),
+
+              // BlocProvider.value(value: getIt.get<GetHabitCubit>()),
             ], child: const ProfileBody());
           default:
             return const Placeholder();
