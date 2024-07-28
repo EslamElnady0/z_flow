@@ -36,18 +36,31 @@ class TimeOfUseListTileSubtitle extends StatelessWidget {
         Stack(
           children: [
             Container(
-              width: 210.w,
-              height: 8.h,
+              margin: EdgeInsets.only(top: 3.h),
+              width: 205.w,
+              height: 10.h,
               decoration: BoxDecoration(
                   color: Colors.grey, borderRadius: BorderRadius.circular(4.r)),
             ),
-            Container(
-              width: 210.w * (_infos[index].usage.inSeconds / totalUsageTime),
-              height: 8.h,
-              decoration: BoxDecoration(
-                  color: usageBarColor(
-                      _infos[index].usage.inSeconds / totalUsageTime),
-                  borderRadius: BorderRadius.circular(4.r)),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 3.h),
+                  width:
+                      205.w * (_infos[index].usage.inSeconds / totalUsageTime),
+                  height: 10.h,
+                  decoration: BoxDecoration(
+                      color: usageBarColor(
+                          _infos[index].usage.inSeconds / totalUsageTime),
+                      borderRadius: BorderRadius.circular(5.r)),
+                ),
+                // CircleAvatar(
+                //   radius: 7.5.r,
+                //   backgroundColor: usageBarColor(
+                //       _infos[index].usage.inSeconds / totalUsageTime),
+                // )
+              ],
             ),
           ],
         ),
