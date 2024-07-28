@@ -37,7 +37,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           children: [
             SizedBox(
@@ -70,18 +70,21 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             ),
             Text(
               Constants.onBoardingScreens[currentIndex].text,
-              style: Styles.style35W700blue,
+              style: Styles.style34W700blue,
+              textAlign: TextAlign.center,
             ),
             SizedBox(
               height: 20.h,
             ),
             Text(
               Constants.onBoardingScreens[currentIndex].desc,
-              style: Styles.style16W600grey,
+              style: Styles.style16W500grey.copyWith(
+                height: 1.6.h,
+              ),
               textAlign: TextAlign.center,
             ),
             SizedBox(
-              height: 34.h,
+              height: 30.h,
             ),
             const Spacer(),
             SmoothPageIndicator(
@@ -111,7 +114,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               },
             ),
             SizedBox(
-              height: 20.h,
+              height: 16.h,
             )
           ],
         ),

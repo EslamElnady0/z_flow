@@ -18,24 +18,22 @@ class Constants {
   static const String habitsCollection = 'habits';
   static const String targetsCollection = 'targets';
   static final List<OnboardingModel> onBoardingScreens = [
-    OnboardingModel(
+    const OnboardingModel(
         image: Assets.firstOnBoarding,
-        text: "Mental Health",
-        height: 239.67.h,
-        desc:
-            "Explore the importance of mental health and common psychological issues in this introductory screen."),
-    OnboardingModel(
+        text: AppTexts.firstOnBoarding,
+        desc: AppTexts.firstOnBoardingDesc),
+    const OnboardingModel(
         image: Assets.secondOnBoarding,
-        text: "Techniques",
-        height: 254.h,
-        desc:
-            "Unwind and harness the power of breathing with relaxation techniques. Learn how to use breathing and meditation to calm the mind and enhance mental well-being in this essential screen."),
-    OnboardingModel(
+        text: AppTexts.secondOnBoarding,
+        desc: AppTexts.secondOnBoardingDesc),
+    const OnboardingModel(
         image: Assets.thirdOnBoarding,
-        text: "Community",
-        height: 226.h,
-        desc:
-            "Join our private community where you can post, comment, and interact with others. Share your experiences, seek advice, and find solutions together in this inclusive space."),
+        text: AppTexts.thirdOnBoarding,
+        desc: AppTexts.thirdOnBoardingDesc),
+    const OnboardingModel(
+        image: Assets.forthOnBoarding,
+        text: AppTexts.fourthOnBoarding,
+        desc: AppTexts.fourthOnBoardingDesc),
   ];
 
   static const LinearGradient customButtonGradient = LinearGradient(

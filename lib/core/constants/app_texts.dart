@@ -9,6 +9,18 @@ class AppTexts {
   static const String calender = "Calender";
   static const String time = "Time";
   static const String habits = "Habits";
+  static const String firstOnBoarding = "Organize Your Tasks";
+  static const String secondOnBoarding = "Manage Your Calendar";
+  static const String thirdOnBoarding = "Productivity";
+  static const String fourthOnBoarding = " Build Positive Habits";
+  static const String firstOnBoardingDesc =
+      "Start by organizing all your tasks in one place. Our intuitive task manager helps you prioritize and keep track of what needs to be done. Add deadlines, set priorities, and never miss an important task again.";
+  static const String secondOnBoardingDesc =
+      "Easily sync your tasks with our integrated calendar. Schedule your days, weeks, and months with a clear view of your commitments. Stay ahead with reminders and keep your life well-organized.";
+  static const String thirdOnBoardingDesc =
+      "Keep track of how you spend your time with our built-in time tracking feature. Identify your productivity patterns and make informed decisions to improve efficiency. Work smarter, not harder.";
+  static const String fourthOnBoardingDesc =
+      "Develop and maintain healthy habits with our habit tracker. Set daily, weekly, or monthly goals and watch your progress. Consistency is key to success, and we're here to help you every step of the way.";
   static const String favTasks = "Favorite tasks";
   static const String favHabits = "Favorite Habits";
   static const String hereYouCanSeeYourFavTasks =
