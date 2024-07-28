@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/styles/styles.dart';
+import 'package:z_flow/core/utils/increament_id_methods.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/widgets/custom_on_boarding_next_button.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/widgets/custom_on_boarding_skip_button.dart';
@@ -111,6 +112,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               onTap: () {
                 Navigator.pushNamedAndRemoveUntil(
                     context, AppRouter.auth, (route) => false);
+                increamentIsViewedId();
               },
             ),
             SizedBox(

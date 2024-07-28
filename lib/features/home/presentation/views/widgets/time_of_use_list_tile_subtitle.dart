@@ -40,7 +40,8 @@ class TimeOfUseListTileSubtitle extends StatelessWidget {
               width: 205.w,
               height: 10.h,
               decoration: BoxDecoration(
-                  color: Colors.grey, borderRadius: BorderRadius.circular(4.r)),
+                  color: ColorManager.lightGrey,
+                  borderRadius: BorderRadius.circular(4.r)),
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,

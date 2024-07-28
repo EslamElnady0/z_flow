@@ -7,6 +7,7 @@ class ColorManager {
   static const Color green = Color(0xff4CAF50);
   static const Color lightgreen = Color(0xff00CF08);
   static const Color red = Color(0xffF44336);
+  static const Color lightGrey = Color(0xffD9D9D9);
 
   static const List<Color> backgroundGradientColors = [
     Color(0xff02020F),
