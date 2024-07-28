@@ -16,6 +16,7 @@ class Assets {
   static const String noTasksImage = "assets/images/noTasksImage.png";
   static const String noHabitsImage = "assets/images/noHabitsImage.png";
   static const String favPhoto = "assets/images/favouritePhoto.png";
+  static const String stayAwayLock = "assets/images/stayAwayLock.png";
 
   ////////////////        svgs              ///////////////////////
   static const String tasksIcon = "assets/images/svgs/tasks.svg";
@@ -43,5 +44,7 @@ class Assets {
   static const String share = "assets/images/svgs/share.svg";
   static const String starOutLined = "assets/images/svgs/starOutLined.svg";
 
-  ///
+  ////////////////////             audios       ///////////////////////////////////
+
+  static const String counterAudio = "audio/counter.mp3";
 }

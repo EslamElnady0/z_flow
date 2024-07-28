@@ -4,6 +4,7 @@ class AppTexts {
   static const String signUp = "Sign Up";
   static const String skip = "Skip";
   static const String back = "Back";
+  static const String lock = "Lock";
   static const String tasks = "Tasks";
   static const String calender = "Calender";
   static const String time = "Time";
@@ -15,6 +16,7 @@ class AppTexts {
   static const String hereYouCanSeeYourFavHabits =
       "Here you can see you favourite habits";
   static const String profile = "Profile";
+  static const String takeABreak = "Take a Break and Lock Your Phone!";
   static const String editHabit = "Edit the habit";
   static const String youCanEditHabit =
       "You are now about to modify an existing habit";

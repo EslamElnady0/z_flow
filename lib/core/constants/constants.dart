@@ -98,4 +98,14 @@ class Constants {
     DrawerItem(title: AppTexts.settings, icon: Assets.settingDrawer, route: ""),
     DrawerItem(title: AppTexts.shareApp, icon: Assets.share, route: ""),
   ];
+
+  static List<String> hoursForward =
+      List<String>.generate(12, (index) => "${(index + 1).toString()} hrs");
+
+  static List<String> hours = hoursForward + ["0 hrs"] + hoursForward;
+  ///////////////////////////////////////
+  static List<String> minutesForward =
+      List<String>.generate(59, (index) => "${(index + 1).toString()} mins");
+
+  static List<String> minutes = minutesForward + ["0 mins"] + minutesForward;
 }
