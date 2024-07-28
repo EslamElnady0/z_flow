@@ -6,6 +6,7 @@ import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20models/bottom_nav_bar_item_model.dart';
 
+import '../../features/home/presentation/ui logic/ui models/drawer_item_model.dart';
 import '../../features/on boarding/data/on_boarding_model.dart';
 
 class Constants {
@@ -71,26 +72,30 @@ class Constants {
       borderRadius: BorderRadius.circular(12.r),
       borderSide: const BorderSide(color: Color(0xffD9D9D9), width: 1));
 
-  static List<Map<String, String>> drawerItems = [
-    {"title": AppTexts.startWorkSession, "icon": Assets.clock, "route": ""},
-    {"title": AppTexts.myLists, "icon": Assets.list, "route": ""},
-    {"title": AppTexts.reminder, "icon": Assets.reminder, "route": ""},
-    {"title": AppTexts.stayAway, "icon": Assets.lockSafety, "route": ""},
-    {"title": AppTexts.myGoals, "icon": Assets.goals, "route": ""},
-    {"title": AppTexts.taskCats, "icon": Assets.listWithArrows, "route": ""},
-    {
-      "title": AppTexts.favoriteTasks,
-      "icon": Assets.starOutLined,
-      "route": AppRouter.favTasks
-    },
-    {
-      "title": AppTexts.favoriteHabits,
-      "icon": Assets.starOutLined,
-      "route": AppRouter.favHabits
-    },
-    {"title": AppTexts.addHomeWidget, "icon": Assets.addWidget, "route": ""},
-    {"title": AppTexts.financialSupport, "icon": Assets.dollar, "route": ""},
-    {"title": AppTexts.settings, "icon": Assets.settingDrawer, "route": ""},
-    {"title": AppTexts.shareApp, "icon": Assets.share, "route": ""},
+  static List<DrawerItem> drawerItems = [
+    DrawerItem(title: AppTexts.startWorkSession, icon: Assets.clock, route: ""),
+    DrawerItem(title: AppTexts.myLists, icon: Assets.list, route: ""),
+    DrawerItem(title: AppTexts.reminder, icon: Assets.reminder, route: ""),
+    DrawerItem(
+        title: AppTexts.stayAway,
+        icon: Assets.lockSafety,
+        route: AppRouter.stayAway),
+    DrawerItem(title: AppTexts.myGoals, icon: Assets.goals, route: ""),
+    DrawerItem(
+        title: AppTexts.taskCats, icon: Assets.listWithArrows, route: ""),
+    DrawerItem(
+        title: AppTexts.favoriteTasks,
+        icon: Assets.starOutLined,
+        route: AppRouter.favTasks),
+    DrawerItem(
+        title: AppTexts.favoriteHabits,
+        icon: Assets.starOutLined,
+        route: AppRouter.favHabits),
+    DrawerItem(
+        title: AppTexts.addHomeWidget, icon: Assets.addWidget, route: ""),
+    DrawerItem(
+        title: AppTexts.financialSupport, icon: Assets.dollar, route: ""),
+    DrawerItem(title: AppTexts.settings, icon: Assets.settingDrawer, route: ""),
+    DrawerItem(title: AppTexts.shareApp, icon: Assets.share, route: ""),
   ];
 }
