@@ -11,30 +11,6 @@ class InternetCheckCubit extends Cubit<InternetCheckState> {
   final Connectivity connectivity = Connectivity();
 
   bool isDeviceConnected = false;
-  // late StreamSubscription _connectivitySubscription;
-  // List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
-  // Future<void> _initConnectivity() async {
-  //   late List<ConnectivityResult> result;
-  //   try {
-  //     result = await _connectivity.checkConnectivity();
-  //   } on PlatformException catch (e) {
-  //     log('Couldn\'t check connectivity status', error: e);
-  //     return;
-  //   }
-
-  //   return _updateConnectionStatus(result);
-  // }
-
-  // Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
-  //   _connectionStatus = result;
-  //   if (_connectionStatus[0] == ConnectivityResult.none) {
-  //     emit(InternetCheckDisconnected());
-  //   } else {
-  //     emit(InternetCheckConnected());
-  //   }
-  //   // ignore: avoid_print
-  //   print('Connectivity changed: $_connectionStatus');
-  // }
 
   checkInternetConnection() async {
     connectivity.onConnectivityChanged
