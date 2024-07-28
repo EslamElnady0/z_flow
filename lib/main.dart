@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_check_cubit.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/theme/main_theme.dart';
@@ -57,8 +56,7 @@ class ZFlowApp extends StatelessWidget {
             } else if (state is InternetCheckDisconnected) {
               scaffoldMessengerKey.currentState?.showSnackBar(
                   buildCustomSnackBar(
-                      message: "Disconnected from internet",
-                      backgroundColor: ColorManager.red));
+                      message: "Disconnected from internet", isError: true));
             }
           },
           child: MaterialApp(

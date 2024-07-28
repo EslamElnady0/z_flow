@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/assets.dart';
-import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/widgets/build_custom_snack_bar.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
@@ -24,24 +23,19 @@ class CustomGoogleAuthButton extends StatelessWidget {
         return BlocListener<LogInCubit, LogInState>(
           listener: (context, state) async {
             if (state is LogInSuccess) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    buildCustomSnackBar(message: "Logged in successfully"),
-                  );
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      AppRouter.home, (route) => false);
-                }
-              });
+              ScaffoldMessenger.of(context).showSnackBar(
+                buildCustomSnackBar(message: "Logged in successfully"),
+              );
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
             } else if (state is LogInFailure) {
               ScaffoldMessenger.of(context).showSnackBar(buildCustomSnackBar(
-                  message: state.errMessage,
-                  backgroundColor: ColorManager.red));
+                  message: state.errMessage, isError: true));
             }
           },
           child: CustomButton(
             onTap: () async {
-              await context.read<LogInCubit>().signInWithGoogle();
+              await getIt.get<LogInCubit>().signInWithGoogle();
             },
             height: 44.h,
             alignment: Alignment.center,

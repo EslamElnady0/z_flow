@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/widgets/build_custom_snack_bar.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
@@ -38,9 +37,7 @@ class LogInButtonBlocProvider extends StatelessWidget {
                 );
               } else if (state is LogInFailure) {
                 ScaffoldMessenger.of(ctx).showSnackBar(
-                  buildCustomSnackBar(
-                      message: state.errMessage,
-                      backgroundColor: ColorManager.red),
+                  buildCustomSnackBar(message: state.errMessage, isError: true),
                 );
               }
             },

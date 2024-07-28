@@ -5,7 +5,10 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/features/auth/data/models/user_model.dart';
+import 'package:z_flow/features/home/data/data%20sources/habits/habits_local_data_source.dart';
+import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_local_data_source.dart';
 
 import '../../../../core/errors/failure.dart';
 import 'auth_repo.dart';
@@ -59,7 +62,6 @@ class AuthRepoImpl implements AuthRepo {
       if (firebaseAuth.currentUser != null) {
         if (await GoogleSignIn().isSignedIn()) {
           await GoogleSignIn().signOut();
-          return right(null);
         }
         await firebaseAuth.signOut();
         return right(null);
@@ -100,7 +102,8 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-
+      await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
+      await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
@@ -135,6 +138,8 @@ class AuthRepoImpl implements AuthRepo {
               lastName: gUser.displayName!.split(" ")[1],
               uid: firebaseAuth.currentUser!.uid));
       await firebaseAuth.currentUser!.updateDisplayName(gUser.displayName!);
+      await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
+      await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
@@ -164,8 +169,11 @@ class AuthRepoImpl implements AuthRepo {
           firstName: firstName,
           lastName: lastName,
           uid: firebaseAuth.currentUser!.uid);
-      await addUserToFireStore(user: user);
       await firebaseAuth.currentUser!.updateDisplayName("$firstName $lastName");
+
+      await addUserToFireStore(user: user);
+      await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
+      await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
@@ -175,7 +183,7 @@ class AuthRepoImpl implements AuthRepo {
       } else {
         log(e.toString());
         return left(
-            ServerFailure(errMessage: "'Server Error, please try again'"));
+            ServerFailure(errMessage: "Server Error, please try again"));
       }
     }
   }

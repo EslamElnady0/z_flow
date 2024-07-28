@@ -41,6 +41,16 @@ class Constants {
       stops: [0, 1],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight);
+
+  static LinearGradient buildCustomSnackBarGradient(List<Color> colors) {
+    return LinearGradient(
+      colors: colors,
+      stops: const [0, 1],
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    );
+  }
+
   static const LinearGradient customItemsGradient = LinearGradient(
       colors: ColorManager.customItemsBackgroundGradientColors,
       stops: [0, 1],

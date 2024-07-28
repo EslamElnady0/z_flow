@@ -8,6 +8,7 @@ abstract class HabitsLocalDataSource {
   Future<void> addHabit(HabitModel habit);
   void deleteHabit(HabitModel habit);
   void updateHabit(HabitModel habit);
+  Future<void> deleteAllHabits(String boxName);
 }
 
 class HabitsLocalDataSourceImpl implements HabitsLocalDataSource {
@@ -33,5 +34,12 @@ class HabitsLocalDataSourceImpl implements HabitsLocalDataSource {
   @override
   void updateHabit(HabitModel habit) {
     habit.save();
+  }
+
+  @override
+  Future<void> deleteAllHabits(
+    String boxName,
+  ) async {
+    await Hive.box<HabitModel>(boxName).clear();
   }
 }

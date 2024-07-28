@@ -24,7 +24,7 @@ class SignedInAccountSection extends StatelessWidget {
           TextSpan(text: AppTexts.welcome, style: Styles.style20W700white),
           TextSpan(
               text:
-                  "${getIt.get<FirebaseAuth>().currentUser!.displayName!.split(" ")[0]} ",
+                  "${getIt.get<FirebaseAuth>().currentUser!.displayName?.split(" ")[0] ?? "user"} ",
               style: Styles.style20W700white
                   .copyWith(color: ColorManager.primaryColorAccent)),
           TextSpan(text: AppTexts.toZFlow, style: Styles.style20W700white),
@@ -43,7 +43,9 @@ class SignedInAccountSection extends StatelessWidget {
         SizedBox(
           height: 12.h,
         ),
-        Text(getIt.get<FirebaseAuth>().currentUser!.displayName!,
+        Text(
+            getIt.get<FirebaseAuth>().currentUser?.displayName ??
+                "unknown user",
             style: Styles.style20W700white
                 .copyWith(color: ColorManager.primaryColorAccent)),
         SizedBox(

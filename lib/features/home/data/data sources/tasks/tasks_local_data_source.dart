@@ -8,7 +8,7 @@ abstract class TasksLocalDataSource {
   Future<void> addTask(TaskModel task);
   void deleteTask(TaskModel task);
   void updateTask(TaskModel task);
-  void deleteAllDoneTasks();
+  Future<void> deleteAllTasks(String boxName);
 }
 
 class TasksLocalDataSourceImpl implements TasksLocalDataSource {
@@ -37,7 +37,7 @@ class TasksLocalDataSourceImpl implements TasksLocalDataSource {
   }
 
   @override
-  void deleteAllDoneTasks() {
-    throw UnimplementedError();
+  Future<void> deleteAllTasks(String boxName) async {
+    await Hive.box<TaskModel>(boxName).clear();
   }
 }
