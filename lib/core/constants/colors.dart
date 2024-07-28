@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class ColorManager {
   static const Color primaryColor = Color(0xff0B3F7D);
   static const Color primaryColorAccent = Color(0xff2387FF);
+  static const Color lightCyan = Color(0xff00CF9D);
   static const Color green = Color(0xff4CAF50);
+  static const Color lightgreen = Color(0xff00CF08);
   static const Color red = Color(0xffF44336);
 
   static const List<Color> backgroundGradientColors = [

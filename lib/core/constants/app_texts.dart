@@ -23,6 +23,8 @@ class AppTexts {
   static const String yourTasksForThatDay = "Your tasks for that day";
   static const String addNewTask = "Add a new task";
   static const String confirm = "Confirm";
+  static const String hours = "Hours";
+  static const String minutes = "Minutes";
   static const String hereYouCanFindOutYourTime =
       "Here you can find out your time!";
   static const String twentyFourHoursADay7Days = "24 hours a day, 7 days!";
@@ -87,6 +89,8 @@ class AppTexts {
   static const String greatJob = "Great Job!";
   static const String editTask = "Edit the task";
   static const String finishTask = "Finish the task";
+  static const String easilyKnowHowLongYouUseApp =
+      "Easily know how long you use each application!";
   static const String easilyEditTasks =
       "Easily edit your tasks, detail them, add notes and set an end date!";
   static const String startWorkSession = "Start a work session";

@@ -10,10 +10,12 @@ import 'package:z_flow/features/home/presentation/view%20models/habits/update%20
 import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task%20cubit/add_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/time%20management/time%20of%20use%20cubit/time_of_use_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/add_habit_view.dart';
 import 'package:z_flow/features/home/presentation/views/habits%20views/edit_habit_view.dart';
 import 'package:z_flow/features/home/presentation/views/tasks%20views/add_task_view.dart';
 import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_view.dart';
+import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
 import '../../features/auth/presentation/views/auth_view.dart';
 import '../../features/auth/presentation/views/forgot_password_view.dart';
@@ -38,6 +40,7 @@ class AppRouter {
   static const String editTask = '/editTask';
   static const String favTasks = '/favTasks';
   static const String favHabits = '/favHabits';
+  static const String timeOfUse = '/timeOfUse';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -108,6 +111,12 @@ class AppRouter {
             builder: (context) => BlocProvider(
                   create: (context) => BottomNavBarCubit(),
                   child: const HomeView(),
+                ));
+      case timeOfUse:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => TimeOfUseCubit(),
+                  child: const TimeOfUseView(),
                 ));
       default:
         return MaterialPageRoute(builder: (context) => const Text("7moksha"));

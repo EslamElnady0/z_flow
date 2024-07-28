@@ -50,6 +50,12 @@ class Styles {
   );
   static TextStyle style14w400 = TextStyle(
       fontSize: 14.sp, fontWeight: FontWeight.w400, color: Colors.grey);
+  static TextStyle style15w400 = TextStyle(
+      fontSize: 15.sp, fontWeight: FontWeight.w400, color: Colors.grey);
+  static TextStyle style12w600grey = TextStyle(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w600,
+      color: const Color(0xffC8C8C8));
   static TextStyle style12w600 = TextStyle(
       fontSize: 12.sp, fontWeight: FontWeight.w600, color: Colors.white);
   static TextStyle style18w600 = TextStyle(

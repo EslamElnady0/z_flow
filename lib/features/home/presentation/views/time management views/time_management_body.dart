@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/constants.dart';
+import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/image_switcher.dart';
@@ -35,6 +36,9 @@ class TimeManagementBody extends StatelessWidget {
           CustomButton(
             text: AppTexts.timeOfUse,
             gradient: Constants.customButtonGradient,
+            onTap: () {
+              Navigator.pushNamed(context, AppRouter.timeOfUse);
+            },
             style: Styles.style27W600,
             height: 66.h,
             raduis: 18.r,
