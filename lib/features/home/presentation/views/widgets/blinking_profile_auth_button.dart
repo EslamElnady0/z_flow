@@ -8,9 +8,11 @@ import '../../../../../core/styles/styles.dart';
 
 class BlinkingProfileAuthButton extends StatefulWidget {
   final String text;
+  final VoidCallback onTap;
   const BlinkingProfileAuthButton({
     super.key,
     required this.text,
+    required this.onTap,
   });
 
   @override
@@ -67,6 +69,7 @@ class _BlinkingProfileAuthButtonState extends State<BlinkingProfileAuthButton>
               return Opacity(
                 opacity: _animation.value,
                 child: CustomButton(
+                  onTap: widget.onTap,
                   gradient: Constants.customButtonGradient,
                   height: 45.h,
                   text: widget.text,

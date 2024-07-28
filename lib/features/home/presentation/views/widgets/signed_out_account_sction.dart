@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
+import '../../../../../core/routes/app_router.dart';
 import '../../../../../core/styles/styles.dart';
 import 'blinking_profile_auth_button.dart';
 import 'profile_google_sign_in_button.dart';
@@ -42,15 +43,21 @@ class SignedOutAccountSction extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 47.w),
           child: Row(children: [
-            const Expanded(
+            Expanded(
                 child: BlinkingProfileAuthButton(
+              onTap: () {
+                Navigator.pushNamed(context, AppRouter.signUp);
+              },
               text: AppTexts.signUp,
             )),
             SizedBox(
               width: 8.w,
             ),
-            const Expanded(
+            Expanded(
                 child: BlinkingProfileAuthButton(
+              onTap: () {
+                Navigator.pushNamed(context, AppRouter.logIn);
+              },
               text: AppTexts.logIn,
             )),
           ]),
