@@ -26,6 +26,7 @@ import '../../features/favourites/data/view models/favourite tasks cubit/favouri
 import '../../features/favourites/presentation/views/favourite_tasks_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
+import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
 
 class AppRouter {
   static const String splash = '/splash';
@@ -121,7 +122,11 @@ class AppRouter {
                   child: const TimeOfUseView(),
                 ));
       case stayAway:
-        return MaterialPageRoute(builder: (context) => const StayAwayView());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => StayAwayCubit(),
+                  child: const StayAwayView(),
+                ));
       default:
         return MaterialPageRoute(builder: (context) => const Text("7moksha"));
     }

@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
+import 'package:z_flow/features/stay%20away/presentation/cubit/stay_away_cubit.dart';
 
 import 'custom_time_pick_page_view.dart';
 
@@ -20,6 +24,7 @@ class _StayAwayViewBodyState extends State<StayAwayViewBody> {
   late PageController _minsPageController;
   double currentHoursPage = 12;
   double currentMinsPage = 59;
+
   @override
   void initState() {
     _hoursPageController =
@@ -79,6 +84,8 @@ class _StayAwayViewBodyState extends State<StayAwayViewBody> {
                 controller: _hoursPageController,
                 currentPage: currentHoursPage,
                 list: Constants.hours,
+                suffixString: "hrs",
+                isMins: false,
               ),
               const Spacer(
                 flex: 3,
@@ -87,6 +94,8 @@ class _StayAwayViewBodyState extends State<StayAwayViewBody> {
                 controller: _minsPageController,
                 currentPage: currentMinsPage,
                 list: Constants.minutes,
+                suffixString: "mins",
+                isMins: true,
               ),
               const Spacer(
                 flex: 3,
@@ -99,6 +108,10 @@ class _StayAwayViewBodyState extends State<StayAwayViewBody> {
               horizontal: 65.w,
             ),
             gradient: Constants.customButtonGradient,
+            onTap: () async {
+              log(BlocProvider.of<StayAwayCubit>(context).mins.toString());
+              await BlocProvider.of<StayAwayCubit>(context).startLockService();
+            },
             raduis: 12.r,
             text: AppTexts.lock,
             style: Styles.style24W600.copyWith(color: Colors.white),

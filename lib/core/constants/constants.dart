@@ -108,12 +108,12 @@ class Constants {
   ];
 
   static List<String> hoursForward =
-      List<String>.generate(12, (index) => "${(index + 1).toString()} hrs");
+      List<String>.generate(12, (index) => (index + 1).toString());
 
-  static List<String> hours = hoursForward + ["0 hrs"] + hoursForward;
+  static List<String> hours = hoursForward + ["0"] + hoursForward;
   ///////////////////////////////////////
   static List<String> minutesForward =
-      List<String>.generate(59, (index) => "${(index + 1).toString()} mins");
+      List<String>.generate(59, (index) => (index + 1).toString());
 
-  static List<String> minutes = minutesForward + ["0 mins"] + minutesForward;
+  static List<String> minutes = minutesForward + ["0"] + minutesForward;
 }
