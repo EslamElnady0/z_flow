@@ -17,6 +17,7 @@ import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task
 import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20task%20cubit/delete_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
+import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/work%20session/presentation/ui%20cubits/timer%20cubit/timer_cubit.dart';
 import 'package:z_flow/features/work%20session/presentation/ui%20cubits/work%20session%20cubit/work_session_cubit.dart';
 
@@ -79,4 +80,7 @@ void setupServiceLocator() {
 ///////////////////  work session cubits   //////////////////////////////
   getIt.registerFactory<WorkSessionCubit>(() => WorkSessionCubit());
   getIt.registerFactory<TimerCubit>(() => TimerCubit());
+  //////////// search cubit ////////////////
+  getIt.registerFactory<SearchCubit>(
+      () => SearchCubit(getIt<TasksLocalDataSourceImpl>()));
 }

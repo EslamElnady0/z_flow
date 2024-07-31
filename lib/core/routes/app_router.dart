@@ -17,6 +17,7 @@ import 'package:z_flow/features/home/presentation/views/tasks%20views/add_task_v
 import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_view.dart';
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
+import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/search/views/search_view.dart';
 import 'package:z_flow/features/stay%20away/presentation/views/stay_away_view.dart';
 import 'package:z_flow/features/work%20session/presentation/ui%20cubits/timer%20cubit/timer_cubit.dart';
@@ -136,7 +137,7 @@ class AppRouter {
       case search:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
-                  create: (context) => StayAwayCubit(),
+                  create: (context) => getIt<SearchCubit>(),
                   child: const SearchView(),
                 ));
       case workSession:
