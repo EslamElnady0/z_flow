@@ -13,7 +13,7 @@ class CustomSearchTextField extends StatelessWidget {
     return TextField(
       cursorColor: ColorManager.primaryColor,
       style: Styles.style18w500.copyWith(color: Colors.black),
-      onChanged: (value) {},
+      onChanged: onChanged,
       decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.search,

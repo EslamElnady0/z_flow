@@ -82,5 +82,5 @@ void setupServiceLocator() {
   getIt.registerFactory<TimerCubit>(() => TimerCubit());
   //////////// search cubit ////////////////
   getIt.registerFactory<SearchCubit>(
-      () => SearchCubit(getIt<TasksLocalDataSourceImpl>()));
+      () => SearchCubit(TasksLocalDataSourceImpl()));
 }
