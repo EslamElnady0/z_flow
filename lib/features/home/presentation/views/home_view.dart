@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/widgets/build_custom_appbar.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
@@ -25,7 +26,9 @@ class _HomeViewState extends State<HomeView> {
       appBar: buildCustomAppBar(
         index: context.read<BottomNavBarCubit>().selectedIndex,
         context: context,
-        onActionPressed: () {},
+        onActionPressed: () {
+          Navigator.pushNamed(context, AppRouter.search);
+        },
         onLeadingPressed: () {
           _scaffoldKey.currentState!.openDrawer();
         },
