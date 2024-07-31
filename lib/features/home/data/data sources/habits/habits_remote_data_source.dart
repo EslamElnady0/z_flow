@@ -20,7 +20,7 @@ class HabitsRemoteDataSourceImpl implements HabitsRemoteDataSource {
         .collection(Constants.usersCollection)
         .doc(uid)
         .collection(Constants.habitsCollection)
-        .doc(habit.id.toString())
+        .doc("${habit.title} ${habit.id}")
         .set(habit.toJson());
   }
 
@@ -32,7 +32,7 @@ class HabitsRemoteDataSourceImpl implements HabitsRemoteDataSource {
         .collection(Constants.usersCollection)
         .doc(uid)
         .collection(Constants.habitsCollection)
-        .doc(habit.id.toString())
+        .doc("${habit.title} ${habit.id}")
         .delete();
   }
 
@@ -58,7 +58,7 @@ class HabitsRemoteDataSourceImpl implements HabitsRemoteDataSource {
         .collection(Constants.usersCollection)
         .doc(uid)
         .collection(Constants.habitsCollection)
-        .doc(habit.id.toString())
+        .doc("${habit.title} ${habit.id}")
         .update(habit.toJson());
   }
 }

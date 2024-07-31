@@ -19,7 +19,7 @@ class TasksRemoteDataSourceImpl implements TasksRemoteDataSource {
         .collection(Constants.usersCollection)
         .doc(uid)
         .collection(Constants.tasksCollection)
-        .doc(task.id.toString())
+        .doc("${task.title} ${task.id}")
         .set(task.toJson());
   }
 
@@ -31,7 +31,7 @@ class TasksRemoteDataSourceImpl implements TasksRemoteDataSource {
         .collection(Constants.usersCollection)
         .doc(uid)
         .collection(Constants.tasksCollection)
-        .doc(task.id.toString())
+        .doc("${task.title} ${task.id}")
         .delete();
   }
 
@@ -57,7 +57,7 @@ class TasksRemoteDataSourceImpl implements TasksRemoteDataSource {
         .collection(Constants.usersCollection)
         .doc(uid)
         .collection(Constants.tasksCollection)
-        .doc(task.id.toString())
+        .doc("${task.title} ${task.id}")
         .update(task.toJson());
   }
 }
