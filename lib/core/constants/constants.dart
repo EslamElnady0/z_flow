@@ -81,7 +81,10 @@ class Constants {
       borderSide: const BorderSide(color: Color(0xffD9D9D9), width: 1));
 
   static List<DrawerItem> drawerItems = [
-    DrawerItem(title: AppTexts.startWorkSession, icon: Assets.clock, route: ""),
+    DrawerItem(
+        title: AppTexts.startWorkSession,
+        icon: Assets.clock,
+        route: AppRouter.workSession),
     DrawerItem(title: AppTexts.myLists, icon: Assets.list, route: ""),
     DrawerItem(title: AppTexts.reminder, icon: Assets.reminder, route: ""),
     DrawerItem(

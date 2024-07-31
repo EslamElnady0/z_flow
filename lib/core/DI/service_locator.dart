@@ -17,6 +17,8 @@ import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task
 import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20task%20cubit/delete_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
+import 'package:z_flow/features/work%20session/presentation/ui%20cubits/timer%20cubit/timer_cubit.dart';
+import 'package:z_flow/features/work%20session/presentation/ui%20cubits/work%20session%20cubit/work_session_cubit.dart';
 
 import '../../features/auth/presentation/view models/sign up cubit/sign_up_cubit.dart';
 import '../../features/home/data/repos/habits repo/habits_repo_impl.dart';
@@ -74,4 +76,7 @@ void setupServiceLocator() {
       () => FavouriteTasksCubit(getIt.get<GetTaskCubit>()));
   getIt.registerLazySingleton<FavouriteHabitsCubit>(
       () => FavouriteHabitsCubit(getIt.get<GetHabitCubit>()));
+///////////////////  work session cubits   //////////////////////////////
+  getIt.registerFactory<WorkSessionCubit>(() => WorkSessionCubit());
+  getIt.registerFactory<TimerCubit>(() => TimerCubit());
 }

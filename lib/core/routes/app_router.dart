@@ -18,6 +18,7 @@ import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
 import 'package:z_flow/features/stay%20away/presentation/views/stay_away_view.dart';
+import 'package:z_flow/features/work%20session/presentation/ui%20cubits/timer%20cubit/timer_cubit.dart';
 import 'package:z_flow/features/work%20session/presentation/views/work_session_view.dart';
 import '../../features/auth/presentation/views/auth_view.dart';
 import '../../features/auth/presentation/views/forgot_password_view.dart';
@@ -28,6 +29,7 @@ import '../../features/favourites/presentation/views/favourite_tasks_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
+import '../../features/work session/presentation/ui cubits/work session cubit/work_session_cubit.dart';
 
 class AppRouter {
   static const String splash = '/splash';
@@ -131,12 +133,20 @@ class AppRouter {
                 ));
       case workSession:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => StayAwayCubit(),
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<TimerCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<WorkSessionCubit>(),
+                    ),
+                  ],
                   child: const WorkSessionView(),
                 ));
       default:
-        return MaterialPageRoute(builder: (context) => const Text("7moksha"));
+        return MaterialPageRoute(
+            builder: (context) => const Center(child: Text("7moksha")));
     }
   }
 }
