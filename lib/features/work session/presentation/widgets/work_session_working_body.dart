@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,9 +83,9 @@ class _WorkSessionWorkingBodyState extends State<WorkSessionWorkingBody> {
                   CustomPaint(
                     painter: GradientCircularProgressPainter(
                         shadow: BoxShadow(
-                            offset: Offset(0, 4),
+                            offset: const Offset(0, 4),
                             blurRadius: 21.3,
-                            color: Color(0xff0B3F7D).withOpacity(0.48)),
+                            color: const Color(0xff0B3F7D).withOpacity(0.48)),
                         strokeWidth: 30,
                         value: (context.read<TimerCubit>().workingCounter /
                             context.read<TimerCubit>().workingSeconds),
