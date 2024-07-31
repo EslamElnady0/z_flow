@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/styles/styles.dart';
+import 'package:z_flow/features/work%20session/presentation/widgets/custom_pause_play_button.dart';
+import 'package:z_flow/features/work%20session/presentation/widgets/custom_timer_with_text.dart';
 
 import '../ui cubits/timer cubit/timer_cubit.dart';
-import 'gradient_circular_progress_indicator_painter.dart';
 
 class WorkSessionWorkingBody extends StatefulWidget {
   const WorkSessionWorkingBody({super.key});
@@ -62,33 +62,29 @@ class _WorkSessionWorkingBodyState extends State<WorkSessionWorkingBody> {
             SizedBox(
               height: 80.h,
             ),
-            SizedBox(
-              height: 226.h,
-              width: 226.w,
-              child: Stack(
-                fit: StackFit.expand,
-                clipBehavior: Clip.none,
-                children: [
-                  CustomPaint(
-                    painter: GradientCircularProgressPainter(
-                        shadow: BoxShadow(
-                            offset: const Offset(0, 4),
-                            blurRadius: 21.3,
-                            color: const Color(0xff0B3F7D).withOpacity(0.48)),
-                        strokeWidth: 30,
-                        value: (context.read<TimerCubit>().workingCounter /
-                            context.read<TimerCubit>().workingSeconds),
-                        gradient: Constants.customTimerGradient),
-                  ),
-                  Center(
-                    child: Text(
-                      "${context.read<TimerCubit>().duration.inMinutes.remainder(60).toString().padLeft(2, "0")}:${context.read<TimerCubit>().duration.inSeconds.remainder(60).toString().padLeft(2, "0")}",
-                      style: Styles.style40w700,
-                    ),
-                  )
-                ],
-              ),
+            CustomTimerWithText(
+              duration: context.read<TimerCubit>().duration,
+              value: (context.read<TimerCubit>().workingCounter /
+                  context.read<TimerCubit>().workingSeconds),
             ),
+            const Spacer(),
+            CustomPausePlayButton(
+              onTap: () {
+                context.read<TimerCubit>().isPaused =
+                    !context.read<TimerCubit>().isPaused;
+                if (context.read<TimerCubit>().isPaused) {
+                  timer.cancel();
+                  context.read<TimerCubit>().updateTimer();
+                } else {
+                  startWorkingTimer();
+                  context.read<TimerCubit>().updateTimer();
+                }
+              },
+              isPaused: context.read<TimerCubit>().isPaused,
+            ),
+            SizedBox(
+              height: 90.h,
+            )
           ],
         );
       },

@@ -53,7 +53,7 @@ class WorkSessionInitialBody extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 75.h,
+          height: 90.h,
         )
       ],
     );
