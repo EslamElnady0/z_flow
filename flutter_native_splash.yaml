@@ -1,0 +1,10 @@
+flutter_native_splash:
+
+  color: "#021123"
+  
+  android_12:
+    color: "#021123"
+    icon_background_color: "#021123"
+
+  android: true
+  ios: true
