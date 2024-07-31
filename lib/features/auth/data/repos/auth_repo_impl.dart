@@ -149,7 +149,7 @@ class AuthRepoImpl implements AuthRepo {
       } else {
         log(e.toString());
         return left(
-            ServerFailure(errMessage: "'Server Error, please try again'"));
+            ServerFailure(errMessage: "Server Error, please try again"));
       }
     }
   }
