@@ -24,15 +24,22 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
   late TextEditingController taskController;
   late TextEditingController endsInController;
   late TextEditingController noteController;
-  late TextEditingController subTaskController;
+  late TextEditingController subTaskOneController;
+  late TextEditingController subTaskTwoController;
+  late TextEditingController subTaskThreeController;
+  late TextEditingController subTaskFourController;
+  late TextEditingController subTaskFiveController;
 
   @override
   void initState() {
     taskController = TextEditingController();
     endsInController = TextEditingController();
     noteController = TextEditingController();
-    subTaskController = TextEditingController();
-
+    subTaskOneController = TextEditingController();
+    subTaskTwoController = TextEditingController();
+    subTaskThreeController = TextEditingController();
+    subTaskFourController = TextEditingController();
+    subTaskFiveController = TextEditingController();
     super.initState();
   }
 
@@ -41,7 +48,11 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
     taskController.dispose();
     endsInController.dispose();
     noteController.dispose();
-    subTaskController.dispose();
+    subTaskOneController.dispose();
+    subTaskTwoController.dispose();
+    subTaskThreeController.dispose();
+    subTaskFourController.dispose();
+    subTaskFiveController.dispose();
     super.dispose();
   }
 
@@ -56,7 +67,13 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                 taskController: taskController,
                 endsInController: endsInController,
                 noteController: noteController,
-                subTaskController: subTaskController,
+                subTaskControllers: [
+                  subTaskOneController,
+                  subTaskTwoController,
+                  subTaskThreeController,
+                  subTaskFourController,
+                  subTaskFiveController
+                ],
                 text: AppTexts.easilyAddYourTasks,
                 formKey: formKey),
           ),
@@ -76,7 +93,13 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                       var box = Hive.box(Constants.constantsBox);
                       int id = box.get("tasksId") ?? 0;
                       TaskModel task = TaskModel(
-                        sideTask: subTaskController.text,
+                        sideTask: [
+                          subTaskOneController.text,
+                          subTaskTwoController.text,
+                          subTaskThreeController.text,
+                          subTaskFourController.text,
+                          subTaskFiveController.text
+                        ],
                         title: taskController.text,
                         notes: noteController.text,
                         id: id,

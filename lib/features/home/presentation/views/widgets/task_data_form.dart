@@ -14,7 +14,7 @@ class TaskDataForm extends StatefulWidget {
   final TextEditingController taskController;
   final TextEditingController endsInController;
   final TextEditingController noteController;
-  final TextEditingController subTaskController;
+  final List<TextEditingController> subTaskControllers;
   final TaskModel? task;
   final bool isEdit;
   final String text;
@@ -24,7 +24,7 @@ class TaskDataForm extends StatefulWidget {
       required this.taskController,
       required this.endsInController,
       required this.noteController,
-      required this.subTaskController,
+      required this.subTaskControllers,
       required this.formKey,
       required this.text,
       this.isEdit = false,
@@ -35,6 +35,45 @@ class TaskDataForm extends StatefulWidget {
 }
 
 class _TaskDataFormState extends State<TaskDataForm> {
+  int maxSubTasks = 5;
+  int currentSubTasks = 0;
+  List<Widget> subTaskTextFieldsList = [];
+
+  @override
+  void initState() {
+    if (widget.task != null && widget.task!.sideTask[0] != "") {
+      for (currentSubTasks = 0;
+          currentSubTasks < widget.task!.sideTask.length;
+          currentSubTasks++) {
+        subTaskTextFieldsList.add(
+          Column(
+            children: [
+              CustomDataEntryTextField(
+                  hintText: AppTexts.subTask,
+                  validator: (value) {
+                    return null;
+                  },
+                  icon: Padding(
+                    padding: EdgeInsets.only(right: 15.w),
+                    child: SvgPicture.asset(
+                      Assets.tasksIcon,
+                      height: 16.h,
+                      width: 16.w,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  controller: widget.subTaskControllers[currentSubTasks]),
+              SizedBox(
+                height: 16.h,
+              )
+            ],
+          ),
+        );
+      }
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -126,29 +165,41 @@ class _TaskDataFormState extends State<TaskDataForm> {
           SizedBox(
             height: 16.h,
           ),
-          CustomDataEntryTextField(
-              hintText: AppTexts.subTask,
-              validator: (value) {
-                return null;
-              },
-              icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
-                child: SvgPicture.asset(
-                  Assets.subTaskIcon,
-                  height: 16.h,
-                  width: 16.w,
-                  color: Colors.grey,
+          Column(
+            children: subTaskTextFieldsList,
+          ),
+          currentSubTasks == maxSubTasks
+              ? const SizedBox.shrink()
+              : CustomLightColorsGradientButton(
+                  text: AppTexts.addSubTask,
+                  icon: Assets.addIcon,
+                  onTap: () {
+                    setState(() {
+                      subTaskTextFieldsList.add(
+                        Column(
+                          children: [
+                            CustomDataEntryTextField(
+                                hintText: AppTexts.subTask,
+                                icon: Padding(
+                                  padding: EdgeInsets.only(right: 15.w),
+                                  child: SvgPicture.asset(
+                                    Assets.tasksIcon,
+                                    height: 16.h,
+                                    width: 16.w,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                controller: widget
+                                    .subTaskControllers[currentSubTasks++]),
+                            SizedBox(
+                              height: 16.h,
+                            )
+                          ],
+                        ),
+                      );
+                    });
+                  },
                 ),
-              ),
-              controller: widget.subTaskController),
-          SizedBox(
-            height: 16.h,
-          ),
-          CustomLightColorsGradientButton(
-            text: AppTexts.addSubTask,
-            icon: Assets.addIcon,
-            onTap: () {},
-          ),
           widget.isEdit
               ? Column(
                   children: [

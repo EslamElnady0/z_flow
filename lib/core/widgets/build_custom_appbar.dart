@@ -4,6 +4,7 @@ import 'package:z_flow/core/constants/assets.dart';
 
 PreferredSizeWidget? buildCustomAppBar(
     {required BuildContext context,
+    required int index,
     required void Function()? onActionPressed,
     required void Function()? onLeadingPressed}) {
   return AppBar(

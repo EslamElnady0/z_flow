@@ -13,7 +13,7 @@ class TaskModel extends HiveObject {
   @HiveField(3)
   String deadline;
   @HiveField(4)
-  String sideTask;
+  List<String> sideTask;
   @HiveField(5)
   bool isFavourited = false;
   @HiveField(6)

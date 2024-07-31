@@ -21,14 +21,24 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
   late TextEditingController taskController;
   late TextEditingController endsInController;
   late TextEditingController noteController;
-  late TextEditingController subTaskController;
-
+  late TextEditingController subTaskOneController;
+  late TextEditingController subTaskTwoController;
+  late TextEditingController subTaskThreeController;
+  late TextEditingController subTaskFourController;
+  late TextEditingController subTaskFiveController;
   @override
   void initState() {
     taskController = TextEditingController(text: widget.task.title);
     endsInController = TextEditingController(text: widget.task.deadline);
     noteController = TextEditingController(text: widget.task.notes);
-    subTaskController = TextEditingController(text: widget.task.sideTask);
+    subTaskOneController = TextEditingController(text: widget.task.sideTask[0]);
+    subTaskTwoController = TextEditingController(text: widget.task.sideTask[1]);
+    subTaskThreeController =
+        TextEditingController(text: widget.task.sideTask[2]);
+    subTaskFourController =
+        TextEditingController(text: widget.task.sideTask[3]);
+    subTaskFiveController =
+        TextEditingController(text: widget.task.sideTask[4]);
 
     super.initState();
   }
@@ -38,7 +48,11 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
     taskController.dispose();
     endsInController.dispose();
     noteController.dispose();
-    subTaskController.dispose();
+    subTaskOneController.dispose();
+    subTaskTwoController.dispose();
+    subTaskThreeController.dispose();
+    subTaskFourController.dispose();
+    subTaskFiveController.dispose();
     super.dispose();
   }
 
@@ -54,7 +68,13 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
                 taskController: taskController,
                 endsInController: endsInController,
                 noteController: noteController,
-                subTaskController: subTaskController,
+                subTaskControllers: [
+                  subTaskOneController,
+                  subTaskTwoController,
+                  subTaskThreeController,
+                  subTaskFourController,
+                  subTaskFiveController
+                ],
                 text: AppTexts.easilyEditTasks,
                 isEdit: true,
                 formKey: formKey),
@@ -73,7 +93,13 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
                       widget.task.title = taskController.text;
                       widget.task.deadline = endsInController.text;
                       widget.task.notes = noteController.text;
-                      widget.task.sideTask = subTaskController.text;
+                      widget.task.sideTask = [
+                        subTaskOneController.text,
+                        subTaskTwoController.text,
+                        subTaskThreeController.text,
+                        subTaskFourController.text,
+                        subTaskFiveController.text
+                      ];
                       formKey.currentState!.save();
                       await updateTask(task: widget.task);
                       if (context.mounted) {
