@@ -38,89 +38,98 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 40.36.h,
-            ),
-            SizedBox(
-              height: 290.h,
-              child: PageView.builder(
-                  onPageChanged: (value) {
-                    setState(() {
-                      currentIndex = value;
-                    });
-                  },
-                  controller: _pageController,
-                  itemCount: Constants.onBoardingScreens.length,
-                  itemBuilder: (context, index) {
-                    var scale = index == currentIndex ? 1.0 : 0.5;
-                    return TweenAnimationBuilder(
-                      duration: const Duration(milliseconds: 350),
-                      tween: Tween(begin: scale, end: scale),
-                      curve: Curves.easeInOut,
-                      child: OnBoardingItem(
-                        onboardingModel: Constants.onBoardingScreens[index],
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 40.36.h,
+                    ),
+                    SizedBox(
+                      height: 290.h,
+                      child: PageView.builder(
+                          onPageChanged: (value) {
+                            setState(() {
+                              currentIndex = value;
+                            });
+                          },
+                          controller: _pageController,
+                          itemCount: Constants.onBoardingScreens.length,
+                          itemBuilder: (context, index) {
+                            var scale = index == currentIndex ? 1.0 : 0.5;
+                            return TweenAnimationBuilder(
+                              duration: const Duration(milliseconds: 350),
+                              tween: Tween(begin: scale, end: scale),
+                              curve: Curves.easeInOut,
+                              child: OnBoardingItem(
+                                onboardingModel:
+                                    Constants.onBoardingScreens[index],
+                              ),
+                              builder: (context, value, child) {
+                                return Transform.scale(
+                                    scale: value, child: child);
+                              },
+                            );
+                          }),
+                    ),
+                    Text(
+                      Constants.onBoardingScreens[currentIndex].text,
+                      style: Styles.style34W700blue,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text(
+                      Constants.onBoardingScreens[currentIndex].desc,
+                      style: Styles.style16W500grey.copyWith(
+                        height: 1.6.h,
                       ),
-                      builder: (context, value, child) {
-                        return Transform.scale(scale: value, child: child);
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 30.h,
+                    ),
+                    const Spacer(),
+                    SmoothPageIndicator(
+                      controller: _pageController,
+                      count: Constants.onBoardingScreens.length,
+                      effect: const SwapEffect(
+                        dotHeight: 8,
+                        dotWidth: 10,
+                        paintStyle: PaintingStyle.stroke,
+                        activeDotColor: ColorManager.primaryColor,
+                        type: SwapType.zRotation,
+                        dotColor: Colors.grey,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40.h,
+                    ),
+                    CustomOnBoardingNextButton(
+                        currentIndex: currentIndex,
+                        pageController: _pageController),
+                    SizedBox(
+                      height: 17.h,
+                    ),
+                    CustomHollowButton(
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, AppRouter.auth, (route) => false);
+                        increamentIsViewedId();
                       },
-                    );
-                  }),
-            ),
-            Text(
-              Constants.onBoardingScreens[currentIndex].text,
-              style: Styles.style34W700blue,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Text(
-              Constants.onBoardingScreens[currentIndex].desc,
-              style: Styles.style16W500grey.copyWith(
-                height: 1.6.h,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-            const Spacer(),
-            SmoothPageIndicator(
-              controller: _pageController,
-              count: Constants.onBoardingScreens.length,
-              effect: const SwapEffect(
-                dotHeight: 8,
-                dotWidth: 10,
-                paintStyle: PaintingStyle.stroke,
-                activeDotColor: ColorManager.primaryColor,
-                type: SwapType.zRotation,
-                dotColor: Colors.grey,
-              ),
-            ),
-            SizedBox(
-              height: 40.h,
-            ),
-            CustomOnBoardingNextButton(
-                currentIndex: currentIndex, pageController: _pageController),
-            SizedBox(
-              height: 17.h,
-            ),
-            CustomHollowButton(
-              onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, AppRouter.auth, (route) => false);
-                increamentIsViewedId();
-              },
-            ),
-            SizedBox(
-              height: 16.h,
-            )
-          ],
-        ),
-      ),
+                    ),
+                    SizedBox(
+                      height: 16.h,
+                    )
+                  ],
+                ),
+              )
+            ],
+          )),
     );
   }
 }
