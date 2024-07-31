@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
+import 'package:z_flow/features/work%20session/presentation/ui%20cubits/timer%20cubit/timer_cubit.dart';
+import 'package:z_flow/features/work%20session/presentation/ui%20cubits/work%20session%20cubit/work_session_cubit.dart';
 
-import '../../../../core/constants/assets.dart';
-import '../../../../core/styles/styles.dart';
-import 'work_session_time_container.dart';
+import 'work_session_break_body.dart';
+import 'work_session_initial_body.dart';
+import 'work_session_working_body.dart';
 
 class WorkSessionViewBody extends StatelessWidget {
   const WorkSessionViewBody({super.key});
@@ -14,47 +14,33 @@ class WorkSessionViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.w),
-      child: Column(
-        children: [
-          const Divider(),
-          SizedBox(
-            height: 14.h,
-          ),
-          Text(AppTexts.youAreAboutToOpenWorkSession,
-              style: Styles.style14w400, textAlign: TextAlign.center),
-          SizedBox(
-            height: 30.h,
-          ),
-          Image.asset(
-            Assets.stopWatch,
-            height: 210.h,
-            width: 210.w,
-          ),
-          SizedBox(
-            height: 50.h,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const WorkSessionTimeContainer(text: AppTexts.thirtyFiveMinWork),
-              SvgPicture.asset(
-                Assets.addIcon,
-              ),
-              const WorkSessionTimeContainer(text: AppTexts.fiveMinBreak),
-            ],
-          ),
-          const Spacer(),
-          CustomLightColorsGradientButton(
-            text: AppTexts.startNow,
-            icon: Assets.playIcon,
-            onTap: () {},
-          ),
-          SizedBox(
-            height: 75.h,
-          )
-        ],
-      ),
-    );
+        padding: EdgeInsets.symmetric(horizontal: 18.w),
+        child: BlocBuilder<WorkSessionCubit, WorkSessionState>(
+          builder: (context, state) {
+            if (state is WorkSessionInitial) {
+              return const WorkSessionInitialBody();
+            } else if (state is WorkSessionWorking) {
+              return BlocListener<TimerCubit, TimerState>(
+                listener: (context, state) {
+                  if (context.read<TimerCubit>().workingCounter == 0) {
+                    context.read<WorkSessionCubit>().startBreak();
+                  }
+                },
+                child: const WorkSessionWorkingBody(),
+              );
+            } else {
+              return BlocListener<TimerCubit, TimerState>(
+                listener: (context, state) {
+                  if (context.read<TimerCubit>().breakCounter == 0) {
+                    context.read<WorkSessionCubit>().backToInitial();
+                    context.read<TimerCubit>().breakCounter = 5 * 60;
+                    context.read<TimerCubit>().workingCounter = 25 * 60;
+                  }
+                },
+                child: const WorkSessionBreakBody(),
+              );
+            }
+          },
+        ));
   }
 }

@@ -41,6 +41,11 @@ class Constants {
       stops: [0, 1],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight);
+  static const LinearGradient customTimerGradient = LinearGradient(
+      colors: ColorManager.customTimerGradientColors,
+      stops: [0, 1],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight);
 
   static LinearGradient buildCustomSnackBarGradient(List<Color> colors) {
     return LinearGradient(

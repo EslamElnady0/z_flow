@@ -37,6 +37,8 @@ class AppTexts {
   static const String takeABreak = "Take a Break and Lock Your Phone!";
   static const String editHabit = "Edit the habit";
   static const String startNow = "Start now!";
+  static const String workTime = "Work Time";
+  static const String breakTime = "Break Time";
   static const String youCanEditHabit =
       "You are now about to modify an existing habit";
   static const String onGoingTasks = "Ongoing Tasks";

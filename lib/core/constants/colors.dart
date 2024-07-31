@@ -23,6 +23,10 @@ class ColorManager {
     primaryColor,
     Color(0xff1472E3),
   ];
+  static const List<Color> customTimerGradientColors = [
+    Color(0xff1472E3),
+    primaryColor,
+  ];
   static const List<Color> customItemsBackgroundGradientColors = [
     Colors.white,
     Color(0xffD7E9FF),
