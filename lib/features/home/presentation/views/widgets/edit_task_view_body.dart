@@ -93,7 +93,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
                       widget.task.title = taskController.text;
                       widget.task.deadline = endsInController.text;
                       widget.task.notes = noteController.text;
-                      widget.task.sideTask = [
+                      widget.task.sideTask = <String>[
                         subTaskOneController.text,
                         subTaskTwoController.text,
                         subTaskThreeController.text,

@@ -93,7 +93,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                       var box = Hive.box(Constants.constantsBox);
                       int id = box.get("tasksId") ?? 0;
                       TaskModel task = TaskModel(
-                        sideTask: [
+                        sideTask: <String>[
                           subTaskOneController.text,
                           subTaskTwoController.text,
                           subTaskThreeController.text,
