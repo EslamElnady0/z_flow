@@ -6,10 +6,12 @@ import '../../../../../core/constants/assets.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
 
-class CustomAddButton extends StatelessWidget {
+class CustomLightColorsGradientButton extends StatelessWidget {
   final void Function()? onTap;
   final String text;
-  const CustomAddButton({super.key, this.onTap, required this.text});
+  final String icon;
+  const CustomLightColorsGradientButton(
+      {super.key, this.onTap, required this.text, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class CustomAddButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              Assets.addIcon,
+              Assets.playIcon,
               height: 24.h,
               width: 24.w,
             ),

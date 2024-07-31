@@ -28,8 +28,15 @@ class AppTexts {
   static const String hereYouCanSeeYourFavHabits =
       "Here you can see you favourite habits";
   static const String profile = "Profile";
+  static const String youAreAboutToOpenWorkSession =
+      "You are about to open a 35-minute session with a 5-minute break";
+  static const String thirtyFiveMinWork = "35 min work";
+  static const String fiveMinBreak = "5 min Break";
+  static const String inWorkSession = "In a working session";
+  static const String inBreakSession = "In a break session";
   static const String takeABreak = "Take a Break and Lock Your Phone!";
   static const String editHabit = "Edit the habit";
+  static const String startNow = "Start now!";
   static const String youCanEditHabit =
       "You are now about to modify an existing habit";
   static const String onGoingTasks = "Ongoing Tasks";

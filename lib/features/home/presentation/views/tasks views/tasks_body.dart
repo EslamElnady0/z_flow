@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 
 import '../../../../../core/routes/app_router.dart';
 import '../../../../../core/utils/tasks utils/get_tasks.dart';
-import '../widgets/custom_add_button.dart';
+import '../widgets/custom_light_colors_gradient_button.dart';
 import '../widgets/exitsing_tasks_body.dart';
 import '../widgets/no_tasks_body.dart';
 
@@ -45,7 +46,8 @@ class _TasksBodyState extends State<TasksBody> {
         const Spacer(),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 64.w),
-          child: CustomAddButton(
+          child: CustomLightColorsGradientButton(
+            icon: Assets.addIcon,
             text: AppTexts.addNewTask,
             onTap: () {
               Navigator.of(context).pushNamed(AppRouter.addTask);

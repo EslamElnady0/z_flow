@@ -6,7 +6,7 @@ import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_add_button.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box_container.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_data_entry_text_field.dart';
 
@@ -144,8 +144,9 @@ class _TaskDataFormState extends State<TaskDataForm> {
           SizedBox(
             height: 16.h,
           ),
-          CustomAddButton(
+          CustomLightColorsGradientButton(
             text: AppTexts.addSubTask,
+            icon: Assets.addIcon,
             onTap: () {},
           ),
           widget.isEdit

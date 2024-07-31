@@ -18,6 +18,7 @@ import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
 import 'package:z_flow/features/stay%20away/presentation/views/stay_away_view.dart';
+import 'package:z_flow/features/work%20session/presentation/views/work_session_view.dart';
 import '../../features/auth/presentation/views/auth_view.dart';
 import '../../features/auth/presentation/views/forgot_password_view.dart';
 import '../../features/auth/presentation/views/log_in_view.dart';
@@ -44,6 +45,7 @@ class AppRouter {
   static const String favHabits = '/favHabits';
   static const String timeOfUse = '/timeOfUse';
   static const String stayAway = '/stayAway';
+  static const String workSession = '/workSession';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -126,6 +128,12 @@ class AppRouter {
             builder: (context) => BlocProvider(
                   create: (context) => StayAwayCubit(),
                   child: const StayAwayView(),
+                ));
+      case workSession:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => StayAwayCubit(),
+                  child: const WorkSessionView(),
                 ));
       default:
         return MaterialPageRoute(builder: (context) => const Text("7moksha"));
