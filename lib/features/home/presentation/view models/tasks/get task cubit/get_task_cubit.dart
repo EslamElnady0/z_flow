@@ -46,6 +46,23 @@ class GetTaskCubit extends Cubit<GetTaskState> {
     });
   }
 
+  List<TaskModel> getRecentTasksFilter(Duration duration) {
+    List<TaskModel> recentTasks = [];
+    DateTime now = DateTime.now();
+    DateTime twentyFourHoursAgo = now.subtract(duration);
+
+    for (var task in doneTasks) {
+      DateTime taskDate = DateFormat.yMMMd().parse(task.createdAt);
+
+      if (taskDate.isAfter(twentyFourHoursAgo)) {
+        recentTasks.add(task);
+      }
+    }
+    emit(GetTaskSuccess());
+    print(recentTasks);
+    return recentTasks;
+  }
+
   void getSpecificDayTasks(
     DateTime day,
   ) {

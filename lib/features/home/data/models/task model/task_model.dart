@@ -22,6 +22,8 @@ class TaskModel extends HiveObject {
   bool isDoneBefore = false;
   @HiveField(8)
   final int id;
+  @HiveField(9)
+  String doneAt;
 
   TaskModel(
       {required this.sideTask,
@@ -32,6 +34,7 @@ class TaskModel extends HiveObject {
       this.isDoneBefore = false,
       required this.deadline,
       this.isFavourited = false,
+      this.doneAt = "",
       this.isDone = false});
 
   Map<String, dynamic> toJson() {
@@ -44,6 +47,7 @@ class TaskModel extends HiveObject {
       'isFavourited': isFavourited,
       'isDone': isDone,
       'isDoneBefore': isDoneBefore,
+      'doneAt': doneAt,
       'id': id
     };
   }
@@ -58,6 +62,7 @@ class TaskModel extends HiveObject {
       isFavourited: json['isFavourited'],
       isDone: json['isDone'],
       isDoneBefore: json['isDoneBefore'],
+      doneAt: json['doneAt'],
       id: json['id'],
     );
   }

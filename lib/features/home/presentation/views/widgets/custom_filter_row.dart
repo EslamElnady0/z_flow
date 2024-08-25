@@ -35,7 +35,7 @@ class _CustomFilterRowState extends State<CustomFilterRow> {
         GestureDetector(
           onTap: () {
             BuildOverlayMenu.showOverlay(context, actionKey,
-                widget: FinishedTasksFilterOptions());
+                widget: const DurationFilterOptions());
           },
           child: SvgPicture.asset(
             key: actionKey,
