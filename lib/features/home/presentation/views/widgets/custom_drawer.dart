@@ -33,23 +33,41 @@ class CustomDrawer extends StatelessWidget {
               thickness: 1.25,
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: Constants.drawerItems.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, Constants.drawerItems[index].route);
-                      },
-                      leading: SvgPicture.asset(
-                        Constants.drawerItems[index].icon,
+              child: ListView.separated(
+                  itemCount: Constants.drawerItems.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                        right: 12.w,
+                        left: 12.w,
+                        top: index == 0 ? 12.h : 0,
                       ),
-                      title: Text(
-                        Constants.drawerItems[index].title,
-                        style: Styles.style20W700white,
-                      ));
-                },
-              ),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12.w, vertical: 3.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.r),
+                          gradient: Constants.customButtonGradient),
+                      child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          dense: true,
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, Constants.drawerItems[index].route);
+                          },
+                          leading: SvgPicture.asset(
+                            Constants.drawerItems[index].icon,
+                          ),
+                          title: Text(
+                            Constants.drawerItems[index].title,
+                            style: Styles.style20W700white,
+                          )),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return SizedBox(
+                      height: 10.h,
+                    );
+                  }),
             )
           ],
         ),
