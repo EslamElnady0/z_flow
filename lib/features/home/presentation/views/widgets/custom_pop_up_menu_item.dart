@@ -12,7 +12,7 @@ class CustomPopUpMenuItem extends StatelessWidget {
   });
 
   final String title;
-  final Widget icon;
+  final Widget? icon;
   final void Function() onTap;
 
   @override
@@ -21,19 +21,28 @@ class CustomPopUpMenuItem extends StatelessWidget {
       behavior: HitTestBehavior.translucent,
       onTap: onTap,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             title,
             style: Styles.style16W600grey.copyWith(color: Colors.white),
           ),
-          SizedBox(
-            width: 10.w,
-          ),
-          const Spacer(),
-          SizedBox(
-            width: 10.w,
-          ),
-          icon
+          icon != null
+              ? Expanded(
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      const Spacer(),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      icon!
+                    ],
+                  ),
+                )
+              : const SizedBox.shrink(),
         ],
       ),
     );
