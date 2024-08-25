@@ -15,6 +15,7 @@ import 'package:z_flow/features/home/presentation/views/habits%20views/add_habit
 import 'package:z_flow/features/home/presentation/views/habits%20views/edit_habit_view.dart';
 import 'package:z_flow/features/home/presentation/views/tasks%20views/add_task_view.dart';
 import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_view.dart';
+import 'package:z_flow/features/home/presentation/views/tasks%20views/finished_tasks_view.dart';
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
@@ -28,6 +29,7 @@ import '../../features/auth/presentation/views/log_in_view.dart';
 import '../../features/favourites/data/view models/favourite habits cubit/favourite_habits_cubit.dart';
 import '../../features/favourites/data/view models/favourite tasks cubit/favourite_tasks_cubit.dart';
 import '../../features/favourites/presentation/views/favourite_tasks_view.dart';
+import '../../features/home/presentation/view models/tasks/delete task cubit/delete_task_cubit.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
@@ -51,6 +53,7 @@ class AppRouter {
   static const String stayAway = '/stayAway';
   static const String workSession = '/workSession';
   static const String search = '/search';
+  static const String tasksFinished = '/tasksFinished';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -152,6 +155,25 @@ class AppRouter {
                     ),
                   ],
                   child: const WorkSessionView(),
+                ));
+      case tasksFinished:
+        return MaterialPageRoute(
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider.value(
+                      value: getIt.get<AddTaskCubit>(),
+                    ),
+                    BlocProvider.value(
+                      value: getIt.get<GetTaskCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<DeleteTaskCubit>(),
+                    ),
+                    BlocProvider.value(
+                      value: getIt.get<UpdateTaskCubit>(),
+                    ),
+                  ],
+                  child: const FinishedTasksView(),
                 ));
       default:
         return MaterialPageRoute(

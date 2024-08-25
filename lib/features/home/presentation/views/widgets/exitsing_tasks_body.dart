@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
+import '../../../../../core/constants/colors.dart';
+import '../../../../../core/routes/app_router.dart';
 import '../widgets/custom_task_item.dart';
 
 class ExistingTasksBody extends StatelessWidget {
@@ -25,7 +27,7 @@ class ExistingTasksBody extends StatelessWidget {
           height: 16.h,
         ),
         SizedBox(
-          height: 450.h,
+          height: 470.h,
           child: ListView.separated(
             itemBuilder: (context, index) {
               GlobalKey actionKey = GlobalKey();
@@ -46,6 +48,19 @@ class ExistingTasksBody extends StatelessWidget {
             },
           ),
         ),
+        SizedBox(
+          height: 10.h,
+        ),
+        TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, AppRouter.tasksFinished);
+            },
+            child: Text(
+              AppTexts.tasksFinished,
+              style: Styles.style16W400white.copyWith(
+                  decoration: TextDecoration.underline,
+                  decorationColor: ColorManager.lightGrey),
+            )),
       ],
     );
   }

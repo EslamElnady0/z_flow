@@ -12,6 +12,7 @@ class AppTexts {
   static const String firstOnBoarding = "Organize Your Tasks";
   static const String secondOnBoarding = "Manage Your Calendar";
   static const String thirdOnBoarding = "Productivity";
+  static const String tasksFinished = "Tasks finished";
   static const String fourthOnBoarding = " Build Positive Habits";
   static const String firstOnBoardingDesc =
       "Start by organizing all your tasks in one place. Our intuitive task manager helps you prioritize and keep track of what needs to be done. Add deadlines, set priorities, and never miss an important task again.";
@@ -119,6 +120,10 @@ class AppTexts {
   static const String startWorkSession = "Start a work session";
   static const String myLists = "My lists";
   static const String reminder = "Reminder";
+  static const String lastDay = "Last Day";
+  static const String last7Days = "Last 7 days";
+  static const String last28Days = "Last 28 days";
+  static const String allTasks = "All tasks";
   static const String stayAway = "Stay Away";
   static const String myGoals = "My goals";
   static const String taskCats = "Task categories";
