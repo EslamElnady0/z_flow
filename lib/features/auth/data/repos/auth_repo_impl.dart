@@ -123,8 +123,10 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, void>> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
-
-      final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+      if (gUser == null) {
+        return left(ServerFailure(errMessage: "Sign-In cancelled by user"));
+      }
+      final GoogleSignInAuthentication gAuth = await gUser.authentication;
       final credentials = GoogleAuthProvider.credential(
         accessToken: gAuth.accessToken,
         idToken: gAuth.idToken,
