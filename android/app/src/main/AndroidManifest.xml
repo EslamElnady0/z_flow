@@ -6,7 +6,7 @@
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions"/>
     <application
-        android:label="z_flow"
+        android:label="Z Flow"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
