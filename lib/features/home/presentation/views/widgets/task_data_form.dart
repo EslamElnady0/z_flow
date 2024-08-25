@@ -210,6 +210,9 @@ class _TaskDataFormState extends State<TaskDataForm> {
                       onChanged: (value) async {
                         setState(() {
                           widget.task!.isDone = !(widget.task!.isDone);
+                          widget.task!.doneAt = widget.task!.isDone
+                              ? DateTime.now().toString()
+                              : "";
                         });
                       },
                       value: widget.task!.isDone,

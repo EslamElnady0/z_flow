@@ -10,6 +10,7 @@ class AppTexts {
   static const String calender = "Calender";
   static const String time = "Time";
   static const String habits = "Habits";
+  static const String allFinishedTasks = "All Finished Tasks";
   static const String firstOnBoarding = "Organize Your Tasks";
   static const String secondOnBoarding = "Manage Your Calendar";
   static const String thirdOnBoarding = "Productivity";

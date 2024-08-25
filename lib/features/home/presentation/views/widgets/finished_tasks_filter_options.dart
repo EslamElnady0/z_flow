@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/widgets/build_overlay_menu.dart';
@@ -18,9 +18,8 @@ class DurationFilterOptions extends StatelessWidget {
         CustomPopUpMenuItem(
             onTap: () async {
               BuildOverlayMenu.removeOverlay();
-              context
-                  .read<GetTaskCubit>()
-                  .getRecentTasksFilter(const Duration(hours: 24));
+              getIt.get<GetTaskCubit>().duration = const Duration(hours: 24);
+              getIt.get<GetTaskCubit>().getRecentTasksFilter();
             },
             title: AppTexts.lastDay,
             icon: null),
@@ -31,9 +30,9 @@ class DurationFilterOptions extends StatelessWidget {
         CustomPopUpMenuItem(
             onTap: () {
               BuildOverlayMenu.removeOverlay();
-              context
-                  .read<GetTaskCubit>()
-                  .getRecentTasksFilter(const Duration(hours: 24 * 7));
+              getIt.get<GetTaskCubit>().duration =
+                  const Duration(hours: 7 * 24);
+              getIt.get<GetTaskCubit>().getRecentTasksFilter();
             },
             title: AppTexts.last7Days,
             icon: null),
@@ -44,11 +43,23 @@ class DurationFilterOptions extends StatelessWidget {
         CustomPopUpMenuItem(
             onTap: () {
               BuildOverlayMenu.removeOverlay();
-              context
-                  .read<GetTaskCubit>()
-                  .getRecentTasksFilter(const Duration(hours: 24 * 28));
+              getIt.get<GetTaskCubit>().duration =
+                  const Duration(hours: 28 * 24);
+              getIt.get<GetTaskCubit>().getRecentTasksFilter();
             },
             title: AppTexts.last28Days,
+            icon: null),
+        Divider(
+          color: Colors.white,
+          height: 25.h,
+        ),
+        CustomPopUpMenuItem(
+            onTap: () {
+              BuildOverlayMenu.removeOverlay();
+              getIt.get<GetTaskCubit>().duration = null;
+              getIt.get<GetTaskCubit>().getRecentTasksFilter();
+            },
+            title: AppTexts.allFinishedTasks,
             icon: null),
       ],
     );

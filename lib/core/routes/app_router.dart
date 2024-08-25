@@ -161,10 +161,7 @@ class AppRouter {
             builder: (context) => MultiBlocProvider(
                   providers: [
                     BlocProvider.value(
-                      value: getIt.get<AddTaskCubit>(),
-                    ),
-                    BlocProvider.value(
-                      value: getIt.get<GetTaskCubit>(),
+                      value: getIt.get<GetTaskCubit>()..getRecentTasksFilter(),
                     ),
                     BlocProvider(
                       create: (context) => getIt.get<DeleteTaskCubit>(),

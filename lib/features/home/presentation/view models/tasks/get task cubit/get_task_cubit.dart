@@ -13,11 +13,13 @@ class GetTaskCubit extends Cubit<GetTaskState> {
   final TasksRepo tasksRepo;
   DateTime today = DateTime.now();
   DateTime focusedDay = DateTime.now();
+  Duration? duration;
 
   List<TaskModel> specificDayTasksList = [];
   List<TaskModel> tasks = [];
   List<TaskModel> onGoingTasks = [];
   List<TaskModel> doneTasks = [];
+  List<TaskModel> recentDoneTasks = [];
 
   Future<void> getTasks(
       {required bool isConnected,
@@ -46,21 +48,28 @@ class GetTaskCubit extends Cubit<GetTaskState> {
     });
   }
 
-  List<TaskModel> getRecentTasksFilter(Duration duration) {
-    List<TaskModel> recentTasks = [];
-    DateTime now = DateTime.now();
-    DateTime twentyFourHoursAgo = now.subtract(duration);
+  List<TaskModel> getRecentTasksFilter() {
+    if (duration == null) {
+      recentDoneTasks = doneTasks;
+      emit(GetTaskSuccess());
+      return recentDoneTasks;
+    } else {
+      recentDoneTasks = [];
 
-    for (var task in doneTasks) {
-      DateTime taskDate = DateFormat.yMMMd().parse(task.createdAt);
+      DateTime now = DateTime.now();
+      DateTime wantedDuration = now.subtract(duration!);
+      for (var task in doneTasks) {
+        if (task.doneAt != "" && task.isDone) {
+          DateTime taskDoneDate = DateTime.parse(task.doneAt);
 
-      if (taskDate.isAfter(twentyFourHoursAgo)) {
-        recentTasks.add(task);
+          if (taskDoneDate.isAfter(wantedDuration)) {
+            recentDoneTasks.add(task);
+          }
+        }
       }
+      emit(GetTaskSuccess());
+      return recentDoneTasks;
     }
-    emit(GetTaskSuccess());
-    print(recentTasks);
-    return recentTasks;
   }
 
   void getSpecificDayTasks(

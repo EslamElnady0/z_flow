@@ -35,6 +35,8 @@ class _CustomTaskItemState extends State<CustomTaskItem> {
         value: widget.task.isDone,
         onChanged: (value) async {
           widget.task.isDone = !(widget.task.isDone);
+          widget.task.doneAt =
+              widget.task.isDone ? DateTime.now().toString() : "";
           await updateTask(task: widget.task);
         },
       ),

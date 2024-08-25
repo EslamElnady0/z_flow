@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../view models/tasks/get task cubit/get_task_cubit.dart';
-import 'all_finished_tasks_body.dart';
+import 'finished_tasks_on_duration_listview.dart';
 import 'custom_filter_row.dart';
 
 class FinishedTasksViewBody extends StatelessWidget {
@@ -25,7 +25,7 @@ class FinishedTasksViewBody extends StatelessWidget {
           ),
           BlocBuilder<GetTaskCubit, GetTaskState>(
             builder: (context, state) {
-              return AllFinishedTasksBody(ctx: context);
+              return FinishedTasksOnDurationListView(ctx: context);
             },
           )
         ],
