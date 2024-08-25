@@ -22,6 +22,8 @@ class HabitModel extends HiveObject {
   bool isDoneBefore = false;
   @HiveField(8)
   int id = 0;
+  @HiveField(9)
+  String doneAt;
 
   HabitModel(
       {this.iteration = 3,
@@ -32,6 +34,7 @@ class HabitModel extends HiveObject {
       this.isIterable = false,
       this.isDone = false,
       this.isDoneBefore = false,
+      this.doneAt = '',
       this.id = 0});
 
   Map<String, dynamic> toJson() {
@@ -43,6 +46,7 @@ class HabitModel extends HiveObject {
       'isFavourited': isFavourited,
       'isIterable': isIterable,
       'isDone': isDone,
+      'doneAt': doneAt,
       'isDoneBefore': isDoneBefore,
       'id': id
     };
@@ -58,6 +62,7 @@ class HabitModel extends HiveObject {
       isIterable: json['isIterable'],
       isDone: json['isDone'],
       isDoneBefore: json['isDoneBefore'],
+      doneAt: json['doneAt'],
       id: json['id'],
     );
   }
