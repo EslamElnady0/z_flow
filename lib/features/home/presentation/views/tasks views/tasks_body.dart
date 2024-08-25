@@ -7,7 +7,9 @@ import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 
+import '../../../../../core/constants/colors.dart';
 import '../../../../../core/routes/app_router.dart';
+import '../../../../../core/styles/styles.dart';
 import '../../../../../core/utils/tasks utils/get_tasks.dart';
 import '../widgets/custom_light_colors_gradient_button.dart';
 import '../widgets/exitsing_tasks_body.dart';
@@ -36,7 +38,7 @@ class _TasksBodyState extends State<TasksBody> {
       children: [
         BlocBuilder<GetTaskCubit, GetTaskState>(
           builder: (context, state) {
-            if (getIt.get<GetTaskCubit>().tasks.isEmpty) {
+            if (getIt.get<GetTaskCubit>().onGoingTasks.isEmpty) {
               return const NoTasksBody();
             } else {
               return ExistingTasksBody(ctx: context);
@@ -44,6 +46,27 @@ class _TasksBodyState extends State<TasksBody> {
           },
         ),
         const Spacer(),
+        BlocBuilder<GetTaskCubit, GetTaskState>(
+          builder: (context, state) {
+            if (context.read<GetTaskCubit>().doneTasks.isEmpty) {
+              return const SizedBox.shrink();
+            } else {
+              return TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRouter.tasksFinished);
+                  },
+                  child: Text(
+                    AppTexts.tasksFinished,
+                    style: Styles.style16W400white.copyWith(
+                        decoration: TextDecoration.underline,
+                        decorationColor: ColorManager.lightGrey),
+                  ));
+            }
+          },
+        ),
+        SizedBox(
+          height: 12.h,
+        ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 64.w),
           child: CustomLightColorsGradientButton(
