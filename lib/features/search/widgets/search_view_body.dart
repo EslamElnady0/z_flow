@@ -25,10 +25,10 @@ class SearchViewBody extends StatelessWidget {
                 width: 50.w,
                 height: 44.h,
                 decoration: BoxDecoration(
-                    gradient: Constants.customItemsGradient,
+                    gradient: Constants.customButtonGradient,
                     borderRadius: BorderRadius.circular(16.r)),
                 child: const BackButton(
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               SizedBox(
