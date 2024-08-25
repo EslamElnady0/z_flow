@@ -52,11 +52,13 @@ class ZFlowApp extends StatelessWidget {
           listener: (context, state) {
             if (state is InternetCheckConnected) {
               scaffoldMessengerKey.currentState?.showSnackBar(
-                  buildCustomSnackBar(message: "Connected to internet"));
+                  buildCustomSnackBar(
+                      message: "All set! You're connected to the internet."));
             } else if (state is InternetCheckDisconnected) {
               scaffoldMessengerKey.currentState?.showSnackBar(
                   buildCustomSnackBar(
-                      message: "Disconnected from internet", isError: true));
+                      message: "Oops, it looks like you're offline!",
+                      isError: true));
             }
           },
           child: MaterialApp(
