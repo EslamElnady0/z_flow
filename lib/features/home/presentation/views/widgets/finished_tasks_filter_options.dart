@@ -19,14 +19,9 @@ class FinishedTasksFilterOptions extends StatelessWidget {
             },
             title: AppTexts.lastDay,
             icon: null),
-        SizedBox(
-          height: 5.h,
-        ),
-        const Divider(
+        Divider(
           color: Colors.white,
-        ),
-        SizedBox(
-          height: 5.h,
+          height: 25.h,
         ),
         CustomPopUpMenuItem(
             onTap: () {
@@ -34,14 +29,9 @@ class FinishedTasksFilterOptions extends StatelessWidget {
             },
             title: AppTexts.last7Days,
             icon: null),
-        SizedBox(
-          height: 5.h,
-        ),
-        const Divider(
+        Divider(
           color: Colors.white,
-        ),
-        SizedBox(
-          height: 5.h,
+          height: 25.h,
         ),
         CustomPopUpMenuItem(
             onTap: () {
