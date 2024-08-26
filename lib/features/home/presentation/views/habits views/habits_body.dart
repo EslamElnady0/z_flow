@@ -4,7 +4,7 @@ import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/no_empty_habit_list_empty.dart';
-import '../widgets/existing_habits_body.dart';
+import '../widgets/one_habit_list_empty.dart';
 import '../widgets/no_habits_body.dart';
 
 class HabitsBody extends StatelessWidget {

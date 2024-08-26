@@ -44,6 +44,9 @@ class OneHabitListEmpty extends StatelessWidget {
             },
           ),
         ),
+        SizedBox(
+          height: 16.h,
+        ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 64.w),
           child: CustomLightColorsGradientButton(
