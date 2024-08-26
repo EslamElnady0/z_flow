@@ -12,14 +12,23 @@ import 'custom_light_colors_gradient_button.dart';
 class OneHabitListEmpty extends StatelessWidget {
   final List<HabitModel> habits;
   final String text;
+  final bool isDoneHabits;
   const OneHabitListEmpty(
-      {super.key, required this.habits, required this.text});
+      {super.key,
+      required this.habits,
+      required this.text,
+      required this.isDoneHabits});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HabitsViewAllRow(onTap: () {}, text: text),
+        HabitsViewAllRow(
+            onTap: () {
+              Navigator.pushNamed(context, AppRouter.allHabits,
+                  arguments: isDoneHabits);
+            },
+            text: text),
         SizedBox(
           height: 16.h,
         ),

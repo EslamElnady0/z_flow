@@ -4,18 +4,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/widgets/build_overlay_menu.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/all_habits_duration_options.dart';
 
 import '../../../../../core/constants/assets.dart';
-import 'finished_tasks_filter_options.dart';
 
-class CustomTasksFilterRow extends StatefulWidget {
-  const CustomTasksFilterRow({super.key});
+class CustomHabitsFilterRow extends StatefulWidget {
+  const CustomHabitsFilterRow({super.key});
 
   @override
-  State<CustomTasksFilterRow> createState() => _CustomTasksFilterRowState();
+  State<CustomHabitsFilterRow> createState() => _CustomHabitsFilterRowState();
 }
 
-class _CustomTasksFilterRowState extends State<CustomTasksFilterRow> {
+class _CustomHabitsFilterRowState extends State<CustomHabitsFilterRow> {
   GlobalKey actionKey = GlobalKey();
   @override
   void dispose() {
@@ -35,7 +35,7 @@ class _CustomTasksFilterRowState extends State<CustomTasksFilterRow> {
         GestureDetector(
           onTap: () {
             BuildOverlayMenu.showOverlay(context, actionKey,
-                widget: const FinishedTasksDurationOptions());
+                widget: const AllHabitsDurationOptions());
           },
           child: SvgPicture.asset(
             key: actionKey,

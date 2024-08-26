@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:z_flow/core/utils/habits%20utils/add_habit.dart';
 import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
@@ -78,7 +77,7 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
                       HabitModel habit = HabitModel(
                         title: habitController.text,
                         id: id,
-                        createdAt: DateFormat.yMMMd().format(DateTime.now()),
+                        createdAt: DateTime.now().toString(),
                         deadline: endsInController.text,
                       );
                       await addHabit(

@@ -29,7 +29,10 @@ import '../../features/auth/presentation/views/log_in_view.dart';
 import '../../features/favourites/data/view models/favourite habits cubit/favourite_habits_cubit.dart';
 import '../../features/favourites/data/view models/favourite tasks cubit/favourite_tasks_cubit.dart';
 import '../../features/favourites/presentation/views/favourite_tasks_view.dart';
+import '../../features/home/presentation/view models/habits/delete habit cubit/delete_habit_cubit.dart';
+import '../../features/home/presentation/view models/habits/get habits cubit/get_habit_cubit.dart';
 import '../../features/home/presentation/view models/tasks/delete task cubit/delete_task_cubit.dart';
+import '../../features/home/presentation/views/habits views/all_habits_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
@@ -54,6 +57,7 @@ class AppRouter {
   static const String workSession = '/workSession';
   static const String search = '/search';
   static const String tasksFinished = '/tasksFinished';
+  static const String allHabits = '/allHabits';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -172,6 +176,27 @@ class AppRouter {
                   ],
                   child: const FinishedTasksView(),
                 ));
+      case allHabits:
+        var isDoneHabits = settings.arguments as bool;
+        return MaterialPageRoute(
+          settings: RouteSettings(arguments: isDoneHabits),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(
+                value: getIt.get<GetHabitCubit>()
+                  ..getRecentOnGoingHabitsFilter()
+                  ..getRecentDoneHabitsFilter(),
+              ),
+              BlocProvider(
+                create: (context) => getIt.get<DeleteHabitCubit>(),
+              ),
+              BlocProvider.value(
+                value: getIt.get<UpdateHabitCubit>(),
+              ),
+            ],
+            child: const AllHabitsView(),
+          ),
+        );
       default:
         return MaterialPageRoute(
             builder: (context) => const Center(child: Text("7moksha")));

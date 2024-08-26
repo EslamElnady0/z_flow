@@ -18,11 +18,17 @@ class NoEmptyHabitListEmpty extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HabitsViewAllRow(onTap: () {}, text: AppTexts.habitsToAccomplishToday),
+        HabitsViewAllRow(
+            onTap: () {
+              Navigator.pushNamed(context, AppRouter.allHabits,
+                  arguments: false);
+            },
+            text: AppTexts.habitsToAccomplishToday),
         SizedBox(
           height: 16.h,
         ),
         Expanded(
+          flex: 3,
           child: ListView.separated(
             itemBuilder: (context, index) {
               GlobalKey actionKey = GlobalKey();
@@ -46,11 +52,17 @@ class NoEmptyHabitListEmpty extends StatelessWidget {
         SizedBox(
           height: 16.h,
         ),
-        HabitsViewAllRow(onTap: () {}, text: AppTexts.habitsYouCompletedToday),
+        HabitsViewAllRow(
+            onTap: () {
+              Navigator.pushNamed(context, AppRouter.allHabits,
+                  arguments: true);
+            },
+            text: AppTexts.habitsYouCompletedToday),
         SizedBox(
           height: 16.h,
         ),
         Expanded(
+          flex: 2,
           child: ListView.separated(
             itemBuilder: (context, index) {
               GlobalKey actionKey = GlobalKey();

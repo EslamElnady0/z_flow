@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/custom_habits_filter_row.dart';
 
-import '../../view models/tasks/get task cubit/get_task_cubit.dart';
-import 'finished_tasks_on_duration_listview.dart';
-import 'custom_filter_row.dart';
+import '../../view models/habits/get habits cubit/get_habit_cubit.dart';
+import 'all_habits_list_view.dart';
 
-class FinishedTasksViewBody extends StatelessWidget {
-  const FinishedTasksViewBody({super.key});
+class AllHabitsViewBody extends StatelessWidget {
+  final bool isDoneHabits;
+  const AllHabitsViewBody({super.key, required this.isDoneHabits});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +20,13 @@ class FinishedTasksViewBody extends StatelessWidget {
           SizedBox(
             height: 16.h,
           ),
-          const CustomTasksFilterRow(),
+          const CustomHabitsFilterRow(),
           SizedBox(
             height: 20.h,
           ),
-          BlocBuilder<GetTaskCubit, GetTaskState>(
+          BlocBuilder<GetHabitCubit, GetHabitState>(
             builder: (context, state) {
-              return FinishedTasksOnDurationListView(ctx: context);
+              return AllHabitsListView(isDoneHabits: isDoneHabits);
             },
           )
         ],

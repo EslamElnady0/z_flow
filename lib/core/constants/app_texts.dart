@@ -8,6 +8,8 @@ class AppTexts {
   static const String tasks = "Tasks";
   static const String viewAll = "View All";
   static const String filter = "Filter";
+  static const String onGoingHabits = "Ongoing Habits";
+  static const String doneHabits = "Done Habits";
   static const String calender = "Calender";
   static const String time = "Time";
   static const String habits = "Habits";

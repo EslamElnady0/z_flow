@@ -21,12 +21,14 @@ class HabitsBody extends StatelessWidget {
           return OneHabitListEmpty(
             habits: context.read<GetHabitCubit>().onGoinghabits,
             text: AppTexts.habitsToAccomplishToday,
+            isDoneHabits: false,
           );
         } else if (getIt.get<GetHabitCubit>().onGoinghabits.isEmpty &&
             getIt.get<GetHabitCubit>().doneHabits.isNotEmpty) {
           return OneHabitListEmpty(
             habits: context.read<GetHabitCubit>().doneHabits,
             text: AppTexts.habitsYouCompletedToday,
+            isDoneHabits: true,
           );
         } else {
           return NoEmptyHabitListEmpty(
