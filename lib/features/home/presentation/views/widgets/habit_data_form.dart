@@ -6,6 +6,7 @@ import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart'
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/styles/styles.dart';
+import 'custom_check_box_container.dart';
 import 'custom_data_entry_text_field.dart';
 
 class HabitDataForm extends StatefulWidget {
@@ -13,6 +14,7 @@ class HabitDataForm extends StatefulWidget {
   final TextEditingController endsInController;
   final TextEditingController noteController;
   final HabitModel? habit;
+  final bool isEdit;
 
   final String text;
   final GlobalKey<FormState> formKey;
@@ -22,6 +24,7 @@ class HabitDataForm extends StatefulWidget {
       required this.endsInController,
       required this.noteController,
       required this.text,
+      this.isEdit = false,
       required this.formKey,
       this.habit});
 
@@ -118,10 +121,17 @@ class _HabitDataFormState extends State<HabitDataForm> {
           SizedBox(
             height: 16.h,
           ),
-          // CustomCheckBoxContainer(
-          //   text: AppTexts.remiderToHabit,
-          //   onChanged: (value) {},
-          // ),
+          widget.isEdit
+              ? CustomCheckBoxContainer(
+                  text: AppTexts.remiderToHabit,
+                  value: widget.habit!.isIterable,
+                  onChanged: (value) {
+                    setState(() {
+                      widget.habit!.isIterable = value!;
+                    });
+                  },
+                )
+              : const SizedBox(),
           SizedBox(
             height: 40.h,
           ),

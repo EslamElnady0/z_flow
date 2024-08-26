@@ -35,6 +35,8 @@ class _CustomHabitItemState extends State<CustomHabitItem> {
         value: widget.habit.isDone,
         onChanged: (value) async {
           widget.habit.isDone = !(widget.habit.isDone);
+          widget.habit.doneAt =
+              widget.habit.isDone ? DateTime.now().toString() : "";
           await updateHabit(habit: widget.habit);
         },
       ),

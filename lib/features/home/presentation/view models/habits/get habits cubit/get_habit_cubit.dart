@@ -10,9 +10,12 @@ class GetHabitCubit extends Cubit<GetHabitState> {
   GetHabitCubit(this.habitRepo) : super(GetHabitInitial());
 
   final HabitsRepo habitRepo;
+  Duration? duration;
   List<HabitModel> habits = [];
   List<HabitModel> onGoinghabits = [];
   List<HabitModel> doneHabits = [];
+  List<HabitModel> recentDoneHabits = [];
+  List<HabitModel> recentOnGoingHabits = [];
 
   Future<void> getHabits(
       {required String uid,
@@ -38,5 +41,53 @@ class GetHabitCubit extends Cubit<GetHabitState> {
       }
       emit(GetHabitSucuess());
     });
+  }
+
+  List<HabitModel> getRecentDoneHabitsFilter() {
+    if (duration == null) {
+      recentDoneHabits = doneHabits;
+      emit(GetHabitSucuess());
+      return recentDoneHabits;
+    } else {
+      recentDoneHabits = [];
+
+      DateTime now = DateTime.now();
+      DateTime wantedDuration = now.subtract(duration!);
+      for (var habit in doneHabits) {
+        if (habit.doneAt != "" && habit.isDone) {
+          DateTime habitDoneDate = DateTime.parse(habit.doneAt);
+
+          if (habitDoneDate.isAfter(wantedDuration)) {
+            recentDoneHabits.add(habit);
+          }
+        }
+      }
+      emit(GetHabitSucuess());
+      return recentDoneHabits;
+    }
+  }
+
+  List<HabitModel> getRecentOnGoingHabitsFilter() {
+    if (duration == null) {
+      recentOnGoingHabits = onGoinghabits;
+      emit(GetHabitSucuess());
+      return recentOnGoingHabits;
+    } else {
+      recentOnGoingHabits = [];
+
+      DateTime now = DateTime.now();
+      DateTime wantedDuration = now.subtract(duration!);
+      for (var habit in onGoinghabits) {
+        if (!habit.isDone) {
+          DateTime onGoingHabitDate = DateTime.parse(habit.createdAt);
+
+          if (onGoingHabitDate.isAfter(wantedDuration)) {
+            recentOnGoingHabits.add(habit);
+          }
+        }
+      }
+      emit(GetHabitSucuess());
+      return recentOnGoingHabits;
+    }
   }
 }

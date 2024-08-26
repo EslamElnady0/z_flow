@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
-import '../../../../../core/constants/assets.dart';
-import '../widgets/custom_light_colors_gradient_button.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/no_empty_habit_list_empty.dart';
 import '../widgets/existing_habits_body.dart';
 import '../widgets/no_habits_body.dart';
 
@@ -15,33 +12,29 @@ class HabitsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<GetHabitCubit, GetHabitState>(
-          builder: (context, state) {
-            if (getIt.get<GetHabitCubit>().habits.isEmpty) {
-              return const NoHabitsBody();
-            }
-            return ExistingHabitsBody(
-              ctx: context,
-            );
-          },
-        ),
-        const Spacer(),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 64.w),
-          child: CustomLightColorsGradientButton(
-            icon: Assets.addIcon,
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRouter.addHabit);
-            },
-            text: AppTexts.addNewHabit,
-          ),
-        ),
-        SizedBox(
-          height: 104.h,
-        )
-      ],
+    return BlocBuilder<GetHabitCubit, GetHabitState>(
+      builder: (context, state) {
+        if (getIt.get<GetHabitCubit>().habits.isEmpty) {
+          return const NoHabitsBody();
+        } else if (getIt.get<GetHabitCubit>().onGoinghabits.isNotEmpty &&
+            getIt.get<GetHabitCubit>().doneHabits.isEmpty) {
+          return OneHabitListEmpty(
+            habits: context.read<GetHabitCubit>().onGoinghabits,
+            text: AppTexts.habitsToAccomplishToday,
+          );
+        } else if (getIt.get<GetHabitCubit>().onGoinghabits.isEmpty &&
+            getIt.get<GetHabitCubit>().doneHabits.isNotEmpty) {
+          return OneHabitListEmpty(
+            habits: context.read<GetHabitCubit>().doneHabits,
+            text: AppTexts.habitsYouCompletedToday,
+          );
+        } else {
+          return NoEmptyHabitListEmpty(
+            onGoingHabits: context.read<GetHabitCubit>().onGoinghabits,
+            doneHabits: context.read<GetHabitCubit>().doneHabits,
+          );
+        }
+      },
     );
   }
 }

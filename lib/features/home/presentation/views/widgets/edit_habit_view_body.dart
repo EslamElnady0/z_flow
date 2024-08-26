@@ -52,6 +52,7 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
             padding: EdgeInsets.symmetric(horizontal: 22.w),
             child: HabitDataForm(
               habit: widget.habit,
+              isEdit: true,
               habitController: taskController,
               endsInController: endsInController,
               text: AppTexts.youCanEditHabit,
@@ -73,7 +74,7 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
                     if (formKey.currentState!.validate()) {
                       widget.habit.title = taskController.text;
                       widget.habit.deadline = endsInController.text;
-                      // widget.habit.notes = noteController.text;
+                      //  widget.habit.note = noteController.text;
                       formKey.currentState!.save();
                       await updateHabit(habit: widget.habit);
                       if (context.mounted) {

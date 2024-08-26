@@ -6,6 +6,7 @@ class AppTexts {
   static const String back = "Back";
   static const String lock = "Lock";
   static const String tasks = "Tasks";
+  static const String viewAll = "View All";
   static const String filter = "Filter";
   static const String calender = "Calender";
   static const String time = "Time";
