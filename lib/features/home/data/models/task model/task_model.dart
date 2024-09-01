@@ -24,6 +24,8 @@ class TaskModel extends HiveObject {
   final int id;
   @HiveField(9)
   String doneAt;
+  @HiveField(10)
+  String category;
 
   TaskModel(
       {required this.sideTask,
@@ -33,6 +35,7 @@ class TaskModel extends HiveObject {
       required this.createdAt,
       this.isDoneBefore = false,
       required this.deadline,
+      this.category = "",
       this.isFavourited = false,
       this.doneAt = "",
       this.isDone = false});
@@ -45,6 +48,7 @@ class TaskModel extends HiveObject {
       'deadline': deadline,
       'sideTask': sideTask,
       'isFavourited': isFavourited,
+      'category': category,
       'isDone': isDone,
       'isDoneBefore': isDoneBefore,
       'doneAt': doneAt,
@@ -60,6 +64,7 @@ class TaskModel extends HiveObject {
       deadline: json['deadline'],
       sideTask: json['sideTask'],
       isFavourited: json['isFavourited'],
+      category: json['category'],
       isDone: json['isDone'],
       isDoneBefore: json['isDoneBefore'],
       doneAt: json['doneAt'],
