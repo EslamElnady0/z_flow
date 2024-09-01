@@ -18,6 +18,10 @@ import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20t
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
+import 'package:z_flow/features/tasks%20cats/data/data%20sources/task_cats_local_data_source.dart';
+import 'package:z_flow/features/tasks%20cats/data/repos/task_cats_repo_impl.dart';
+import 'package:z_flow/features/tasks%20cats/presentation/view%20models/add%20tasks%20category%20cubit/add_tasks_category_cubit.dart';
+import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
 import 'package:z_flow/features/work%20session/presentation/ui%20cubits/timer%20cubit/timer_cubit.dart';
 import 'package:z_flow/features/work%20session/presentation/ui%20cubits/work%20session%20cubit/work_session_cubit.dart';
 
@@ -27,6 +31,7 @@ import '../../features/home/presentation/view models/habits/add habit cubit/add_
 import '../../features/home/presentation/view models/habits/delete habit cubit/delete_habit_cubit.dart';
 import '../../features/home/presentation/view models/habits/get habits cubit/get_habit_cubit.dart';
 import '../../features/home/presentation/view models/habits/update habit cubit/update_habit_cubit.dart';
+import '../../features/tasks cats/data/data sources/task_cats_remote_data_source.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -83,4 +88,14 @@ void setupServiceLocator() {
   //////////// search cubit ////////////////
   getIt.registerFactory<SearchCubit>(
       () => SearchCubit(TasksLocalDataSourceImpl()));
+
+  ////////////  task cats cubit ////////////////
+
+  getIt.registerSingleton(TaskCatsRepoImpl(
+      taskCatsLocalDataSource: TaskCatsLocalDataSourceImpl(),
+      taskCatsRemoteDataSource: TaskCatsRemoteDataSourceImpl()));
+  getIt.registerFactory<GetTasksCategoriesCubit>(() =>
+      GetTasksCategoriesCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));
+  getIt.registerFactory<AddTasksCategoryCubit>(
+      () => AddTasksCategoryCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));
 }

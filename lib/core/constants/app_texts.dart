@@ -6,6 +6,23 @@ class AppTexts {
   static const String back = "Back";
   static const String lock = "Lock";
   static const String tasks = "Tasks";
+  static const String work = "Work";
+  static const String personal = "Personal";
+  static const String shopping = "Shopping";
+  static const String fitness = "Fitness";
+  static const String finance = "Finance";
+  static const String education = "Education";
+  static const String health = "Health";
+  static const String travel = "Travel";
+  static const String addNewCategory = "Add a new category";
+  static const String taskClassifications = "Task classifications";
+  static const String exploreYourTasksCategorize =
+      "Explore your tasks easily - Categorize tasks with just one tap!";
+  static const String addTaskToCategoryList = "Add a task to the list";
+  static const String editCategoryList = "Edit the Category List";
+  static const String addNewCategoryToList =
+      "Easily add a new category to your tasks";
+
   static const String viewAll = "View All";
   static const String filter = "Filter";
   static const String onGoingHabits = "Ongoing Habits";

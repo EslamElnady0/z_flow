@@ -36,6 +36,7 @@ import '../../features/home/presentation/views/habits views/all_habits_view.dart
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
+import '../../features/tasks cats/presentation/views/tasks_categories_view.dart';
 import '../../features/work session/presentation/ui cubits/work session cubit/work_session_cubit.dart';
 
 class AppRouter {
@@ -58,6 +59,9 @@ class AppRouter {
   static const String search = '/search';
   static const String tasksFinished = '/tasksFinished';
   static const String allHabits = '/allHabits';
+  static const String taskCats = '/taskCats';
+  static const String addNewCat = '/addNewCat';
+  static const String editCatList = '/editCatList';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -197,6 +201,12 @@ class AppRouter {
             child: const AllHabitsView(),
           ),
         );
+      case taskCats:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<SearchCubit>(),
+                  child: const TasksCategoriesView(),
+                ));
       default:
         return MaterialPageRoute(
             builder: (context) => const Center(child: Text("7moksha")));

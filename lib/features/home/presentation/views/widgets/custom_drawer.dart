@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/constants/assets.dart';
+import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
@@ -11,6 +12,8 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      shadowColor: ColorManager.primaryColorAccent,
+      elevation: 30,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(24.r),
@@ -41,6 +44,9 @@ class CustomDrawer extends StatelessWidget {
                         right: 12.w,
                         left: 12.w,
                         top: index == 0 ? 12.h : 0,
+                        bottom: index == Constants.drawerItems.length - 1
+                            ? 12.h
+                            : 0,
                       ),
                       padding:
                           EdgeInsets.symmetric(horizontal: 12.w, vertical: 3.h),

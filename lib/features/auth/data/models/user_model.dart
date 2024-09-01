@@ -3,11 +3,12 @@ class UserModel {
   String firstName = "";
   String lastName = "";
   final String uid;
-  UserModel(
-      {required this.email,
-      required this.firstName,
-      required this.lastName,
-      required this.uid});
+  UserModel({
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.uid,
+  });
 
   Map<String, dynamic> toJson() {
     return {

@@ -13,10 +13,12 @@ class Constants {
   static const String tasksBox = 'tasksBox';
   static const String constantsBox = 'constantsBox';
   static const String habitsBox = 'habitsBox';
+  static const String categoriesBox = 'categoriesBox';
   static const String usersCollection = 'users';
   static const String tasksCollection = 'tasks';
   static const String habitsCollection = 'habits';
   static const String targetsCollection = 'targets';
+  static const String categoriesCollection = 'categories';
   static final List<OnboardingModel> onBoardingScreens = [
     const OnboardingModel(
         image: Assets.firstOnBoarding,
@@ -85,6 +87,17 @@ class Constants {
       borderRadius: BorderRadius.circular(12.r),
       borderSide: const BorderSide(color: Color(0xffD9D9D9), width: 1));
 
+  static List<String> taskCatsList = [
+    AppTexts.work,
+    AppTexts.personal,
+    AppTexts.shopping,
+    AppTexts.fitness,
+    AppTexts.finance,
+    AppTexts.education,
+    AppTexts.health,
+    AppTexts.travel
+  ];
+
   static List<DrawerItem> drawerItems = [
     DrawerItem(
         title: AppTexts.startWorkSession,
@@ -98,7 +111,9 @@ class Constants {
         route: AppRouter.stayAway),
     DrawerItem(title: AppTexts.myGoals, icon: Assets.goals, route: ""),
     DrawerItem(
-        title: AppTexts.taskCats, icon: Assets.listWithArrows, route: ""),
+        title: AppTexts.taskCats,
+        icon: Assets.listWithArrows,
+        route: AppRouter.taskCats),
     DrawerItem(
         title: AppTexts.favoriteTasks,
         icon: Assets.starOutLined,
