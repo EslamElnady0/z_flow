@@ -25,7 +25,7 @@ class TaskModel extends HiveObject {
   @HiveField(9)
   String doneAt;
   @HiveField(10)
-  String category;
+  List<dynamic> category;
 
   TaskModel(
       {required this.sideTask,
@@ -35,7 +35,7 @@ class TaskModel extends HiveObject {
       required this.createdAt,
       this.isDoneBefore = false,
       required this.deadline,
-      this.category = "",
+      this.category = const [],
       this.isFavourited = false,
       this.doneAt = "",
       this.isDone = false});

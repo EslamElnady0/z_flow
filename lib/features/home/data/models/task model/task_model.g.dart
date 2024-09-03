@@ -27,7 +27,7 @@ class TaskModelAdapter extends TypeAdapter<TaskModel> {
       isFavourited: fields[5] as bool,
       isDone: fields[6] as bool,
       doneAt: fields[9] as String,
-      category: fields[10] as String,
+      category: (fields[10] as List).cast<dynamic>(),
     );
   }
 
