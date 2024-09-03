@@ -6,8 +6,9 @@ import '../../../../../core/styles/styles.dart';
 
 class CustomAuthTextField extends StatelessWidget {
   final String hintText;
-  final IconData icon;
+  final IconData? icon;
   final bool? isPassword;
+  final Widget? suffix;
   final void Function(String)? onChanged;
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -19,6 +20,7 @@ class CustomAuthTextField extends StatelessWidget {
     required this.controller,
     this.onChanged,
     this.validator,
+    this.suffix,
   });
 
   @override
@@ -39,11 +41,12 @@ class CustomAuthTextField extends StatelessWidget {
       style: Styles.style16W500grey.copyWith(color: Colors.white),
       decoration: InputDecoration(
           errorStyle: TextStyle(fontSize: 12.sp),
-          suffixIcon: Icon(
-            icon,
-            size: 22.r,
-            color: Colors.grey,
-          ),
+          suffixIcon: suffix ??
+              Icon(
+                icon,
+                size: 22.r,
+                color: Colors.grey,
+              ),
           hintText: hintText,
           hintStyle: TextStyle(
               color: Colors.grey, fontWeight: FontWeight.w500, fontSize: 16.sp),
