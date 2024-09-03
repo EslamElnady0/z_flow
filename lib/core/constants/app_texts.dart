@@ -22,6 +22,8 @@ class AppTexts {
   static const String editCategoryList = "Edit the Category List";
   static const String addNewCategoryToList =
       "Easily add a new category to your tasks";
+  static const String easilyManageYourCategorizedTasks =
+      "Easily manage your categorized tasks";
 
   static const String viewAll = "View All";
   static const String filter = "Filter";
