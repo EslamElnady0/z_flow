@@ -11,6 +11,8 @@ import 'package:z_flow/features/home/data/data%20sources/habits/habits_local_dat
 import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_local_data_source.dart';
 
 import '../../../../core/errors/failure.dart';
+import '../../../../core/utils/habits utils/get_habits.dart';
+import '../../../../core/utils/tasks utils/get_tasks.dart';
 import 'auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
@@ -142,6 +144,8 @@ class AuthRepoImpl implements AuthRepo {
       await firebaseAuth.currentUser!.updateDisplayName(gUser.displayName!);
       await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
       await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
+      clearAllTasksLists();
+      clearAllHabitsLists();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {

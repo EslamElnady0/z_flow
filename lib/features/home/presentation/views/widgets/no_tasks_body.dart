@@ -9,16 +9,19 @@ class NoTasksBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 40.h,
-        ),
-        Image.asset(
-          Assets.noTasksImage,
-          width: 160.w,
-        ),
-      ],
+    return Expanded(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 40.h,
+          ),
+          Image.asset(
+            Assets.noTasksImage,
+            width: 160.w,
+          ),
+          const Spacer(),
+        ],
+      ),
     );
   }
 }

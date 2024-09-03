@@ -5,7 +5,6 @@ import 'package:z_flow/features/home/presentation/view%20models/habits/get%20hab
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 
 Future<void> getHabits() async {
-  clearAllHabitsLists();
   await getIt.get<GetHabitCubit>().getHabits(
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
       isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,

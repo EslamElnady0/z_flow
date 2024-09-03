@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/routes/app_router.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
 import '../../../../core/constants/app_texts.dart';
+import '../../../../core/constants/assets.dart';
 import '../../../../core/styles/styles.dart';
+import 'categorized_tasks_body.dart';
 import 'custom_task_category_item.dart';
 
 class EditCategoryListViewBody extends StatelessWidget {
@@ -36,6 +41,29 @@ class EditCategoryListViewBody extends StatelessWidget {
             title: category,
             isEdit: true,
           ),
+          SizedBox(
+            height: 12.h,
+          ),
+          CategorizedTasksBody(category: category),
+          SizedBox(
+            height: 20.h,
+          ),
+          CustomLightColorsGradientButton(
+              text: AppTexts.addTaskToCategoryList,
+              icon: Assets.addIcon,
+              onTap: () {
+                Navigator.pushNamed(context, AppRouter.addTask);
+              }),
+          SizedBox(
+            height: 24.h,
+          ),
+          BottomScreenActions(
+              onOtherButtonPressed: () {},
+              onSavePressed: () {},
+              otherButtonText: AppTexts.delete),
+          SizedBox(
+            height: 48.h,
+          )
         ],
       ),
     );

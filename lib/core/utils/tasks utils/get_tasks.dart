@@ -5,7 +5,6 @@ import '../../DI/service_locator.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 
 Future<void> getTasks() async {
-  clearAllTasksLists();
   await getIt.get<GetTaskCubit>().getTasks(
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
       isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
