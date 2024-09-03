@@ -15,41 +15,43 @@ class ExistingTasksBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          AppTexts.onGoingTasks,
-          style: Styles.style16W600grey,
-        ),
-        SizedBox(
-          height: 16.h,
-        ),
-        SizedBox(
-          height: 470.h,
-          child: ListView.separated(
-            itemBuilder: (context, index) {
-              GlobalKey actionKey = GlobalKey();
-              return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(right: 10.w),
-                  child: CustomTaskItem(
-                    task: ctx.read<GetTaskCubit>().onGoingTasks[index],
-                    actionKey: actionKey,
-                  ));
-            },
-            itemCount: ctx.read<GetTaskCubit>().onGoingTasks.length,
-            padding: EdgeInsets.zero,
-            separatorBuilder: (context, index) {
-              return SizedBox(
-                height: 16.h,
-              );
-            },
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Text(
+            AppTexts.onGoingTasks,
+            style: Styles.style16W600grey,
           ),
-        ),
-        SizedBox(
-          height: 10.h,
-        ),
-      ],
+          SizedBox(
+            height: 16.h,
+          ),
+          Expanded(
+            child: ListView.separated(
+              itemBuilder: (context, index) {
+                GlobalKey actionKey = GlobalKey();
+                return Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.only(right: 10.w),
+                    child: CustomTaskItem(
+                      task: ctx.read<GetTaskCubit>().onGoingTasks[index],
+                      actionKey: actionKey,
+                    ));
+              },
+              itemCount: ctx.read<GetTaskCubit>().onGoingTasks.length,
+              padding: EdgeInsets.zero,
+              separatorBuilder: (context, index) {
+                return SizedBox(
+                  height: 16.h,
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -35,6 +35,7 @@ class _TasksBodyState extends State<TasksBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       children: [
         BlocBuilder<GetTaskCubit, GetTaskState>(
           builder: (context, state) {
@@ -45,27 +46,27 @@ class _TasksBodyState extends State<TasksBody> {
             }
           },
         ),
-        const Spacer(),
         BlocBuilder<GetTaskCubit, GetTaskState>(
           builder: (context, state) {
             if (context.read<GetTaskCubit>().doneTasks.isEmpty) {
               return const SizedBox.shrink();
             } else {
-              return TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, AppRouter.tasksFinished);
-                  },
-                  child: Text(
-                    AppTexts.tasksFinished,
-                    style: Styles.style16W400white.copyWith(
-                        decoration: TextDecoration.underline,
-                        decorationColor: ColorManager.lightGrey),
-                  ));
+              return InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRouter.tasksFinished);
+                },
+                child: Text(
+                  AppTexts.tasksFinished,
+                  style: Styles.style16W400white.copyWith(
+                      decoration: TextDecoration.underline,
+                      decorationColor: ColorManager.lightGrey),
+                ),
+              );
             }
           },
         ),
         SizedBox(
-          height: 12.h,
+          height: 16.h,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 64.w),
@@ -78,7 +79,7 @@ class _TasksBodyState extends State<TasksBody> {
           ),
         ),
         SizedBox(
-          height: 104.h,
+          height: 100.h,
         )
       ],
     );

@@ -30,7 +30,7 @@ class TasksCategoriesViewBody extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(
-            height: 12.h,
+            height: 24.h,
           ),
           Expanded(
             child: ListView.separated(
@@ -39,7 +39,11 @@ class TasksCategoriesViewBody extends StatelessWidget {
                 return TaskCategoryItem(
                     index: index,
                     onTap: () {
-                      Navigator.of(context).pushNamed(AppRouter.editCatList);
+                      Navigator.of(context).pushNamed(AppRouter.editCatList,
+                          arguments: {
+                            "title": Constants.taskCatsList[index],
+                            "index": index
+                          });
                     },
                     title: Constants.taskCatsList[index]);
               },
@@ -51,7 +55,7 @@ class TasksCategoriesViewBody extends StatelessWidget {
               itemCount: Constants.taskCatsList.length,
             ),
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: 24.h),
           CustomLightColorsGradientButton(
               text: AppTexts.addNewCategory,
               icon: Assets.addIcon,

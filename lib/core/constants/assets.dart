@@ -47,6 +47,7 @@ class Assets {
   static const String starOutLined = "assets/images/svgs/starOutLined.svg";
   static const String playIcon = "assets/images/svgs/playIcon.svg";
   static const String pauseIcon = "assets/images/svgs/pauseIcon.svg";
+  static const String arrowDownIos = "assets/images/svgs/arrowDownIos.svg";
 
   ////////////////////             audios       ///////////////////////////////////
 

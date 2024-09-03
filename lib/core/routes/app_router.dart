@@ -218,6 +218,7 @@ class AppRouter {
                   child: const AddCategoryView(),
                 ));
       case editCatList:
+        var category = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
                   providers: [
@@ -235,7 +236,8 @@ class AppRouter {
                     ),
                   ],
                   child: const EditCategoryListView(),
-                ));
+                ),
+            settings: RouteSettings(arguments: category));
       default:
         return MaterialPageRoute(
             builder: (context) => const Center(child: Text("7moksha")));

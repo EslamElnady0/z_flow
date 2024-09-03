@@ -10,6 +10,10 @@ class EditCategoryListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var arguments =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    String category = arguments['title'] as String;
+    int index = arguments['index'] as int;
     return CustomScaffold(
       appBar: AppBar(
         title: Text(
@@ -19,7 +23,7 @@ class EditCategoryListView extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: const EditCategoryListViewBody(),
+      body: EditCategoryListViewBody(category: category, index: index),
     );
   }
 }
