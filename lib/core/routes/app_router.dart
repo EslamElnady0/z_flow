@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
@@ -42,6 +43,7 @@ import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
 import '../../features/tasks cats/presentation/views/tasks_categories_view.dart';
 import '../../features/work session/presentation/ui cubits/work session cubit/work_session_cubit.dart';
+import '../core cubits/internet check cubit/internet_check_cubit.dart';
 
 class AppRouter {
   static const String splash = '/splash';
@@ -208,7 +210,12 @@ class AppRouter {
       case taskCats:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
-                  create: (context) => getIt<GetTasksCategoriesCubit>(),
+                  create: (context) => getIt<GetTasksCategoriesCubit>()
+                    ..getTasksCategories(
+                        isConnected:
+                            getIt<InternetCheckCubit>().isDeviceConnected,
+                        isAnonymous:
+                            getIt<FirebaseAuth>().currentUser!.isAnonymous),
                   child: const TasksCategoriesView(),
                 ));
       case addNewCat:

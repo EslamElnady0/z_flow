@@ -31,7 +31,7 @@ main() async {
   Hive.registerAdapter(HabitModelAdapter());
   await Hive.openBox<TaskModel>(Constants.tasksBox);
   await Hive.openBox<HabitModel>(Constants.habitsBox);
-  await Hive.openBox(Constants.categoriesBox);
+  await Hive.openBox<String>(Constants.categoriesBox);
   await Hive.openBox(Constants.constantsBox);
   runApp(const ZFlowApp());
 }

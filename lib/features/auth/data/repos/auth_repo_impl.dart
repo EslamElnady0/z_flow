@@ -9,6 +9,7 @@ import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/features/auth/data/models/user_model.dart';
 import 'package:z_flow/features/home/data/data%20sources/habits/habits_local_data_source.dart';
 import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_local_data_source.dart';
+import 'package:z_flow/features/tasks%20cats/data/data%20sources/task_cats_local_data_source.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/utils/habits utils/get_habits.dart';
@@ -106,6 +107,9 @@ class AuthRepoImpl implements AuthRepo {
           email: email, password: password);
       await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
       await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
+      TaskCatsLocalDataSourceImpl().deleteAllTaskCats();
+      clearAllTasksLists();
+      clearAllHabitsLists();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
@@ -144,6 +148,8 @@ class AuthRepoImpl implements AuthRepo {
       await firebaseAuth.currentUser!.updateDisplayName(gUser.displayName!);
       await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
       await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
+      TaskCatsLocalDataSourceImpl().deleteAllTaskCats();
+
       clearAllTasksLists();
       clearAllHabitsLists();
       return right(null);
@@ -180,6 +186,10 @@ class AuthRepoImpl implements AuthRepo {
       await addUserToFireStore(user: user);
       await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
       await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
+      TaskCatsLocalDataSourceImpl().deleteAllTaskCats();
+
+      clearAllTasksLists();
+      clearAllHabitsLists();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {

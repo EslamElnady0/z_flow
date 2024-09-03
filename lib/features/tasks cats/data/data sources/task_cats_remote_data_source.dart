@@ -6,6 +6,7 @@ import 'package:z_flow/core/constants/constants.dart';
 abstract class TaskCatsRemoteDataSource {
   Future<List<String>> getTaskCats();
   Future<void> addTaskCats(String category);
+  Future<void> deleteTaskCategory(String category);
 }
 
 class TaskCatsRemoteDataSourceImpl implements TaskCatsRemoteDataSource {
@@ -35,5 +36,16 @@ class TaskCatsRemoteDataSourceImpl implements TaskCatsRemoteDataSource {
         .collection(Constants.categoriesCollection)
         .doc(category)
         .set({"field": "value"});
+  }
+
+  @override
+  Future<void> deleteTaskCategory(String category) async {
+    await getIt
+        .get<FirebaseFirestore>()
+        .collection(Constants.usersCollection)
+        .doc(getIt.get<FirebaseAuth>().currentUser!.uid)
+        .collection(Constants.categoriesCollection)
+        .doc(category)
+        .delete();
   }
 }
