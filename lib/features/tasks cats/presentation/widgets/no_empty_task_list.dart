@@ -18,16 +18,16 @@ class NoEmptyTaskList extends StatelessWidget {
       child: Column(
         children: [
           OneTaskListEmpty(
-              tasks: onGoingTasks,
-              text: AppTexts.onGoingTasks,
-              isDoneTasks: false),
+            tasks: onGoingTasks,
+            text: AppTexts.onGoingTasks,
+          ),
           SizedBox(
             height: 16.h,
           ),
           OneTaskListEmpty(
-              tasks: doneTasks,
-              text: AppTexts.tasksFinished,
-              isDoneTasks: true),
+            tasks: doneTasks,
+            text: AppTexts.tasksFinished,
+          ),
         ],
       ),
     );

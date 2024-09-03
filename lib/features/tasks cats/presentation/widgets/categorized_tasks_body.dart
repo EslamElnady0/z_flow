@@ -22,14 +22,12 @@ class CategorizedTasksBody extends StatelessWidget {
           return OneTaskListEmpty(
             tasks: getIt.get<GetTaskCubit>().onGoingTasks,
             text: AppTexts.onGoingTasks,
-            isDoneTasks: false,
           );
         } else if (getIt.get<GetTaskCubit>().onGoingTasks.isEmpty &&
             getIt.get<GetTaskCubit>().doneTasks.isNotEmpty) {
           return OneTaskListEmpty(
             tasks: getIt.get<GetTaskCubit>().doneTasks,
             text: AppTexts.tasksFinished,
-            isDoneTasks: true,
           );
         } else {
           return NoEmptyTaskList(
