@@ -9,9 +9,15 @@ import '../../../../core/routes/app_router.dart';
 import '../../../../core/styles/styles.dart';
 import 'custom_task_category_item.dart';
 
-class TasksCategoriesViewBody extends StatelessWidget {
+class TasksCategoriesViewBody extends StatefulWidget {
   const TasksCategoriesViewBody({super.key});
 
+  @override
+  State<TasksCategoriesViewBody> createState() =>
+      _TasksCategoriesViewBodyState();
+}
+
+class _TasksCategoriesViewBodyState extends State<TasksCategoriesViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(

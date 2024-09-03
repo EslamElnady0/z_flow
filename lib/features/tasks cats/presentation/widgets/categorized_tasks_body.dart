@@ -15,24 +15,30 @@ class CategorizedTasksBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GetTaskCubit, GetTaskState>(
       builder: (context, state) {
-        if (getIt.get<GetTaskCubit>().tasks.isEmpty) {
+        if (getIt.get<GetTaskCubit>().categorizedTasks.isEmpty) {
           return const Spacer();
-        } else if (getIt.get<GetTaskCubit>().onGoingTasks.isNotEmpty &&
-            getIt.get<GetTaskCubit>().doneTasks.isEmpty) {
+        } else if (getIt
+                .get<GetTaskCubit>()
+                .categorizedOngoingTasks
+                .isNotEmpty &&
+            getIt.get<GetTaskCubit>().categorizedDoneTasks.isEmpty) {
           return OneTaskListEmpty(
-            tasks: getIt.get<GetTaskCubit>().onGoingTasks,
+            tasks: getIt.get<GetTaskCubit>().categorizedOngoingTasks,
             text: AppTexts.onGoingTasks,
+            category: category,
           );
-        } else if (getIt.get<GetTaskCubit>().onGoingTasks.isEmpty &&
-            getIt.get<GetTaskCubit>().doneTasks.isNotEmpty) {
+        } else if (getIt.get<GetTaskCubit>().categorizedOngoingTasks.isEmpty &&
+            getIt.get<GetTaskCubit>().categorizedDoneTasks.isNotEmpty) {
           return OneTaskListEmpty(
-            tasks: getIt.get<GetTaskCubit>().doneTasks,
+            tasks: getIt.get<GetTaskCubit>().categorizedDoneTasks,
             text: AppTexts.tasksFinished,
+            category: category,
           );
         } else {
           return NoEmptyTaskList(
-            onGoingTasks: getIt.get<GetTaskCubit>().onGoingTasks,
-            doneTasks: getIt.get<GetTaskCubit>().doneTasks,
+            onGoingTasks: getIt.get<GetTaskCubit>().categorizedOngoingTasks,
+            doneTasks: getIt.get<GetTaskCubit>().categorizedDoneTasks,
+            category: category,
           );
         }
       },

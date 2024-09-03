@@ -20,6 +20,9 @@ class GetTaskCubit extends Cubit<GetTaskState> {
   List<TaskModel> onGoingTasks = [];
   List<TaskModel> doneTasks = [];
   List<TaskModel> recentDoneTasks = [];
+  List<TaskModel> categorizedTasks = [];
+  List<TaskModel> categorizedOngoingTasks = [];
+  List<TaskModel> categorizedDoneTasks = [];
 
   Future<void> getTasks(
       {required bool isConnected,
@@ -70,6 +73,16 @@ class GetTaskCubit extends Cubit<GetTaskState> {
       emit(GetTaskSuccess());
       return recentDoneTasks;
     }
+  }
+
+  void getCategorizedTasks(String category) {
+    categorizedTasks =
+        tasks.where((task) => task.category.contains(category)).toList();
+    categorizedOngoingTasks =
+        categorizedTasks.where((task) => !task.isDone).toList();
+    categorizedDoneTasks =
+        categorizedTasks.where((task) => task.isDone).toList();
+    emit(GetTaskSuccess());
   }
 
   void getSpecificDayTasks(

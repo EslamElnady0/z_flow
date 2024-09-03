@@ -8,9 +8,13 @@ import '../../../home/data/models/task model/task_model.dart';
 class NoEmptyTaskList extends StatelessWidget {
   final List<TaskModel> onGoingTasks;
   final List<TaskModel> doneTasks;
+  final String category;
 
   const NoEmptyTaskList(
-      {super.key, required this.onGoingTasks, required this.doneTasks});
+      {super.key,
+      required this.onGoingTasks,
+      required this.doneTasks,
+      required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +22,7 @@ class NoEmptyTaskList extends StatelessWidget {
       child: Column(
         children: [
           OneTaskListEmpty(
+            category: category,
             tasks: onGoingTasks,
             text: AppTexts.onGoingTasks,
           ),
@@ -26,6 +31,7 @@ class NoEmptyTaskList extends StatelessWidget {
           ),
           OneTaskListEmpty(
             tasks: doneTasks,
+            category: category,
             text: AppTexts.tasksFinished,
           ),
         ],

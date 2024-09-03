@@ -16,8 +16,12 @@ Future<void> updateTask({required TaskModel task}) async {
       uid: getIt.get<FirebaseAuth>().currentUser!.uid);
   if (task.isDone) {
     getIt.get<GetTaskCubit>().onGoingTasks.remove(task);
+    getIt.get<GetTaskCubit>().categorizedOngoingTasks.remove(task);
+    getIt.get<GetTaskCubit>().categorizedDoneTasks.add(task);
   } else {
     getIt.get<GetTaskCubit>().doneTasks.remove(task);
+    getIt.get<GetTaskCubit>().categorizedDoneTasks.remove(task);
+    getIt.get<GetTaskCubit>().categorizedOngoingTasks.add(task);
   }
   getIt.get<FavouriteTasksCubit>().getFavTasks();
   await getTasks();

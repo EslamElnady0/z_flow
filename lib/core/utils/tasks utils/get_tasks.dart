@@ -16,4 +16,7 @@ void clearAllTasksLists() {
   getIt.get<GetTaskCubit>().onGoingTasks.clear();
   getIt.get<GetTaskCubit>().doneTasks.clear();
   getIt.get<GetTaskCubit>().specificDayTasksList.clear();
+  getIt.get<GetTaskCubit>().categorizedOngoingTasks.clear();
+  getIt.get<GetTaskCubit>().categorizedDoneTasks.clear();
+  getIt.get<GetTaskCubit>().categorizedTasks.clear();
 }

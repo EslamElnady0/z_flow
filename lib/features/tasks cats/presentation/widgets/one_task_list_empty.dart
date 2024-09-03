@@ -7,11 +7,13 @@ import '../../../home/presentation/views/widgets/custom_task_item.dart';
 class OneTaskListEmpty extends StatelessWidget {
   final List<TaskModel> tasks;
   final String text;
+  final String category;
 
   const OneTaskListEmpty({
     super.key,
     required this.tasks,
     required this.text,
+    required this.category,
   });
 
   @override

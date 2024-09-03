@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/routes/app_router.dart';
+import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
@@ -10,11 +12,23 @@ import '../../../../core/styles/styles.dart';
 import 'categorized_tasks_body.dart';
 import 'custom_task_category_item.dart';
 
-class EditCategoryListViewBody extends StatelessWidget {
+class EditCategoryListViewBody extends StatefulWidget {
   final String category;
   final int index;
   const EditCategoryListViewBody(
       {super.key, required this.category, required this.index});
+
+  @override
+  State<EditCategoryListViewBody> createState() =>
+      _EditCategoryListViewBodyState();
+}
+
+class _EditCategoryListViewBodyState extends State<EditCategoryListViewBody> {
+  @override
+  void initState() {
+    getIt.get<GetTaskCubit>().getCategorizedTasks(widget.category);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +48,17 @@ class EditCategoryListViewBody extends StatelessWidget {
             height: 12.h,
           ),
           TaskCategoryItem(
-            index: index,
+            index: widget.index,
             onTap: () {
               Navigator.pop(context);
             },
-            title: category,
+            title: widget.category,
             isEdit: true,
           ),
           SizedBox(
             height: 12.h,
           ),
-          CategorizedTasksBody(category: category),
+          CategorizedTasksBody(category: widget.category),
           SizedBox(
             height: 20.h,
           ),
