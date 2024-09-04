@@ -5,15 +5,9 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:z_flow/core/constants/constants.dart';
+import 'package:z_flow/core/utils/clear_local_database_upon_sign_in.dart';
 import 'package:z_flow/features/auth/data/models/user_model.dart';
-import 'package:z_flow/features/home/data/data%20sources/habits/habits_local_data_source.dart';
-import 'package:z_flow/features/home/data/data%20sources/tasks/tasks_local_data_source.dart';
-import 'package:z_flow/features/tasks%20cats/data/data%20sources/task_cats_local_data_source.dart';
-
 import '../../../../core/errors/failure.dart';
-import '../../../../core/utils/habits utils/get_habits.dart';
-import '../../../../core/utils/tasks utils/get_tasks.dart';
 import 'auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
@@ -105,11 +99,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
-      await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
-      TaskCatsLocalDataSourceImpl().deleteAllTaskCats();
-      clearAllTasksLists();
-      clearAllHabitsLists();
+      await clearLocalDatabaseUponSignIn();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
@@ -146,12 +136,8 @@ class AuthRepoImpl implements AuthRepo {
               lastName: gUser.displayName!.split(" ")[1],
               uid: firebaseAuth.currentUser!.uid));
       await firebaseAuth.currentUser!.updateDisplayName(gUser.displayName!);
-      await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
-      await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
-      TaskCatsLocalDataSourceImpl().deleteAllTaskCats();
+      await clearLocalDatabaseUponSignIn();
 
-      clearAllTasksLists();
-      clearAllHabitsLists();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
@@ -184,12 +170,8 @@ class AuthRepoImpl implements AuthRepo {
       await firebaseAuth.currentUser!.updateDisplayName("$firstName $lastName");
 
       await addUserToFireStore(user: user);
-      await TasksLocalDataSourceImpl().deleteAllTasks(Constants.tasksBox);
-      await HabitsLocalDataSourceImpl().deleteAllHabits(Constants.habitsBox);
-      TaskCatsLocalDataSourceImpl().deleteAllTaskCats();
+      await clearLocalDatabaseUponSignIn();
 
-      clearAllTasksLists();
-      clearAllHabitsLists();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
