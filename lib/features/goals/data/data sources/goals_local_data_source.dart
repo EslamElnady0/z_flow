@@ -1,41 +1,44 @@
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../../../core/constants/constants.dart';
 import '../model/goal_model.dart';
 
 abstract class GoalsLocalDataSource {
-  Future<List<GoalModel>> getGoals();
-  Future<void> addGoal(GoalModel goal);
-  Future<void> deleteGoal(GoalModel goal);
-  Future<void> deleteAllGoals();
-  Future<void> updateGoal(GoalModel goal);
+  List<GoalModel> getGoals();
+  void addGoal(GoalModel goal);
+  void deleteGoal(GoalModel goal);
+  void deleteAllGoals();
+  void updateGoal(GoalModel goal);
 }
 
 class GoalsLocalDataSourceImpl implements GoalsLocalDataSource {
   @override
-  Future<void> addGoal(GoalModel goal) {
-    // TODO: implement addGoal
-    throw UnimplementedError();
+  void addGoal(GoalModel goal) {
+    var goalsBox = Hive.box<GoalModel>(Constants.goalsBox);
+
+    goalsBox.add(goal);
   }
 
   @override
-  Future<void> deleteAllGoals() {
-    // TODO: implement deleteAllGoals
-    throw UnimplementedError();
+  void deleteAllGoals() {
+    var goalsBox = Hive.box<GoalModel>(Constants.goalsBox);
+    goalsBox.clear();
   }
 
   @override
-  Future<void> deleteGoal(GoalModel goal) {
-    // TODO: implement deleteGoal
-    throw UnimplementedError();
+  void deleteGoal(GoalModel goal) {
+    goal.delete();
   }
 
   @override
-  Future<List<GoalModel>> getGoals() {
-    // TODO: implement getGoals
-    throw UnimplementedError();
+  List<GoalModel> getGoals() {
+    var goalsBox = Hive.box<GoalModel>(Constants.goalsBox);
+
+    return goalsBox.values.toList();
   }
 
   @override
-  Future<void> updateGoal(GoalModel goal) {
-    // TODO: implement updateGoal
-    throw UnimplementedError();
+  void updateGoal(GoalModel goal) {
+    goal.save();
   }
 }
