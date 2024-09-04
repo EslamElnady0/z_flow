@@ -38,6 +38,7 @@ import '../../features/auth/presentation/views/log_in_view.dart';
 import '../../features/favourites/data/view models/favourite habits cubit/favourite_habits_cubit.dart';
 import '../../features/favourites/data/view models/favourite tasks cubit/favourite_tasks_cubit.dart';
 import '../../features/favourites/presentation/views/favourite_tasks_view.dart';
+import '../../features/goals/data/model/goal_model.dart';
 import '../../features/goals/presentation/view models/add goal cubit/add_goal_cubit.dart';
 import '../../features/goals/presentation/view models/delete goal cubit/delete_goal_cubit.dart';
 import '../../features/goals/presentation/view models/edit goal cubit/edit_goal_cubit.dart';
@@ -190,6 +191,7 @@ class AppRouter {
                   child: const AddGoalView(),
                 ));
       case editGoal:
+        GoalModel goal = settings.arguments as GoalModel;
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
                   providers: [
@@ -201,7 +203,8 @@ class AppRouter {
                     ),
                   ],
                   child: const EditGoalView(),
-                ));
+                ),
+            settings: RouteSettings(arguments: goal));
       case workSession:
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(

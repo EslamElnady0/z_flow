@@ -30,6 +30,7 @@ main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(TaskModelAdapter());
   Hive.registerAdapter(HabitModelAdapter());
+  Hive.registerAdapter(GoalModelAdapter());
   await Hive.openBox<TaskModel>(Constants.tasksBox);
   await Hive.openBox<HabitModel>(Constants.habitsBox);
   await Hive.openBox<GoalModel>(Constants.goalsBox);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/widgets/build_custom_appbar.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
+import 'package:z_flow/features/goals/data/model/goal_model.dart';
 
 import '../widgets/edit_goal_view_body.dart';
 
@@ -10,9 +11,10 @@ class EditGoalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var args = ModalRoute.of(context)!.settings.arguments as GoalModel;
     return CustomScaffold(
       appBar: buildInnerPagesAppBar(text: AppTexts.editGoal),
-      body: const EditGoalViewBody(),
+      body: EditGoalViewBody(goal: args),
     );
   }
 }

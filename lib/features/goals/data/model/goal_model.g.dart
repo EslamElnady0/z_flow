@@ -18,7 +18,7 @@ class GoalModelAdapter extends TypeAdapter<GoalModel> {
     };
     return GoalModel(
       title: fields[0] as String,
-      id: fields[1] as String,
+      id: fields[1] as int,
       createdAt: fields[2] as String,
     );
   }

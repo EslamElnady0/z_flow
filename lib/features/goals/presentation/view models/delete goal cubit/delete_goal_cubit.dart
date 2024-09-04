@@ -16,7 +16,7 @@ class DeleteGoalCubit extends Cubit<DeleteGoalState> {
       required bool isAnonymous,
       required bool isConnected}) async {
     emit(DeleteGoalLoading());
-    var result = await goalsRepo.updateGoal(
+    var result = await goalsRepo.deleteGoal(
         goal: goalModel, isConnected: isConnected, isAnonymous: isAnonymous);
     result.fold((failure) {
       emit(DeleteGoalFailure(message: failure.errMessage));

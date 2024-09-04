@@ -27,6 +27,7 @@ class AppTexts {
 
   static const String viewAll = "View All";
   static const String filter = "Filter";
+  static const String writeYourGoal = "Write Your Goal..";
   static const String onGoingHabits = "Ongoing Habits";
   static const String doneHabits = "Done Habits";
   static const String calender = "Calender";

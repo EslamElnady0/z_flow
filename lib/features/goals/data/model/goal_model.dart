@@ -6,7 +6,7 @@ class GoalModel extends HiveObject {
   @HiveField(0)
   String title;
   @HiveField(1)
-  String id;
+  int id;
   @HiveField(2)
   final String createdAt;
 
@@ -19,7 +19,7 @@ class GoalModel extends HiveObject {
   factory GoalModel.fromJson(Map<String, dynamic> json) {
     return GoalModel(
       title: json['title'] as String,
-      id: json['id'] as String,
+      id: json['id'] as int,
       createdAt: json['createdAt'] as String,
     );
   }

@@ -50,7 +50,7 @@ class _GoalsViewBodyState extends State<GoalsViewBody> {
           ),
           const GoalsListViewBlocBuilder(),
           SizedBox(
-            height: 24.h,
+            height: 16.h,
           ),
           CustomLightColorsGradientButton(
             text: AppTexts.addAGoal,

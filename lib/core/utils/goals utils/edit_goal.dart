@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:z_flow/core/utils/goals%20utils/get_goals.dart';
 
 import '../../../features/goals/data/model/goal_model.dart';
 import '../../../features/goals/presentation/view models/edit goal cubit/edit_goal_cubit.dart';
@@ -11,4 +12,5 @@ Future<void> editGoal({required GoalModel goal}) async {
         isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
         isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
       );
+  await getGoals();
 }
