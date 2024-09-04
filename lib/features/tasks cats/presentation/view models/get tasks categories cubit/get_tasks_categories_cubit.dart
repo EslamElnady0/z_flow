@@ -11,7 +11,7 @@ class GetTasksCategoriesCubit extends Cubit<GetTasksCategoriesState> {
   GetTasksCategoriesCubit({required this.taskCatsRepo})
       : super(GetTasksCategoriesInitial());
   final TaskCatsRepo taskCatsRepo;
-
+  List<String> cats = [];
   Future<void> getTasksCategories(
       {required bool isConnected, required bool isAnonymous}) async {
     emit(GetTasksCategoriesLoading());
@@ -21,8 +21,9 @@ class GetTasksCategoriesCubit extends Cubit<GetTasksCategoriesState> {
       emit(GetTasksCategoriesFailure(errMessage: failure.errMessage));
     }, (catsList) async {
       if (catsList.isNotEmpty) {
-        emit(GetTasksCategoriesSuccess(cats: catsList));
         print("catsList: $catsList");
+        cats = catsList;
+        emit(GetTasksCategoriesSuccess());
       } else {
         for (var category in Constants.taskCatsList) {
           await taskCatsRepo.addTaskCats(
@@ -35,7 +36,4 @@ class GetTasksCategoriesCubit extends Cubit<GetTasksCategoriesState> {
       }
     });
   }
-
-  Future<void> getOrAddTasksCategoriesForTheFirstTime(
-      {required bool isConnected, required bool isAnonymous}) async {}
 }

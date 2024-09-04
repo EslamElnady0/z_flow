@@ -8,8 +8,8 @@ final class GetTasksCategoriesInitial extends GetTasksCategoriesState {}
 final class GetTasksCategoriesLoading extends GetTasksCategoriesState {}
 
 final class GetTasksCategoriesSuccess extends GetTasksCategoriesState {
-  final List<String> cats;
-  GetTasksCategoriesSuccess({required this.cats});
+  // final List<String> cats;
+  // GetTasksCategoriesSuccess({required this.cats});
 }
 
 final class GetTasksCategoriesFailure extends GetTasksCategoriesState {

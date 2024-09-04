@@ -33,18 +33,23 @@ class CategoriesBlocBuilder extends StatelessWidget {
                           onTap: () {
                             Navigator.of(context)
                                 .pushNamed(AppRouter.editCatList, arguments: {
-                              "title": state.cats[index],
+                              "title": context
+                                  .read<GetTasksCategoriesCubit>()
+                                  .cats[index],
                               "index": index
                             });
                           },
-                          title: state.cats[index]);
+                          title: context
+                              .read<GetTasksCategoriesCubit>()
+                              .cats[index]);
                     },
                     separatorBuilder: (context, index) {
                       return SizedBox(
                         height: 12.h,
                       );
                     },
-                    itemCount: state.cats.length,
+                    itemCount:
+                        context.read<GetTasksCategoriesCubit>().cats.length,
                   ),
                 ),
                 SizedBox(height: 24.h),

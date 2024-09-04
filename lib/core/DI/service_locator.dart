@@ -94,7 +94,7 @@ void setupServiceLocator() {
   getIt.registerSingleton(TaskCatsRepoImpl(
       taskCatsLocalDataSource: TaskCatsLocalDataSourceImpl(),
       taskCatsRemoteDataSource: TaskCatsRemoteDataSourceImpl()));
-  getIt.registerFactory<GetTasksCategoriesCubit>(() =>
+  getIt.registerLazySingleton<GetTasksCategoriesCubit>(() =>
       GetTasksCategoriesCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));
   getIt.registerFactory<AddTasksCategoryCubit>(
       () => AddTasksCategoryCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));

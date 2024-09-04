@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
+import 'package:z_flow/core/utils/tasks%20utils/categories/reinitialize_get_task_categories_if_needed.dart';
 import 'package:z_flow/features/auth/presentation/views/sign_up_view.dart';
 import 'package:z_flow/features/favourites/presentation/views/favourite_habits_view.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
@@ -208,9 +209,10 @@ class AppRouter {
           ),
         );
       case taskCats:
+        reinitializeGetCategoriesCubitIfNeeded();
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
-                  create: (context) => getIt<GetTasksCategoriesCubit>()
+                  create: (context) => getIt.get<GetTasksCategoriesCubit>()
                     ..getTasksCategories(
                         isConnected:
                             getIt<InternetCheckCubit>().isDeviceConnected,
@@ -220,8 +222,15 @@ class AppRouter {
                 ));
       case addNewCat:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => getIt<AddTasksCategoryCubit>(),
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<AddTasksCategoryCubit>(),
+                    ),
+                    BlocProvider.value(
+                      value: getIt<GetTasksCategoriesCubit>(),
+                    ),
+                  ],
                   child: const AddCategoryView(),
                 ));
       case editCatList:

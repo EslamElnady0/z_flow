@@ -1,15 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
+import 'package:z_flow/core/utils/tasks%20utils/categories/add_task_categories.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
-import 'package:z_flow/features/tasks%20cats/presentation/view%20models/add%20tasks%20category%20cubit/add_tasks_category_cubit.dart';
 
-import '../../../../core/DI/service_locator.dart';
-import '../../../../core/core cubits/internet check cubit/internet_check_cubit.dart';
 import '../../../../core/styles/styles.dart';
 
 class AddCategoryViewBody extends StatefulWidget {
@@ -63,13 +60,6 @@ class _AddCategoryViewBodyState extends State<AddCategoryViewBody> {
                   ),
                 ),
                 icon: null,
-                validator: (p0) {
-                  if (p0!.isEmpty) {
-                    return "This field is required";
-                  } else {
-                    return null;
-                  }
-                },
                 controller: titleController),
             SizedBox(
               height: 25.h,
@@ -78,14 +68,12 @@ class _AddCategoryViewBodyState extends State<AddCategoryViewBody> {
               text: AppTexts.addNewCategory,
               icon: Assets.addIcon,
               onTap: () async {
-                await getIt<AddTasksCategoryCubit>().addTaskCategory(
-                    category: titleController.text,
-                    isConnected:
-                        getIt.get<InternetCheckCubit>().isDeviceConnected,
-                    isAnonymous:
-                        getIt.get<FirebaseAuth>().currentUser!.isAnonymous);
-                if (context.mounted) {
-                  Navigator.pop(context);
+                if (formKey.currentState!.validate()) {
+                  await addTaskCategory(
+                      category: titleController.text, context: context);
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                  }
                 }
               },
             )
