@@ -24,10 +24,10 @@ class TaskModelAdapter extends TypeAdapter<TaskModel> {
       createdAt: fields[2] as String,
       isDoneBefore: fields[7] as bool,
       deadline: fields[3] as String,
-      isFavourited: fields[5] as bool,
-      isDone: fields[6] as bool,
-      doneAt: fields[9] as String,
       category: (fields[10] as List).cast<dynamic>(),
+      isFavourited: fields[5] as bool,
+      doneAt: fields[9] as String,
+      isDone: fields[6] as bool,
     );
   }
 

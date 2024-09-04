@@ -9,6 +9,7 @@ import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_chec
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/theme/main_theme.dart';
 import 'package:z_flow/core/widgets/build_custom_snack_bar.dart';
+import 'package:z_flow/features/goals/data/model/goal_model.dart';
 import 'package:z_flow/firebase_options.dart';
 import 'core/constants/constants.dart';
 import 'core/core cubits/my_bloc_observer.dart';
@@ -31,6 +32,7 @@ main() async {
   Hive.registerAdapter(HabitModelAdapter());
   await Hive.openBox<TaskModel>(Constants.tasksBox);
   await Hive.openBox<HabitModel>(Constants.habitsBox);
+  await Hive.openBox<GoalModel>(Constants.goalsBox);
   await Hive.openBox<String>(Constants.categoriesBox);
   await Hive.openBox(Constants.constantsBox);
   runApp(const ZFlowApp());

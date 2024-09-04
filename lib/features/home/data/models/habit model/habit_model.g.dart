@@ -25,8 +25,8 @@ class HabitModelAdapter extends TypeAdapter<HabitModel> {
       isIterable: fields[5] as bool,
       isDone: fields[6] as bool,
       isDoneBefore: fields[7] as bool,
-      id: fields[8] as int,
       doneAt: fields[9] as String,
+      id: fields[8] as int,
     );
   }
 

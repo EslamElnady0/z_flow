@@ -149,7 +149,7 @@ class AppTexts {
   static const String last28Days = "Last 28 days";
   static const String allTasks = "All tasks";
   static const String stayAway = "Stay Away";
-  static const String myGoals = "My goals";
+  static const String myGoals = "My Goals";
   static const String taskCats = "Task categories";
   static const String favoriteTasks = "Favorite tasks";
   static const String favoriteHabits = "Favorite Habits";
@@ -157,4 +157,27 @@ class AppTexts {
   static const String financialSupport = "Financial support";
   static const String settings = "Settings";
   static const String shareApp = "Share the app";
+  static const String controlAppSettings =
+      "Control the application settings easily from here!";
+  static const String account = "ِAccount";
+  static const String language = "Language";
+  static const String rateUs = "Rate us";
+  static const String privacyPolicy = "privacy policy";
+  static const String helpAndFeedback = "Help and feedback";
+  static const String about = "About";
+  static const String onThisPage =
+      "On this page, you can write down your future goals here!";
+  static const String addAGoal = "Add a new goal";
+  static const String writeAGoal =
+      "Great, you are now about to write new goals!";
+  static const String editGoal = "Edit goal";
+  static const String editExistingGoal =
+      "You are now about to edit an existing goal!";
+  static const String helpYouStayOrganized =
+      "Help you stay organized and on top of your agenda!";
+  static const String yourEvents = "Your events are coming!";
+  static const String event = "Event..";
+  static const String reminderOfEvent = "Reminder of this event";
+  static const String startIn = "Start in..";
+  static const String eventDays = "Event days";
 }

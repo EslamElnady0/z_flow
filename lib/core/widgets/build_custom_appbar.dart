@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/assets.dart';
 
+import '../styles/styles.dart';
+
 PreferredSizeWidget? buildCustomAppBar(
     {required BuildContext context,
     required int index,
@@ -21,5 +23,18 @@ PreferredSizeWidget? buildCustomAppBar(
     actions: [
       IconButton(onPressed: onActionPressed, icon: const Icon(Icons.search))
     ],
+  );
+}
+
+PreferredSizeWidget? buildInnerPagesAppBar({
+  required String text,
+}) {
+  return AppBar(
+    title: Text(
+      text,
+      style: Styles.style18w600,
+    ),
+    centerTitle: true,
+    elevation: 0,
   );
 }
