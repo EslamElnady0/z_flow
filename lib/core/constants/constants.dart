@@ -18,7 +18,7 @@ class Constants {
   static const String usersCollection = 'users';
   static const String tasksCollection = 'tasks';
   static const String habitsCollection = 'habits';
-  static const String targetsCollection = 'goals';
+  static const String goalsCollection = 'goals';
   static const String categoriesCollection = 'categories';
   static final List<OnboardingModel> onBoardingScreens = [
     const OnboardingModel(
