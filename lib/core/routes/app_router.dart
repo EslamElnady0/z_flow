@@ -108,11 +108,13 @@ class AppRouter {
                   child: const FavouriteHabitsView(),
                 ));
       case addTask:
+        var args = settings.arguments as String?;
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                   create: (context) => getIt.get<AddTaskCubit>(),
                   child: const AddTaskView(),
-                ));
+                ),
+            settings: RouteSettings(arguments: args));
       case editTask:
         TaskModel task = settings.arguments as TaskModel;
         return MaterialPageRoute(

@@ -10,8 +10,11 @@ class AddTaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var args = ModalRoute.of(context)!.settings.arguments as String?;
     return CustomScaffold(
-      body: const AddTaskViewBody(),
+      body: AddTaskViewBody(
+        category: args,
+      ),
       appBar: AppBar(
         title: Text(
           AppTexts.addNewTask,

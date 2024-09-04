@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/utils/tasks%20utils/add_task.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
@@ -10,10 +11,13 @@ import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/utils/tasks utils/get_tasks.dart';
 import '../../../data/models/task model/task_model.dart';
+import '../../view models/tasks/get task cubit/get_task_cubit.dart';
 import 'task_data_form.dart';
 
 class AddTaskViewBody extends StatefulWidget {
-  const AddTaskViewBody({super.key});
+  final String? category;
+
+  const AddTaskViewBody({super.key, this.category});
 
   @override
   State<AddTaskViewBody> createState() => _AddTaskViewBodyState();
@@ -105,11 +109,20 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                         id: id,
                         createdAt: DateFormat.yMMMd().format(DateTime.now()),
                         deadline: endsInController.text,
+                        category: widget.category == null
+                            ? []
+                            : <String>[widget.category!],
                       );
                       await addTask(
                         task: task,
                       );
+                      if (widget.category != null) {
+                        getIt
+                            .get<GetTaskCubit>()
+                            .getCategorizedTasks(widget.category!);
+                      }
                       await getTasks();
+
                       if (context.mounted) {
                         Navigator.pop(context);
                       }

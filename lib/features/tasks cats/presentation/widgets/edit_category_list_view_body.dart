@@ -67,7 +67,8 @@ class _EditCategoryListViewBodyState extends State<EditCategoryListViewBody> {
               text: AppTexts.addTaskToCategoryList,
               icon: Assets.addIcon,
               onTap: () {
-                Navigator.pushNamed(context, AppRouter.addTask);
+                Navigator.pushNamed(context, AppRouter.addTask,
+                    arguments: widget.category);
               }),
           SizedBox(
             height: 24.h,
