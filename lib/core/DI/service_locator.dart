@@ -27,6 +27,13 @@ import 'package:z_flow/features/work%20session/presentation/ui%20cubits/timer%20
 import 'package:z_flow/features/work%20session/presentation/ui%20cubits/work%20session%20cubit/work_session_cubit.dart';
 
 import '../../features/auth/presentation/view models/sign up cubit/sign_up_cubit.dart';
+import '../../features/goals/data/data sources/goals_local_data_source.dart';
+import '../../features/goals/data/data sources/goals_remote_data_source.dart';
+import '../../features/goals/data/repo/goals_repo_impl.dart';
+import '../../features/goals/presentation/view models/add goal cubit/add_goal_cubit.dart';
+import '../../features/goals/presentation/view models/delete goal cubit/delete_goal_cubit.dart';
+import '../../features/goals/presentation/view models/edit goal cubit/edit_goal_cubit.dart';
+import '../../features/goals/presentation/view models/get goals cubit/get_goals_cubit.dart';
 import '../../features/home/data/repos/habits repo/habits_repo_impl.dart';
 import '../../features/home/presentation/view models/habits/add habit cubit/add_habits_cubit.dart';
 import '../../features/home/presentation/view models/habits/delete habit cubit/delete_habit_cubit.dart';
@@ -101,4 +108,17 @@ void setupServiceLocator() {
       () => AddTasksCategoryCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));
   getIt.registerFactory<DeleteTaskCategoryCubit>(() =>
       DeleteTaskCategoryCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));
+
+///////////////// goals cubits /////////////////
+  getIt.registerLazySingleton<GoalsRepoImpl>(() => GoalsRepoImpl(
+      goalsLocalDataSource: GoalsLocalDataSourceImpl(),
+      goalsRemoteDataSource: GoalsRemoteDataSourceImpl()));
+  getIt.registerLazySingleton<GetGoalsCubit>(
+      () => GetGoalsCubit(goalsRepo: getIt.get<GoalsRepoImpl>()));
+  getIt.registerFactory<AddGoalCubit>(
+      () => AddGoalCubit(goalsRepo: getIt.get<GoalsRepoImpl>()));
+  getIt.registerFactory<DeleteGoalCubit>(
+      () => DeleteGoalCubit(goalsRepo: getIt.get<GoalsRepoImpl>()));
+  getIt.registerFactory<EditGoalCubit>(
+      () => EditGoalCubit(goalsRepo: getIt.get<GoalsRepoImpl>()));
 }

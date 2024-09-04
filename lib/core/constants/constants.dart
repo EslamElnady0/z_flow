@@ -110,7 +110,8 @@ class Constants {
         title: AppTexts.stayAway,
         icon: Assets.lockSafety,
         route: AppRouter.stayAway),
-    DrawerItem(title: AppTexts.myGoals, icon: Assets.goals, route: ""),
+    DrawerItem(
+        title: AppTexts.myGoals, icon: Assets.goals, route: AppRouter.goals),
     DrawerItem(
         title: AppTexts.taskCats,
         icon: Assets.listWithArrows,

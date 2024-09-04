@@ -19,6 +19,7 @@ class Assets {
   static const String favPhoto = "assets/images/favouritePhoto.png";
   static const String stayAwayLock = "assets/images/stayAwayLock.png";
   static const String stopWatch = "assets/images/stopWatch.png";
+  static const String goalsImage = "assets/images/goalsImage.png";
 
   ////////////////        svgs              ///////////////////////
   static const String tasksIcon = "assets/images/svgs/tasks.svg";

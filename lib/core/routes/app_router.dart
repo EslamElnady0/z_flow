@@ -2,9 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/utils/tasks%20utils/categories/reinitialize_get_task_categories_if_needed.dart';
+import 'package:z_flow/core/utils/tasks%20utils/categories/reinitialize_cubits_if_needed.dart';
 import 'package:z_flow/features/auth/presentation/views/sign_up_view.dart';
 import 'package:z_flow/features/favourites/presentation/views/favourite_habits_view.dart';
+import 'package:z_flow/features/goals/presentation/view%20models/get%20goals%20cubit/get_goals_cubit.dart';
+import 'package:z_flow/features/goals/presentation/views/goals_view.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
@@ -70,6 +72,9 @@ class AppRouter {
   static const String taskCats = '/taskCats';
   static const String addNewCat = '/addNewCat';
   static const String editCatList = '/editCatList';
+  static const String goals = '/goals';
+  static const String addGoal = '/addGoal';
+  static const String editGoal = '/editGoal';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -161,6 +166,37 @@ class AppRouter {
                   create: (context) => getIt<SearchCubit>(),
                   child: const SearchView(),
                 ));
+      case goals:
+        reinitializeGetGoalsCubitIfNeeded();
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt.get<GetGoalsCubit>()
+                    ..getGoals(
+                        isConnected:
+                            getIt.get<InternetCheckCubit>().isDeviceConnected,
+                        isAnonymous:
+                            getIt.get<FirebaseAuth>().currentUser!.isAnonymous),
+                  child: const GoalsView(),
+                ));
+      // case addGoal:
+      //   return MaterialPageRoute(
+      //       builder: (context) => BlocProvider(
+      //             create: (context) => getIt<AddGoalCubit>(),
+      //             child: const AddGoalView(),
+      //           ));
+      // case editGoal:
+      //   return MaterialPageRoute(
+      //       builder: (context) => MultiBlocProvider(
+      //             providers: [
+      //               BlocProvider(
+      //                 create: (context) => getIt<EditGoalCubit>(),
+      //               ),
+      //               BlocProvider(
+      //                 create: (context) => getIt<DeleteGoalCubit>(),
+      //               ),
+      //             ],
+      //             child: const EditGoalView(),
+      //           ));
       case workSession:
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
