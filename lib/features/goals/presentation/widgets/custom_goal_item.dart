@@ -26,7 +26,13 @@ class CustomGoalItem extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(goal.title, style: Styles.style16W500grey),
+              SizedBox(
+                  width: 250.w,
+                  child: Text(
+                    goal.title,
+                    style: Styles.style16W500grey,
+                    overflow: TextOverflow.ellipsis,
+                  )),
               SvgPicture.asset(
                 Assets.editIcon,
                 height: 16.h,
