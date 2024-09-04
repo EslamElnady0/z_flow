@@ -38,6 +38,11 @@ import '../../features/auth/presentation/views/log_in_view.dart';
 import '../../features/favourites/data/view models/favourite habits cubit/favourite_habits_cubit.dart';
 import '../../features/favourites/data/view models/favourite tasks cubit/favourite_tasks_cubit.dart';
 import '../../features/favourites/presentation/views/favourite_tasks_view.dart';
+import '../../features/goals/presentation/view models/add goal cubit/add_goal_cubit.dart';
+import '../../features/goals/presentation/view models/delete goal cubit/delete_goal_cubit.dart';
+import '../../features/goals/presentation/view models/edit goal cubit/edit_goal_cubit.dart';
+import '../../features/goals/presentation/views/add_goal_view.dart';
+import '../../features/goals/presentation/views/edit_goal_view.dart';
 import '../../features/home/presentation/view models/habits/delete habit cubit/delete_habit_cubit.dart';
 import '../../features/home/presentation/view models/habits/get habits cubit/get_habit_cubit.dart';
 import '../../features/home/presentation/view models/tasks/delete task cubit/delete_task_cubit.dart';
@@ -178,25 +183,25 @@ class AppRouter {
                             getIt.get<FirebaseAuth>().currentUser!.isAnonymous),
                   child: const GoalsView(),
                 ));
-      // case addGoal:
-      //   return MaterialPageRoute(
-      //       builder: (context) => BlocProvider(
-      //             create: (context) => getIt<AddGoalCubit>(),
-      //             child: const AddGoalView(),
-      //           ));
-      // case editGoal:
-      //   return MaterialPageRoute(
-      //       builder: (context) => MultiBlocProvider(
-      //             providers: [
-      //               BlocProvider(
-      //                 create: (context) => getIt<EditGoalCubit>(),
-      //               ),
-      //               BlocProvider(
-      //                 create: (context) => getIt<DeleteGoalCubit>(),
-      //               ),
-      //             ],
-      //             child: const EditGoalView(),
-      //           ));
+      case addGoal:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<AddGoalCubit>(),
+                  child: const AddGoalView(),
+                ));
+      case editGoal:
+        return MaterialPageRoute(
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<EditGoalCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<DeleteGoalCubit>(),
+                    ),
+                  ],
+                  child: const EditGoalView(),
+                ));
       case workSession:
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
