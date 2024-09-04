@@ -66,4 +66,27 @@ class TaskCatsRepoImpl implements TaskCatsRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteTaskCategory(
+      {required String category,
+      required bool isConnected,
+      required bool isAnonymous}) async {
+    try {
+      if (!isAnonymous && isConnected) {
+        await taskCatsRemoteDataSource.deleteTaskCategory(category);
+      }
+      taskCatsLocalDataSource.deleteTaskCategory(category);
+      return right(null);
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(ServerFailure.fromFirebaseException(exception: e));
+      } else if (e is HiveError) {
+        return left(CacheFailure.fromHiveError(error: e));
+      } else {
+        return left(
+            ServerFailure(errMessage: "Server Error, please try again"));
+      }
+    }
+  }
 }

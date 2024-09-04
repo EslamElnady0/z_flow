@@ -21,6 +21,7 @@ import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/tasks%20cats/data/data%20sources/task_cats_local_data_source.dart';
 import 'package:z_flow/features/tasks%20cats/data/repos/task_cats_repo_impl.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/add%20tasks%20category%20cubit/add_tasks_category_cubit.dart';
+import 'package:z_flow/features/tasks%20cats/presentation/view%20models/delete%20task%20category%20cubit/delete_task_category_cubit.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
 import 'package:z_flow/features/work%20session/presentation/ui%20cubits/timer%20cubit/timer_cubit.dart';
 import 'package:z_flow/features/work%20session/presentation/ui%20cubits/work%20session%20cubit/work_session_cubit.dart';
@@ -98,4 +99,6 @@ void setupServiceLocator() {
       GetTasksCategoriesCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));
   getIt.registerFactory<AddTasksCategoryCubit>(
       () => AddTasksCategoryCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));
+  getIt.registerFactory<DeleteTaskCategoryCubit>(() =>
+      DeleteTaskCategoryCubit(taskCatsRepo: getIt.get<TaskCatsRepoImpl>()));
 }

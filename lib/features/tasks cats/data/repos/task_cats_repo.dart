@@ -10,4 +10,8 @@ abstract class TaskCatsRepo {
       {required String category,
       required bool isConnected,
       required bool isAnonymous});
+  Future<Either<Failure, void>> deleteTaskCategory(
+      {required String category,
+      required bool isConnected,
+      required bool isAnonymous});
 }

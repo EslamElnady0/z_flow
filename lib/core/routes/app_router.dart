@@ -24,6 +24,7 @@ import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/search/views/search_view.dart';
 import 'package:z_flow/features/stay%20away/presentation/views/stay_away_view.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/add%20tasks%20category%20cubit/add_tasks_category_cubit.dart';
+import 'package:z_flow/features/tasks%20cats/presentation/view%20models/delete%20task%20category%20cubit/delete_task_category_cubit.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/views/add_category_view.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/views/edit_category_list_view.dart';
@@ -239,9 +240,6 @@ class AppRouter {
             builder: (context) => MultiBlocProvider(
                   providers: [
                     BlocProvider.value(
-                      value: getIt.get<AddTaskCubit>(),
-                    ),
-                    BlocProvider.value(
                       value: getIt.get<GetTaskCubit>(),
                     ),
                     BlocProvider.value(
@@ -250,6 +248,9 @@ class AppRouter {
                     BlocProvider.value(
                       value: getIt.get<UpdateTaskCubit>(),
                     ),
+                    BlocProvider(
+                      create: (context) => getIt<DeleteTaskCategoryCubit>(),
+                    )
                   ],
                   child: const EditCategoryListView(),
                 ),

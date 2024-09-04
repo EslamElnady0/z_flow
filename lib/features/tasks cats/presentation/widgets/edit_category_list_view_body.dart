@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/routes/app_router.dart';
+import 'package:z_flow/core/utils/tasks%20utils/categories/delete_task_category.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
@@ -72,8 +73,13 @@ class _EditCategoryListViewBodyState extends State<EditCategoryListViewBody> {
             height: 24.h,
           ),
           BottomScreenActions(
-              onOtherButtonPressed: () {},
-              onSavePressed: () {},
+              onOtherButtonPressed: () {
+                deleteTaskCategory(category: widget.category);
+                Navigator.pop(context);
+              },
+              onSavePressed: () {
+                Navigator.pop(context);
+              },
               otherButtonText: AppTexts.delete),
           SizedBox(
             height: 48.h,
