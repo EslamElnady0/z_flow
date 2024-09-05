@@ -8,18 +8,19 @@ import 'package:z_flow/core/styles/styles.dart';
 class CustomCalender extends StatelessWidget {
   final void Function(DateTime, DateTime)? onDaySelected;
   final bool Function(DateTime)? selectedDayPredicate;
+  final EdgeInsets? margin;
   final DateTime focusedDay;
-  const CustomCalender({
-    super.key,
-    this.onDaySelected,
-    this.selectedDayPredicate,
-    required this.focusedDay,
-  });
+  const CustomCalender(
+      {super.key,
+      this.onDaySelected,
+      this.selectedDayPredicate,
+      required this.focusedDay,
+      this.margin});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 30.w),
+      margin: margin ?? EdgeInsets.symmetric(horizontal: 30.w),
       padding: EdgeInsets.symmetric(vertical: 12.h),
       decoration: BoxDecoration(
           color: Colors.white,

@@ -22,6 +22,9 @@ import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_
 import 'package:z_flow/features/home/presentation/views/tasks%20views/finished_tasks_view.dart';
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
+import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
+import 'package:z_flow/features/reminder/presentation/views/add_reminder_view.dart';
+import 'package:z_flow/features/reminder/presentation/views/reminder_view.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/search/views/search_view.dart';
 import 'package:z_flow/features/stay%20away/presentation/views/stay_away_view.dart';
@@ -81,6 +84,8 @@ class AppRouter {
   static const String goals = '/goals';
   static const String addGoal = '/addGoal';
   static const String editGoal = '/editGoal';
+  static const String reminder = '/reminder';
+  static const String addReminder = '/addReminder';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -301,6 +306,14 @@ class AppRouter {
                   child: const EditCategoryListView(),
                 ),
             settings: RouteSettings(arguments: category));
+      case reminder:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => GetEventsCubit(),
+                  child: const ReminderView(),
+                ));
+      case addReminder:
+        return MaterialPageRoute(builder: (context) => const AddReminderView());
       default:
         return MaterialPageRoute(
             builder: (context) => const Center(child: Text("7moksha")));

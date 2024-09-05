@@ -1,22 +1,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/assets.dart';
 
 class ImageSwitcher extends StatefulWidget {
-  const ImageSwitcher({super.key});
+  final List<String> switchingImages;
+  final double height;
+  final double? width;
+  const ImageSwitcher(
+      {super.key,
+      required this.switchingImages,
+      required this.height,
+      this.width});
 
   @override
   State<ImageSwitcher> createState() => _ImageSwitcherState();
 }
 
 class _ImageSwitcherState extends State<ImageSwitcher> {
-  List<String> switchingImages = [
-    Assets.twentyForSevenBot,
-    Assets.continuedUse,
-    Assets.twentyFourSeven
-  ];
   int _currentIndex = 0;
   late Timer _timer;
   @override
@@ -24,7 +24,7 @@ class _ImageSwitcherState extends State<ImageSwitcher> {
     super.initState();
     _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
       setState(() {
-        _currentIndex = (_currentIndex + 1) % switchingImages.length;
+        _currentIndex = (_currentIndex + 1) % widget.switchingImages.length;
       });
     });
   }
@@ -46,8 +46,9 @@ class _ImageSwitcherState extends State<ImageSwitcher> {
         );
       },
       child: Image.asset(
-        switchingImages[_currentIndex],
-        height: 296.h,
+        widget.switchingImages[_currentIndex],
+        height: widget.height,
+        width: widget.width,
         key: ValueKey<int>(_currentIndex),
         fit: BoxFit.cover,
       ),

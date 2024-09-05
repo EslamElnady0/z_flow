@@ -29,7 +29,10 @@ class TimeManagementBody extends StatelessWidget {
           SizedBox(
             height: 20.h,
           ),
-          const ImageSwitcher(),
+          ImageSwitcher(
+            switchingImages: Constants.switchingTimeManagementImages,
+            height: 296.h,
+          ),
           SizedBox(
             height: 20.h,
           ),

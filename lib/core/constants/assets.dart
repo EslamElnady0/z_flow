@@ -20,6 +20,11 @@ class Assets {
   static const String stayAwayLock = "assets/images/stayAwayLock.png";
   static const String stopWatch = "assets/images/stopWatch.png";
   static const String goalsImage = "assets/images/goalsImage.png";
+  static const String calenderReminder = "assets/images/calenderReminder.png";
+  static const String businessPlanningReminder =
+      "assets/images/businessPlanningReminder.png";
+  static const String addToYourCategories =
+      "assets/images/addToYourCategories.png";
 
   ////////////////        svgs              ///////////////////////
   static const String tasksIcon = "assets/images/svgs/tasks.svg";

@@ -27,6 +27,9 @@ class AppTexts {
 
   static const String viewAll = "View All";
   static const String filter = "Filter";
+  static const String addANewEvent = "Add a new event";
+  static const String yourEventsAreComing = "Your events are coming!";
+  static const String eventsAlreadyPassed = "events already passed!";
   static const String writeYourGoal = "Write Your Goal..";
   static const String onGoingHabits = "Ongoing Habits";
   static const String doneHabits = "Done Habits";
@@ -181,4 +184,8 @@ class AppTexts {
   static const String reminderOfEvent = "Reminder of this event";
   static const String startIn = "Start in..";
   static const String eventDays = "Event days";
+  static const String addToYourCategories = "Add to your categories?";
+  static const String organizingTasks =
+      "Organizing tasks into categories helps you keep your workflow efficient and ensures nothing gets overlooked.";
+  static const String continue_ = "Continue";
 }

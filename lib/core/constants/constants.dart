@@ -14,11 +14,13 @@ class Constants {
   static const String constantsBox = 'constantsBox';
   static const String habitsBox = 'habitsBox';
   static const String goalsBox = 'goalsBox';
+  static const String remindersBox = 'remindersBox';
   static const String categoriesBox = 'categoriesBox';
   static const String usersCollection = 'users';
   static const String tasksCollection = 'tasks';
   static const String habitsCollection = 'habits';
   static const String goalsCollection = 'goals';
+  static const String remindersCollection = 'reminders';
   static const String categoriesCollection = 'categories';
   static final List<OnboardingModel> onBoardingScreens = [
     const OnboardingModel(
@@ -105,7 +107,10 @@ class Constants {
         icon: Assets.clock,
         route: AppRouter.workSession),
     DrawerItem(title: AppTexts.myLists, icon: Assets.list, route: ""),
-    DrawerItem(title: AppTexts.reminder, icon: Assets.reminder, route: ""),
+    DrawerItem(
+        title: AppTexts.reminder,
+        icon: Assets.reminder,
+        route: AppRouter.reminder),
     DrawerItem(
         title: AppTexts.stayAway,
         icon: Assets.lockSafety,
@@ -131,7 +136,15 @@ class Constants {
     DrawerItem(title: AppTexts.settings, icon: Assets.settingDrawer, route: ""),
     DrawerItem(title: AppTexts.shareApp, icon: Assets.share, route: ""),
   ];
-
+  static List<String> switchingTimeManagementImages = [
+    Assets.twentyForSevenBot,
+    Assets.continuedUse,
+    Assets.twentyFourSeven
+  ];
+  static List<String> switchingReminderImages = [
+    Assets.calenderReminder,
+    Assets.businessPlanningReminder,
+  ];
   static List<String> hoursForward =
       List<String>.generate(12, (index) => (index + 1).toString());
 
