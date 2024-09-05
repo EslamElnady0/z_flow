@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
+import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_calender.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
@@ -53,8 +54,12 @@ class ReminderViewBody extends StatelessWidget {
             style: Styles.style15w400,
           ),
           const Spacer(),
-          const CustomLightColorsGradientButton(
-              text: AppTexts.addANewEvent, icon: Assets.addIcon),
+          CustomLightColorsGradientButton(
+              onTap: () {
+                Navigator.pushNamed(context, AppRouter.addReminder);
+              },
+              text: AppTexts.addANewEvent,
+              icon: Assets.addIcon),
           SizedBox(
             height: 48.h,
           )
