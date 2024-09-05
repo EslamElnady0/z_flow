@@ -1,12 +1,32 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
+import '../../../data/model/event_model.dart';
+import '../../../data/repo/events_repo.dart';
+
 part 'get_events_state.dart';
 
 class GetEventsCubit extends Cubit<GetEventsState> {
-  GetEventsCubit() : super(GetEventsInitial());
+  GetEventsCubit({required this.eventRepo}) : super(GetEventsInitial());
+  final EventsRepo eventRepo;
+  List<EventModel> events = [];
+  List<EventModel> specificDayEventsList = [];
+
   DateTime today = DateTime.now();
   DateTime focusedDay = DateTime.now();
+
+  Future<void> getEvents(
+      {required bool isConnected, required bool isAnonymous}) async {
+    emit(GetEventsLoading());
+    var result = await eventRepo.getEvents(
+        isConnected: isConnected, isAnonymous: isAnonymous);
+    result.fold((failure) {
+      emit(GetEventsFailure(message: failure.errMessage));
+    }, (eventsList) {
+      eventsList = eventsList;
+      emit(GetEventsSuccess());
+    });
+  }
 
   void getSpecificDayEvents(
     DateTime day,
