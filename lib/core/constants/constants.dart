@@ -14,13 +14,13 @@ class Constants {
   static const String constantsBox = 'constantsBox';
   static const String habitsBox = 'habitsBox';
   static const String goalsBox = 'goalsBox';
-  static const String remindersBox = 'remindersBox';
+  static const String eventsBox = 'eventsBox';
   static const String categoriesBox = 'categoriesBox';
   static const String usersCollection = 'users';
   static const String tasksCollection = 'tasks';
   static const String habitsCollection = 'habits';
   static const String goalsCollection = 'goals';
-  static const String remindersCollection = 'reminders';
+  static const String eventsCollection = 'events';
   static const String categoriesCollection = 'categories';
   static final List<OnboardingModel> onBoardingScreens = [
     const OnboardingModel(
