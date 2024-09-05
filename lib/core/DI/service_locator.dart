@@ -17,6 +17,9 @@ import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task
 import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20task%20cubit/delete_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
+import 'package:z_flow/features/reminder/data/repo/events_repo_impl.dart';
+import 'package:z_flow/features/reminder/presentation/view%20models/delete%20event%20cubit/delete_event_cubit.dart';
+import 'package:z_flow/features/reminder/presentation/view%20models/update%20event%20cubit/update_event_cubit.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/tasks%20cats/data/data%20sources/task_cats_local_data_source.dart';
 import 'package:z_flow/features/tasks%20cats/data/repos/task_cats_repo_impl.dart';
@@ -39,6 +42,10 @@ import '../../features/home/presentation/view models/habits/add habit cubit/add_
 import '../../features/home/presentation/view models/habits/delete habit cubit/delete_habit_cubit.dart';
 import '../../features/home/presentation/view models/habits/get habits cubit/get_habit_cubit.dart';
 import '../../features/home/presentation/view models/habits/update habit cubit/update_habit_cubit.dart';
+import '../../features/reminder/data/data sources/events_local_data_source.dart';
+import '../../features/reminder/data/data sources/events_remote_data_source.dart';
+import '../../features/reminder/presentation/view models/add event cubit/add_event_cubit.dart';
+import '../../features/reminder/presentation/view models/get events cubit/get_events_cubit.dart';
 import '../../features/tasks cats/data/data sources/task_cats_remote_data_source.dart';
 
 GetIt getIt = GetIt.instance;
@@ -121,4 +128,18 @@ void setupServiceLocator() {
       () => DeleteGoalCubit(goalsRepo: getIt.get<GoalsRepoImpl>()));
   getIt.registerFactory<EditGoalCubit>(
       () => EditGoalCubit(goalsRepo: getIt.get<GoalsRepoImpl>()));
+
+//////////////////  events cubits /////////////////
+  getIt.registerLazySingleton<EventsRepoImpl>(() => EventsRepoImpl(
+      eventsLocalDataSource: EventsLocalDataSourceImpl(),
+      eventsRemoteDataSource: EventsRemoteDataSourceImpl()));
+
+  getIt.registerLazySingleton<GetEventsCubit>(
+      () => GetEventsCubit(eventsRepo: getIt.get<EventsRepoImpl>()));
+  getIt.registerFactory<AddEventCubit>(
+      () => AddEventCubit(eventsRepo: getIt.get<EventsRepoImpl>()));
+  getIt.registerFactory<DeleteEventCubit>(
+      () => DeleteEventCubit(eventsRepo: getIt.get<EventsRepoImpl>()));
+  getIt.registerFactory<UpdateEventCubit>(
+      () => UpdateEventCubit(eventsRepo: getIt.get<EventsRepoImpl>()));
 }

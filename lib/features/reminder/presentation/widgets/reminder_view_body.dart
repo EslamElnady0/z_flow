@@ -11,10 +11,25 @@ import 'package:z_flow/features/home/presentation/views/widgets/custom_light_col
 import 'package:z_flow/features/home/presentation/views/widgets/image_switcher.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
 
+import '../../../../core/DI/service_locator.dart';
 import '../../../../core/constants/app_texts.dart';
 
-class ReminderViewBody extends StatelessWidget {
+class ReminderViewBody extends StatefulWidget {
   const ReminderViewBody({super.key});
+
+  @override
+  State<ReminderViewBody> createState() => _ReminderViewBodyState();
+}
+
+class _ReminderViewBodyState extends State<ReminderViewBody> {
+  @override
+  void dispose() {
+    if (getIt.isRegistered<GetEventsCubit>()) {
+      getIt<GetEventsCubit>().close();
+      getIt.unregister<GetEventsCubit>();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

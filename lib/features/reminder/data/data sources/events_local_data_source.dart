@@ -12,7 +12,7 @@ abstract class EventsLocalDataSource {
 
   void updateEvent(EventModel event);
 
-  void clearEvents();
+  void deleteAllEvents();
 }
 
 class EventsLocalDataSourceImpl implements EventsLocalDataSource {
@@ -39,7 +39,7 @@ class EventsLocalDataSourceImpl implements EventsLocalDataSource {
   }
 
   @override
-  void clearEvents() {
+  void deleteAllEvents() {
     var eventsBox = Hive.box<EventModel>(Constants.eventsBox);
     eventsBox.clear();
   }

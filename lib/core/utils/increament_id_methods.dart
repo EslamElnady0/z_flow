@@ -17,6 +17,11 @@ void incrementGoalsId() async {
   await box.put("goalsId", (box.get("goalsId") ?? 0) + 1);
 }
 
+void incrementEventsId() async {
+  var box = Hive.box(Constants.constantsBox);
+  await box.put("eventsId", (box.get("eventsId") ?? 0) + 1);
+}
+
 void increamentIsViewedId() async {
   var box = Hive.box(Constants.constantsBox);
   await box.put("isViewed", (box.get("isViewed") ?? 0) + 1);

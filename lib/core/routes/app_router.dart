@@ -22,7 +22,9 @@ import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_
 import 'package:z_flow/features/home/presentation/views/tasks%20views/finished_tasks_view.dart';
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
+import 'package:z_flow/features/reminder/presentation/view%20models/add%20event%20cubit/add_event_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
+import 'package:z_flow/features/reminder/presentation/view%20models/update%20event%20cubit/update_event_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/views/add_reminder_view.dart';
 import 'package:z_flow/features/reminder/presentation/views/reminder_view.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
@@ -52,6 +54,7 @@ import '../../features/home/presentation/view models/habits/get habits cubit/get
 import '../../features/home/presentation/view models/tasks/delete task cubit/delete_task_cubit.dart';
 import '../../features/home/presentation/views/habits views/all_habits_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/reminder/presentation/view models/delete event cubit/delete_event_cubit.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
 import '../../features/tasks cats/presentation/views/tasks_categories_view.dart';
@@ -307,13 +310,33 @@ class AppRouter {
                 ),
             settings: RouteSettings(arguments: category));
       case reminder:
+        reinitializeGetEventsCubitIfNeeded();
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => GetEventsCubit(),
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt.get<GetEventsCubit>()
+                        ..getEvents(
+                            isConnected:
+                                getIt<InternetCheckCubit>().isDeviceConnected,
+                            isAnonymous:
+                                getIt<FirebaseAuth>().currentUser!.isAnonymous),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<DeleteEventCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<UpdateEventCubit>(),
+                    ),
+                  ],
                   child: const ReminderView(),
                 ));
       case addReminder:
-        return MaterialPageRoute(builder: (context) => const AddReminderView());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<AddEventCubit>(),
+                  child: const AddReminderView(),
+                ));
       default:
         return MaterialPageRoute(
             builder: (context) => const Center(child: Text("7moksha")));

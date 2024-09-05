@@ -7,8 +7,8 @@ import '../../../data/repo/events_repo.dart';
 part 'get_events_state.dart';
 
 class GetEventsCubit extends Cubit<GetEventsState> {
-  GetEventsCubit({required this.eventRepo}) : super(GetEventsInitial());
-  final EventsRepo eventRepo;
+  GetEventsCubit({required this.eventsRepo}) : super(GetEventsInitial());
+  final EventsRepo eventsRepo;
   List<EventModel> events = [];
   List<EventModel> specificDayEventsList = [];
 
@@ -18,7 +18,7 @@ class GetEventsCubit extends Cubit<GetEventsState> {
   Future<void> getEvents(
       {required bool isConnected, required bool isAnonymous}) async {
     emit(GetEventsLoading());
-    var result = await eventRepo.getEvents(
+    var result = await eventsRepo.getEvents(
         isConnected: isConnected, isAnonymous: isAnonymous);
     result.fold((failure) {
       emit(GetEventsFailure(message: failure.errMessage));
