@@ -7,7 +7,7 @@ import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/utils/events%20utils/get_events.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_calender.dart';
+import 'package:z_flow/core/widgets/custom_calender.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/image_switcher.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
@@ -75,6 +75,8 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                         BlocBuilder<GetEventsCubit, GetEventsState>(
                           builder: (context, state) {
                             return CustomCalender(
+                                eventLoader:
+                                    getIt.get<GetEventsCubit>().getEventsByDate,
                                 focusedDay: getIt.get<GetEventsCubit>().today,
                                 selectedDayPredicate: (day) => isSameDay(
                                     day, getIt.get<GetEventsCubit>().today),

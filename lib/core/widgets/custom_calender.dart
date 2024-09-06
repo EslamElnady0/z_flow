@@ -8,6 +8,7 @@ import 'package:z_flow/core/styles/styles.dart';
 class CustomCalender extends StatelessWidget {
   final void Function(DateTime, DateTime)? onDaySelected;
   final bool Function(DateTime)? selectedDayPredicate;
+  final List<dynamic> Function(DateTime)? eventLoader;
   final EdgeInsets? margin;
   final DateTime focusedDay;
   const CustomCalender(
@@ -15,7 +16,8 @@ class CustomCalender extends StatelessWidget {
       this.onDaySelected,
       this.selectedDayPredicate,
       required this.focusedDay,
-      this.margin});
+      this.margin,
+      this.eventLoader});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class CustomCalender extends StatelessWidget {
           borderRadius: BorderRadius.circular(24.r),
           boxShadow: [Constants.shadow]),
       child: TableCalendar(
+        eventLoader: eventLoader,
         onDaySelected: onDaySelected,
         rowHeight: 29.h,
         selectedDayPredicate: selectedDayPredicate,

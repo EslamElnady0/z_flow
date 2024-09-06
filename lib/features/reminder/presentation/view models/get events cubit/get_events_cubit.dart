@@ -11,7 +11,7 @@ class GetEventsCubit extends Cubit<GetEventsState> {
   final EventsRepo eventsRepo;
   List<EventModel> events = [];
   List<EventModel> specificDayEventsList = [];
-
+  Map<String, List<EventModel>> groupedEvents = {};
   DateTime today = DateTime.now();
   DateTime focusedDay = DateTime.now();
 
@@ -24,11 +24,12 @@ class GetEventsCubit extends Cubit<GetEventsState> {
       emit(GetEventsFailure(message: failure.errMessage));
     }, (eventsList) {
       events = eventsList;
+      _groupEventsByStartDate();
       emit(GetEventsSuccess());
     });
   }
 
-  void getSpecificDayEvents(
+  List<EventModel> getSpecificDayEvents(
     DateTime day,
   ) {
     for (var event in events) {
@@ -40,6 +41,7 @@ class GetEventsCubit extends Cubit<GetEventsState> {
     }
 
     emit(GetEventsSuccess());
+    return specificDayEventsList;
   }
 
   onDaySelected(DateTime day, DateTime focusDay) {
@@ -48,6 +50,28 @@ class GetEventsCubit extends Cubit<GetEventsState> {
 
     specificDayEventsList = [];
     getSpecificDayEvents(focusDay);
+
     emit(DaySelectedState());
+  }
+
+  Map<String, List<EventModel>> _groupEventsByStartDate() {
+    groupedEvents = {};
+
+    for (var event in events) {
+      String dateKey = event.startDate;
+
+      if (groupedEvents.containsKey(dateKey)) {
+        groupedEvents[dateKey]!.add(event);
+      } else {
+        groupedEvents[dateKey] = [event];
+      }
+    }
+
+    return groupedEvents;
+  }
+
+  List<EventModel> getEventsByDate(DateTime date) {
+    String keyDate = DateFormat.yMMMd().format(date);
+    return groupedEvents[keyDate] ?? [];
   }
 }
