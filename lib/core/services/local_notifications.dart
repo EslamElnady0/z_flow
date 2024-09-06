@@ -54,7 +54,6 @@ class LocalNotifications {
           box.get("notificationPermissionDenied") ?? 0 + 1);
       await Permission.notification.request();
     }
-    print(declinedCount);
   }
 
   static Future showSimpleNotification(
