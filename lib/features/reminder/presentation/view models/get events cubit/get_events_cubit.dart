@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 
 import '../../../data/model/event_model.dart';
 import '../../../data/repo/events_repo.dart';
-
 part 'get_events_state.dart';
 
 class GetEventsCubit extends Cubit<GetEventsState> {
@@ -23,7 +23,7 @@ class GetEventsCubit extends Cubit<GetEventsState> {
     result.fold((failure) {
       emit(GetEventsFailure(message: failure.errMessage));
     }, (eventsList) {
-      eventsList = eventsList;
+      events = eventsList;
       emit(GetEventsSuccess());
     });
   }
@@ -31,22 +31,23 @@ class GetEventsCubit extends Cubit<GetEventsState> {
   void getSpecificDayEvents(
     DateTime day,
   ) {
-    // for (var task in tasks) {
-    //   if (task.createdAt == DateFormat.yMMMd().format(day)) {
-    //     if (!specificDayTasksList.contains(task)) {
-    //       specificDayTasksList.add(task);
-    //     }
-    //   }
-    // }
+    for (var event in events) {
+      if (event.startDate == DateFormat.yMMMd().format(day)) {
+        if (!specificDayEventsList.contains(event)) {
+          specificDayEventsList.add(event);
+        }
+      }
+    }
 
-    // emit(GetTaskSuccess());
+    emit(GetEventsSuccess());
   }
 
   onDaySelected(DateTime day, DateTime focusDay) {
     today = day;
-    // focusedDay = focusDay;
+    focusedDay = focusDay;
 
-    // getSpecificDayEvents(focusDay);
+    specificDayEventsList = [];
+    getSpecificDayEvents(focusDay);
     emit(DaySelectedState());
   }
 }

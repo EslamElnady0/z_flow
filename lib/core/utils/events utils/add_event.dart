@@ -18,4 +18,7 @@ Future<void> addEvent({required EventModel event}) async {
   incrementEventsId();
 
   await getEvents();
+  getIt
+      .get<GetEventsCubit>()
+      .getSpecificDayEvents(getIt.get<GetEventsCubit>().focusedDay);
 }

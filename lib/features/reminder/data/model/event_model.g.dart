@@ -22,7 +22,7 @@ class EventModelAdapter extends TypeAdapter<EventModel> {
       endDate: fields[2] as String,
       note: fields[3] as String,
       createdAt: fields[4] as String,
-      id: fields[5] as String,
+      id: fields[5] as int,
     );
   }
 

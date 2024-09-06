@@ -19,7 +19,7 @@ class EventModel extends HiveObject {
   String createdAt;
 
   @HiveField(5)
-  String id;
+  int id;
 
   EventModel({
     required this.title,

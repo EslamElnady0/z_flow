@@ -6,6 +6,7 @@ import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/styles/styles.dart';
+import 'package:z_flow/core/utils/events%20utils/get_events.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_calender.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/image_switcher.dart';
@@ -13,6 +14,7 @@ import 'package:z_flow/features/reminder/presentation/view%20models/get%20events
 
 import '../../../../core/DI/service_locator.dart';
 import '../../../../core/constants/app_texts.dart';
+import 'selected_day_events_bloc_builder.dart';
 
 class ReminderViewBody extends StatefulWidget {
   const ReminderViewBody({super.key});
@@ -22,6 +24,19 @@ class ReminderViewBody extends StatefulWidget {
 }
 
 class _ReminderViewBodyState extends State<ReminderViewBody> {
+  Future<void> getTodaysEvents() async {
+    await getEvents();
+    getIt
+        .get<GetEventsCubit>()
+        .getSpecificDayEvents(getIt.get<GetEventsCubit>().focusedDay);
+  }
+
+  @override
+  void initState() {
+    getTodaysEvents();
+    super.initState();
+  }
+
   @override
   void dispose() {
     if (getIt.isRegistered<GetEventsCubit>()) {
@@ -34,52 +49,78 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.w),
-      child: Column(
-        children: [
-          Divider(
-            height: 2.h,
-          ),
-          SizedBox(
-            height: 12.h,
-          ),
-          Text(
-            AppTexts.helpYouStayOrganized,
-            style: Styles.style14w400,
-          ),
-          ImageSwitcher(
-            switchingImages: Constants.switchingReminderImages,
-            height: 170.h,
-          ),
-          BlocBuilder<GetEventsCubit, GetEventsState>(
-            builder: (context, state) {
-              return CustomCalender(
-                  focusedDay: context.read<GetEventsCubit>().today,
-                  selectedDayPredicate: (day) =>
-                      isSameDay(day, context.read<GetEventsCubit>().today),
-                  onDaySelected: context.read<GetEventsCubit>().onDaySelected,
-                  margin: EdgeInsets.symmetric(horizontal: 15.w));
-            },
-          ),
-          SizedBox(
-            height: 12.h,
-          ),
-          Text(
-            AppTexts.yourEvents,
-            style: Styles.style15w400,
-          ),
-          const Spacer(),
-          CustomLightColorsGradientButton(
-              onTap: () {
-                Navigator.pushNamed(context, AppRouter.addReminder);
-              },
-              text: AppTexts.addANewEvent,
-              icon: Assets.addIcon),
-          SizedBox(
-            height: 48.h,
-          )
-        ],
-      ),
-    );
+        padding: EdgeInsets.symmetric(horizontal: 18.w),
+        child: Column(
+          children: [
+            Expanded(
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        Divider(
+                          height: 2.h,
+                        ),
+                        SizedBox(
+                          height: 12.h,
+                        ),
+                        Text(
+                          AppTexts.helpYouStayOrganized,
+                          style: Styles.style14w400,
+                        ),
+                        ImageSwitcher(
+                          switchingImages: Constants.switchingReminderImages,
+                          height: 170.h,
+                        ),
+                        BlocBuilder<GetEventsCubit, GetEventsState>(
+                          builder: (context, state) {
+                            return CustomCalender(
+                                focusedDay: getIt.get<GetEventsCubit>().today,
+                                selectedDayPredicate: (day) => isSameDay(
+                                    day, getIt.get<GetEventsCubit>().today),
+                                onDaySelected:
+                                    getIt.get<GetEventsCubit>().onDaySelected,
+                                margin: EdgeInsets.symmetric(horizontal: 15.w));
+                          },
+                        ),
+                        SizedBox(
+                          height: 12.h,
+                        ),
+                        Text(
+                          AppTexts.yourEvents,
+                          style: Styles.style15w400,
+                        ),
+                        SizedBox(
+                          height: 12.h,
+                        ),
+                        const SelectedDayEventsBlocBuilder(),
+                      ],
+                    ),
+                  ),
+                  const SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Column(
+                      children: [
+                        Spacer(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            CustomLightColorsGradientButton(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRouter.addReminder);
+                },
+                text: AppTexts.addANewEvent,
+                icon: Assets.addIcon),
+            SizedBox(
+              height: 48.h,
+            )
+          ],
+        ));
   }
 }

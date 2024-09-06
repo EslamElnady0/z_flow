@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
+import 'package:z_flow/core/utils/events%20utils/add_event.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
+import 'package:z_flow/features/reminder/data/model/event_model.dart';
 import 'package:z_flow/features/reminder/presentation/widgets/event_data_form.dart';
 
 import '../../../../core/constants/app_texts.dart';
+import '../../../../core/constants/constants.dart';
 import '../../../../core/styles/styles.dart';
 
 class AddReminderViewBody extends StatefulWidget {
@@ -74,7 +79,24 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
                 children: [
                   const Spacer(),
                   BottomScreenActions(
-                    onSavePressed: () {},
+                    onSavePressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        var box = Hive.box(Constants.constantsBox);
+                        int id = box.get("eventsId") ?? 0;
+                        EventModel event = EventModel(
+                            title: eventTitle.text,
+                            startDate: eventStart.text,
+                            endDate: eventEnd.text,
+                            note: eventNote.text,
+                            createdAt:
+                                DateFormat.yMMMd().format(DateTime.now()),
+                            id: id);
+                        await addEvent(event: event);
+                        if (context.mounted) {
+                          Navigator.pop(context);
+                        }
+                      }
+                    },
                     onOtherButtonPressed: () => Navigator.pop(context),
                     otherButtonText: AppTexts.cancel,
                   ),
