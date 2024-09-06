@@ -1,6 +1,10 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+
+import '../constants/constants.dart';
 //import 'package:rxdart/rxdart.dart';
 
 class LocalNotifications {
@@ -35,6 +39,24 @@ class LocalNotifications {
     );
   }
 
+  static Future requestNotificationPermission() async {
+    var box = Hive.box(Constants.constantsBox);
+    int? declinedCount = box.get("notificationPermissionDenied");
+
+    await Permission.notification.request();
+    if (declinedCount != null &&
+        declinedCount >= 1 &&
+        await Permission.notification.isPermanentlyDenied) {
+      openAppSettings();
+    }
+    if (await Permission.notification.isDenied) {
+      box.put("notificationPermissionDenied",
+          box.get("notificationPermissionDenied") ?? 0 + 1);
+      await Permission.notification.request();
+    }
+    print(declinedCount);
+  }
+
   static Future showSimpleNotification(
       {required String title,
       required String body,
@@ -48,6 +70,7 @@ class LocalNotifications {
             ticker: 'ticker');
     const NotificationDetails notificationDetails =
         NotificationDetails(android: androidNotificationDetails);
+    await requestNotificationPermission();
     await flutterLocalNotificationsPlugin
         .show(id, title, body, notificationDetails, payload: payload);
   }
@@ -65,6 +88,8 @@ class LocalNotifications {
             ticker: 'ticker');
     const NotificationDetails notificationDetails =
         NotificationDetails(android: androidNotificationDetails);
+    await requestNotificationPermission();
+
     await flutterLocalNotificationsPlugin.periodicallyShow(
         id, title, body, RepeatInterval.daily, notificationDetails);
   }
@@ -84,6 +109,8 @@ class LocalNotifications {
     const NotificationDetails notificationDetails = NotificationDetails(
       android: androidNotificationDetails,
     );
+    await requestNotificationPermission();
+
     await flutterLocalNotificationsPlugin.zonedSchedule(
         id, title, body, scheduledDate, notificationDetails,
         payload: payload,

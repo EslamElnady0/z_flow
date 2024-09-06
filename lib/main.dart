@@ -14,6 +14,7 @@ import 'package:z_flow/features/reminder/data/model/event_model.dart';
 import 'package:z_flow/firebase_options.dart';
 import 'core/constants/constants.dart';
 import 'core/core cubits/my_bloc_observer.dart';
+import 'core/services/local_notifications.dart';
 import 'features/home/data/models/habit model/habit_model.dart';
 import 'features/home/data/models/task model/task_model.dart';
 
@@ -23,6 +24,7 @@ main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  await LocalNotifications.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Bloc.observer = MyBlocObserver();
 
