@@ -30,6 +30,22 @@ class CustomCalender extends StatelessWidget {
           borderRadius: BorderRadius.circular(24.r),
           boxShadow: [Constants.shadow]),
       child: TableCalendar(
+        calendarBuilders: CalendarBuilders(
+          markerBuilder: (context, date, events) {
+            if (events.isNotEmpty && date.day != focusedDay.day) {
+              return Container(
+                margin: EdgeInsets.all(2.h),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.blue, width: 3),
+                ),
+              );
+            } else if (date.day == focusedDay.day) {
+              return const SizedBox();
+            }
+            return null;
+          },
+        ),
         eventLoader: eventLoader,
         onDaySelected: onDaySelected,
         rowHeight: 29.h,
