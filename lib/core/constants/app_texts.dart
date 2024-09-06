@@ -34,6 +34,7 @@ class AppTexts {
   static const String onGoingHabits = "Ongoing Habits";
   static const String doneHabits = "Done Habits";
   static const String calender = "Calender";
+  static const String bigEventAwaitsYou = "Big Event awaits you";
   static const String time = "Time";
   static const String habits = "Habits";
   static const String allFinishedTasks = "All Finished Tasks";

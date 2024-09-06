@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -31,7 +32,8 @@ class LocalNotifications {
             iOS: initializationSettingsDarwin,
             linux: initializationSettingsLinux);
     tz.initializeTimeZones();
-
+    final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
+    tz.setLocalLocation(tz.getLocation(currentTimeZone));
     flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       // onDidReceiveNotificationResponse: onNotificationTapped,
@@ -97,7 +99,7 @@ class LocalNotifications {
       {required String title,
       required String body,
       required String payload,
-      required tz.TZDateTime scheduledDate,
+      required DateTime scheduledDateTime,
       required int id}) async {
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails('channel 3', 'your channel name',
@@ -109,7 +111,17 @@ class LocalNotifications {
       android: androidNotificationDetails,
     );
     await _requestNotificationPermission();
+    tz.TZDateTime scheduledDate = tz.TZDateTime(
+      tz.local,
+      scheduledDateTime.year,
+      scheduledDateTime.month,
+      scheduledDateTime.day,
+      7, // Set the hour to 8 AM
+      0, // Minute
+      0, // Second
+    );
 
+    print("Scheduled Date and Time: $scheduledDate");
     await flutterLocalNotificationsPlugin.zonedSchedule(
         id, title, body, scheduledDate, notificationDetails,
         payload: payload,

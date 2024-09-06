@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
+import 'package:z_flow/core/utils/notifications_helpers.dart';
 import 'package:z_flow/core/utils/increament_id_methods.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/add%20event%20cubit/add_event_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
@@ -21,4 +22,6 @@ Future<void> addEvent({required EventModel event}) async {
   getIt
       .get<GetEventsCubit>()
       .getSpecificDayEvents(getIt.get<GetEventsCubit>().focusedDay);
+
+  scheduleEventNotification(event);
 }
