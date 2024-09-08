@@ -5,6 +5,10 @@ import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/widgets/inner_shadow.dart';
+import '../../../../work session/presentation/widgets/gradient_circular_progress_indicator_painter.dart';
+
 class CustomProfileStatsItem extends StatelessWidget {
   final String title;
   final String completedText;
@@ -95,13 +99,27 @@ class CustomProfileStatsItem extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      CircularProgressIndicator(
-                        color: ColorManager.primaryColorAccent,
-                        strokeWidth: 7,
-                        value: completed.isEmpty
-                            ? 0
-                            : completed.length /
-                                (onGoing.length + completed.length),
+                      InnerShadow(
+                        shadows: [
+                          BoxShadow(
+                              offset: const Offset(-2, -2),
+                              blurRadius: 4,
+                              color: Colors.black.withOpacity(0.5))
+                        ],
+                        child: CustomPaint(
+                          painter: GradientCircularProgressPainter(
+                              shadow: BoxShadow(
+                                  offset: const Offset(0, 4),
+                                  blurRadius: 21.3,
+                                  color: const Color(0xff0B3F7D)
+                                      .withOpacity(0.48)),
+                              strokeWidth: 9,
+                              value: completed.isEmpty
+                                  ? 0
+                                  : completed.length /
+                                      (onGoing.length + completed.length),
+                              gradient: Constants.customTimerGradient),
+                        ),
                       ),
                       Center(
                           child: Text(
