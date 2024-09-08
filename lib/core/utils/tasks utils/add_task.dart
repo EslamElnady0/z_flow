@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:z_flow/core/utils/increament_id_methods.dart';
+import 'package:z_flow/core/utils/notifications_helpers.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 
 import '../../../features/home/data/models/task model/task_model.dart';
@@ -16,4 +17,5 @@ Future<void> addTask({required TaskModel task}) async {
   getIt.get<GetTaskCubit>().tasks.add(task);
 
   incrementTasksId();
+  scheduleTaskNotification(task);
 }

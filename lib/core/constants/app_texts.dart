@@ -13,7 +13,12 @@ class AppTexts {
   static const String finance = "Finance";
   static const String education = "Education";
   static const String health = "Health";
+  static const String yourTaskDeadLineIsComing =
+      "Your Task Deadline is Coming!";
   static const String travel = "Travel";
+  static const String keepWorkingHard =
+      "Keep Working Hard To Achieve Your Goals :)";
+  static const String habitsTodo = "You Have Habit Todo";
   static const String addNewCategory = "Add a new category";
   static const String taskClassifications = "Task classifications";
   static const String exploreYourTasksCategorize =

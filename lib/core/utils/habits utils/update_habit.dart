@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
+import 'package:z_flow/core/services/local_notifications.dart';
 import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
 import 'package:z_flow/features/favourites/data/view%20models/favourite%20habits%20cubit/favourite_habits_cubit.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
@@ -7,6 +8,7 @@ import 'package:z_flow/features/home/presentation/view%20models/habits/update%20
 
 import '../../../features/home/presentation/view models/habits/get habits cubit/get_habit_cubit.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
+import '../notifications_helpers.dart';
 
 Future<void> updateHabit({required HabitModel habit}) async {
   await getIt.get<UpdateHabitCubit>().updateHabit(
@@ -16,9 +18,15 @@ Future<void> updateHabit({required HabitModel habit}) async {
       uid: getIt.get<FirebaseAuth>().currentUser!.uid);
   if (habit.isDone) {
     getIt.get<GetHabitCubit>().onGoinghabits.remove(habit);
+    LocalNotifications.cancelNotification(id: habit.id + habitsOffset);
   } else {
     getIt.get<GetHabitCubit>().doneHabits.remove(habit);
   }
   getIt.get<FavouriteHabitsCubit>().getFavHabits();
   await getHabits();
+  if (!habit.isIterable) {
+    LocalNotifications.cancelNotification(id: habit.id + habitsOffset);
+  } else if (habit.isIterable) {
+    setDailyHabitsNotification(habit);
+  }
 }

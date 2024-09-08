@@ -120,7 +120,7 @@ class LocalNotifications {
       0, // Minute
       0, // Second
     );
-
+    //TODO : MAKE TIME PICKER IN ADD EVENT AND USE IT
     print("Scheduled Date and Time: $scheduledDate");
     await flutterLocalNotificationsPlugin.zonedSchedule(
         id, title, body, scheduledDate, notificationDetails,
