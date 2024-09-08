@@ -18,8 +18,8 @@ class ProfileGoogleSignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: getIt.get<LogInCubit>(),
+    return BlocProvider(
+      create: (context) => getIt<LogInCubit>(),
       child: Builder(builder: (context) {
         return BlocListener<LogInCubit, LogInState>(
           listener: (context, state) {

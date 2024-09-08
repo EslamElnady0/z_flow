@@ -16,6 +16,7 @@ class CustomButton extends StatelessWidget {
   final List<BoxShadow>? dropShadow;
   final Border? border;
   final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
   final LinearGradient? gradient;
   final List<BoxShadow>? innerShadow;
   const CustomButton({
@@ -33,6 +34,7 @@ class CustomButton extends StatelessWidget {
     this.height,
     this.alignment,
     this.innerShadow,
+    this.padding,
   });
 
   @override
@@ -48,6 +50,7 @@ class CustomButton extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
+          padding: padding,
           width: double.infinity,
           margin: margin,
           height: height ?? 55.h,
