@@ -29,7 +29,7 @@ class BottomSheetFooterBlocBuilder extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 18.w),
             child: BottomScreenActions(
-              onSavePressed: () {
+              onPrimaryButtonPressed: () {
                 titleController.text = context
                     .read<SelectTaskCategoriesCubit>()
                     .taskCategories

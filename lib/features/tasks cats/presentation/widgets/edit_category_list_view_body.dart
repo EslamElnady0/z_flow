@@ -78,7 +78,7 @@ class _EditCategoryListViewBodyState extends State<EditCategoryListViewBody> {
                 deleteTaskCategory(category: widget.category);
                 Navigator.pop(context);
               },
-              onSavePressed: () {
+              onPrimaryButtonPressed: () {
                 Navigator.pop(context);
               },
               otherButtonText: AppTexts.delete),

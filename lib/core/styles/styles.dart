@@ -23,6 +23,11 @@ class Styles {
     fontWeight: FontWeight.w600,
     color: Colors.black,
   );
+  static TextStyle style26W600 = TextStyle(
+    fontSize: 26.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
+  );
   static TextStyle style27W600 = TextStyle(
     fontSize: 27.sp,
     fontWeight: FontWeight.w600,

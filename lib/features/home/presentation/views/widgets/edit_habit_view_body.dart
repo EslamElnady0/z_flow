@@ -70,7 +70,7 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
                 const Spacer(),
                 BottomScreenActions(
                   otherButtonText: AppTexts.delete,
-                  onSavePressed: () async {
+                  onPrimaryButtonPressed: () async {
                     if (formKey.currentState!.validate()) {
                       widget.habit.title = taskController.text;
                       widget.habit.deadline = endsInController.text;

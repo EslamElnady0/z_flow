@@ -31,6 +31,10 @@ class ColorManager {
     Colors.white,
     Color(0xffD7E9FF),
   ];
+  static const List<Color> customSuggestCategorySelectionGradientColors = [
+    Color(0xffD7E4F4),
+    Color(0xffA6BEDA),
+  ];
   static const List<Color> customItemsSuccussSnackBarGradientColors = [
     Color(0xff0F933C),
     Color(0xff14E34E),

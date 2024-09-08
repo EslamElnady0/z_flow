@@ -102,7 +102,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
               children: [
                 const Spacer(),
                 BottomScreenActions(
-                  onSavePressed: () async {
+                  onPrimaryButtonPressed: () async {
                     if (formKey.currentState!.validate()) {
                       widget.task.title = taskController.text;
                       widget.task.deadline = endsInController.text;

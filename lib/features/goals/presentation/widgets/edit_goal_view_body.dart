@@ -86,7 +86,7 @@ class _EditGoalViewBodyState extends State<EditGoalViewBody> {
                     height: 30.h,
                   ),
                   BottomScreenActions(
-                    onSavePressed: () async {
+                    onPrimaryButtonPressed: () async {
                       if (formKey.currentState!.validate()) {
                         widget.goal.title = controller.text;
                         formKey.currentState!.save();

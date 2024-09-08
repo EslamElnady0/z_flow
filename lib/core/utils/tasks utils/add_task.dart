@@ -7,8 +7,11 @@ import '../../../features/home/data/models/task model/task_model.dart';
 import '../../../features/home/presentation/view models/tasks/add task cubit/add_task_cubit.dart';
 import '../../DI/service_locator.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
+import 'get_tasks.dart';
 
-Future<void> addTask({required TaskModel task}) async {
+Future<void> addTask({
+  required TaskModel task,
+}) async {
   await getIt.get<AddTaskCubit>().addTask(
       task: task,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
@@ -17,5 +20,8 @@ Future<void> addTask({required TaskModel task}) async {
   getIt.get<GetTaskCubit>().tasks.add(task);
 
   incrementTasksId();
-  scheduleTaskNotification(task);
+  if (task.deadline != "") {
+    scheduleTaskNotification(task);
+  }
+  await getTasks();
 }

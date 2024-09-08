@@ -7,14 +7,16 @@ import '../../../../../core/widgets/custom_button.dart';
 import '../../../../on boarding/presentaion/views/widgets/custom_on_boarding_skip_button.dart';
 
 class BottomScreenActions extends StatelessWidget {
-  final void Function()? onSavePressed;
+  final void Function()? onPrimaryButtonPressed;
   final void Function() onOtherButtonPressed;
   final String otherButtonText;
+  final String? primaryButtonText;
   const BottomScreenActions(
       {super.key,
-      this.onSavePressed,
+      this.onPrimaryButtonPressed,
       required this.onOtherButtonPressed,
-      required this.otherButtonText});
+      required this.otherButtonText,
+      this.primaryButtonText});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,8 @@ class BottomScreenActions extends StatelessWidget {
       children: [
         Expanded(
             child: CustomButton(
-          onTap: onSavePressed,
-          text: AppTexts.save,
+          onTap: onPrimaryButtonPressed,
+          text: primaryButtonText ?? AppTexts.save,
           gradient: Constants.customButtonGradient,
           raduis: 16.r,
         )),

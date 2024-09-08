@@ -25,6 +25,8 @@ class Assets {
       "assets/images/businessPlanningReminder.png";
   static const String addToYourCategories =
       "assets/images/addToYourCategories.png";
+  static const String suggestCategoryImage =
+      "assets/images/suggestCategoryImage.png";
 
   ////////////////        svgs              ///////////////////////
   static const String tasksIcon = "assets/images/svgs/tasks.svg";

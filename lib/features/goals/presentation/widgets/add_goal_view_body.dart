@@ -86,7 +86,7 @@ class _AddGoalViewBodyState extends State<AddGoalViewBody> {
                     height: 30.h,
                   ),
                   BottomScreenActions(
-                    onSavePressed: () async {
+                    onPrimaryButtonPressed: () async {
                       if (formKey.currentState!.validate()) {
                         var box = Hive.box(Constants.constantsBox);
                         int id = box.get("goalsId") ?? 0;

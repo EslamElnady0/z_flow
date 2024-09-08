@@ -95,7 +95,7 @@ class _BottomSheetAddCategoryBodyState
                       Navigator.of(context).pop();
                     },
                     otherButtonText: AppTexts.cancel,
-                    onSavePressed: () {
+                    onPrimaryButtonPressed: () {
                       if (formKey.currentState!.validate()) {
                         addTaskCategory(
                             category: titleController.text, context: context);

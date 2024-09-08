@@ -79,7 +79,7 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
                 children: [
                   const Spacer(),
                   BottomScreenActions(
-                    onSavePressed: () async {
+                    onPrimaryButtonPressed: () async {
                       if (formKey.currentState!.validate()) {
                         var box = Hive.box(Constants.constantsBox);
                         int id = box.get("eventsId") ?? 0;

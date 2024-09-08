@@ -11,7 +11,7 @@ import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20ta
 
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/constants.dart';
-import '../../../../../core/utils/tasks utils/get_tasks.dart';
+import '../../../../../core/utils/show_suggest_category_selection_dialog.dart';
 import '../../../data/models/task model/task_model.dart';
 import '../../view models/tasks/get task cubit/get_task_cubit.dart';
 import 'task_data_form.dart';
@@ -104,7 +104,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                 BottomScreenActions(
                   otherButtonText: AppTexts.cancel,
                   onOtherButtonPressed: () => Navigator.of(context).pop(),
-                  onSavePressed: () async {
+                  onPrimaryButtonPressed: () async {
                     if (formKey.currentState!.validate()) {
                       var box = Hive.box(Constants.constantsBox);
                       int id = box.get("tasksId") ?? 0;
@@ -123,18 +123,22 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                         deadline: endsInController.text,
                         category: categoryController.text.split(", "),
                       );
-                      await addTask(
-                        task: task,
-                      );
-                      if (widget.category != null) {
-                        getIt
-                            .get<GetTaskCubit>()
-                            .getCategorizedTasks(widget.category!);
-                      }
-                      await getTasks();
-
-                      if (context.mounted) {
-                        Navigator.pop(context);
+                      if (categoryController.text.isEmpty ||
+                          categoryController.text == "") {
+                        showSuggestCategorySelectionDialog(
+                            context, categoryController, task);
+                      } else {
+                        await addTask(
+                          task: task,
+                        );
+                        if (widget.category != null) {
+                          getIt
+                              .get<GetTaskCubit>()
+                              .getCategorizedTasks(widget.category!);
+                        }
+                        if (context.mounted) {
+                          Navigator.pop(context);
+                        }
                       }
                     }
                   },

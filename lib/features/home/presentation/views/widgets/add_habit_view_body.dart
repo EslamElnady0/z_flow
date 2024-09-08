@@ -70,7 +70,7 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
                 BottomScreenActions(
                   otherButtonText: AppTexts.cancel,
                   onOtherButtonPressed: () => Navigator.of(context).pop(),
-                  onSavePressed: () async {
+                  onPrimaryButtonPressed: () async {
                     if (formKey.currentState!.validate()) {
                       var box = Hive.box(Constants.constantsBox);
                       int id = box.get("habitsId") ?? 0;
