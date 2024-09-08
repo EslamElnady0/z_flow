@@ -172,6 +172,8 @@ class AppRouter {
                 ),
             settings: RouteSettings(arguments: args));
       case editTask:
+        reinitializeGetCategoriesCubitIfNeeded();
+
         TaskModel task = settings.arguments as TaskModel;
         return MaterialPageRoute(
             builder: (context) => BlocProvider(

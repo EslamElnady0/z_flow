@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/utils/tasks%20utils/delete_task.dart';
 import 'package:z_flow/core/utils/tasks%20utils/update_task.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
 import '../../../../../core/constants/app_texts.dart';
+import '../../../../../core/utils/tasks utils/categories/get_tasks_categories.dart';
+import '../../../../tasks cats/presentation/view models/get tasks categories cubit/get_tasks_categories_cubit.dart';
 import 'task_data_form.dart';
 
 class EditTaskViewBody extends StatefulWidget {
@@ -29,10 +32,13 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
   late TextEditingController subTaskFiveController;
   @override
   void initState() {
+    getTasksCategories();
+
     taskController = TextEditingController(text: widget.task.title);
     endsInController = TextEditingController(text: widget.task.deadline);
     noteController = TextEditingController(text: widget.task.notes);
-    categoryController = TextEditingController(text: "");
+    categoryController =
+        TextEditingController(text: widget.task.category.join(", "));
     subTaskOneController = TextEditingController(text: widget.task.sideTask[0]);
     subTaskTwoController = TextEditingController(text: widget.task.sideTask[1]);
     subTaskThreeController =
@@ -56,6 +62,10 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
     subTaskThreeController.dispose();
     subTaskFourController.dispose();
     subTaskFiveController.dispose();
+    if (getIt.isRegistered<GetTasksCategoriesCubit>()) {
+      getIt<GetTasksCategoriesCubit>().close();
+      getIt.unregister<GetTasksCategoriesCubit>();
+    }
     super.dispose();
   }
 
@@ -97,6 +107,8 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
                       widget.task.title = taskController.text;
                       widget.task.deadline = endsInController.text;
                       widget.task.notes = noteController.text;
+                      widget.task.category =
+                          categoryController.text.split(", ");
                       widget.task.sideTask = <String>[
                         subTaskOneController.text,
                         subTaskTwoController.text,

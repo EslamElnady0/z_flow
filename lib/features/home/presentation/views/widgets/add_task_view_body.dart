@@ -48,7 +48,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
     subTaskThreeController = TextEditingController();
     subTaskFourController = TextEditingController();
     subTaskFiveController = TextEditingController();
-    categoryController = TextEditingController();
+    categoryController = TextEditingController(text: widget.category ?? "");
     super.initState();
   }
 
@@ -121,9 +121,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                         id: id,
                         createdAt: DateFormat.yMMMd().format(DateTime.now()),
                         deadline: endsInController.text,
-                        category: widget.category == null
-                            ? []
-                            : <String>[widget.category!],
+                        category: categoryController.text.split(", "),
                       );
                       await addTask(
                         task: task,

@@ -8,7 +8,9 @@ import 'package:z_flow/features/home/presentation/views/widgets/custom_light_col
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 
 class BottomSheetFooterBlocBuilder extends StatelessWidget {
-  const BottomSheetFooterBlocBuilder({super.key});
+  final TextEditingController titleController;
+  const BottomSheetFooterBlocBuilder(
+      {super.key, required this.titleController});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,13 @@ class BottomSheetFooterBlocBuilder extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 18.w),
             child: BottomScreenActions(
-              onSavePressed: () {},
+              onSavePressed: () {
+                titleController.text = context
+                    .read<SelectTaskCategoriesCubit>()
+                    .taskCategories
+                    .join(", ");
+                Navigator.pop(context);
+              },
               onOtherButtonPressed: () {
                 Navigator.pop(context);
               },

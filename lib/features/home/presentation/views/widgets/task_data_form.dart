@@ -10,7 +10,7 @@ import 'package:z_flow/features/home/presentation/views/widgets/custom_light_col
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box_container.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_data_entry_text_field.dart';
 
-import '../../../../../core/utils/show_category_bottm_sheet.dart';
+import '../../../../../core/utils/show_category_bottom_sheet.dart';
 
 class TaskDataForm extends StatefulWidget {
   final TextEditingController taskController;
@@ -174,9 +174,9 @@ class _TaskDataFormState extends State<TaskDataForm> {
               keyboardType: TextInputType.none,
               onTap: () {
                 showCategoryBottomSheet(
-                    context: context,
-                    controller: widget.categoryController,
-                    taskCategories: taskCategories);
+                  context: context,
+                  controller: widget.categoryController,
+                );
               },
               validator: (value) {
                 return null;

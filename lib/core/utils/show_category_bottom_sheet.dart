@@ -8,16 +8,17 @@ import 'package:z_flow/features/home/presentation/views/widgets/task_categories_
 import '../../features/home/presentation/views/widgets/bottom_sheet_add_category_body.dart';
 import '../../features/home/presentation/views/widgets/bottom_sheet_footer.dart';
 
-void showCategoryBottomSheet(
-    {required BuildContext context,
-    required TextEditingController controller,
-    required List<String> taskCategories}) {
+void showCategoryBottomSheet({
+  required BuildContext context,
+  required TextEditingController controller,
+}) {
   showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (context) {
         return BlocProvider(
-          create: (context) => SelectTaskCategoriesCubit(),
+          create: (context) =>
+              SelectTaskCategoriesCubit()..getCategoriesFromText(controller),
           child: Padding(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -43,7 +44,9 @@ void showCategoryBottomSheet(
                                       SizedBox(
                                         height: 24.h,
                                       ),
-                                      const BottomSheetFooterBlocBuilder(),
+                                      BottomSheetFooterBlocBuilder(
+                                        titleController: controller,
+                                      ),
                                       SizedBox(
                                         height: 24.h,
                                       )
