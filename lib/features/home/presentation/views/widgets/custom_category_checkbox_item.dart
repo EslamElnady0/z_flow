@@ -7,13 +7,15 @@ import '../../../../../core/styles/styles.dart';
 
 class CustomCategoryCheckboxItem extends StatelessWidget {
   final int index;
-  final VoidCallback onTap;
+  final void Function(bool?)? onChanged;
   final String title;
+  final bool value;
   const CustomCategoryCheckboxItem(
       {super.key,
       required this.index,
-      required this.onTap,
-      required this.title});
+      required this.onChanged,
+      required this.title,
+      required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +27,13 @@ class CustomCategoryCheckboxItem extends StatelessWidget {
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         dense: true,
-        onTap: onTap,
         title: Text(
           title,
           style: Styles.style20W700white,
         ),
         trailing: CustomCheckBox(
-          value: false,
+          value: value,
+          onChanged: onChanged,
         ),
       ),
     );

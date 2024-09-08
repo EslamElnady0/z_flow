@@ -8,6 +8,7 @@ class AppTexts {
   static const String lock = "Lock";
   static const String tasks = "Tasks";
   static const String work = "Work";
+  static const String title = "Title..";
   static const String personal = "Personal";
   static const String shopping = "Shopping";
   static const String fitness = "Fitness";

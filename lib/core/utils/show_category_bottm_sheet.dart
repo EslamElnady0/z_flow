@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
-import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_category_checkbox_item.dart';
-import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
-import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
+import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/select%20task%20categories%20cubit/select_task_categories_cubit.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/task_categories_list_view.dart';
+
+import '../../features/home/presentation/views/widgets/bottom_sheet_add_category_body.dart';
+import '../../features/home/presentation/views/widgets/bottom_sheet_footer.dart';
 
 void showCategoryBottomSheet(
     {required BuildContext context,
@@ -14,41 +14,45 @@ void showCategoryBottomSheet(
     required List<String> taskCategories}) {
   showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (context) {
-        return Container(
-          decoration: const BoxDecoration(
-            gradient: Constants.drawerGradient,
-          ),
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 18.h, horizontal: 16.w),
-                    itemBuilder: (context, index) => CustomCategoryCheckboxItem(
-                        index: index,
-                        onTap: () {},
-                        title:
-                            getIt.get<GetTasksCategoriesCubit>().cats[index]),
-                    separatorBuilder: (context, index) => SizedBox(
-                          height: 16.h,
-                        ),
-                    itemCount:
-                        getIt.get<GetTasksCategoriesCubit>().cats.length),
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              CustomLightColorsGradientButton(
-                text: AppTexts.addNewCategory,
-                margin: EdgeInsets.symmetric(horizontal: 18.w),
-                icon: Assets.addIcon,
-                onTap: () {},
-              ),
-              SizedBox(
-                height: 24.h,
-              )
-            ],
+        return BlocProvider(
+          create: (context) => SelectTaskCategoriesCubit(),
+          child: Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: Builder(builder: (context) {
+              return Container(
+                  decoration: const BoxDecoration(
+                    gradient: Constants.drawerGradient,
+                  ),
+                  child: BlocBuilder<SelectTaskCategoriesCubit,
+                      SelectTaskCategoriesState>(
+                    builder: (context, state) {
+                      return AnimatedSize(
+                          duration: const Duration(milliseconds: 300),
+                          child: SizedBox(
+                            height: state is SelectTaskCategoriesAdd
+                                ? MediaQuery.of(context).size.height * 0.34
+                                : MediaQuery.of(context).size.height * 0.8,
+                            child: state is SelectTaskCategoriesAdd
+                                ? const BottomSheetAddCategoryBody()
+                                : Column(
+                                    children: [
+                                      const TaskCategoriesListView(),
+                                      SizedBox(
+                                        height: 24.h,
+                                      ),
+                                      const BottomSheetFooterBlocBuilder(),
+                                      SizedBox(
+                                        height: 24.h,
+                                      )
+                                    ],
+                                  ),
+                          ));
+                    },
+                  ));
+            }),
           ),
         );
       });

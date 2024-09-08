@@ -51,7 +51,7 @@ class _AddCategoryViewBodyState extends State<AddCategoryViewBody> {
               height: 20.h,
             ),
             CustomAuthTextField(
-                hintText: "Title..",
+                hintText: AppTexts.title,
                 suffix: Padding(
                   padding: const EdgeInsets.all(14.0),
                   child: SvgPicture.asset(

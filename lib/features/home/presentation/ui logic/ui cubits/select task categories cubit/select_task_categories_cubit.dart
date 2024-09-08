@@ -11,8 +11,13 @@ class SelectTaskCategoriesCubit extends Cubit<SelectTaskCategoriesState> {
     emit(SelectTaskCategoriesAdd());
   }
 
-  void selectCategory() {
+  void popFromAddCategory() {
+    emit(SelectTaskCategoriesInitial());
+  }
+
+  void selectCategory({required String category, required bool isSelected}) {
     if (taskCategories.isNotEmpty) {
+      print(taskCategories);
       emit(SelectTaskCategoriesSelected());
     } else {
       emit(SelectTaskCategoriesInitial());
