@@ -57,6 +57,8 @@ class Assets {
   static const String logOutIcon = "assets/images/svgs/logOutIcon.svg";
   static const String favStarOutLined =
       "assets/images/svgs/favStarOutLined.svg";
+  static const String taskCategoryIcon =
+      "assets/images/svgs/taskCategoryIcon.svg";
 
   ////////////////////             audios       ///////////////////////////////////
 

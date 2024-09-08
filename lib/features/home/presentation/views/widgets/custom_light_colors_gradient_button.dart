@@ -9,8 +9,13 @@ class CustomLightColorsGradientButton extends StatelessWidget {
   final void Function()? onTap;
   final String text;
   final String icon;
+  final EdgeInsetsGeometry? margin;
   const CustomLightColorsGradientButton(
-      {super.key, this.onTap, required this.text, required this.icon});
+      {super.key,
+      this.onTap,
+      required this.text,
+      required this.icon,
+      this.margin});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +23,7 @@ class CustomLightColorsGradientButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 56.h,
+        margin: margin,
         decoration: BoxDecoration(
           gradient: Constants.customItemsGradient,
           borderRadius: BorderRadius.circular(18.r),

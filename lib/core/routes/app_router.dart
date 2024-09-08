@@ -12,7 +12,7 @@ import 'package:z_flow/features/goals/presentation/view%20models/get%20goals%20c
 import 'package:z_flow/features/goals/presentation/views/goals_view.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
-import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
+import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/bottom%20nav%20bar%20cubit/bottom_nav_bar_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/add%20habit%20cubit/add_habits_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/update%20habit%20cubit/update_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task%20cubit/add_task_cubit.dart';
@@ -156,10 +156,18 @@ class AppRouter {
                   child: const FavouriteHabitsView(),
                 ));
       case addTask:
+        reinitializeGetCategoriesCubitIfNeeded();
         var args = settings.arguments as String?;
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => getIt<AddTaskCubit>(),
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<AddTaskCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt.get<GetTasksCategoriesCubit>(),
+                    ),
+                  ],
                   child: const AddTaskView(),
                 ),
             settings: RouteSettings(arguments: args));

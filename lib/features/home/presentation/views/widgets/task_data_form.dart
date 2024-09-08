@@ -10,10 +10,13 @@ import 'package:z_flow/features/home/presentation/views/widgets/custom_light_col
 import 'package:z_flow/features/home/presentation/views/widgets/custom_check_box_container.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_data_entry_text_field.dart';
 
+import '../../../../../core/utils/show_category_bottm_sheet.dart';
+
 class TaskDataForm extends StatefulWidget {
   final TextEditingController taskController;
   final TextEditingController endsInController;
   final TextEditingController noteController;
+  final TextEditingController categoryController;
   final List<TextEditingController> subTaskControllers;
   final TaskModel? task;
   final bool isEdit;
@@ -28,7 +31,8 @@ class TaskDataForm extends StatefulWidget {
       required this.formKey,
       required this.text,
       this.isEdit = false,
-      this.task});
+      this.task,
+      required this.categoryController});
 
   @override
   State<TaskDataForm> createState() => _TaskDataFormState();
@@ -38,7 +42,7 @@ class _TaskDataFormState extends State<TaskDataForm> {
   int maxSubTasks = 5;
   int currentSubTasks = 0;
   List<Widget> subTaskTextFieldsList = [];
-
+  List<String> taskCategories = [];
   @override
   void initState() {
     if (widget.task != null && widget.task!.sideTask[0] != "") {
@@ -162,6 +166,31 @@ class _TaskDataFormState extends State<TaskDataForm> {
               minLines: 5,
               maxLines: 5,
               controller: widget.noteController),
+          SizedBox(
+            height: 16.h,
+          ),
+          CustomDataEntryTextField(
+              hintText: AppTexts.selectCategory,
+              keyboardType: TextInputType.none,
+              onTap: () {
+                showCategoryBottomSheet(
+                    context: context,
+                    controller: widget.categoryController,
+                    taskCategories: taskCategories);
+              },
+              validator: (value) {
+                return null;
+              },
+              icon: Padding(
+                padding: EdgeInsets.only(right: 15.w),
+                child: SvgPicture.asset(
+                  Assets.taskCategoryIcon,
+                  height: 16.h,
+                  width: 16.w,
+                  color: Colors.grey,
+                ),
+              ),
+              controller: widget.categoryController),
           SizedBox(
             height: 16.h,
           ),

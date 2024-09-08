@@ -21,6 +21,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
   late TextEditingController taskController;
   late TextEditingController endsInController;
   late TextEditingController noteController;
+  late TextEditingController categoryController;
   late TextEditingController subTaskOneController;
   late TextEditingController subTaskTwoController;
   late TextEditingController subTaskThreeController;
@@ -31,6 +32,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
     taskController = TextEditingController(text: widget.task.title);
     endsInController = TextEditingController(text: widget.task.deadline);
     noteController = TextEditingController(text: widget.task.notes);
+    categoryController = TextEditingController(text: "");
     subTaskOneController = TextEditingController(text: widget.task.sideTask[0]);
     subTaskTwoController = TextEditingController(text: widget.task.sideTask[1]);
     subTaskThreeController =
@@ -48,6 +50,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
     taskController.dispose();
     endsInController.dispose();
     noteController.dispose();
+    categoryController.dispose();
     subTaskOneController.dispose();
     subTaskTwoController.dispose();
     subTaskThreeController.dispose();
@@ -66,6 +69,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
             child: TaskDataForm(
                 task: widget.task,
                 taskController: taskController,
+                categoryController: categoryController,
                 endsInController: endsInController,
                 noteController: noteController,
                 subTaskControllers: [

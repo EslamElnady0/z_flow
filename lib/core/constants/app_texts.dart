@@ -14,6 +14,7 @@ class AppTexts {
   static const String finance = "Finance";
   static const String education = "Education";
   static const String health = "Health";
+  static const String selectCategory = "Select a category";
   static const String yourTaskDeadLineIsComing =
       "Your Task Deadline is Coming!";
   static const String travel = "Travel";

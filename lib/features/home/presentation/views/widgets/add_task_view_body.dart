@@ -5,7 +5,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/utils/tasks%20utils/add_task.dart';
+import 'package:z_flow/core/utils/tasks%20utils/categories/get_tasks_categories.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
+import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
 
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/constants.dart';
@@ -28,6 +30,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
   late TextEditingController taskController;
   late TextEditingController endsInController;
   late TextEditingController noteController;
+  late TextEditingController categoryController;
   late TextEditingController subTaskOneController;
   late TextEditingController subTaskTwoController;
   late TextEditingController subTaskThreeController;
@@ -36,6 +39,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
 
   @override
   void initState() {
+    getTasksCategories();
     taskController = TextEditingController();
     endsInController = TextEditingController();
     noteController = TextEditingController();
@@ -44,6 +48,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
     subTaskThreeController = TextEditingController();
     subTaskFourController = TextEditingController();
     subTaskFiveController = TextEditingController();
+    categoryController = TextEditingController();
     super.initState();
   }
 
@@ -57,6 +62,12 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
     subTaskThreeController.dispose();
     subTaskFourController.dispose();
     subTaskFiveController.dispose();
+    categoryController.dispose();
+
+    if (getIt.isRegistered<GetTasksCategoriesCubit>()) {
+      getIt<GetTasksCategoriesCubit>().close();
+      getIt.unregister<GetTasksCategoriesCubit>();
+    }
     super.dispose();
   }
 
@@ -71,6 +82,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                 taskController: taskController,
                 endsInController: endsInController,
                 noteController: noteController,
+                categoryController: categoryController,
                 subTaskControllers: [
                   subTaskOneController,
                   subTaskTwoController,
