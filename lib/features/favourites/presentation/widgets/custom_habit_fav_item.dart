@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/constants/assets.dart';
@@ -9,7 +10,6 @@ import 'package:z_flow/features/home/presentation/views/widgets/habit_options_me
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
 import '../../../../../core/widgets/build_overlay_menu.dart';
-import '../../../../core/DI/service_locator.dart';
 
 class CustomHabitFavItem extends StatefulWidget {
   final GlobalKey actionKey;
@@ -41,9 +41,12 @@ class _CustomHabitFavItemState extends State<CustomHabitFavItem> {
         onTap: () async {
           widget.habit.isFavourited = !widget.habit.isFavourited;
           if (!widget.habit.isFavourited) {
-            getIt.get<FavouriteHabitsCubit>().favHabits.remove(widget.habit);
+            context.read<FavouriteHabitsCubit>().favHabits.remove(widget.habit);
           }
           await updateHabit(habit: widget.habit);
+          if (context.mounted) {
+            context.read<FavouriteHabitsCubit>().getFavHabits();
+          }
         },
         child: SvgPicture.asset(
           Assets.starStroke,

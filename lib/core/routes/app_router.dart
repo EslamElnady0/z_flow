@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/utils/tasks%20utils/categories/reinitialize_cubits_if_needed.dart';
+import 'package:z_flow/core/utils/reinitialize_cubits_if_needed.dart';
 import 'package:z_flow/features/auth/presentation/views/sign_up_view.dart';
 import 'package:z_flow/features/favourites/presentation/views/favourite_habits_view.dart';
 import 'package:z_flow/features/goals/presentation/view%20models/get%20goals%20cubit/get_goals_cubit.dart';
@@ -10,6 +10,7 @@ import 'package:z_flow/features/goals/presentation/views/goals_view.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/cubit/bottom_nav_bar_cubit.dart';
+import 'package:z_flow/features/home/presentation/view%20models/habits/add%20habit%20cubit/add_habits_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/update%20habit%20cubit/update_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task%20cubit/add_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
@@ -111,48 +112,48 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
                   providers: [
-                    BlocProvider.value(
-                      value: getIt.get<FavouriteTasksCubit>(),
+                    BlocProvider(
+                      create: (context) => getIt.get<FavouriteTasksCubit>(),
                     ),
-                    BlocProvider.value(
-                      value: getIt.get<UpdateTaskCubit>(),
+                    BlocProvider(
+                      create: (context) => getIt<UpdateTaskCubit>(),
                     ),
                   ],
                   child: const FavouriteTasksView(),
                 ));
       case favHabits:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                  value: getIt.get<FavouriteHabitsCubit>(),
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt.get<FavouriteHabitsCubit>(),
                   child: const FavouriteHabitsView(),
                 ));
       case addTask:
         var args = settings.arguments as String?;
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
-                  create: (context) => getIt.get<AddTaskCubit>(),
+                  create: (context) => getIt<AddTaskCubit>(),
                   child: const AddTaskView(),
                 ),
             settings: RouteSettings(arguments: args));
       case editTask:
         TaskModel task = settings.arguments as TaskModel;
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                  value: getIt.get<UpdateTaskCubit>(),
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<UpdateTaskCubit>(),
                   child: const EditTaskView(),
                 ),
             settings: RouteSettings(arguments: task));
       case addHabit:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
-                  create: (context) => getIt.get<GetTaskCubit>(),
+                  create: (context) => getIt<AddHabitCubit>(),
                   child: const AddHabitView(),
                 ));
       case editHabit:
         HabitModel habit = settings.arguments as HabitModel;
         return MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-                  value: getIt.get<UpdateHabitCubit>(),
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<UpdateHabitCubit>(),
                   child: const EditHabitView(),
                 ),
             settings: RouteSettings(arguments: habit));
@@ -234,10 +235,10 @@ class AppRouter {
                       value: getIt.get<GetTaskCubit>()..getRecentTasksFilter(),
                     ),
                     BlocProvider(
-                      create: (context) => getIt.get<DeleteTaskCubit>(),
+                      create: (context) => getIt<DeleteTaskCubit>(),
                     ),
-                    BlocProvider.value(
-                      value: getIt.get<UpdateTaskCubit>(),
+                    BlocProvider(
+                      create: (context) => getIt<UpdateTaskCubit>(),
                     ),
                   ],
                   child: const FinishedTasksView(),
@@ -254,10 +255,10 @@ class AppRouter {
                   ..getRecentDoneHabitsFilter(),
               ),
               BlocProvider(
-                create: (context) => getIt.get<DeleteHabitCubit>(),
+                create: (context) => getIt<DeleteHabitCubit>(),
               ),
-              BlocProvider.value(
-                value: getIt.get<UpdateHabitCubit>(),
+              BlocProvider(
+                create: (context) => getIt<UpdateHabitCubit>(),
               ),
             ],
             child: const AllHabitsView(),
@@ -296,11 +297,11 @@ class AppRouter {
                     BlocProvider.value(
                       value: getIt.get<GetTaskCubit>(),
                     ),
-                    BlocProvider.value(
-                      value: getIt.get<DeleteTaskCubit>(),
+                    BlocProvider(
+                      create: (context) => getIt<DeleteTaskCubit>(),
                     ),
-                    BlocProvider.value(
-                      value: getIt.get<UpdateTaskCubit>(),
+                    BlocProvider(
+                      create: (context) => getIt<UpdateTaskCubit>(),
                     ),
                     BlocProvider(
                       create: (context) => getIt<DeleteTaskCategoryCubit>(),

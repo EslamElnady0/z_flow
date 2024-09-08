@@ -5,12 +5,10 @@ import 'package:z_flow/core/utils/tasks%20utils/delete_task.dart';
 import 'package:z_flow/core/widgets/build_overlay_menu.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 
-import '../../../../../core/DI/service_locator.dart';
 import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/routes/app_router.dart';
 import '../../../../../core/utils/tasks utils/update_task.dart';
-import '../../../../favourites/data/view models/favourite tasks cubit/favourite_tasks_cubit.dart';
 import 'custom_pop_up_menu_item.dart';
 
 class TaskOptionsMenuBody extends StatelessWidget {
@@ -25,18 +23,14 @@ class TaskOptionsMenuBody extends StatelessWidget {
             onTap: () async {
               BuildOverlayMenu.removeOverlay();
               task.isFavourited = !task.isFavourited;
-              if (task.isFavourited) {
-                getIt.get<FavouriteTasksCubit>().favTasks.add(task);
-              } else {
-                getIt.get<FavouriteTasksCubit>().favTasks.remove(task);
-              }
               await updateTask(task: task);
             },
             title: AppTexts.favourite,
             icon: SvgPicture.asset(
-              Assets.starIcon,
+              task.isFavourited ? Assets.starIcon : Assets.favStarOutLined,
               width: 18.w,
               height: 18.h,
+              color: Colors.white,
             )),
         SizedBox(
           height: 20.h,

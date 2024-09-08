@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/features/favourites/presentation/widgets/custom_task_fav_item.dart';
@@ -19,7 +18,7 @@ class FavouriteTasksViewBody extends StatefulWidget {
 class _FavouriteTasksViewBodyState extends State<FavouriteTasksViewBody> {
   @override
   void initState() {
-    getIt.get<FavouriteTasksCubit>().getFavTasks();
+    context.read<FavouriteTasksCubit>().getFavTasks();
     super.initState();
   }
 
@@ -52,14 +51,15 @@ class _FavouriteTasksViewBodyState extends State<FavouriteTasksViewBody> {
           builder: (context, state) {
             return Expanded(
                 child: ListView.separated(
-                    itemCount: getIt.get<FavouriteTasksCubit>().favTasks.length,
+                    itemCount:
+                        context.read<FavouriteTasksCubit>().favTasks.length,
                     itemBuilder: (context, index) {
                       GlobalKey actionKey = GlobalKey();
                       return SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: CustomTaskFavItem(
-                            task: getIt
-                                .get<FavouriteTasksCubit>()
+                            task: context
+                                .read<FavouriteTasksCubit>()
                                 .favTasks[index],
                             actionKey: actionKey,
                           ));

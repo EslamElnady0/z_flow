@@ -72,30 +72,30 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<SignUpCubit>(
       () => SignUpCubit(getIt.get<AuthRepoImpl>()));
 ///////////////////////  tasks cubits   //////////////////////////////
-  getIt.registerLazySingleton<AddTaskCubit>(
+  getIt.registerFactory<AddTaskCubit>(
       () => AddTaskCubit(getIt.get<TasksRepoImpl>()));
-  getIt.registerLazySingleton<UpdateTaskCubit>(
+  getIt.registerFactory<UpdateTaskCubit>(
       () => UpdateTaskCubit(getIt.get<TasksRepoImpl>()));
   getIt.registerLazySingleton<GetTaskCubit>(
       () => GetTaskCubit(getIt.get<TasksRepoImpl>()));
-  getIt.registerLazySingleton<DeleteTaskCubit>(
+  getIt.registerFactory<DeleteTaskCubit>(
       () => DeleteTaskCubit(getIt.get<TasksRepoImpl>()));
 
 /////////////////////////   habits cubits   //////////////////////////////
-  getIt.registerLazySingleton<AddHabitCubit>(
+  getIt.registerFactory<AddHabitCubit>(
       () => AddHabitCubit(getIt.get<HabitsRepoImpl>()));
-  getIt.registerLazySingleton<UpdateHabitCubit>(
+  getIt.registerFactory<UpdateHabitCubit>(
       () => UpdateHabitCubit(getIt.get<HabitsRepoImpl>()));
   getIt.registerLazySingleton<GetHabitCubit>(
       () => GetHabitCubit(getIt.get<HabitsRepoImpl>()));
-  getIt.registerLazySingleton<DeleteHabitCubit>(
+  getIt.registerFactory<DeleteHabitCubit>(
       () => DeleteHabitCubit(getIt.get<HabitsRepoImpl>()));
 
 //////////////////////////  fav cubits   //////////////////////////////
 
-  getIt.registerLazySingleton<FavouriteTasksCubit>(
+  getIt.registerFactory<FavouriteTasksCubit>(
       () => FavouriteTasksCubit(getIt.get<GetTaskCubit>()));
-  getIt.registerLazySingleton<FavouriteHabitsCubit>(
+  getIt.registerFactory<FavouriteHabitsCubit>(
       () => FavouriteHabitsCubit(getIt.get<GetHabitCubit>()));
 ///////////////////  work session cubits   //////////////////////////////
   getIt.registerFactory<WorkSessionCubit>(() => WorkSessionCubit());

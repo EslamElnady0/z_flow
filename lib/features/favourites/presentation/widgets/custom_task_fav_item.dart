@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/styles/styles.dart';
 import '../../../../../core/widgets/build_overlay_menu.dart';
-import '../../../../core/DI/service_locator.dart';
 import '../../../../core/utils/tasks utils/update_task.dart';
 import '../../../home/data/models/task model/task_model.dart';
 import '../../../home/presentation/views/widgets/task_options_menu_body.dart';
@@ -41,9 +41,12 @@ class _CustomTaskFavItemState extends State<CustomTaskFavItem> {
         onTap: () async {
           widget.task.isFavourited = !widget.task.isFavourited;
           if (!widget.task.isFavourited) {
-            getIt.get<FavouriteTasksCubit>().favTasks.remove(widget.task);
+            context.read<FavouriteTasksCubit>().favTasks.remove(widget.task);
           }
           await updateTask(task: widget.task);
+          if (context.mounted) {
+            context.read<FavouriteTasksCubit>().getFavTasks();
+          }
         },
         child: SvgPicture.asset(
           Assets.starStroke,

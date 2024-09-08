@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 
@@ -20,7 +19,7 @@ class FavouriteHabitsViewBody extends StatefulWidget {
 class _FavouriteHabitsViewBodyState extends State<FavouriteHabitsViewBody> {
   @override
   void initState() {
-    getIt.get<FavouriteHabitsCubit>().getFavHabits();
+    context.read<FavouriteHabitsCubit>().getFavHabits();
     super.initState();
   }
 
@@ -54,14 +53,14 @@ class _FavouriteHabitsViewBodyState extends State<FavouriteHabitsViewBody> {
             return Expanded(
                 child: ListView.separated(
                     itemCount:
-                        getIt.get<FavouriteHabitsCubit>().favHabits.length,
+                        context.read<FavouriteHabitsCubit>().favHabits.length,
                     itemBuilder: (context, index) {
                       GlobalKey actionKey = GlobalKey();
                       return SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: CustomHabitFavItem(
-                            habit: getIt
-                                .get<FavouriteHabitsCubit>()
+                            habit: context
+                                .read<FavouriteHabitsCubit>()
                                 .favHabits[index],
                             actionKey: actionKey,
                           ));
