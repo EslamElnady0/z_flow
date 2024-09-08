@@ -1,6 +1,8 @@
 import 'package:z_flow/features/goals/data/repo/goals_repo_impl.dart';
 import 'package:z_flow/features/goals/presentation/view%20models/get%20goals%20cubit/get_goals_cubit.dart';
+import 'package:z_flow/features/home/data/repos/habits%20repo/habits_repo_impl.dart';
 import 'package:z_flow/features/home/data/repos/tasks%20repo/tasks_repo_impl.dart';
+import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
@@ -34,5 +36,12 @@ void reinitializeGetTasksCubitIfNeeded() {
   if (!getIt.isRegistered<GetTaskCubit>()) {
     getIt.registerSingleton<GetTaskCubit>(
         GetTaskCubit(getIt.get<TasksRepoImpl>()));
+  }
+}
+
+void reinitializeGetHabitsCubitIfNeeded() {
+  if (!getIt.isRegistered<GetHabitCubit>()) {
+    getIt.registerSingleton<GetHabitCubit>(
+        GetHabitCubit(getIt.get<HabitsRepoImpl>()));
   }
 }

@@ -63,13 +63,13 @@ void setupServiceLocator() {
 
 //////////////////////   Auth cubits     //////////////////////////////
   getIt.registerSingleton<InternetCheckCubit>(InternetCheckCubit());
-  getIt.registerLazySingleton<LogInCubit>(
-      () => LogInCubit(getIt.get<AuthRepoImpl>()));
-  getIt.registerLazySingleton<LogInAnoCubit>(
+  getIt
+      .registerFactory<LogInCubit>(() => LogInCubit(getIt.get<AuthRepoImpl>()));
+  getIt.registerFactory<LogInAnoCubit>(
       () => LogInAnoCubit(getIt.get<AuthRepoImpl>()));
-  getIt.registerLazySingleton<LogOutCubit>(
+  getIt.registerFactory<LogOutCubit>(
       () => LogOutCubit(getIt.get<AuthRepoImpl>()));
-  getIt.registerLazySingleton<SignUpCubit>(
+  getIt.registerFactory<SignUpCubit>(
       () => SignUpCubit(getIt.get<AuthRepoImpl>()));
 ///////////////////////  tasks cubits   //////////////////////////////
   getIt.registerFactory<AddTaskCubit>(

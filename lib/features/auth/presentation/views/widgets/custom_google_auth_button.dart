@@ -18,68 +18,63 @@ class CustomGoogleAuthButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: getIt.get<LogInCubit>(),
-      child: Builder(builder: (context) {
-        return BlocListener<LogInCubit, LogInState>(
-          listener: (context, state) async {
-            if (state is LogInSuccess) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                buildCustomSnackBar(message: "Logged in successfully"),
-              );
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
-            } else if (state is LogInFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(buildCustomSnackBar(
-                  message: state.errMessage, isError: true));
-            }
-          },
-          child: BlocBuilder<LogInCubit, LogInState>(
-            builder: (context, state) {
-              return CustomButton(
-                onTap: () async {
-                  await getIt.get<LogInCubit>().signInWithGoogle();
-                },
-                height: 44.h,
-                alignment: Alignment.center,
-                innerShadow: [
-                  BoxShadow(
-                      offset: const Offset(-2, -2),
-                      blurRadius: 4,
-                      color: Colors.black.withOpacity(0.25)),
-                ],
-                color: Colors.white,
-                margin: EdgeInsets.symmetric(horizontal: 18.w),
-                child: BlocBuilder<LogInCubit, LogInState>(
-                  builder: (context, state) {
-                    if (state is LogInLoading) {
-                      return SizedBox(
-                        height: 20.h,
-                        width: 20.w,
-                        child: const CircularProgressIndicator(
-                          color: ColorManager.primaryColorAccent,
-                        ),
-                      );
-                    } else {
-                      return Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text("Google",
-                              style: Styles.style14w400
-                                  .copyWith(color: Colors.black)),
-                          SizedBox(width: 30.w),
-                          SvgPicture.asset(Assets.googleLogo,
-                              height: 20.h, width: 20.w)
-                        ],
-                      );
-                    }
-                  },
-                ),
-              );
+    return BlocListener<LogInCubit, LogInState>(
+      listener: (context, state) async {
+        if (state is LogInSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            buildCustomSnackBar(message: "Logged in successfully"),
+          );
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
+        } else if (state is LogInFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              buildCustomSnackBar(message: state.errMessage, isError: true));
+        }
+      },
+      child: BlocBuilder<LogInCubit, LogInState>(
+        builder: (context, state) {
+          return CustomButton(
+            onTap: () async {
+              await getIt.get<LogInCubit>().signInWithGoogle();
             },
-          ),
-        );
-      }),
+            height: 44.h,
+            alignment: Alignment.center,
+            innerShadow: [
+              BoxShadow(
+                  offset: const Offset(-2, -2),
+                  blurRadius: 4,
+                  color: Colors.black.withOpacity(0.25)),
+            ],
+            color: Colors.white,
+            margin: EdgeInsets.symmetric(horizontal: 18.w),
+            child: BlocBuilder<LogInCubit, LogInState>(
+              builder: (context, state) {
+                if (state is LogInLoading) {
+                  return SizedBox(
+                    height: 20.h,
+                    width: 20.w,
+                    child: const CircularProgressIndicator(
+                      color: ColorManager.primaryColorAccent,
+                    ),
+                  );
+                } else {
+                  return Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("Google",
+                          style:
+                              Styles.style14w400.copyWith(color: Colors.black)),
+                      SizedBox(width: 30.w),
+                      SvgPicture.asset(Assets.googleLogo,
+                          height: 20.h, width: 20.w)
+                    ],
+                  );
+                }
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

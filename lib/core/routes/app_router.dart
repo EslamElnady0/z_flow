@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/utils/reinitialize_cubits_if_needed.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/cubit/log_in_ano_cubit.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/sign%20up%20cubit/sign_up_cubit.dart';
 import 'package:z_flow/features/auth/presentation/views/sign_up_view.dart';
 import 'package:z_flow/features/favourites/presentation/views/favourite_habits_view.dart';
 import 'package:z_flow/features/goals/presentation/view%20models/get%20goals%20cubit/get_goals_cubit.dart';
@@ -98,16 +101,41 @@ class AppRouter {
       case onBoarding:
         return MaterialPageRoute(builder: (context) => const OnBoardingView());
       case auth:
-        return MaterialPageRoute(builder: (context) => const AuthView());
+        return MaterialPageRoute(
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<LogInCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<LogInAnoCubit>(),
+                    ),
+                  ],
+                  child: const AuthView(),
+                ));
       case logIn:
         return MaterialPageRoute(
-          builder: (context) => const LogInView(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<LogInCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<LogInAnoCubit>(),
+              ),
+            ],
+            child: const LogInView(),
+          ),
         );
       case forgotPassword:
         return MaterialPageRoute(
             builder: (context) => const ForgotPasswordView());
       case signUp:
-        return MaterialPageRoute(builder: (context) => const SignUpView());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<SignUpCubit>(),
+                  child: const SignUpView(),
+                ));
       case favTasks:
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
@@ -159,8 +187,18 @@ class AppRouter {
             settings: RouteSettings(arguments: habit));
       case home:
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => BottomNavBarCubit(),
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => BottomNavBarCubit(),
+                    ),
+                    BlocProvider.value(
+                      value: getIt.get<GetTaskCubit>(),
+                    ),
+                    BlocProvider.value(
+                      value: getIt.get<GetHabitCubit>(),
+                    ),
+                  ],
                   child: const HomeView(),
                 ));
       case timeOfUse:

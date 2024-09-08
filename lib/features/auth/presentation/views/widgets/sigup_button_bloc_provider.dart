@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/routes/app_router.dart';
@@ -25,36 +24,31 @@ class SigupButtonBlocProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: getIt.get<SignUpCubit>(),
-      child: Builder(builder: (context) {
-        return BlocListener<SignUpCubit, SignUpState>(
-            listener: (context, state) {
-              if (state is SignUpSuccess) {
-                ScaffoldMessenger.of(context).showSnackBar(buildCustomSnackBar(
-                    message: "Account Created Successfully"));
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
-              } else if (state is SignUpFailure) {
-                ScaffoldMessenger.of(context).showSnackBar(buildCustomSnackBar(
-                    message: state.errMessage, isError: true));
-              }
-            },
-            child: CustomButton(
-              gradient: Constants.customButtonGradient,
-              text: AppTexts.signUp,
-              raduis: 16.r,
-              onTap: () async {
-                if (formKey.currentState!.validate()) {
-                  await context.read<SignUpCubit>().signUpWithEmailAndPassword(
-                      email: emailController.text,
-                      password: passwordController.text,
-                      firstName: firstNameController.text,
-                      lastName: lastNameController.text);
-                }
-              },
-            ));
-      }),
-    );
+    return BlocListener<SignUpCubit, SignUpState>(
+        listener: (context, state) {
+          if (state is SignUpSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                buildCustomSnackBar(message: "Account Created Successfully"));
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
+          } else if (state is SignUpFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                buildCustomSnackBar(message: state.errMessage, isError: true));
+          }
+        },
+        child: CustomButton(
+          gradient: Constants.customButtonGradient,
+          text: AppTexts.signUp,
+          raduis: 16.r,
+          onTap: () async {
+            if (formKey.currentState!.validate()) {
+              await context.read<SignUpCubit>().signUpWithEmailAndPassword(
+                  email: emailController.text,
+                  password: passwordController.text,
+                  firstName: firstNameController.text,
+                  lastName: lastNameController.text);
+            }
+          },
+        ));
   }
 }
