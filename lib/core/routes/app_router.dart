@@ -290,7 +290,8 @@ class AppRouter {
               BlocProvider.value(
                 value: getIt.get<GetHabitCubit>()
                   ..getRecentOnGoingHabitsFilter()
-                  ..getRecentDoneHabitsFilter(),
+                  ..getRecentDoneHabitsFilter(
+                      getIt.get<GetHabitCubit>().duration),
               ),
               BlocProvider(
                 create: (context) => getIt<DeleteHabitCubit>(),

@@ -26,14 +26,14 @@ class HabitsBody extends StatelessWidget {
         } else if (getIt.get<GetHabitCubit>().onGoinghabits.isEmpty &&
             getIt.get<GetHabitCubit>().doneHabits.isNotEmpty) {
           return OneHabitListEmpty(
-            habits: context.read<GetHabitCubit>().doneHabits,
+            habits: context.read<GetHabitCubit>().todaysDoneHabits,
             text: AppTexts.habitsYouCompletedToday,
             isDoneHabits: true,
           );
         } else {
           return NoEmptyHabitListEmpty(
             onGoingHabits: context.read<GetHabitCubit>().onGoinghabits,
-            doneHabits: context.read<GetHabitCubit>().doneHabits,
+            doneHabits: context.read<GetHabitCubit>().todaysDoneHabits,
           );
         }
       },

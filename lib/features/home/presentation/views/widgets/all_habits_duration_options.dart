@@ -19,7 +19,8 @@ class AllHabitsDurationOptions extends StatelessWidget {
             onTap: () async {
               BuildOverlayMenu.removeOverlay();
               getIt.get<GetHabitCubit>().duration = const Duration(hours: 24);
-              getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter();
+              getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter(
+                  getIt.get<GetHabitCubit>().duration);
               getIt.get<GetHabitCubit>().getRecentOnGoingHabitsFilter();
             },
             title: AppTexts.lastDay,
@@ -33,7 +34,8 @@ class AllHabitsDurationOptions extends StatelessWidget {
               BuildOverlayMenu.removeOverlay();
               getIt.get<GetHabitCubit>().duration =
                   const Duration(hours: 7 * 24);
-              getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter();
+              getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter(
+                  getIt.get<GetHabitCubit>().duration);
               getIt.get<GetHabitCubit>().getRecentOnGoingHabitsFilter();
             },
             title: AppTexts.last7Days,
@@ -47,7 +49,8 @@ class AllHabitsDurationOptions extends StatelessWidget {
               BuildOverlayMenu.removeOverlay();
               getIt.get<GetHabitCubit>().duration =
                   const Duration(hours: 28 * 24);
-              getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter();
+              getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter(
+                  getIt.get<GetHabitCubit>().duration);
               getIt.get<GetHabitCubit>().getRecentOnGoingHabitsFilter();
             },
             title: AppTexts.last28Days,
@@ -60,7 +63,8 @@ class AllHabitsDurationOptions extends StatelessWidget {
             onTap: () {
               BuildOverlayMenu.removeOverlay();
               getIt.get<GetHabitCubit>().duration = null;
-              getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter();
+              getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter(
+                  getIt.get<GetHabitCubit>().duration);
               getIt.get<GetHabitCubit>().getRecentOnGoingHabitsFilter();
             },
             title: AppTexts.allFinishedTasks,

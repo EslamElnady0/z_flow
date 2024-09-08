@@ -15,6 +15,7 @@ class GetHabitCubit extends Cubit<GetHabitState> {
   List<HabitModel> onGoinghabits = [];
   List<HabitModel> doneHabits = [];
   List<HabitModel> recentDoneHabits = [];
+  List<HabitModel> todaysDoneHabits = [];
   List<HabitModel> recentOnGoingHabits = [];
 
   Future<void> getHabits(
@@ -37,13 +38,15 @@ class GetHabitCubit extends Cubit<GetHabitState> {
           if (!doneHabits.contains(habits[i])) {
             doneHabits.add(habits[i]);
           }
+          todaysDoneHabits =
+              getRecentDoneHabitsFilter(const Duration(hours: 24));
         }
       }
       emit(GetHabitSucuess());
     });
   }
 
-  List<HabitModel> getRecentDoneHabitsFilter() {
+  List<HabitModel> getRecentDoneHabitsFilter(Duration? duration) {
     if (duration == null) {
       recentDoneHabits = doneHabits;
       emit(GetHabitSucuess());
@@ -52,7 +55,7 @@ class GetHabitCubit extends Cubit<GetHabitState> {
       recentDoneHabits = [];
 
       DateTime now = DateTime.now();
-      DateTime wantedDuration = now.subtract(duration!);
+      DateTime wantedDuration = now.subtract(duration);
       for (var habit in doneHabits) {
         if (habit.doneAt != "" && habit.isDone) {
           DateTime habitDoneDate = DateTime.parse(habit.doneAt);
