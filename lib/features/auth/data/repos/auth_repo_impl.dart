@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:z_flow/core/services/local_notifications.dart';
 import 'package:z_flow/core/utils/clear_local_database_upon_sign_in.dart';
 import 'package:z_flow/features/auth/data/models/user_model.dart';
 import '../../../../core/errors/failure.dart';
@@ -100,6 +101,7 @@ class AuthRepoImpl implements AuthRepo {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       await clearLocalDatabaseUponSignIn();
+      LocalNotifications.cancelAllNotifications();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
@@ -137,7 +139,7 @@ class AuthRepoImpl implements AuthRepo {
               uid: firebaseAuth.currentUser!.uid));
       await firebaseAuth.currentUser!.updateDisplayName(gUser.displayName!);
       await clearLocalDatabaseUponSignIn();
-
+      LocalNotifications.cancelAllNotifications();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
@@ -171,7 +173,7 @@ class AuthRepoImpl implements AuthRepo {
 
       await addUserToFireStore(user: user);
       await clearLocalDatabaseUponSignIn();
-
+      LocalNotifications.cancelAllNotifications();
       return right(null);
     } catch (e) {
       if (e is FirebaseException) {
