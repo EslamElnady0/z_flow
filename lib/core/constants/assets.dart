@@ -27,6 +27,8 @@ class Assets {
       "assets/images/addToYourCategories.png";
   static const String suggestCategoryImage =
       "assets/images/suggestCategoryImage.png";
+  static const String breakTime = "assets/images/breakTime.png";
+  static const String officeWorking = "assets/images/officeWorking.png";
 
   ////////////////        svgs              ///////////////////////
   static const String tasksIcon = "assets/images/svgs/tasks.svg";

@@ -117,10 +117,10 @@ class Constants {
         title: AppTexts.reminder,
         icon: Assets.reminder,
         route: AppRouter.reminder),
-    DrawerItem(
-        title: AppTexts.stayAway,
-        icon: Assets.lockSafety,
-        route: AppRouter.stayAway),
+    // DrawerItem(
+    //     title: AppTexts.stayAway,
+    //     icon: Assets.lockSafety,
+    //     route: AppRouter.stayAway),
     DrawerItem(
         title: AppTexts.myGoals, icon: Assets.goals, route: AppRouter.goals),
     DrawerItem(
@@ -135,8 +135,8 @@ class Constants {
         title: AppTexts.favoriteHabits,
         icon: Assets.starOutLined,
         route: AppRouter.favHabits),
-    DrawerItem(
-        title: AppTexts.addHomeWidget, icon: Assets.addWidget, route: ""),
+    // DrawerItem(
+    //     title: AppTexts.addHomeWidget, icon: Assets.addWidget, route: ""),
     DrawerItem(
         title: AppTexts.financialSupport, icon: Assets.dollar, route: ""),
     DrawerItem(title: AppTexts.settings, icon: Assets.settingDrawer, route: ""),
@@ -150,6 +150,11 @@ class Constants {
   static List<String> switchingReminderImages = [
     Assets.calenderReminder,
     Assets.businessPlanningReminder,
+  ];
+  static List<String> switchingWorkSessionImages = [
+    Assets.stopWatch,
+    Assets.officeWorking,
+    Assets.breakTime,
   ];
   static List<String> hoursForward =
       List<String>.generate(12, (index) => (index + 1).toString());

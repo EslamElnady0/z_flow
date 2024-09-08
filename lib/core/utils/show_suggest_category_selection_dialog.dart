@@ -56,9 +56,6 @@ void showSuggestCategorySelectionDialog(BuildContext context,
                   await addTask(
                     task: task,
                   );
-                  // if (context.mounted) {
-                  //   Navigator.pop(context);
-                  // }
                 },
                 otherButtonText: AppTexts.cancel,
                 primaryButtonText: AppTexts.continue_,

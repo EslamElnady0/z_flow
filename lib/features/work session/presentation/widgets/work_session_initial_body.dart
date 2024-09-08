@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
+import 'package:z_flow/features/home/presentation/views/widgets/image_switcher.dart';
 
 import '../../../../core/constants/assets.dart';
 import '../../../../core/styles/styles.dart';
@@ -26,18 +28,17 @@ class WorkSessionInitialBody extends StatelessWidget {
         SizedBox(
           height: 30.h,
         ),
-        Image.asset(
-          Assets.stopWatch,
-          height: 210.h,
-          width: 210.w,
-        ),
+        ImageSwitcher(
+            switchingImages: Constants.switchingWorkSessionImages,
+            height: 210.h,
+            width: 210.w),
         SizedBox(
           height: 50.h,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const WorkSessionTimeContainer(text: AppTexts.thirtyFiveMinWork),
+            const WorkSessionTimeContainer(text: AppTexts.fiftyMinWork),
             SvgPicture.asset(
               Assets.addIcon,
             ),

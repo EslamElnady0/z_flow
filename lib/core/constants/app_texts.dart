@@ -67,8 +67,8 @@ class AppTexts {
       "Here you can see you favourite habits";
   static const String profile = "Profile";
   static const String youAreAboutToOpenWorkSession =
-      "You are about to open a 35-minute session with a 5-minute break";
-  static const String thirtyFiveMinWork = "35 min work";
+      "You are about to open a 50-minute session with a 5-minute break";
+  static const String fiftyMinWork = "50 min work";
   static const String fiveMinBreak = "5 min Break";
   static const String inWorkSession = "In a working session";
   static const String inBreakSession = "In a break session";

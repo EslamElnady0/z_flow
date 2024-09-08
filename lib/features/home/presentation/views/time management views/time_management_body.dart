@@ -34,7 +34,7 @@ class TimeManagementBody extends StatelessWidget {
             height: 296.h,
           ),
           SizedBox(
-            height: 20.h,
+            height: 90.h,
           ),
           CustomButton(
             text: AppTexts.timeOfUse,
@@ -49,13 +49,13 @@ class TimeManagementBody extends StatelessWidget {
           SizedBox(
             height: 30.h,
           ),
-          CustomButton(
-            text: AppTexts.limitationsOfUse,
-            gradient: Constants.customButtonGradient,
-            style: Styles.style27W600,
-            height: 66.h,
-            raduis: 18.r,
-          ),
+          // CustomButton(
+          //   text: AppTexts.limitationsOfUse,
+          //   gradient: Constants.customButtonGradient,
+          //   style: Styles.style27W600,
+          //   height: 66.h,
+          //   raduis: 18.r,
+          // ),
         ],
       ),
     );

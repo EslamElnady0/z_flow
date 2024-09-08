@@ -34,7 +34,7 @@ class WorkSessionViewBody extends StatelessWidget {
                   if (context.read<TimerCubit>().breakCounter == 0) {
                     context.read<WorkSessionCubit>().backToInitial();
                     context.read<TimerCubit>().breakCounter = 5 * 60;
-                    context.read<TimerCubit>().workingCounter = 35 * 60;
+                    context.read<TimerCubit>().workingCounter = 50 * 60;
                   }
                 },
                 child: const WorkSessionBreakBody(),
