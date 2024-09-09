@@ -12,6 +12,8 @@ void launchLinkUrl(String url) async {
       url = 'http://$url';
       uri = Uri.parse(url);
       await launchUrl(uri);
+    } else {
+      await launchUrl(uri);
     }
   } catch (e) {
     Fluttertoast.showToast(
