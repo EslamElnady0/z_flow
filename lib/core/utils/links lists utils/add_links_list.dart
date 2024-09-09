@@ -15,6 +15,6 @@ Future<void> addLinksList(
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
       isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous);
   if (context.mounted) {
-    await getLinksLists(context);
+    await getLinksLists();
   }
 }

@@ -154,7 +154,7 @@ void setupServiceLocator() {
       linksListsLocalDataSource: LinksListsLocalDataSourceImpl(),
       linksListsRemoteDataSource: LinksListsRemoteDataSourceImpl()));
 
-  getIt.registerFactory<GetLinksListsCubit>(() =>
+  getIt.registerLazySingleton<GetLinksListsCubit>(() =>
       GetLinksListsCubit(linksListsRepo: getIt.get<LinksListsRepoImpl>()));
 
   getIt.registerFactory<AddLinksListCubit>(

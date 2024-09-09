@@ -13,9 +13,11 @@ class AppTexts {
   static const String shopping = "Shopping";
   static const String fitness = "Fitness";
   static const String finance = "Finance";
+  static const String noLinksYet = "You did't add any links here yet :(";
   static const String education = "Education";
   static const String health = "Health";
   static const String manage = "Manage";
+  static const String easilyAddANewList = "Easily add a new list! ";
   static const String addNewLink = "Add a new link";
   static const String addNewList = "Add a new list";
   static const String createCustomLists =
