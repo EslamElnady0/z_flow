@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:z_flow/core/utils/links%20lists%20utils/generate_platform_logo.dart';
 import 'package:z_flow/core/utils/links%20lists%20utils/get_links_lists.dart';
 import 'package:z_flow/core/utils/links%20lists%20utils/update_links_list.dart';
 import 'package:z_flow/features/my%20lists/data/models/link%20item%20model/link_item.dart';
@@ -29,12 +30,18 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
   late TextEditingController titleController;
   late TextEditingController descriptionController;
   late TextEditingController linkController;
+  String platformLogo = '';
   final formKey = GlobalKey<FormState>();
   @override
   void initState() {
     titleController = TextEditingController();
     descriptionController = TextEditingController();
     linkController = TextEditingController();
+    linkController.addListener(() {
+      setState(() {
+        platformLogo = getPlatformLogo(linkController.text);
+      });
+    });
     super.initState();
   }
 
@@ -123,6 +130,32 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
                     CustomAuthTextField(
                         hintText: "ex: https://www.google.com",
                         icon: null,
+                        onChanged: (p0) {
+                          setState(() {
+                            getPlatformLogo(linkController.text);
+                          });
+                        },
+                        validator: (value) {
+                          String pattern =
+                              r"^(https?:\/\/)?([a-zA-Z0-9\-_]+\.)+[a-zA-Z]{2,}(:\d{1,5})?(\/[^\s]*)?$";
+                          RegExp regExp = RegExp(pattern);
+                          if (value == null || value.isEmpty) {
+                            return "this field is required";
+                          } else if (!regExp.hasMatch(value)) {
+                            return "invalid url";
+                          }
+                          return null;
+                        },
+                        suffix: Padding(
+                          padding: EdgeInsets.all(12.r),
+                          child: SvgPicture.asset(
+                            platformLogo == ""
+                                ? Assets.defaultWebSite
+                                : getPlatformLogo(linkController.text),
+                            height: 16.h,
+                            width: 16.w,
+                          ),
+                        ),
                         controller: linkController),
                     SizedBox(
                       height: 25.h,

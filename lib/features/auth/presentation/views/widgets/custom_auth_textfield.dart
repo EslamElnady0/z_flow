@@ -50,7 +50,7 @@ class CustomAuthTextField extends StatelessWidget {
                 color: Colors.grey,
               ),
           hintText: hintText,
-          prefix: prefix,
+          prefixIcon: prefix,
           hintStyle: TextStyle(
               color: Colors.grey, fontWeight: FontWeight.w500, fontSize: 16.sp),
           contentPadding:

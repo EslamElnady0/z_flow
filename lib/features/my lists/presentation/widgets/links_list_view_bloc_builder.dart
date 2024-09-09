@@ -19,8 +19,9 @@ class LinksListViewBlocBuilder extends StatelessWidget {
               itemBuilder: (context, index) => CustomLinkItem(
                     linkItem: linksList.links[index],
                   ),
-              separatorBuilder: (context, index) => SizedBox(
-                    height: 16.h,
+              separatorBuilder: (context, index) => Divider(
+                    height: 45.h,
+                    thickness: 1.5,
                   ),
               itemCount: linksList.links.length),
         );

@@ -62,6 +62,14 @@ class Assets {
   static const String pauseIcon = "assets/images/svgs/pauseIcon.svg";
   static const String arrowDownIos = "assets/images/svgs/arrowDownIos.svg";
   static const String logOutIcon = "assets/images/svgs/logOutIcon.svg";
+  static const String facebookLogo = "assets/images/svgs/facebookLogo.svg";
+  static const String githubLogo = "assets/images/svgs/githubLogo.svg";
+  static const String googleLogo2 = "assets/images/svgs/googleLogo.svg";
+  static const String instagramLogo = "assets/images/svgs/instagramLogo.svg";
+  static const String linkedInLogo = "assets/images/svgs/linkedInLogo.svg";
+  static const String xLogo = "assets/images/svgs/XLogo.svg";
+  static const String youtubeLogo = "assets/images/svgs/youtubeLogo.svg";
+  static const String defaultWebSite = "assets/images/svgs/defaultWebSite.svg";
   static const String favStarOutLined =
       "assets/images/svgs/favStarOutLined.svg";
   static const String taskCategoryIcon =

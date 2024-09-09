@@ -48,7 +48,7 @@ class CustomLinkItem extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            const CustomLinkChip(),
+            CustomLinkChip(url: linkItem.url),
           ],
         ),
         const Spacer(),
