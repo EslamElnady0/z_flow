@@ -5,6 +5,7 @@ import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20models/bottom_nav_bar_item_model.dart';
+import 'package:z_flow/features/my%20lists/data/models/links%20list%20model/links_list_model.dart';
 
 import '../../features/home/presentation/ui logic/ui models/drawer_item_model.dart';
 import '../../features/on boarding/data/on_boarding_model.dart';
@@ -107,6 +108,13 @@ class Constants {
     AppTexts.education,
     AppTexts.health,
     AppTexts.travel
+  ];
+
+  static List<LinksListModel> linksLists = [
+    LinksListModel(name: AppTexts.personalDevelopment, links: []),
+    LinksListModel(name: AppTexts.educationAndCourses, links: []),
+    LinksListModel(name: AppTexts.productivityTools, links: []),
+    LinksListModel(name: AppTexts.readLater, links: []),
   ];
 
   static List<DrawerItem> drawerItems = [
