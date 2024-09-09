@@ -17,13 +17,14 @@ class EventModelAdapter extends TypeAdapter<EventModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return EventModel(
-        title: fields[0] as String,
-        startDate: fields[1] as String,
-        endDate: fields[2] as String,
-        note: fields[3] as String,
-        createdAt: fields[4] as String,
-        id: fields[5] as int,
-        timeOfEvent: fields[6] as String);
+      title: fields[0] as String,
+      startDate: fields[1] as String,
+      endDate: fields[2] as String,
+      note: fields[3] as String,
+      createdAt: fields[4] as String,
+      timeOfEvent: fields[6] as String,
+      id: fields[5] as int,
+    );
   }
 
   @override
