@@ -17,19 +17,19 @@ class EventModelAdapter extends TypeAdapter<EventModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return EventModel(
-      title: fields[0] as String,
-      startDate: fields[1] as String,
-      endDate: fields[2] as String,
-      note: fields[3] as String,
-      createdAt: fields[4] as String,
-      id: fields[5] as int,
-    );
+        title: fields[0] as String,
+        startDate: fields[1] as String,
+        endDate: fields[2] as String,
+        note: fields[3] as String,
+        createdAt: fields[4] as String,
+        id: fields[5] as int,
+        timeOfEvent: fields[6] as String);
   }
 
   @override
   void write(BinaryWriter writer, EventModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -41,7 +41,9 @@ class EventModelAdapter extends TypeAdapter<EventModel> {
       ..writeByte(4)
       ..write(obj.createdAt)
       ..writeByte(5)
-      ..write(obj.id);
+      ..write(obj.id)
+      ..writeByte(6)
+      ..write(obj.timeOfEvent);
   }
 
   @override

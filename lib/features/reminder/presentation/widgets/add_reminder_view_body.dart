@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:z_flow/core/utils/events%20utils/add_event.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 import 'package:z_flow/features/reminder/data/model/event_model.dart';
+import 'package:z_flow/features/reminder/presentation/view%20models/add%20event%20cubit/add_event_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/widgets/event_data_form.dart';
 
 import '../../../../core/constants/app_texts.dart';
@@ -23,6 +25,7 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
   late TextEditingController eventTitle;
   late TextEditingController eventStart;
   late TextEditingController eventEnd;
+  late TextEditingController timeController;
   late TextEditingController eventNote;
   @override
   void initState() {
@@ -30,6 +33,7 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
     eventStart = TextEditingController();
     eventEnd = TextEditingController();
     eventNote = TextEditingController();
+    timeController = TextEditingController();
     super.initState();
   }
 
@@ -39,6 +43,7 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
     eventStart.dispose();
     eventEnd.dispose();
     eventNote.dispose();
+    timeController.dispose();
     super.dispose();
   }
 
@@ -66,6 +71,7 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
                   ),
                   EventDataForm(
                       formKey: formKey,
+                      timeController: timeController,
                       eventTitle: eventTitle,
                       eventStart: eventStart,
                       eventEnd: eventEnd,
@@ -85,8 +91,14 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
                         int id = box.get("eventsId") ?? 0;
                         EventModel event = EventModel(
                             title: eventTitle.text,
-                            startDate: eventStart.text,
-                            endDate: eventEnd.text,
+                            startDate: context
+                                .read<AddEventCubit>()
+                                .startDateWithNoFormating,
+                            endDate: context
+                                .read<AddEventCubit>()
+                                .endDateWithNoFormating,
+                            timeOfEvent:
+                                context.read<AddEventCubit>().timeIn24Format,
                             note: eventNote.text,
                             createdAt:
                                 DateFormat.yMMMd().format(DateTime.now()),

@@ -20,6 +20,8 @@ class EventModel extends HiveObject {
 
   @HiveField(5)
   int id;
+  @HiveField(6)
+  String timeOfEvent;
 
   EventModel({
     required this.title,
@@ -27,6 +29,7 @@ class EventModel extends HiveObject {
     required this.endDate,
     required this.note,
     required this.createdAt,
+    required this.timeOfEvent,
     required this.id,
   });
 
@@ -36,6 +39,7 @@ class EventModel extends HiveObject {
         endDate: json["endDate"],
         note: json["note"],
         createdAt: json["createdAt"],
+        timeOfEvent: json["timeOfEvent"],
         id: json["id"],
       );
 
@@ -45,6 +49,7 @@ class EventModel extends HiveObject {
         "endDate": endDate,
         "note": note,
         "createdAt": createdAt,
+        "timeOfEvent": timeOfEvent,
         "id": id,
       };
 }

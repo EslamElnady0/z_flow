@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/styles/styles.dart';
@@ -35,7 +34,7 @@ class CustomGoogleAuthButton extends StatelessWidget {
         builder: (context, state) {
           return CustomButton(
             onTap: () async {
-              await getIt.get<LogInCubit>().signInWithGoogle();
+              await context.read<LogInCubit>().signInWithGoogle();
             },
             height: 44.h,
             alignment: Alignment.center,

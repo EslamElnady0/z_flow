@@ -21,7 +21,6 @@ class GetTasksCategoriesCubit extends Cubit<GetTasksCategoriesState> {
       emit(GetTasksCategoriesFailure(errMessage: failure.errMessage));
     }, (catsList) async {
       if (catsList.isNotEmpty) {
-        print("catsList: $catsList");
         cats = catsList;
         emit(GetTasksCategoriesSuccess());
       } else {

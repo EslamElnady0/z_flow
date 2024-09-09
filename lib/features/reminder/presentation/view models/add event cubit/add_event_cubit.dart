@@ -9,6 +9,9 @@ part 'add_event_state.dart';
 class AddEventCubit extends Cubit<AddEventState> {
   AddEventCubit({required this.eventsRepo}) : super(AddEventInitial());
   final EventsRepo eventsRepo;
+  String timeIn24Format = '';
+  String startDateWithNoFormating = '';
+  String endDateWithNoFormating = '';
   Future<void> addEvent(
       {required EventModel event,
       required bool isConnected,

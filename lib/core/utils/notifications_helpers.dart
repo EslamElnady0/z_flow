@@ -25,18 +25,20 @@ DateTime? parseDateString(String dateString) {
 }
 
 Future<void> scheduleEventNotification(EventModel event) async {
-  DateTime? eventDate = parseDateString(event.startDate);
+  DateTime? eventStartDate = DateTime.parse(event.startDate);
 
-  if (eventDate != null && eventDate.isAfter(DateTime.now())) {
-    await LocalNotifications.showSchadualedNotification(
-        title: event.title,
-        body: AppTexts.bigEventAwaitsYou,
-        payload: "",
-        scheduledDateTime: eventDate,
-        id: event.id + eventsOffset);
-  } else {
-    print('Invalid date format for event: ${event.title}');
-  }
+  await LocalNotifications.showSchadualedNotification(
+      title: event.title,
+      body: AppTexts.bigEventAwaitsYou,
+      payload: "",
+      hours: event.timeOfEvent.isEmpty
+          ? 7
+          : int.parse(event.timeOfEvent.split(":")[0]),
+      mins: event.timeOfEvent.isEmpty
+          ? 0
+          : int.parse(event.timeOfEvent.split(":")[1]),
+      scheduledDateTime: eventStartDate,
+      id: event.id + eventsOffset);
 }
 
 Future<void> scheduleTaskNotification(TaskModel task) async {
@@ -49,8 +51,6 @@ Future<void> scheduleTaskNotification(TaskModel task) async {
         payload: "",
         scheduledDateTime: taskDate,
         id: task.id + tasksOffset);
-  } else {
-    print('Invalid date format for task: ${task.title}');
   }
 }
 

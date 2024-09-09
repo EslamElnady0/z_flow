@@ -99,6 +99,8 @@ class LocalNotifications {
       {required String title,
       required String body,
       required String payload,
+      int? hours,
+      int? mins,
       required DateTime scheduledDateTime,
       required int id}) async {
     const AndroidNotificationDetails androidNotificationDetails =
@@ -116,22 +118,21 @@ class LocalNotifications {
       scheduledDateTime.year,
       scheduledDateTime.month,
       scheduledDateTime.day,
-      7, // Set the hour to 8 AM
-      0, // Minute
+      hours ?? 7, // Set the hour to 7 AM
+      mins ?? 0, // Minute
       0, // Second
     );
-    //TODO : MAKE TIME PICKER IN ADD EVENT AND USE IT
-    print("Scheduled Date and Time: $scheduledDate");
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        id, title, body, scheduledDate, notificationDetails,
-        payload: payload,
-        matchDateTimeComponents: DateTimeComponents.dateAndTime,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
-        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle);
+    if (scheduledDate.isAfter(DateTime.now())) {
+      await flutterLocalNotificationsPlugin.zonedSchedule(
+          id, title, body, scheduledDate, notificationDetails,
+          payload: payload,
+          matchDateTimeComponents: DateTimeComponents.dateAndTime,
+          uiLocalNotificationDateInterpretation:
+              UILocalNotificationDateInterpretation.absoluteTime,
+          androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle);
+    }
   }
 
-  //TODO : CHECK THIS FUNC IS WORKING
   static Future showDailyNotificationAt10AM(
       {required String title,
       required String body,
