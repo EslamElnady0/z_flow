@@ -392,7 +392,15 @@ class AppRouter {
             builder: (context) => MultiBlocProvider(
                   providers: [
                     BlocProvider(
-                      create: (context) => getIt<GetLinksListsCubit>(),
+                      create: (context) => getIt<GetLinksListsCubit>()
+                        ..getLinksLists(
+                          isConnected:
+                              getIt.get<InternetCheckCubit>().isDeviceConnected,
+                          isAnonymous: getIt
+                              .get<FirebaseAuth>()
+                              .currentUser!
+                              .isAnonymous,
+                        ),
                     ),
                     BlocProvider(
                       create: (context) => getIt<AddLinksListCubit>(),

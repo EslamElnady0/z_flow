@@ -15,6 +15,11 @@ class AppTexts {
   static const String finance = "Finance";
   static const String education = "Education";
   static const String health = "Health";
+  static const String manage = "Manage";
+  static const String addNewLink = "Add a new link";
+  static const String addNewList = "Add a new list";
+  static const String createCustomLists =
+      "Create custom lists to organize your favorite resources!";
   static const String personalDevelopment = "Personal development";
   static const String educationAndCourses = "Education and courses";
   static const String productivityTools = "Productivity tools";

@@ -44,6 +44,9 @@ class Assets {
   static const String subTaskIcon = "assets/images/svgs/subTask.svg";
   static const String starIcon = "assets/images/svgs/star.svg";
   static const String deleteIcon = "assets/images/svgs/deleteIcon.svg";
+  static const String arrowForwardIos =
+      "assets/images/svgs/arrowForwardIos.svg";
+  static const String linksPin = "assets/images/svgs/linksPin.svg";
   static const String addWidget = "assets/images/svgs/addWidget.svg";
   static const String clock = "assets/images/svgs/clock.svg";
   static const String dollar = "assets/images/svgs/dollar.svg";
