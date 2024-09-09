@@ -25,6 +25,7 @@ import 'package:z_flow/features/home/presentation/views/tasks%20views/add_task_v
 import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_view.dart';
 import 'package:z_flow/features/home/presentation/views/tasks%20views/finished_tasks_view.dart';
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
+import 'package:z_flow/features/my%20lists/presentation/views/my_lists_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/add%20event%20cubit/add_event_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
@@ -58,6 +59,7 @@ import '../../features/home/presentation/view models/habits/get habits cubit/get
 import '../../features/home/presentation/view models/tasks/delete task cubit/delete_task_cubit.dart';
 import '../../features/home/presentation/views/habits views/all_habits_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/my lists/presentation/views/list_details_view.dart';
 import '../../features/reminder/presentation/view models/delete event cubit/delete_event_cubit.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
@@ -93,6 +95,8 @@ class AppRouter {
   static const String editGoal = '/editGoal';
   static const String reminder = '/reminder';
   static const String addReminder = '/addReminder';
+  static const String myLists = '/myLists';
+  static const String listDetails = '/listDetails';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -381,6 +385,10 @@ class AppRouter {
                   create: (context) => getIt<AddEventCubit>(),
                   child: const AddReminderView(),
                 ));
+      case myLists:
+        return MaterialPageRoute(builder: (context) => const MyListsView());
+      case listDetails:
+        return MaterialPageRoute(builder: (context) => const ListDetailsView());
       default:
         return MaterialPageRoute(
             builder: (context) => const Center(child: Text("7moksha")));

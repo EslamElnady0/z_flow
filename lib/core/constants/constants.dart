@@ -112,7 +112,8 @@ class Constants {
         title: AppTexts.startWorkSession,
         icon: Assets.clock,
         route: AppRouter.workSession),
-    DrawerItem(title: AppTexts.myLists, icon: Assets.list, route: ""),
+    DrawerItem(
+        title: AppTexts.myLists, icon: Assets.list, route: AppRouter.myLists),
     DrawerItem(
         title: AppTexts.reminder,
         icon: Assets.reminder,
@@ -137,8 +138,8 @@ class Constants {
         route: AppRouter.favHabits),
     // DrawerItem(
     //     title: AppTexts.addHomeWidget, icon: Assets.addWidget, route: ""),
-    DrawerItem(
-        title: AppTexts.financialSupport, icon: Assets.dollar, route: ""),
+    // DrawerItem(
+    //     title: AppTexts.financialSupport, icon: Assets.dollar, route: ""),
     DrawerItem(title: AppTexts.settings, icon: Assets.settingDrawer, route: ""),
     DrawerItem(title: AppTexts.shareApp, icon: Assets.share, route: ""),
   ];
