@@ -1,0 +1,160 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:z_flow/core/utils/links%20lists%20utils/get_links_lists.dart';
+import 'package:z_flow/core/utils/links%20lists%20utils/update_links_list.dart';
+import 'package:z_flow/features/my%20lists/data/models/link%20item%20model/link_item.dart';
+import 'package:z_flow/features/my%20lists/presentation/view%20models/update%20links%20list%20cubit/update_links_list_cubit.dart';
+
+import '../../../../core/DI/service_locator.dart';
+import '../../../../core/constants/app_texts.dart';
+import '../../../../core/constants/assets.dart';
+import '../../../../core/constants/constants.dart';
+import '../../../../core/styles/styles.dart';
+import '../../../auth/presentation/views/widgets/custom_auth_textfield.dart';
+import '../../../home/presentation/views/widgets/save_cancel_actions_row.dart';
+import '../../data/models/links list model/links_list_model.dart';
+
+class AddNewLinkBottomSheetBody extends StatefulWidget {
+  final LinksListModel linksListModel;
+  const AddNewLinkBottomSheetBody({super.key, required this.linksListModel});
+
+  @override
+  State<AddNewLinkBottomSheetBody> createState() =>
+      _AddNewLinkBottomSheetBodyState();
+}
+
+class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
+  late TextEditingController titleController;
+  late TextEditingController descriptionController;
+  late TextEditingController linkController;
+  final formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    titleController = TextEditingController();
+    descriptionController = TextEditingController();
+    linkController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    descriptionController.dispose();
+    linkController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<UpdateLinksListCubit>(),
+      child: Builder(builder: (context) {
+        return Container(
+          decoration: BoxDecoration(
+              gradient: Constants.drawerGradient,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(12.r),
+                  topRight: Radius.circular(12.r))),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w),
+            child: SingleChildScrollView(
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Align(
+                            alignment: AlignmentDirectional.centerStart,
+                            child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Icon(Icons.close))),
+                        Text(
+                          AppTexts.addNewLink,
+                          style:
+                              Styles.style18w500.copyWith(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    Divider(
+                      height: 25.h,
+                    ),
+                    Text(AppTexts.easilyAddANewLink, style: Styles.style14w400),
+                    SizedBox(
+                      height: 16.h,
+                    ),
+                    CustomAuthTextField(
+                        hintText: AppTexts.title,
+                        suffix: Padding(
+                          padding: EdgeInsets.all(12.r),
+                          child: SvgPicture.asset(
+                            Assets.linksPin,
+                            height: 16.h,
+                            width: 16.w,
+                            color: Colors.grey.shade500,
+                          ),
+                        ),
+                        icon: null,
+                        controller: titleController),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    CustomAuthTextField(
+                        hintText: AppTexts.description,
+                        suffix: Padding(
+                          padding: EdgeInsets.all(13.5.r),
+                          child: SvgPicture.asset(
+                            Assets.editIcon,
+                            height: 8.h,
+                            width: 8.w,
+                            color: Colors.grey.shade500,
+                          ),
+                        ),
+                        icon: null,
+                        controller: descriptionController),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    CustomAuthTextField(
+                        hintText: "ex: https://www.google.com",
+                        icon: null,
+                        controller: linkController),
+                    SizedBox(
+                      height: 25.h,
+                    ),
+                    BottomScreenActions(
+                        onOtherButtonPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        otherButtonText: AppTexts.cancel,
+                        onPrimaryButtonPressed: () async {
+                          if (formKey.currentState!.validate()) {
+                            LinkItem linkItem = LinkItem(
+                                name: titleController.text,
+                                description: descriptionController.text,
+                                url: linkController.text);
+                            widget.linksListModel.links.add(linkItem);
+                            await updateLinksList(
+                                linksList: widget.linksListModel,
+                                context: context);
+                            await getLinksLists();
+                            if (context.mounted) {
+                              Navigator.of(context).pop();
+                            }
+                          }
+                        })
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+}

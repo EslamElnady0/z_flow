@@ -8,6 +8,8 @@ class AppTexts {
   static const String lock = "Lock";
   static const String tasks = "Tasks";
   static const String work = "Work";
+  static const String youCanManageTheList =
+      "You can manage the list from here and add new links!";
   static const String title = "Title..";
   static const String personal = "Personal";
   static const String shopping = "Shopping";
@@ -18,6 +20,8 @@ class AppTexts {
   static const String health = "Health";
   static const String manage = "Manage";
   static const String easilyAddANewList = "Easily add a new list! ";
+  static const String easilyAddANewLink = "Easily add a new link! ";
+  static const String description = "Description..";
   static const String addNewLink = "Add a new link";
   static const String addNewList = "Add a new list";
   static const String createCustomLists =

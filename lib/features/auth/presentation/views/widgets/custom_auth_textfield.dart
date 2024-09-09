@@ -9,6 +9,7 @@ class CustomAuthTextField extends StatelessWidget {
   final IconData? icon;
   final bool? isPassword;
   final Widget? suffix;
+  final Widget? prefix;
   final void Function(String)? onChanged;
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -21,6 +22,7 @@ class CustomAuthTextField extends StatelessWidget {
     this.onChanged,
     this.validator,
     this.suffix,
+    this.prefix,
   });
 
   @override
@@ -48,6 +50,7 @@ class CustomAuthTextField extends StatelessWidget {
                 color: Colors.grey,
               ),
           hintText: hintText,
+          prefix: prefix,
           hintStyle: TextStyle(
               color: Colors.grey, fontWeight: FontWeight.w500, fontSize: 16.sp),
           contentPadding:

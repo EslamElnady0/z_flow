@@ -402,7 +402,10 @@ class AppRouter {
       case listDetails:
         var args = settings.arguments as LinksListModel;
         return MaterialPageRoute(
-            builder: (context) => const ListDetailsView(),
+            builder: (context) => BlocProvider.value(
+                  value: getIt.get<GetLinksListsCubit>(),
+                  child: const ListDetailsView(),
+                ),
             settings: RouteSettings(arguments: args));
       default:
         return MaterialPageRoute(
