@@ -25,6 +25,8 @@ import 'package:z_flow/features/home/presentation/views/tasks%20views/add_task_v
 import 'package:z_flow/features/home/presentation/views/tasks%20views/edit_task_view.dart';
 import 'package:z_flow/features/home/presentation/views/tasks%20views/finished_tasks_view.dart';
 import 'package:z_flow/features/home/presentation/views/time%20management%20views/time_of_use_view.dart';
+import 'package:z_flow/features/my%20lists/presentation/view%20models/add%20links%20list%20cubit/add_links_list_cubit.dart';
+import 'package:z_flow/features/my%20lists/presentation/view%20models/get%20links%20lists%20cubit/get_links_lists_cubit.dart';
 import 'package:z_flow/features/my%20lists/presentation/views/my_lists_view.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/on_boarding_view.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/add%20event%20cubit/add_event_cubit.dart';
@@ -386,7 +388,18 @@ class AppRouter {
                   child: const AddReminderView(),
                 ));
       case myLists:
-        return MaterialPageRoute(builder: (context) => const MyListsView());
+        return MaterialPageRoute(
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<GetLinksListsCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<AddLinksListCubit>(),
+                    ),
+                  ],
+                  child: const MyListsView(),
+                ));
       case listDetails:
         return MaterialPageRoute(builder: (context) => const ListDetailsView());
       default:

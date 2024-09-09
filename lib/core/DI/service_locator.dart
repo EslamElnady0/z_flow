@@ -17,6 +17,8 @@ import 'package:z_flow/features/home/presentation/view%20models/tasks/add%20task
 import 'package:z_flow/features/home/presentation/view%20models/tasks/delete%20task%20cubit/delete_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/update%20task%20cubit/update_task_cubit.dart';
+import 'package:z_flow/features/my%20lists/data/repo/links_lists_repo_impl.dart';
+import 'package:z_flow/features/my%20lists/presentation/view%20models/get%20links%20lists%20cubit/get_links_lists_cubit.dart';
 import 'package:z_flow/features/reminder/data/repo/events_repo_impl.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/delete%20event%20cubit/delete_event_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/update%20event%20cubit/update_event_cubit.dart';
@@ -42,6 +44,10 @@ import '../../features/home/presentation/view models/habits/add habit cubit/add_
 import '../../features/home/presentation/view models/habits/delete habit cubit/delete_habit_cubit.dart';
 import '../../features/home/presentation/view models/habits/get habits cubit/get_habit_cubit.dart';
 import '../../features/home/presentation/view models/habits/update habit cubit/update_habit_cubit.dart';
+import '../../features/my lists/data/data sources/links_lists_local_data_source.dart';
+import '../../features/my lists/data/data sources/links_lists_remote_data_source.dart';
+import '../../features/my lists/presentation/view models/add links list cubit/add_links_list_cubit.dart';
+import '../../features/my lists/presentation/view models/update links list cubit/update_links_list_cubit.dart';
 import '../../features/reminder/data/data sources/events_local_data_source.dart';
 import '../../features/reminder/data/data sources/events_remote_data_source.dart';
 import '../../features/reminder/presentation/view models/add event cubit/add_event_cubit.dart';
@@ -142,4 +148,18 @@ void setupServiceLocator() {
       () => DeleteEventCubit(eventsRepo: getIt.get<EventsRepoImpl>()));
   getIt.registerFactory<UpdateEventCubit>(
       () => UpdateEventCubit(eventsRepo: getIt.get<EventsRepoImpl>()));
+
+  ///////////////////// links lists cubits ////////////////////////
+  getIt.registerLazySingleton<LinksListsRepoImpl>(() => LinksListsRepoImpl(
+      linksListsLocalDataSource: LinksListsLocalDataSourceImpl(),
+      linksListsRemoteDataSource: LinksListsRemoteDataSourceImpl()));
+
+  getIt.registerFactory<GetLinksListsCubit>(() =>
+      GetLinksListsCubit(linksListsRepo: getIt.get<LinksListsRepoImpl>()));
+
+  getIt.registerFactory<AddLinksListCubit>(
+      () => AddLinksListCubit(linksListsRepo: getIt.get<LinksListsRepoImpl>()));
+
+  getIt.registerFactory<UpdateLinksListCubit>(() =>
+      UpdateLinksListCubit(linksListsRepo: getIt.get<LinksListsRepoImpl>()));
 }

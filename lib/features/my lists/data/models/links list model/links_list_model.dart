@@ -10,7 +10,7 @@ class LinksListModel extends HiveObject {
   @HiveField(1)
   List<LinkItem> links;
 
-  LinksListModel({required this.name, required this.links});
+  LinksListModel({required this.name, this.links = const []});
 
   factory LinksListModel.fromJson(Map<String, dynamic> json) => LinksListModel(
         name: json["name"],
