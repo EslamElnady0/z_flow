@@ -1,10 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
+import '../constants/app_texts.dart';
+import '../constants/colors.dart';
 import '../constants/constants.dart';
 //import 'package:rxdart/rxdart.dart';
 
@@ -126,6 +131,14 @@ class LocalNotifications {
           uiLocalNotificationDateInterpretation:
               UILocalNotificationDateInterpretation.absoluteTime,
           androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle);
+      Fluttertoast.showToast(
+          msg: AppTexts.youWillGetNotifiedAboutThis,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: ColorManager.chipBackground,
+          textColor: Colors.white,
+          fontSize: 16.sp);
     }
   }
 
