@@ -19,7 +19,9 @@ import '../../data/models/links list model/links_list_model.dart';
 
 class AddNewLinkBottomSheetBody extends StatefulWidget {
   final LinksListModel linksListModel;
-  const AddNewLinkBottomSheetBody({super.key, required this.linksListModel});
+  final int? index;
+  const AddNewLinkBottomSheetBody(
+      {super.key, required this.linksListModel, this.index});
 
   @override
   State<AddNewLinkBottomSheetBody> createState() =>
@@ -34,9 +36,18 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
   final formKey = GlobalKey<FormState>();
   @override
   void initState() {
-    titleController = TextEditingController();
-    descriptionController = TextEditingController();
-    linkController = TextEditingController();
+    titleController = TextEditingController(
+        text: widget.index == null
+            ? ""
+            : widget.linksListModel.links[widget.index!].name);
+    descriptionController = TextEditingController(
+        text: widget.index == null
+            ? ""
+            : widget.linksListModel.links[widget.index!].description);
+    linkController = TextEditingController(
+        text: widget.index == null
+            ? ""
+            : widget.linksListModel.links[widget.index!].url);
     linkController.addListener(() {
       setState(() {
         platformLogo = getPlatformLogo(linkController.text);
@@ -171,7 +182,12 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
                                 name: titleController.text,
                                 description: descriptionController.text,
                                 url: linkController.text);
-                            widget.linksListModel.links.add(linkItem);
+                            if (widget.index == null) {
+                              widget.linksListModel.links.add(linkItem);
+                            } else {
+                              widget.linksListModel.links[widget.index!] =
+                                  linkItem;
+                            }
                             await updateLinksList(
                                 linksList: widget.linksListModel,
                                 context: context);

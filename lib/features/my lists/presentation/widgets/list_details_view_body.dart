@@ -11,7 +11,10 @@ import 'add_new_link_bottom_sheet_body.dart';
 
 class ListDetailsViewBody extends StatelessWidget {
   final LinksListModel linksList;
-  const ListDetailsViewBody({super.key, required this.linksList});
+  const ListDetailsViewBody({
+    super.key,
+    required this.linksList,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,10 @@ class ListDetailsViewBody extends StatelessWidget {
             text: AppTexts.addNewLink,
             icon: Assets.addIcon,
             onTap: () {
-              showAddNewLinkBottomSheet(context, linksList);
+              showAddNewLinkBottomSheet(
+                context,
+                linksList,
+              );
             },
           ),
           SizedBox(
@@ -52,7 +58,8 @@ class ListDetailsViewBody extends StatelessWidget {
   }
 }
 
-void showAddNewLinkBottomSheet(BuildContext context, LinksListModel linksList) {
+void showAddNewLinkBottomSheet(BuildContext context, LinksListModel linksList,
+    [int? index]) {
   showModalBottomSheet(
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -65,6 +72,7 @@ void showAddNewLinkBottomSheet(BuildContext context, LinksListModel linksList) {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: AddNewLinkBottomSheetBody(
             linksListModel: linksList,
+            index: index,
           ),
         );
       });
