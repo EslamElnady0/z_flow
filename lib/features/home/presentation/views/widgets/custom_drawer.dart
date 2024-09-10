@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/constants/constants.dart';
@@ -57,8 +58,12 @@ class CustomDrawer extends StatelessWidget {
                           contentPadding: EdgeInsets.zero,
                           dense: true,
                           onTap: () {
-                            Navigator.pushNamed(
-                                context, Constants.drawerItems[index].route);
+                            if (index == Constants.drawerItems.length - 1) {
+                              Share.share("com.example.z_flow");
+                            } else {
+                              Navigator.pushNamed(
+                                  context, Constants.drawerItems[index].route);
+                            }
                           },
                           leading: SvgPicture.asset(
                             Constants.drawerItems[index].icon,

@@ -56,7 +56,9 @@ class GetHabitCubit extends Cubit<GetHabitState> {
               uid: uid);
         }
       }
+
       todaysDoneHabits = getRecentDoneHabitsFilter(const Duration(hours: 24));
+      getRecentOnGoingHabitsFilter();
       //added
       emit(GetHabitSucuess());
     });

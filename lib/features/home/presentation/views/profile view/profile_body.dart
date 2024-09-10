@@ -24,6 +24,8 @@ class _ProfileBodyState extends State<ProfileBody> {
   @override
   void initState() {
     getIt.get<GetTaskCubit>().getRecentTasksFilter();
+    getIt.get<GetHabitCubit>().getRecentDoneHabitsFilter(null);
+    getIt.get<GetHabitCubit>().getRecentOnGoingHabitsFilter();
     super.initState();
   }
 
