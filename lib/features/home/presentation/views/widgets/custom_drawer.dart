@@ -59,7 +59,8 @@ class CustomDrawer extends StatelessWidget {
                           dense: true,
                           onTap: () {
                             if (index == Constants.drawerItems.length - 1) {
-                              Share.share("com.example.z_flow");
+                              Share.share(
+                                  "check out app at https://drive.google.com/file/d/1u0DgllF0c3cTtG5cZSxb4j72fy37sgIB/view?usp=drive_link");
                             } else {
                               Navigator.pushNamed(
                                   context, Constants.drawerItems[index].route);
