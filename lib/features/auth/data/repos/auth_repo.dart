@@ -14,6 +14,7 @@ abstract class AuthRepo {
   Future<Either<Failure, void>> signInWithGoogle();
   Future<Either<Failure, void>> signInAnonymous();
   Future<Either<Failure, void>> logOut();
+  Future<Either<Failure, void>> sendPasswordResetEmail({required String email});
   Future<bool> isUserLoggedIn();
   Future<String?> getCurrentUserId();
 }

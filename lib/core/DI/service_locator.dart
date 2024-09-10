@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_check_cubit.dart';
 import 'package:z_flow/features/auth/data/repos/auth_repo_impl.dart';
-import 'package:z_flow/features/auth/presentation/view%20models/cubit/log_in_ano_cubit.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/forget%20password%20cubit/forget_password_cubit.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20ano%20cubit/log_in_ano_cubit.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20out%20cubit/log_out_cubit.dart';
 import 'package:z_flow/features/favourites/data/view%20models/favourite%20habits%20cubit/favourite_habits_cubit.dart';
@@ -77,6 +78,8 @@ void setupServiceLocator() {
       () => LogOutCubit(getIt.get<AuthRepoImpl>()));
   getIt.registerFactory<SignUpCubit>(
       () => SignUpCubit(getIt.get<AuthRepoImpl>()));
+  getIt.registerFactory<ForgetPasswordCubit>(
+      () => ForgetPasswordCubit(getIt.get<AuthRepoImpl>()));
 ///////////////////////  tasks cubits   //////////////////////////////
   getIt.registerFactory<AddTaskCubit>(
       () => AddTaskCubit(getIt.get<TasksRepoImpl>()));

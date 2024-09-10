@@ -14,6 +14,7 @@ class AppTexts {
   static const String personal = "Personal";
   static const String shopping = "Shopping";
   static const String fitness = "Fitness";
+  static const String sentPasswordResetEmail = "Sent password reset email to ";
   static const String finance = "Finance";
   static const String noLinksYet = "You did't add any links here yet :(";
   static const String education = "Education";

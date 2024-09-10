@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/widgets/build_custom_snack_bar.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
@@ -21,33 +22,38 @@ class LogInButtonBlocProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LogInCubit, LogInState>(
-        listener: (ctx, state) {
-          if (state is LogInSuccess) {
-            ScaffoldMessenger.of(ctx).showSnackBar(
-              buildCustomSnackBar(message: "Logged in successfully"),
-            );
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              AppRouter.home,
-              (Route<dynamic> route) => false,
-            );
-          } else if (state is LogInFailure) {
-            ScaffoldMessenger.of(ctx).showSnackBar(
-              buildCustomSnackBar(message: state.errMessage, isError: true),
-            );
-          }
-        },
-        child: CustomButton(
-          gradient: Constants.customButtonGradient,
-          text: AppTexts.logIn,
-          raduis: 16.r,
-          onTap: () {
-            if (formKey.currentState!.validate()) {
-              context.read<LogInCubit>().signInWithEmailAndPassword(
-                  email: emailController.text,
-                  password: passwordController.text);
-            }
-          },
-        ));
+    return BlocProvider(
+      create: (context) => getIt<LogInCubit>(),
+      child: Builder(builder: (context) {
+        return BlocListener<LogInCubit, LogInState>(
+            listener: (ctx, state) {
+              if (state is LogInSuccess) {
+                ScaffoldMessenger.of(ctx).showSnackBar(
+                  buildCustomSnackBar(message: "Logged in successfully"),
+                );
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  AppRouter.home,
+                  (Route<dynamic> route) => false,
+                );
+              } else if (state is LogInFailure) {
+                ScaffoldMessenger.of(ctx).showSnackBar(
+                  buildCustomSnackBar(message: state.errMessage, isError: true),
+                );
+              }
+            },
+            child: CustomButton(
+              gradient: Constants.customButtonGradient,
+              text: AppTexts.logIn,
+              raduis: 16.r,
+              onTap: () {
+                if (formKey.currentState!.validate()) {
+                  context.read<LogInCubit>().signInWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passwordController.text);
+                }
+              },
+            ));
+      }),
+    );
   }
 }

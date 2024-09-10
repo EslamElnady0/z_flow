@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/forget%20password%20cubit/forget_password_cubit.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_footer.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
 
@@ -58,8 +61,19 @@ class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
                         key: formKey,
                         child: CustomAuthTextField(
                             hintText: AppTexts.email,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Please, enter your email";
+                              } else if (!RegExp(
+                                      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                                  .hasMatch(value)) {
+                                return "Please, enter a valid email form";
+                              } else {
+                                return null;
+                              }
+                            },
                             icon: Icons.email_outlined,
-                            controller: TextEditingController()),
+                            controller: emailController),
                       ),
                     ),
                   ],
@@ -85,8 +99,16 @@ class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
                       text: AppTexts.confirm,
                       gradient: Constants.customButtonGradient,
                       raduis: 16.r,
-                      onTap: () {
-                        if (formKey.currentState!.validate()) {}
+                      onTap: () async {
+                        if (formKey.currentState!.validate()) {
+                          await context
+                              .read<ForgetPasswordCubit>()
+                              .sendPasswordResetEmail(
+                                  email: emailController.text);
+                          Fluttertoast.showToast(
+                              msg: AppTexts.sentPasswordResetEmail +
+                                  emailController.text);
+                        }
                       },
                     ),
                   ),
