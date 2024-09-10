@@ -6,6 +6,8 @@ import '../../../features/home/presentation/view models/tasks/delete task cubit/
 import '../../../features/home/presentation/view models/tasks/get task cubit/get_task_cubit.dart';
 import '../../DI/service_locator.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
+import '../../services/local_notifications.dart';
+import '../notifications_helpers.dart';
 import 'get_tasks.dart';
 
 Future<void> deleteTask({required TaskModel task}) async {
@@ -20,7 +22,7 @@ Future<void> deleteTask({required TaskModel task}) async {
   getIt.get<GetTaskCubit>().doneTasks.remove(task);
   getIt.get<GetTaskCubit>().onGoingTasks.remove(task);
   getIt.get<FavouriteTasksCubit>().favTasks.remove(task);
-
+  LocalNotifications.cancelNotification(id: task.id + tasksOffset);
   getIt.get<FavouriteTasksCubit>().getFavTasks();
   await getTasks();
 }

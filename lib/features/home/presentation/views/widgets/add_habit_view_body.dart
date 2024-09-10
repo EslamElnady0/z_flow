@@ -21,7 +21,7 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
   var formKey = GlobalKey<FormState>();
   late TextEditingController habitController;
   late TextEditingController endsInController;
-
+  late HabitModel habit;
   late TextEditingController noteController;
 
   @override
@@ -30,7 +30,7 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
     endsInController = TextEditingController();
 
     noteController = TextEditingController();
-
+    habit = HabitModel();
     super.initState();
   }
 
@@ -55,6 +55,7 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
               habitController: habitController,
               endsInController: endsInController,
               text: AppTexts.youAreAboutToAddHabit,
+              habit: habit,
               formKey: formKey,
               noteController: noteController,
             ),
@@ -74,12 +75,11 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
                     if (formKey.currentState!.validate()) {
                       var box = Hive.box(Constants.constantsBox);
                       int id = box.get("habitsId") ?? 0;
-                      HabitModel habit = HabitModel(
-                        title: habitController.text,
-                        id: id,
-                        createdAt: DateTime.now().toString(),
-                        deadline: endsInController.text,
-                      );
+                      habit.title = habitController.text;
+                      habit.deadline = endsInController.text;
+                      habit.createdAt = DateTime.now().toString();
+                      habit.id = id;
+
                       await addHabit(
                         habit: habit,
                       );

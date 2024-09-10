@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:z_flow/core/errors/failure.dart';
+import 'package:z_flow/core/utils/notifications_helpers.dart';
 import 'package:z_flow/features/reminder/data/data%20sources/events_local_data_source.dart';
 import 'package:z_flow/features/reminder/data/data%20sources/events_remote_data_source.dart';
 
@@ -75,6 +76,7 @@ class EventsRepoImpl implements EventsRepo {
 
           for (var event in events) {
             eventsLocalDataSource.addEvent(event);
+            scheduleEventNotification(event);
           }
           return right(events);
         }

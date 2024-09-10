@@ -13,7 +13,7 @@ class HabitDataForm extends StatefulWidget {
   final TextEditingController habitController;
   final TextEditingController endsInController;
   final TextEditingController noteController;
-  final HabitModel? habit;
+  final HabitModel habit;
   final bool isEdit;
 
   final String text;
@@ -26,7 +26,7 @@ class HabitDataForm extends StatefulWidget {
       required this.text,
       this.isEdit = false,
       required this.formKey,
-      this.habit});
+      required this.habit});
 
   @override
   State<HabitDataForm> createState() => _HabitDataFormState();
@@ -121,17 +121,15 @@ class _HabitDataFormState extends State<HabitDataForm> {
           SizedBox(
             height: 16.h,
           ),
-          widget.isEdit
-              ? CustomCheckBoxContainer(
-                  text: AppTexts.remiderToHabit,
-                  value: widget.habit!.isIterable,
-                  onChanged: (value) {
-                    setState(() {
-                      widget.habit!.isIterable = value!;
-                    });
-                  },
-                )
-              : const SizedBox(),
+          CustomCheckBoxContainer(
+            text: AppTexts.remiderToHabit,
+            value: widget.habit.isIterable,
+            onChanged: (value) {
+              setState(() {
+                widget.habit.isIterable = !widget.habit.isIterable;
+              });
+            },
+          ),
           SizedBox(
             height: 40.h,
           ),

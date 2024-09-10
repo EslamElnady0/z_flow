@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:z_flow/core/utils/notifications_helpers.dart';
 
 import '../../../../../core/errors/failure.dart';
 import '../../data sources/habits/habits_local_data_source.dart';
@@ -33,7 +34,7 @@ class HabitsRepoImpl implements HabitsRepo {
       } else {
         log(e.toString());
         return left(
-            ServerFailure(errMessage: "'Server Error, please try again'"));
+            ServerFailure(errMessage: "Server Error, please try again"));
       }
     }
   }
@@ -57,7 +58,7 @@ class HabitsRepoImpl implements HabitsRepo {
       } else {
         log(e.toString());
         return left(
-            ServerFailure(errMessage: "'Server Error, please try again'"));
+            ServerFailure(errMessage: "Server Error, please try again"));
       }
     }
   }
@@ -77,6 +78,9 @@ class HabitsRepoImpl implements HabitsRepo {
           habits = await habitsRemoteDataSource.getHabits(uid: uid);
           for (var habit in habits) {
             await habitsLocalDataSource.addHabit(habit);
+            if (habit.isIterable) {
+              setDailyHabitsNotification(habit);
+            }
           }
           return right(habits);
         }
@@ -88,7 +92,7 @@ class HabitsRepoImpl implements HabitsRepo {
       } else {
         log(e.toString());
         return left(
-            ServerFailure(errMessage: "'Server Error, please try again'"));
+            ServerFailure(errMessage: "Server Error, please try again"));
       }
     }
   }
@@ -112,7 +116,7 @@ class HabitsRepoImpl implements HabitsRepo {
       } else {
         log(e.toString());
         return left(
-            ServerFailure(errMessage: "'Server Error, please try again'"));
+            ServerFailure(errMessage: "Server Error, please try again"));
       }
     }
   }

@@ -9,13 +9,13 @@ class HabitModel extends HiveObject {
   @HiveField(1)
   String deadline;
   @HiveField(2)
-  final String createdAt;
+  String createdAt;
   @HiveField(3)
   int iteration;
   @HiveField(4)
-  bool isFavourited = false;
+  bool isFavourited;
   @HiveField(5)
-  bool isIterable = false;
+  bool isIterable;
   @HiveField(6)
   bool isDone = false;
   @HiveField(7)
@@ -31,7 +31,7 @@ class HabitModel extends HiveObject {
       this.createdAt = '',
       this.deadline = '',
       this.isFavourited = false,
-      this.isIterable = false,
+      this.isIterable = true,
       this.isDone = false,
       this.isDoneBefore = false,
       this.doneAt = '',
