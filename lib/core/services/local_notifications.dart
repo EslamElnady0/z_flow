@@ -44,7 +44,6 @@ class LocalNotifications {
   static Future requestNotificationPermission() async {
     var box = Hive.box(Constants.constantsBox);
     int? declinedCount = box.get("notificationPermissionDenied");
-
     await Permission.notification.request();
     if (declinedCount != null &&
         declinedCount >= 1 &&
@@ -54,7 +53,7 @@ class LocalNotifications {
     if (await Permission.notification.isDenied) {
       box.put("notificationPermissionDenied",
           box.get("notificationPermissionDenied") ?? 0 + 1);
-      await Permission.notification.request();
+      print(box.get("notificationPermissionDenied"));
     }
   }
 

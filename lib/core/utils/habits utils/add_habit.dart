@@ -7,6 +7,8 @@ import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart'
 import 'package:z_flow/features/home/presentation/view%20models/habits/add%20habit%20cubit/add_habits_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
 
+import '../../services/local_notifications.dart';
+
 Future<void> addHabit({required HabitModel habit}) async {
   await getIt.get<AddHabitCubit>().addHabit(
         habit: habit,
@@ -19,6 +21,8 @@ Future<void> addHabit({required HabitModel habit}) async {
 
   incrementHabitsId();
   if (habit.isIterable) {
+    await LocalNotifications.requestNotificationPermission();
+
     setDailyHabitsNotification(habit);
   }
 }

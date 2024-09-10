@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:z_flow/core/services/local_notifications.dart';
 import 'package:z_flow/core/utils/increament_id_methods.dart';
 import 'package:z_flow/core/utils/notifications_helpers.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
@@ -21,6 +22,7 @@ Future<void> addTask({
 
   incrementTasksId();
   if (task.deadline != "") {
+    await LocalNotifications.requestNotificationPermission();
     scheduleTaskNotification(task);
   }
   await getTasks();

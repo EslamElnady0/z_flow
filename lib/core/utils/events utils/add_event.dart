@@ -7,6 +7,7 @@ import 'package:z_flow/features/reminder/presentation/view%20models/get%20events
 
 import '../../../features/reminder/data/model/event_model.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
+import '../../services/local_notifications.dart';
 import 'get_events.dart';
 
 Future<void> addEvent({required EventModel event}) async {
@@ -22,6 +23,7 @@ Future<void> addEvent({required EventModel event}) async {
   getIt
       .get<GetEventsCubit>()
       .getSpecificDayEvents(getIt.get<GetEventsCubit>().focusedDay);
+  await LocalNotifications.requestNotificationPermission();
 
   scheduleEventNotification(event);
 }
