@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:z_flow/core/utils/notifications_helpers.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 
 import '../../../../data/repos/habits repo/habits_repo.dart';
@@ -27,7 +28,7 @@ class GetHabitCubit extends Cubit<GetHabitState> {
         isConnected: isConnected, isAnonymous: isAnonymous, uid: uid);
     result.fold((failure) {
       emit(GetHabitFailure(failure.errMessage));
-    }, (habitsList) {
+    }, (habitsList) async {
       habits = habitsList;
       for (var i = 0; i < habits.length; i++) {
         if (!habits[i].isDone) {
@@ -38,10 +39,25 @@ class GetHabitCubit extends Cubit<GetHabitState> {
           if (!doneHabits.contains(habits[i])) {
             doneHabits.add(habits[i]);
           }
-          todaysDoneHabits =
-              getRecentDoneHabitsFilter(const Duration(hours: 24));
         }
       }
+//added
+      for (var doneHabit in doneHabits) {
+        DateTime deadline = parseDateString(doneHabit.deadline)!;
+        DateTime now = DateTime.now();
+        DateTime doneAt = DateTime.parse(doneHabit.doneAt);
+        if (doneAt.add(const Duration(days: 1)).isBefore(now) &&
+            deadline.isAfter(now)) {
+          doneHabit.isDone = false;
+          await habitRepo.updateHabit(
+              habit: doneHabit,
+              isConnected: isConnected,
+              isAnonymous: isAnonymous,
+              uid: uid);
+        }
+      }
+      todaysDoneHabits = getRecentDoneHabitsFilter(const Duration(hours: 24));
+      //added
       emit(GetHabitSucuess());
     });
   }
