@@ -33,7 +33,10 @@ class GetEventsCubit extends Cubit<GetEventsState> {
     DateTime day,
   ) {
     for (var event in events) {
-      if (event.startDate == DateFormat.yMMMd().format(day)) {
+      String dateKey = event.startDate;
+      DateTime date = DateTime.parse(dateKey);
+      String correctFormattedKey = DateFormat.yMMMd().format(date);
+      if (correctFormattedKey == DateFormat.yMMMd().format(day)) {
         if (!specificDayEventsList.contains(event)) {
           specificDayEventsList.add(event);
         }
@@ -59,14 +62,14 @@ class GetEventsCubit extends Cubit<GetEventsState> {
 
     for (var event in events) {
       String dateKey = event.startDate;
-
-      if (groupedEvents.containsKey(dateKey)) {
-        groupedEvents[dateKey]!.add(event);
+      DateTime date = DateTime.parse(dateKey);
+      String correctFormattedKey = DateFormat.yMMMd().format(date);
+      if (groupedEvents.containsKey(correctFormattedKey)) {
+        groupedEvents[correctFormattedKey]!.add(event);
       } else {
-        groupedEvents[dateKey] = [event];
+        groupedEvents[correctFormattedKey] = [event];
       }
     }
-
     return groupedEvents;
   }
 

@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:z_flow/core/utils/notifications_helpers.dart';
 
 import '../../../../../core/errors/failure.dart';
+import '../../../../../core/services/local_notifications.dart';
 import '../../data sources/habits/habits_local_data_source.dart';
 import '../../data sources/habits/habits_remote_data_source.dart';
 import '../../models/habit model/habit_model.dart';
@@ -76,6 +77,7 @@ class HabitsRepoImpl implements HabitsRepo {
       } else {
         if (isConnected && !isAnonymous) {
           habits = await habitsRemoteDataSource.getHabits(uid: uid);
+          await LocalNotifications.requestNotificationPermission();
           for (var habit in habits) {
             await habitsLocalDataSource.addHabit(habit);
             if (habit.isIterable) {

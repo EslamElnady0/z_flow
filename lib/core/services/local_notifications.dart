@@ -41,7 +41,7 @@ class LocalNotifications {
     );
   }
 
-  static Future _requestNotificationPermission() async {
+  static Future requestNotificationPermission() async {
     var box = Hive.box(Constants.constantsBox);
     int? declinedCount = box.get("notificationPermissionDenied");
 
@@ -71,7 +71,6 @@ class LocalNotifications {
             ticker: 'ticker');
     const NotificationDetails notificationDetails =
         NotificationDetails(android: androidNotificationDetails);
-    await _requestNotificationPermission();
     await flutterLocalNotificationsPlugin
         .show(id, title, body, notificationDetails, payload: payload);
   }
@@ -89,7 +88,6 @@ class LocalNotifications {
             ticker: 'ticker');
     const NotificationDetails notificationDetails =
         NotificationDetails(android: androidNotificationDetails);
-    await _requestNotificationPermission();
 
     await flutterLocalNotificationsPlugin.periodicallyShow(
         id, title, body, RepeatInterval.daily, notificationDetails);
@@ -112,7 +110,6 @@ class LocalNotifications {
     const NotificationDetails notificationDetails = NotificationDetails(
       android: androidNotificationDetails,
     );
-    await _requestNotificationPermission();
     tz.TZDateTime scheduledDate = tz.TZDateTime(
       tz.local,
       scheduledDateTime.year,

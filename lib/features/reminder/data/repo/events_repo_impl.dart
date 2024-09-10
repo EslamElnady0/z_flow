@@ -10,6 +10,7 @@ import 'package:z_flow/features/reminder/data/data%20sources/events_remote_data_
 
 import 'package:z_flow/features/reminder/data/model/event_model.dart';
 
+import '../../../../core/services/local_notifications.dart';
 import 'events_repo.dart';
 
 class EventsRepoImpl implements EventsRepo {
@@ -73,7 +74,7 @@ class EventsRepoImpl implements EventsRepo {
       } else {
         if (isConnected && !isAnonymous) {
           events = await eventsRemoteDataSource.getEvents();
-
+          await LocalNotifications.requestNotificationPermission();
           for (var event in events) {
             eventsLocalDataSource.addEvent(event);
             scheduleEventNotification(event);
