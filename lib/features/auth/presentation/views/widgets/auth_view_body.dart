@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/app_texts.dart';
 import 'package:z_flow/core/constants/constants.dart';
+import 'package:z_flow/core/services/local_notifications.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_footer.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
@@ -11,8 +12,19 @@ import '../../../../../core/routes/app_router.dart';
 import 'auth_screens_header.dart';
 import 'custom_google_auth_button.dart';
 
-class AuthViewBody extends StatelessWidget {
+class AuthViewBody extends StatefulWidget {
   const AuthViewBody({super.key});
+
+  @override
+  State<AuthViewBody> createState() => _AuthViewBodyState();
+}
+
+class _AuthViewBodyState extends State<AuthViewBody> {
+  @override
+  void initState() {
+    LocalNotifications.requestNotificationPermission();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
