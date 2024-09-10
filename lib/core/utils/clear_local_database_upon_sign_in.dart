@@ -1,3 +1,4 @@
+import 'package:z_flow/features/my%20lists/data/data%20sources/links_lists_local_data_source.dart';
 import 'package:z_flow/features/reminder/data/data%20sources/events_local_data_source.dart';
 
 import '../../features/goals/data/data sources/goals_local_data_source.dart';
@@ -14,6 +15,7 @@ Future<void> clearLocalDatabaseUponSignIn() async {
   TaskCatsLocalDataSourceImpl().deleteAllTaskCats();
   GoalsLocalDataSourceImpl().deleteAllGoals();
   EventsLocalDataSourceImpl().deleteAllEvents();
+  LinksListsLocalDataSourceImpl().deleteAllLinksLists();
   clearAllTasksLists();
   clearAllHabitsLists();
 }

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
+import 'package:z_flow/core/utils/notifications_helpers.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 
 import '../../../../data/repos/tasks repo/tasks_repo.dart';
@@ -20,6 +21,7 @@ class GetTaskCubit extends Cubit<GetTaskState> {
   List<TaskModel> onGoingTasks = [];
   List<TaskModel> doneTasks = [];
   List<TaskModel> recentDoneTasks = [];
+  List<TaskModel> recentOngoingTasks = [];
   List<TaskModel> categorizedTasks = [];
   List<TaskModel> categorizedOngoingTasks = [];
   List<TaskModel> categorizedDoneTasks = [];
@@ -51,14 +53,14 @@ class GetTaskCubit extends Cubit<GetTaskState> {
     });
   }
 
-  List<TaskModel> getRecentTasksFilter() {
+  void getRecentTasksFilter() {
     if (duration == null) {
       recentDoneTasks = doneTasks;
+      recentOngoingTasks = onGoingTasks;
       emit(GetTaskSuccess());
-      return recentDoneTasks;
     } else {
       recentDoneTasks = [];
-
+      recentOngoingTasks = [];
       DateTime now = DateTime.now();
       DateTime wantedDuration = now.subtract(duration!);
       for (var task in doneTasks) {
@@ -70,8 +72,16 @@ class GetTaskCubit extends Cubit<GetTaskState> {
           }
         }
       }
+      for (var task in onGoingTasks) {
+        if (!task.isDone) {
+          DateTime? taskCreationDate = parseDateString(task.createdAt);
+
+          if (taskCreationDate!.isAfter(wantedDuration)) {
+            recentOngoingTasks.add(task);
+          }
+        }
+      }
       emit(GetTaskSuccess());
-      return recentDoneTasks;
     }
   }
 
