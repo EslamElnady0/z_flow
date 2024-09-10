@@ -35,8 +35,8 @@ class AppTexts {
   static const String yourTaskDeadLineIsComing =
       "Your Task Deadline is Coming!";
   static const String travel = "Travel";
-  static const String youWillGetNotifiedAboutThis =
-      "You will get notified about this";
+  static const String youWillGetNotifiedAboutThisAt =
+      "You will get notified about this at ";
   static const String keepWorkingHard =
       "Keep Working Hard To Achieve Your Goals :)";
   static const String habitsTodo = "You Have Habit Todo";

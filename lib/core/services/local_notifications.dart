@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -131,8 +132,11 @@ class LocalNotifications {
           uiLocalNotificationDateInterpretation:
               UILocalNotificationDateInterpretation.absoluteTime,
           androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle);
+      String formattedDate = DateFormat('dd/MM/yyyy').format(scheduledDate);
+      String formattedTime = DateFormat('HH:mm').format(scheduledDate);
       Fluttertoast.showToast(
-          msg: AppTexts.youWillGetNotifiedAboutThis,
+          msg:
+              "${AppTexts.youWillGetNotifiedAboutThisAt} $formattedDate at $formattedTime",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
