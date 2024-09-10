@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
+import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/bottom%20nav%20bar%20cubit/bottom_nav_bar_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/delete%20habit%20cubit/delete_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/update%20habit%20cubit/update_habit_cubit.dart';
@@ -65,7 +66,10 @@ class HomeViewBody extends StatelessWidget {
               child: const HabitsBody(),
             );
           case 4:
-            return const ProfileBody();
+            return BlocProvider(
+              create: (context) => getIt<LogInCubit>(),
+              child: const ProfileBody(),
+            );
           default:
             return const Placeholder();
         }
