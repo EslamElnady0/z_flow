@@ -46,6 +46,7 @@ class _CalenderBodyState extends State<CalenderBody> {
           BlocBuilder<GetTaskCubit, GetTaskState>(
             builder: (context, state) {
               return CustomCalender(
+                eventLoader: getIt.get<GetTaskCubit>().getTasksByDate,
                 focusedDay: getIt.get<GetTaskCubit>().today,
                 selectedDayPredicate: (day) =>
                     isSameDay(day, getIt.get<GetTaskCubit>().today),
@@ -94,7 +95,7 @@ class _CalenderBodyState extends State<CalenderBody> {
             ),
           ),
           SizedBox(
-            height: 74.h,
+            height: 95.h,
           )
         ],
       ),

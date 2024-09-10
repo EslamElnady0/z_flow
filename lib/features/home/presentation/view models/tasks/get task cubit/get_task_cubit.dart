@@ -18,6 +18,7 @@ class GetTaskCubit extends Cubit<GetTaskState> {
 
   List<TaskModel> specificDayTasksList = [];
   List<TaskModel> tasks = [];
+  Map<String, List<TaskModel>> groupedTasks = {};
   List<TaskModel> onGoingTasks = [];
   List<TaskModel> doneTasks = [];
   List<TaskModel> recentDoneTasks = [];
@@ -38,6 +39,7 @@ class GetTaskCubit extends Cubit<GetTaskState> {
       emit(GetTaskFailure(failure.errMessage));
     }, (tasksList) {
       tasks = tasksList;
+      _groupedTasksByCreationData();
       for (var i = 0; i < tasks.length; i++) {
         if (!tasks[i].isDone) {
           if (!onGoingTasks.contains(tasks[i])) {
@@ -51,6 +53,22 @@ class GetTaskCubit extends Cubit<GetTaskState> {
       }
       emit(GetTaskSuccess());
     });
+  }
+
+  Map<String, List<TaskModel>> _groupedTasksByCreationData() {
+    groupedTasks = {};
+
+    for (var task in tasks) {
+      String dateKey = task.createdAt;
+
+      if (groupedTasks.containsKey(dateKey)) {
+        groupedTasks[dateKey]!.add(task);
+      } else {
+        groupedTasks[dateKey] = [task];
+      }
+    }
+
+    return groupedTasks;
   }
 
   void getRecentTasksFilter() {
@@ -85,6 +103,11 @@ class GetTaskCubit extends Cubit<GetTaskState> {
     }
   }
 
+  List<TaskModel> getTasksByDate(DateTime date) {
+    String keyDate = DateFormat.yMMMd().format(date);
+    return groupedTasks[keyDate] ?? [];
+  }
+
   void getCategorizedTasks(String category) {
     categorizedTasks =
         tasks.where((task) => task.category.contains(category)).toList();
@@ -111,7 +134,7 @@ class GetTaskCubit extends Cubit<GetTaskState> {
 
   onDaySelected(DateTime day, DateTime focusDay) {
     today = day;
-    // focusedDay = focusDay;
+    focusedDay = focusDay;
     specificDayTasksList = [];
     getSpecificDayTasks(focusDay);
     emit(DaySelectedState());
