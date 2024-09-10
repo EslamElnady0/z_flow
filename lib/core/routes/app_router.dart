@@ -230,11 +230,13 @@ class AppRouter {
                   child: const StayAwayView(),
                 ));
       case search:
+        var args = settings.arguments as int;
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                   create: (context) => getIt<SearchCubit>(),
                   child: const SearchView(),
-                ));
+                ),
+            settings: RouteSettings(arguments: args));
       case goals:
         reinitializeGetGoalsCubitIfNeeded();
         return MaterialPageRoute(

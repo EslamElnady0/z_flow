@@ -24,10 +24,10 @@ class _HomeViewState extends State<HomeView> {
       scaffoldKey: _scaffoldKey,
       drawer: const CustomDrawer(),
       appBar: buildCustomAppBar(
-        index: context.read<BottomNavBarCubit>().selectedIndex,
         context: context,
         onActionPressed: () {
-          Navigator.pushNamed(context, AppRouter.search);
+          Navigator.pushNamed(context, AppRouter.search,
+              arguments: context.read<BottomNavBarCubit>().selectedIndex);
         },
         onLeadingPressed: () {
           _scaffoldKey.currentState!.openDrawer();

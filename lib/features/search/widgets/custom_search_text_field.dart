@@ -6,7 +6,12 @@ import '../../../core/styles/styles.dart';
 
 class CustomSearchTextField extends StatelessWidget {
   final void Function(String)? onChanged;
-  const CustomSearchTextField({super.key, this.onChanged});
+  final String hintText;
+  const CustomSearchTextField({
+    super.key,
+    this.onChanged,
+    required this.hintText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,7 @@ class CustomSearchTextField extends StatelessWidget {
             size: 24.r,
             color: Colors.grey,
           ),
-          hintText: "Search",
+          hintText: hintText,
           hintStyle: Styles.style18w500,
           isDense: true,
           enabledBorder: OutlineInputBorder(

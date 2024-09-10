@@ -107,8 +107,8 @@ void setupServiceLocator() {
   getIt.registerFactory<WorkSessionCubit>(() => WorkSessionCubit());
   getIt.registerFactory<TimerCubit>(() => TimerCubit());
   //////////// search cubit ////////////////
-  getIt.registerFactory<SearchCubit>(
-      () => SearchCubit(TasksLocalDataSourceImpl()));
+  getIt.registerFactory<SearchCubit>(() =>
+      SearchCubit(TasksLocalDataSourceImpl(), HabitsLocalDataSourceImpl()));
 
   ////////////  task cats cubit ////////////////
 
