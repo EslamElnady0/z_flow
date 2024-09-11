@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -59,6 +60,7 @@ class AccountCubit extends Cubit<AccountState> {
       photoUrl = user?.photoUrl ?? "";
       emit(AccountSuccess(imageUrl: photoUrl));
     });
+    log("photoUrl: $photoUrl , userName: ${userModel?.firstName}");
     return userModel;
   }
 }

@@ -5,9 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/features/settings/presentation/account%20cubit/accout_cubit.dart';
-import '../../../../core/core cubits/internet check cubit/internet_check_cubit.dart';
+
+import '../../../../core/constants/assets.dart';
 
 class CustomProfileAvatar extends StatelessWidget {
   final VoidCallback onTap;
@@ -26,38 +26,25 @@ class CustomProfileAvatar extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             context.read<AccountCubit>().filePath == null
-                ? FutureBuilder(
-                    future: context.read<AccountCubit>().getUserData(
-                          isAnonymous: getIt
-                              .get<FirebaseAuth>()
-                              .currentUser!
-                              .isAnonymous,
-                          isConnected:
-                              getIt.get<InternetCheckCubit>().isDeviceConnected,
-                        ),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const CircularProgressIndicator(
-                          color: ColorManager.primaryColorAccent,
-                        );
-                      } else if (snapshot.data?.photoUrl != null &&
-                          snapshot.connectionState == ConnectionState.done) {
-                        return CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.transparent,
-                          radius: 30.r,
-                          backgroundImage: CachedNetworkImageProvider(
-                            snapshot.data!.photoUrl,
+                ? CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    foregroundColor: Colors.transparent,
+                    radius: 30.r,
+                    backgroundImage: getIt
+                                    .get<FirebaseAuth>()
+                                    .currentUser!
+                                    .photoURL ==
+                                null ||
+                            getIt.get<FirebaseAuth>().currentUser!.photoURL ==
+                                ""
+                        ? const AssetImage(
+                            Assets.defaultProfile,
+                          )
+                        : CachedNetworkImageProvider(
+                            getIt.get<FirebaseAuth>().currentUser!.photoURL ??
+                                "",
                           ),
-                        );
-                      } else {
-                        return CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.transparent,
-                          radius: 30.r,
-                        );
-                      }
-                    })
+                  )
                 : CircleAvatar(
                     backgroundColor: Colors.transparent,
                     foregroundColor: Colors.transparent,

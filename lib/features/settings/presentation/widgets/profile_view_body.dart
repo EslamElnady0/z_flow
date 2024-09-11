@@ -88,17 +88,11 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                                 path:
                                     "profilePic/${getIt.get<FirebaseAuth>().currentUser!.uid}");
                         user.photoUrl = context.read<AccountCubit>().photoUrl;
+                        getIt.get<FirebaseAuth>().currentUser!.updatePhotoURL(
+                              context.read<AccountCubit>().photoUrl,
+                            );
                       }
                     }
-                    await context.read<AccountCubit>().updateUserData(
-                          user: user!,
-                          isAnonymous: getIt
-                              .get<FirebaseAuth>()
-                              .currentUser!
-                              .isAnonymous,
-                          isConnected:
-                              getIt.get<InternetCheckCubit>().isDeviceConnected,
-                        );
                     getIt.get<FirebaseAuth>().currentUser!.updateDisplayName(
                         "${firstNameController.text} ${lastNameController.text}");
                     Fluttertoast.showToast(
@@ -108,7 +102,6 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                       fontSize: 16.sp,
                       gravity: ToastGravity.BOTTOM,
                     );
-                    setState(() {});
                   } else {
                     Fluttertoast.showToast(
                       msg: S.of(context).youAreNotConnectedToTheInternet,

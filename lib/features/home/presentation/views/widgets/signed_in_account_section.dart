@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,10 +41,15 @@ class SignedInAccountSection extends StatelessWidget {
             CircleAvatar(
               backgroundColor: Colors.transparent,
               radius: 41.r,
-              child: Image.asset(
-                Assets.defaultProfile,
-                fit: BoxFit.cover,
-              ),
+              backgroundImage:
+                  getIt.get<FirebaseAuth>().currentUser!.photoURL == null ||
+                          getIt.get<FirebaseAuth>().currentUser!.photoURL == ""
+                      ? const AssetImage(
+                          Assets.defaultProfile,
+                        )
+                      : CachedNetworkImageProvider(
+                          getIt.get<FirebaseAuth>().currentUser!.photoURL ?? "",
+                        ),
             ),
             SizedBox(
               height: 12.h,

@@ -140,11 +140,7 @@ class AppRouter {
       case profile:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<AccountCubit>()
-              ..getUserData(
-                isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
-                isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-              ),
+            create: (context) => getIt<AccountCubit>(),
             child: const ProfileView(),
           ),
         );
