@@ -9,12 +9,14 @@ import '../ui model/settings_item_model.dart';
 class CustomSettingsItem extends StatelessWidget {
   final SettingsItemModel model;
   final int index;
+  final GlobalKey actionKey;
   final VoidCallback onTap;
   const CustomSettingsItem(
       {super.key,
       required this.model,
       required this.onTap,
-      required this.index});
+      required this.index,
+      required this.actionKey});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class CustomSettingsItem extends StatelessWidget {
             Text(model.title,
                 style: Styles.style16W600grey.copyWith(color: Colors.white)),
             SettingsItemTrailing(
+              actionKey: actionKey,
               index: index,
               icon: model.icon,
             )

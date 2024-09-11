@@ -41,11 +41,15 @@ class SettingsViewBody extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
-              itemBuilder: (context, index) => CustomSettingsItem(
-                model: settingsItems[index],
-                index: index,
-                onTap: () {},
-              ),
+              itemBuilder: (context, index) {
+                GlobalKey actionKey = GlobalKey();
+                return CustomSettingsItem(
+                  model: settingsItems[index],
+                  actionKey: actionKey,
+                  index: index,
+                  onTap: () {},
+                );
+              },
               separatorBuilder: (context, index) => SizedBox(height: 16.h),
               itemCount: settingsItems.length,
             ),

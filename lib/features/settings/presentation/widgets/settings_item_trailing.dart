@@ -6,16 +6,20 @@ import 'package:z_flow/features/settings/presentation/widgets/custom_language_po
 class SettingsItemTrailing extends StatelessWidget {
   final int index;
   final String icon;
+  final GlobalKey actionKey;
   const SettingsItemTrailing({
     super.key,
     required this.index,
     required this.icon,
+    required this.actionKey,
   });
 
   @override
   Widget build(BuildContext context) {
     return index == 1
-        ? const CustomLanguagePopUpMenu()
+        ? CustomLanguagePopUpMenu(
+            actionKey: actionKey,
+          )
         : SvgPicture.asset(
             icon,
             height: 24.h,

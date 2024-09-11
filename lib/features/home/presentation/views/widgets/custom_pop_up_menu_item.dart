@@ -9,10 +9,12 @@ class CustomPopUpMenuItem extends StatelessWidget {
     required this.title,
     required this.icon,
     required this.onTap,
+    this.style,
   });
 
   final String title;
   final Widget? icon;
+  final TextStyle? style;
   final void Function() onTap;
 
   @override
@@ -26,13 +28,15 @@ class CustomPopUpMenuItem extends StatelessWidget {
           icon != null
               ? Text(
                   title,
-                  style: Styles.style16W600grey.copyWith(color: Colors.white),
+                  style: style ??
+                      Styles.style16W600grey.copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
                 )
               : Flexible(
                   child: Text(
                     title,
-                    style: Styles.style16W600grey.copyWith(color: Colors.white),
+                    style: style ??
+                        Styles.style16W600grey.copyWith(color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
                 ),
