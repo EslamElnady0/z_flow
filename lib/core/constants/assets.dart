@@ -3,6 +3,8 @@ class Assets {
   static const String logo = "assets/images/ZF.png";
   static const String logoAppBar = "assets/images/ZF_AppBar.png";
   static const String logoFullWord = "assets/images/ZFlow.png";
+  static const String adelUiUx = "assets/images/adelUiUx.png";
+  static const String eslamFlutter = "assets/images/eslamFlutter.png";
   static const String firstOnBoarding = "assets/images/firstOnBoarding.png";
   static const String secondOnBoarding = "assets/images/secondOnBoarding.png";
   static const String thirdOnBoarding = "assets/images/thirdOnBoarding.png";
@@ -78,6 +80,15 @@ class Assets {
   static const String privacyIcon = "assets/images/svgs/privacyIcon.svg";
   static const String feedBackIcon = "assets/images/svgs/feedBackIcon.svg";
   static const String rateUsIcon = "assets/images/svgs/rateUsIcon.svg";
+  static const String aboutInstaIcon = "assets/images/svgs/aboutInstaIcon.svg";
+  static const String aboutLinkedInIcon =
+      "assets/images/svgs/aboutLinkedInIcon.svg";
+  static const String aboutMailIcon = "assets/images/svgs/aboutMailIcon.svg";
+  static const String aboutWhatsIcon = "assets/images/svgs/aboutWhatsIcon.svg";
+  static const String aboutGitHubIcon =
+      "assets/images/svgs/aboutGitHubIcon.svg";
+  static const String aboutYoutubeIcon =
+      "assets/images/svgs/aboutYoutubeIcon.svg";
   static const String iosArrowForwardSmall =
       "assets/images/svgs/iosArrowForwardSmall.svg";
   static const String favStarOutLined =

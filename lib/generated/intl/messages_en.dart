@@ -113,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Education and courses"),
         "effortlesslyManage": MessageLookupByLibrary.simpleMessage(
             "Effortlessly manage your life with our app: organize tasks, track habits, optimize time, achieve goals, get reminders, save links, and start work sessions!"),
+        "effortlesslyManageYourLife": MessageLookupByLibrary.simpleMessage(
+            "Effortlessly manage your life with our app"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "endsIn": MessageLookupByLibrary.simpleMessage("Ends in.."),
         "english": MessageLookupByLibrary.simpleMessage("English"),

@@ -2060,6 +2060,16 @@ class S {
     );
   }
 
+  /// `Effortlessly manage your life with our app`
+  String get effortlesslyManageYourLife {
+    return Intl.message(
+      'Effortlessly manage your life with our app',
+      name: 'effortlesslyManageYourLife',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Information about your account`
   String get informationAboutYourAccount {
     return Intl.message(

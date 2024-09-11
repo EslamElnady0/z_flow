@@ -49,6 +49,11 @@ class Constants {
       stops: [0, 1],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter);
+  static const LinearGradient customAboutDialogGradient = LinearGradient(
+      colors: ColorManager.customAboutDialogGradientColors,
+      stops: [0, 0.2, 1],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter);
   static const LinearGradient drawerGradient = LinearGradient(
       colors: ColorManager.drawerGradientColors,
       stops: [0, 0.5, 1],

@@ -113,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("التعليم والدورات"),
         "effortlesslyManage": MessageLookupByLibrary.simpleMessage(
             "قم بإدارة حياتك بسهولة مع تطبيقنا: نظم المهام، تتبع العادات، تحسين الوقت، تحقيق الأهداف، الحصول على التذكيرات، حفظ الروابط، وبدء جلسات العمل!"),
+        "effortlesslyManageYourLife": MessageLookupByLibrary.simpleMessage(
+            "قم بإدارة حياتك بسهولة مع تطبيقنا"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "endsIn": MessageLookupByLibrary.simpleMessage("ينتهي في.."),
         "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
