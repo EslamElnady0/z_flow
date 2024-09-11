@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "about": MessageLookupByLibrary.simpleMessage("About us"),
         "aboutPageDescription": MessageLookupByLibrary.simpleMessage(
             "Control the application settings easily from here!"),
+        "accessYourAccount":
+            MessageLookupByLibrary.simpleMessage("Access Your Account"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "addAGoal": MessageLookupByLibrary.simpleMessage("Add a new goal"),
         "addANewEvent": MessageLookupByLibrary.simpleMessage("Add a new event"),
@@ -196,6 +198,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Limitations of use"),
         "lock": MessageLookupByLibrary.simpleMessage("Lock"),
         "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
+        "logInFirstDescription": MessageLookupByLibrary.simpleMessage(
+            "To view your account details, please log in first. We want to make sure your information stays secure."),
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "loggedInSuccess":
             MessageLookupByLibrary.simpleMessage("Logged in successfully"),

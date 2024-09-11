@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "about": MessageLookupByLibrary.simpleMessage("من نحن"),
         "aboutPageDescription": MessageLookupByLibrary.simpleMessage(
             "تحكم بإعدادات التطبيق بسهولة من هنا!"),
+        "accessYourAccount":
+            MessageLookupByLibrary.simpleMessage("الدخول إلى حسابك"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "addAGoal": MessageLookupByLibrary.simpleMessage("أضف هدفًا جديدًا"),
         "addANewEvent":
@@ -195,6 +197,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("قيود الاستخدام"),
         "lock": MessageLookupByLibrary.simpleMessage("قفل"),
         "logIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "logInFirstDescription": MessageLookupByLibrary.simpleMessage(
+            "للاطلاع على تفاصيل حسابك، يرجى تسجيل الدخول أولاً. نريد التأكد من أن معلوماتك تبقى آمنة."),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "loggedInSuccess":
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),

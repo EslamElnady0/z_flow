@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:z_flow/core/DI/service_locator.dart';
+import 'package:z_flow/features/settings/presentation/widgets/show_unauthenticated_dialog.dart';
 import '../../../../core/constants/assets.dart';
 import '../../../../core/routes/app_router.dart';
 import '../../../../core/styles/styles.dart';
@@ -50,7 +53,16 @@ class SettingsViewBody extends StatelessWidget {
                   onTap: () {
                     switch (index) {
                       case 0:
-                        Navigator.pushNamed(context, AppRouter.profile);
+                        if (getIt.get<FirebaseAuth>().currentUser == null ||
+                            getIt
+                                .get<FirebaseAuth>()
+                                .currentUser!
+                                .isAnonymous) {
+                          showUnauthenticatedDialog(context);
+                        } else {
+                          Navigator.pushNamed(context, AppRouter.profile);
+                        }
+
                         break;
                       case 2:
                         Share.share(

@@ -2109,6 +2109,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Access Your Account`
+  String get accessYourAccount {
+    return Intl.message(
+      'Access Your Account',
+      name: 'accessYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To view your account details, please log in first. We want to make sure your information stays secure.`
+  String get logInFirstDescription {
+    return Intl.message(
+      'To view your account details, please log in first. We want to make sure your information stays secure.',
+      name: 'logInFirstDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

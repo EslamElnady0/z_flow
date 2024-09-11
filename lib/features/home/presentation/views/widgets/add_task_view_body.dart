@@ -9,7 +9,7 @@ import 'package:z_flow/core/utils/tasks%20utils/categories/get_tasks_categories.
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
 import '../../../../../core/constants/constants.dart';
-import '../../../../../core/utils/show_suggest_category_selection_dialog.dart';
+import '../../../../../core/utils/tasks utils/categories/show_suggest_category_selection_dialog.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/task model/task_model.dart';
 import '../../view models/tasks/get task cubit/get_task_cubit.dart';

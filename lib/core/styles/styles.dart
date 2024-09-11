@@ -37,6 +37,8 @@ class Styles {
       fontSize: 20.sp, fontWeight: FontWeight.w700, color: Colors.white);
   static TextStyle style20W600 = TextStyle(
       fontSize: 20.sp, fontWeight: FontWeight.w600, color: Colors.black);
+  static TextStyle style22W600 = TextStyle(
+      fontSize: 22.sp, fontWeight: FontWeight.w600, color: Colors.white);
   static TextStyle style20W500 = TextStyle(
       fontSize: 20.sp, fontWeight: FontWeight.w500, color: Colors.black);
   static TextStyle style34W700blue = TextStyle(

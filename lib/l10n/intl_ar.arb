@@ -204,7 +204,10 @@
   "youCanManageAndModifyYourAccountOnThisPage": "يمكنك إدارة وتعديل حسابك من هذه الصفحة",
   "aboutPageDescription": "تحكم بإعدادات التطبيق بسهولة من هنا!",
   "successfullyUpdated":"تم التحديث بنجاح",
-  "youAreNotConnectedToTheInternet":"أنت غير متصل بالإنترنت"
+  "youAreNotConnectedToTheInternet":"أنت غير متصل بالإنترنت",
+  "accessYourAccount": "الدخول إلى حسابك",
+"logInFirstDescription": "للاطلاع على تفاصيل حسابك، يرجى تسجيل الدخول أولاً. نريد التأكد من أن معلوماتك تبقى آمنة."
+
 
 
 

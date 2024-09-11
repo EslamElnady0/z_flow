@@ -24,12 +24,11 @@ class Constants {
       stops: [0, 1],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight);
-  static const LinearGradient customSuggestCategorySelectionGradient =
-      LinearGradient(
-          colors: ColorManager.customSuggestCategorySelectionGradientColors,
-          stops: [0, 1],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter);
+  static const LinearGradient customCloudyGradient = LinearGradient(
+      colors: ColorManager.customSuggestCategorySelectionGradientColors,
+      stops: [0, 1],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter);
   static const LinearGradient customTimerGradient = LinearGradient(
       colors: ColorManager.customTimerGradientColors,
       stops: [0, 1],

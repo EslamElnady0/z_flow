@@ -204,5 +204,7 @@
     "youCanManageAndModifyYourAccountOnThisPage":"You can manage and modify your account on this page",
     "aboutPageDescription":"Control the application settings easily from here!",
     "successfullyUpdated":"Succesfully updated",
-    "youAreNotConnectedToTheInternet":"You are not connected to the internet"
+    "youAreNotConnectedToTheInternet":"You are not connected to the internet",
+    "accessYourAccount":"Access Your Account",
+    "logInFirstDescription":"To view your account details, please log in first. We want to make sure your information stays secure."
 }
