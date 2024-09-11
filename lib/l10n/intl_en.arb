@@ -202,5 +202,7 @@
     "searchForHabits":"Search For Habits",
     "informationAboutYourAccount":"Information about your account",
     "youCanManageAndModifyYourAccountOnThisPage":"You can manage and modify your account on this page",
-    "aboutPageDescription":"Control the application settings easily from here!"
+    "aboutPageDescription":"Control the application settings easily from here!",
+    "successfullyUpdated":"Succesfully updated",
+    "youAreNotConnectedToTheInternet":"You are not connected to the internet"
 }

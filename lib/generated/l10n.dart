@@ -2089,6 +2089,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Succesfully updated`
+  String get successfullyUpdated {
+    return Intl.message(
+      'Succesfully updated',
+      name: 'successfullyUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are not connected to the internet`
+  String get youAreNotConnectedToTheInternet {
+    return Intl.message(
+      'You are not connected to the internet',
+      name: 'youAreNotConnectedToTheInternet',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

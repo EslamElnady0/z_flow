@@ -30,6 +30,7 @@ environment:
 dependencies:
   app_usage: ^3.0.1
   audioplayers: ^6.0.0
+  cached_network_image: ^3.4.1
   cloud_firestore: ^5.1.0
   connectivity_plus: ^6.0.3
   cupertino_icons: ^1.0.6
@@ -53,6 +54,7 @@ dependencies:
   google_sign_in: ^6.2.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  image_picker: ^1.1.2
   installed_apps: ^1.5.0
   internet_connection_checker: ^1.0.0+1
   intl: ^0.19.0

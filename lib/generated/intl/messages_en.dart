@@ -268,6 +268,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Start a work session"),
         "stayAway": MessageLookupByLibrary.simpleMessage("Stay Away"),
         "subTask": MessageLookupByLibrary.simpleMessage("Subtask"),
+        "successfullyUpdated":
+            MessageLookupByLibrary.simpleMessage("Succesfully updated"),
         "takeABreak": MessageLookupByLibrary.simpleMessage(
             "Take a Break and Lock Your Phone!"),
         "task": MessageLookupByLibrary.simpleMessage("Task.."),
@@ -303,6 +305,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "You are now about to add a new habit!"),
         "youAreAboutToOpenWorkSession": MessageLookupByLibrary.simpleMessage(
             "You are about to open a 50-minute session with a 5-minute break"),
+        "youAreNotConnectedToTheInternet": MessageLookupByLibrary.simpleMessage(
+            "You are not connected to the internet"),
         "youCanContinueWith":
             MessageLookupByLibrary.simpleMessage("You can continue with"),
         "youCanEditHabit": MessageLookupByLibrary.simpleMessage(

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
+import 'package:z_flow/features/settings/presentation/account%20cubit/accout_cubit.dart';
+import 'package:z_flow/features/settings/presentation/widgets/custom_profile_avatar.dart';
 import 'package:z_flow/generated/l10n.dart';
 
-class AccountViewForm extends StatelessWidget {
+class AccountViewForm extends StatefulWidget {
   final TextEditingController firstNameController;
   final TextEditingController lastNameController;
   final GlobalKey<FormState> formKey;
@@ -18,8 +22,14 @@ class AccountViewForm extends StatelessWidget {
       required this.formKey});
 
   @override
+  State<AccountViewForm> createState() => _AccountViewFormState();
+}
+
+class _AccountViewFormState extends State<AccountViewForm> {
+  @override
   Widget build(BuildContext context) {
     return Form(
+      key: widget.formKey,
       child: Column(
         children: [
           Divider(
@@ -42,9 +52,7 @@ class AccountViewForm extends StatelessWidget {
           SizedBox(
             height: 18.h,
           ),
-          CircleAvatar(
-            radius: 30.r,
-          ),
+          CustomProfileAvatar(onTap: pickImageFromGallery),
           SizedBox(
             height: 18.h,
           ),
@@ -61,7 +69,7 @@ class AccountViewForm extends StatelessWidget {
                 child: CustomAuthTextField(
                     hintText: S.of(context).firstName,
                     icon: FontAwesomeIcons.circleUser,
-                    controller: firstNameController),
+                    controller: widget.firstNameController),
               ),
               SizedBox(
                 width: 10.w,
@@ -70,7 +78,7 @@ class AccountViewForm extends StatelessWidget {
                 child: CustomAuthTextField(
                     hintText: S.of(context).lastName,
                     icon: FontAwesomeIcons.circleUser,
-                    controller: lastNameController),
+                    controller: widget.lastNameController),
               ),
             ],
           ),
@@ -80,5 +88,15 @@ class AccountViewForm extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void pickImageFromGallery() async {
+    ImagePicker imagePicker = ImagePicker();
+    var file = await imagePicker.pickImage(source: ImageSource.gallery);
+    if (file != null) {
+      setState(() {
+        context.read<AccountCubit>().filePath = file.path;
+      });
+    }
   }
 }

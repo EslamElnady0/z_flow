@@ -202,6 +202,10 @@
     "searchForHabits":"ابحث عن العادات",
     "informationAboutYourAccount": "معلومات عن حسابك",
   "youCanManageAndModifyYourAccountOnThisPage": "يمكنك إدارة وتعديل حسابك من هذه الصفحة",
-  "aboutPageDescription": "تحكم بإعدادات التطبيق بسهولة من هنا!"
+  "aboutPageDescription": "تحكم بإعدادات التطبيق بسهولة من هنا!",
+  "successfullyUpdated":"تم التحديث بنجاح",
+  "youAreNotConnectedToTheInternet":"أنت غير متصل بالإنترنت"
+
+
 
 }

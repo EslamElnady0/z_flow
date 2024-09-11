@@ -269,6 +269,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ابدأ جلسة عمل"),
         "stayAway": MessageLookupByLibrary.simpleMessage("ابقَ بعيدًا"),
         "subTask": MessageLookupByLibrary.simpleMessage("مهمة فرعية"),
+        "successfullyUpdated":
+            MessageLookupByLibrary.simpleMessage("تم التحديث بنجاح"),
         "takeABreak":
             MessageLookupByLibrary.simpleMessage("خذ استراحة وقم بقفل هاتفك!"),
         "task": MessageLookupByLibrary.simpleMessage("مهمة.."),
@@ -304,6 +306,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "أنت الآن على وشك إضافة عادة جديدة!"),
         "youAreAboutToOpenWorkSession": MessageLookupByLibrary.simpleMessage(
             "أنت على وشك فتح جلسة عمل لمدة 50 دقيقة مع استراحة لمدة 5 دقائق"),
+        "youAreNotConnectedToTheInternet":
+            MessageLookupByLibrary.simpleMessage("أنت غير متصل بالإنترنت"),
         "youCanContinueWith":
             MessageLookupByLibrary.simpleMessage("يمكنك الاستمرار باستخدام"),
         "youCanEditHabit": MessageLookupByLibrary.simpleMessage(

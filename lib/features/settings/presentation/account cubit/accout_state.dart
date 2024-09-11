@@ -1,18 +1,18 @@
 part of 'accout_cubit.dart';
 
 @immutable
-sealed class AccoutState {}
+sealed class AccountState {}
 
-final class AccoutInitial extends AccoutState {}
+final class AccountInitial extends AccountState {}
 
-final class AccoutLoading extends AccoutState {}
+final class AccountLoading extends AccountState {}
 
-final class AccoutSuccess extends AccoutState {
+final class AccountSuccess extends AccountState {
   final String? imageUrl;
-  AccoutSuccess({this.imageUrl});
+  AccountSuccess({this.imageUrl});
 }
 
-final class AccoutFailure extends AccoutState {
+final class AccountFailure extends AccountState {
   final String errMessage;
-  AccoutFailure({required this.errMessage});
+  AccountFailure({required this.errMessage});
 }
