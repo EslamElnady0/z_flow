@@ -41,7 +41,6 @@ class GetHabitCubit extends Cubit<GetHabitState> {
           }
         }
       }
-//added
       for (var doneHabit in doneHabits) {
         DateTime deadline = parseDateString(doneHabit.deadline)!;
         DateTime now = DateTime.now();
@@ -59,7 +58,6 @@ class GetHabitCubit extends Cubit<GetHabitState> {
 
       todaysDoneHabits = getRecentDoneHabitsFilter(const Duration(hours: 24));
       getRecentOnGoingHabitsFilter();
-      //added
       emit(GetHabitSucuess());
     });
   }
