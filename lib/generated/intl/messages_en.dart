@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("About us"),
+        "aboutPageDescription": MessageLookupByLibrary.simpleMessage(
+            "Control the application settings easily from here!"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "addAGoal": MessageLookupByLibrary.simpleMessage("Add a new goal"),
         "addANewEvent": MessageLookupByLibrary.simpleMessage("Add a new event"),
@@ -181,6 +183,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("In a break session"),
         "inWorkSession":
             MessageLookupByLibrary.simpleMessage("In a working session"),
+        "informationAboutYourAccount": MessageLookupByLibrary.simpleMessage(
+            "Information about your account"),
         "keepWorkingHard": MessageLookupByLibrary.simpleMessage(
             "Keep Working Hard To Achieve Your Goals :)"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
@@ -303,6 +307,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("You can continue with"),
         "youCanEditHabit": MessageLookupByLibrary.simpleMessage(
             "You are now about to modify an existing habit"),
+        "youCanManageAndModifyYourAccountOnThisPage":
+            MessageLookupByLibrary.simpleMessage(
+                "You can manage and modify your account on this page"),
         "youCanManageTheList": MessageLookupByLibrary.simpleMessage(
             "You can manage the list from here and add new links!"),
         "youCanTrackYourProgress": MessageLookupByLibrary.simpleMessage(

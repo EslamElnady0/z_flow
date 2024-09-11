@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_check_cubit.dart';
 import 'package:z_flow/features/auth/data/repos/auth_repo_impl.dart';
@@ -60,6 +61,7 @@ GetIt getIt = GetIt.instance;
 void setupServiceLocator() {
   getIt.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
   getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
+  getIt.registerSingleton<FirebaseStorage>(FirebaseStorage.instance);
   getIt.registerSingleton<AuthRepoImpl>(AuthRepoImpl(
       firebaseAuth: getIt.get<FirebaseAuth>(),
       firestore: getIt.get<FirebaseFirestore>()));

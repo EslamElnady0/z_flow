@@ -8,7 +8,13 @@ class AboutViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
-      child: Column(),
+      child: Column(
+        children: [
+          Divider(
+            height: 2.h,
+          ),
+        ],
+      ),
     );
   }
 }

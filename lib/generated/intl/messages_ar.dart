@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("من نحن"),
+        "aboutPageDescription": MessageLookupByLibrary.simpleMessage(
+            "تحكم بإعدادات التطبيق بسهولة من هنا!"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "addAGoal": MessageLookupByLibrary.simpleMessage("أضف هدفًا جديدًا"),
         "addANewEvent":
@@ -180,6 +182,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "inBreakSession":
             MessageLookupByLibrary.simpleMessage("في جلسة استراحة"),
         "inWorkSession": MessageLookupByLibrary.simpleMessage("في جلسة عمل"),
+        "informationAboutYourAccount":
+            MessageLookupByLibrary.simpleMessage("معلومات عن حسابك"),
         "keepWorkingHard": MessageLookupByLibrary.simpleMessage(
             "واصل العمل الجاد لتحقيق أهدافك :)"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
@@ -304,6 +308,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يمكنك الاستمرار باستخدام"),
         "youCanEditHabit": MessageLookupByLibrary.simpleMessage(
             "أنت الآن على وشك تعديل عادة موجودة"),
+        "youCanManageAndModifyYourAccountOnThisPage":
+            MessageLookupByLibrary.simpleMessage(
+                "يمكنك إدارة وتعديل حسابك من هذه الصفحة"),
         "youCanManageTheList": MessageLookupByLibrary.simpleMessage(
             "يمكنك إدارة القائمة من هنا وإضافة روابط جديدة!"),
         "youCanTrackYourProgress":

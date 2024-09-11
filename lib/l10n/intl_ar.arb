@@ -199,6 +199,9 @@
     "allOngoingHabits":"كل العادات المستمرة",
     "loggedInSuccess":"تم تسجيل الدخول بنجاح",
     "searchForTasks":"ابحث عن المهام",
-    "searchForHabits":"ابحث عن العادات"
+    "searchForHabits":"ابحث عن العادات",
+    "informationAboutYourAccount": "معلومات عن حسابك",
+  "youCanManageAndModifyYourAccountOnThisPage": "يمكنك إدارة وتعديل حسابك من هذه الصفحة",
+  "aboutPageDescription": "تحكم بإعدادات التطبيق بسهولة من هنا!"
 
 }

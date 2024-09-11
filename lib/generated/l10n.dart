@@ -2059,6 +2059,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Information about your account`
+  String get informationAboutYourAccount {
+    return Intl.message(
+      'Information about your account',
+      name: 'informationAboutYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can manage and modify your account on this page`
+  String get youCanManageAndModifyYourAccountOnThisPage {
+    return Intl.message(
+      'You can manage and modify your account on this page',
+      name: 'youCanManageAndModifyYourAccountOnThisPage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Control the application settings easily from here!`
+  String get aboutPageDescription {
+    return Intl.message(
+      'Control the application settings easily from here!',
+      name: 'aboutPageDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

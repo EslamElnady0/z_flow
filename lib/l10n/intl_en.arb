@@ -199,5 +199,8 @@
     "allOngoingHabits":"All Ongoing Habits",
     "loggedInSuccess":"Logged in successfully",
     "searchForTasks":"Search For Tasks",
-    "searchForHabits":"Search For Habits"
+    "searchForHabits":"Search For Habits",
+    "informationAboutYourAccount":"Information about your account",
+    "youCanManageAndModifyYourAccountOnThisPage":"You can manage and modify your account on this page",
+    "aboutPageDescription":"Control the application settings easily from here!"
 }

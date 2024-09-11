@@ -11,7 +11,7 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       body: const ProfileViewBody(),
-      appBar: buildInnerPagesAppBar(text: S.of(context).profile),
+      appBar: buildInnerPagesAppBar(text: S.of(context).account),
     );
   }
 }
