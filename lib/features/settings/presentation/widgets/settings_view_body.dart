@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../../core/constants/assets.dart';
+import '../../../../core/routes/app_router.dart';
 import '../../../../core/styles/styles.dart';
 import '../../../../generated/l10n.dart';
 import '../ui model/settings_item_model.dart';
@@ -17,8 +19,6 @@ class SettingsViewBody extends StatelessWidget {
       SettingsItemModel(
           title: S.of(context).language, icon: Assets.iosArrowForwardSmall),
       SettingsItemModel(title: S.of(context).shareApp, icon: Assets.share),
-      SettingsItemModel(
-          title: S.of(context).helpAndFeedback, icon: Assets.feedBackIcon),
       SettingsItemModel(
           title: S.of(context).about, icon: Assets.iosArrowForwardSmall),
     ];
@@ -47,7 +47,21 @@ class SettingsViewBody extends StatelessWidget {
                   model: settingsItems[index],
                   actionKey: actionKey,
                   index: index,
-                  onTap: () {},
+                  onTap: () {
+                    switch (index) {
+                      case 0:
+                        Navigator.pushNamed(context, AppRouter.profile);
+                        break;
+                      case 2:
+                        Share.share(
+                            "check out app at https://drive.google.com/file/d/1u0DgllF0c3cTtG5cZSxb4j72fy37sgIB/view?usp=drive_link");
+                        break;
+                      case 3:
+                        Navigator.pushNamed(context, AppRouter.about);
+
+                        break;
+                    }
+                  },
                 );
               },
               separatorBuilder: (context, index) => SizedBox(height: 16.h),

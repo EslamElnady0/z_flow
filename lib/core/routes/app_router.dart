@@ -36,6 +36,8 @@ import 'package:z_flow/features/reminder/presentation/views/add_reminder_view.da
 import 'package:z_flow/features/reminder/presentation/views/reminder_view.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/search/views/search_view.dart';
+import 'package:z_flow/features/settings/presentation/views/about_view.dart';
+import 'package:z_flow/features/settings/presentation/views/profile_view.dart';
 import 'package:z_flow/features/stay%20away/presentation/views/stay_away_view.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/add%20tasks%20category%20cubit/add_tasks_category_cubit.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/delete%20task%20category%20cubit/delete_task_category_cubit.dart';
@@ -101,6 +103,8 @@ class AppRouter {
   static const String myLists = '/myLists';
   static const String listDetails = '/listDetails';
   static const String settings_ = '/settings';
+  static const String profile = '/profile';
+  static const String about = '/about';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -131,6 +135,14 @@ class AppRouter {
       case settings_:
         return MaterialPageRoute(
           builder: (context) => const SettingsView(),
+        );
+      case profile:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileView(),
+        );
+      case about:
+        return MaterialPageRoute(
+          builder: (context) => const AboutView(),
         );
       case forgotPassword:
         return MaterialPageRoute(

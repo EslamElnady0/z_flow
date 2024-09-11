@@ -1740,10 +1740,10 @@ class S {
     );
   }
 
-  /// `About`
+  /// `About us`
   String get about {
     return Intl.message(
-      'About',
+      'About us',
       name: 'about',
       desc: '',
       args: [],
