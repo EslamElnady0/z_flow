@@ -79,7 +79,8 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
                       habit.deadline = endsInController.text;
                       habit.createdAt = DateTime.now().toString();
                       habit.id = id;
-
+                      habit.note = noteController.text;
+                      formKey.currentState!.save();
                       await addHabit(
                         habit: habit,
                       );

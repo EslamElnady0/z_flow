@@ -24,6 +24,8 @@ class HabitModel extends HiveObject {
   int id = 0;
   @HiveField(9)
   String doneAt;
+  @HiveField(10)
+  String note;
 
   HabitModel(
       {this.iteration = 3,
@@ -33,6 +35,7 @@ class HabitModel extends HiveObject {
       this.isFavourited = false,
       this.isIterable = true,
       this.isDone = false,
+      this.note = '',
       this.isDoneBefore = false,
       this.doneAt = '',
       this.id = 0});
@@ -45,6 +48,7 @@ class HabitModel extends HiveObject {
       'iteration': iteration,
       'isFavourited': isFavourited,
       'isIterable': isIterable,
+      'note': note,
       'isDone': isDone,
       'doneAt': doneAt,
       'isDoneBefore': isDoneBefore,
@@ -58,6 +62,7 @@ class HabitModel extends HiveObject {
       deadline: json['deadline'],
       createdAt: json['createdAt'],
       iteration: json['iteration'],
+      note: json['note'],
       isFavourited: json['isFavourited'],
       isIterable: json['isIterable'],
       isDone: json['isDone'],

@@ -26,6 +26,7 @@ class HabitModelAdapter extends TypeAdapter<HabitModel> {
       isDone: fields[6] as bool,
       isDoneBefore: fields[7] as bool,
       doneAt: fields[9] as String,
+      note: fields[10] as String,
       id: fields[8] as int,
     );
   }
@@ -33,7 +34,7 @@ class HabitModelAdapter extends TypeAdapter<HabitModel> {
   @override
   void write(BinaryWriter writer, HabitModel obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -53,7 +54,9 @@ class HabitModelAdapter extends TypeAdapter<HabitModel> {
       ..writeByte(8)
       ..write(obj.id)
       ..writeByte(9)
-      ..write(obj.doneAt);
+      ..write(obj.doneAt)
+      ..writeByte(10)
+      ..write(obj.note);
   }
 
   @override

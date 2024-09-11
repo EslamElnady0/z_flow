@@ -28,7 +28,7 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
     taskController = TextEditingController(text: widget.habit.title);
     endsInController = TextEditingController(text: widget.habit.deadline);
 
-    noteController = TextEditingController();
+    noteController = TextEditingController(text: widget.habit.note);
 
     super.initState();
   }
@@ -74,7 +74,7 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
                     if (formKey.currentState!.validate()) {
                       widget.habit.title = taskController.text;
                       widget.habit.deadline = endsInController.text;
-                      //  widget.habit.note = noteController.text;
+                      widget.habit.note = noteController.text;
                       formKey.currentState!.save();
                       await updateHabit(habit: widget.habit);
                       if (context.mounted) {
