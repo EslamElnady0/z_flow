@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/utils/notifications_helpers.dart';
 import 'package:z_flow/core/utils/increament_id_methods.dart';
@@ -10,7 +11,8 @@ import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 import '../../services/local_notifications.dart';
 import 'get_events.dart';
 
-Future<void> addEvent({required EventModel event}) async {
+Future<void> addEvent(
+    {required EventModel event, required BuildContext context}) async {
   await getIt<AddEventCubit>().addEvent(
       event: event,
       isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
@@ -19,11 +21,15 @@ Future<void> addEvent({required EventModel event}) async {
   getIt.get<GetEventsCubit>().events.add(event);
   incrementEventsId();
 
-  await getEvents();
+  if (context.mounted) {
+    await getEvents(context);
+  }
   getIt
       .get<GetEventsCubit>()
       .getSpecificDayEvents(getIt.get<GetEventsCubit>().focusedDay);
   await LocalNotifications.requestNotificationPermission();
 
-  scheduleEventNotification(event);
+  if (context.mounted) {
+    scheduleEventNotification(event, context);
+  }
 }

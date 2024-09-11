@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/styles/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/habit model/habit_model.dart';
 import '../widgets/edit_habit_view_body.dart';
 
@@ -16,7 +15,7 @@ class EditHabitView extends StatelessWidget {
       body: EditHabitViewBody(habit: habit),
       appBar: AppBar(
         title: Text(
-          AppTexts.editHabit,
+          S.of(context).editHabit,
           style: Styles.style18w600,
         ),
         centerTitle: true,

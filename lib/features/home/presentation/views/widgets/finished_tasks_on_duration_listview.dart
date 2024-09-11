@@ -19,7 +19,8 @@ class FinishedTasksOnDurationListView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            getDurationText(duration: getIt.get<GetTaskCubit>().duration),
+            getDurationText(
+                duration: getIt.get<GetTaskCubit>().duration, context: context),
             style: Styles.style18w600,
           ),
           SizedBox(
@@ -31,7 +32,7 @@ class FinishedTasksOnDurationListView extends StatelessWidget {
                 GlobalKey actionKey = GlobalKey();
                 return Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(right: 10.w),
+                    margin: EdgeInsetsDirectional.only(end: 10.w),
                     child: CustomTaskItem(
                       task: ctx.read<GetTaskCubit>().recentDoneTasks[index],
                       actionKey: actionKey,

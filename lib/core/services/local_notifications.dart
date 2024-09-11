@@ -9,7 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
-import '../constants/app_texts.dart';
+import '../../generated/l10n.dart';
 import '../constants/colors.dart';
 import '../constants/constants.dart';
 //import 'package:rxdart/rxdart.dart';
@@ -102,6 +102,7 @@ class LocalNotifications {
       {required String title,
       required String body,
       required String payload,
+      required BuildContext context,
       int? hours,
       int? mins,
       required DateTime scheduledDateTime,
@@ -136,7 +137,7 @@ class LocalNotifications {
       String formattedTime = DateFormat('HH:mm').format(scheduledDate);
       Fluttertoast.showToast(
           msg:
-              "${AppTexts.youWillGetNotifiedAboutThisAt} $formattedDate at $formattedTime",
+              "${S.of(context).youWillGetNotifiedAboutThisAt} $formattedDate at $formattedTime",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,

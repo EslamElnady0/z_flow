@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_check_cubit.dart';
 import 'package:z_flow/core/routes/app_router.dart';
@@ -69,15 +70,21 @@ class ZFlowApp extends StatelessWidget {
             if (state is InternetCheckConnected) {
               scaffoldMessengerKey.currentState?.showSnackBar(
                   buildCustomSnackBar(
-                      message: "All set! You're connected to the internet."));
+                      message: Intl.getCurrentLocale() == "en"
+                          ? "All set! You're connected to the internet."
+                          : "كل شيء جاهز! أنت متصل بالإنترنت.",
+                      isError: false));
             } else if (state is InternetCheckDisconnected) {
               scaffoldMessengerKey.currentState?.showSnackBar(
                   buildCustomSnackBar(
-                      message: "Oops, it looks like you're offline!",
+                      message: Intl.getCurrentLocale() == "en"
+                          ? "Oops, it looks like you're offline!"
+                          : "عذرًا، يبدو أنك غير متصل بالإنترنت!",
                       isError: true));
             }
           },
           child: MaterialApp(
+            locale: Locale('ar'),
             scaffoldMessengerKey: scaffoldMessengerKey,
             localizationsDelegates: const [
               S.delegate,

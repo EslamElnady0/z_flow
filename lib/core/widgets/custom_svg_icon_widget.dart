@@ -9,7 +9,7 @@ class CustomSvgIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 15.w),
+      padding: EdgeInsetsDirectional.only(end: 15.w),
       child: SvgPicture.asset(
         icon,
         height: 16.h,

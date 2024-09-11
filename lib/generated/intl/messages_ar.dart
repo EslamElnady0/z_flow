@@ -41,8 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أضف مهمة إلى القائمة"),
         "addToYourCategories":
             MessageLookupByLibrary.simpleMessage("أضف إلى فئاتك؟"),
+        "allDoneHabits":
+            MessageLookupByLibrary.simpleMessage("كل العادات المنتهية"),
         "allFinishedTasks":
             MessageLookupByLibrary.simpleMessage("كل المهام المكتملة"),
+        "allOngoingHabits":
+            MessageLookupByLibrary.simpleMessage("كل العادات المستمرة"),
         "allTasks": MessageLookupByLibrary.simpleMessage("جميع المهام"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "back": MessageLookupByLibrary.simpleMessage("العودة"),
@@ -58,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "connectedToInternet": MessageLookupByLibrary.simpleMessage(
+            "كل شيء جاهز! أنت متصل بالإنترنت."),
         "continueWithGoogle":
             MessageLookupByLibrary.simpleMessage("متابعة باستخدام جوجل"),
         "continue_": MessageLookupByLibrary.simpleMessage("متابعة"),
@@ -68,7 +74,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "daily": MessageLookupByLibrary.simpleMessage("يوميًا"),
         "delete": MessageLookupByLibrary.simpleMessage("حذف"),
         "description": MessageLookupByLibrary.simpleMessage("الوصف.."),
+        "disconnectedFromInternet": MessageLookupByLibrary.simpleMessage(
+            "عذرًا، يبدو أنك غير متصل بالإنترنت!"),
         "doneHabits": MessageLookupByLibrary.simpleMessage("العادات المنتهية"),
+        "doneHabits28Days": MessageLookupByLibrary.simpleMessage(
+            "العادات المنتهية في اخر ٢٨ يوم"),
+        "doneHabits7Days": MessageLookupByLibrary.simpleMessage(
+            "العادات المنتهية في اخر ٧ أيام"),
+        "doneHabitsLastDay":
+            MessageLookupByLibrary.simpleMessage("العادات المنتهية في اخر يوم"),
         "easilyAddANewLink":
             MessageLookupByLibrary.simpleMessage("أضف رابطًا جديدًا بسهولة!"),
         "easilyAddANewList":
@@ -116,6 +130,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "financialSupport":
             MessageLookupByLibrary.simpleMessage("الدعم المالي"),
         "finishTask": MessageLookupByLibrary.simpleMessage("إنهاء المهمة"),
+        "finishedTasksLast28Days": MessageLookupByLibrary.simpleMessage(
+            "المهام المنتهية في اخر ٢٨ أيام"),
+        "finishedTasksLast7Days": MessageLookupByLibrary.simpleMessage(
+            "المهام المنتهية في اخر ٧ ايام"),
+        "finishedTasksLastDay": MessageLookupByLibrary.simpleMessage(
+            "المهام المنتهية في اخر اليوم"),
         "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
         "firstOnBoarding": MessageLookupByLibrary.simpleMessage("نظم مهامك"),
         "firstOnBoardingDesc": MessageLookupByLibrary.simpleMessage(
@@ -172,11 +192,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "lock": MessageLookupByLibrary.simpleMessage("قفل"),
         "logIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "loggedInSuccess":
+            MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
         "manage": MessageLookupByLibrary.simpleMessage("إدارة"),
         "mentalHealth": MessageLookupByLibrary.simpleMessage("الصحة النفسية"),
         "minutes": MessageLookupByLibrary.simpleMessage("دقائق"),
         "myGoals": MessageLookupByLibrary.simpleMessage("أهدافي"),
         "myLists": MessageLookupByLibrary.simpleMessage("قائمي"),
+        "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "noLinksYet": MessageLookupByLibrary.simpleMessage(
             "لم تقم بإضافة أي روابط هنا حتى الآن :("),
         "noWorries": MessageLookupByLibrary.simpleMessage(
@@ -187,6 +210,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "onGoingTasks": MessageLookupByLibrary.simpleMessage("المهام الجارية"),
         "onThisPage": MessageLookupByLibrary.simpleMessage(
             "في هذه الصفحة، يمكنك كتابة أهدافك المستقبلية هنا!"),
+        "ongoingHabitsLast28Days": MessageLookupByLibrary.simpleMessage(
+            "العادات المستمرة في اخر ٢٨ يوم"),
+        "ongoingHabitsLast7Days": MessageLookupByLibrary.simpleMessage(
+            "العادات المستمرة في اخر ٧ أيام"),
+        "ongoingHabitsLastDay":
+            MessageLookupByLibrary.simpleMessage("العادات المستمرة في اخر يوم"),
         "organizingTasks": MessageLookupByLibrary.simpleMessage(
             "تنظيم المهام ضمن فئات يساعدك في الحفاظ على سير العمل بكفاءة ويضمن عدم تجاهل أي شيء."),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -210,6 +239,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "reminderToHabit":
             MessageLookupByLibrary.simpleMessage("تذكير بهذه العادة"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+        "searchForHabits":
+            MessageLookupByLibrary.simpleMessage("ابحث عن العادات"),
+        "searchForTasks":
+            MessageLookupByLibrary.simpleMessage("ابحث عن المهام"),
         "secondOnBoarding":
             MessageLookupByLibrary.simpleMessage("إدارة التقويم الخاص بك"),
         "secondOnBoardingDesc": MessageLookupByLibrary.simpleMessage(
@@ -240,7 +273,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تصنيفات المهام"),
         "tasks": MessageLookupByLibrary.simpleMessage("المهام"),
         "tasksFinished":
-            MessageLookupByLibrary.simpleMessage("تم إنجاز المهام"),
+            MessageLookupByLibrary.simpleMessage("المهام المنتهية"),
         "thirdOnBoarding": MessageLookupByLibrary.simpleMessage("الإنتاجية"),
         "thirdOnBoardingDesc": MessageLookupByLibrary.simpleMessage(
             "تابع كيفية قضاء وقتك مع ميزة تتبع الوقت المدمجة لدينا. حدد أنماط إنتاجيتك واتخذ قرارات مدروسة لتحسين الكفاءة. اعمل بذكاء، وليس بجهد أكبر."),
@@ -254,7 +287,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "travel": MessageLookupByLibrary.simpleMessage("السفر"),
         "twentyFourHoursADay7Days":
             MessageLookupByLibrary.simpleMessage("24 ساعة في اليوم، 7 أيام!"),
-        "user": MessageLookupByLibrary.simpleMessage("المستخدم! "),
+        "user": MessageLookupByLibrary.simpleMessage("يا مستخدم! "),
         "viewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
         "welcome": MessageLookupByLibrary.simpleMessage("أهلاً وسهلاً "),
         "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك!"),

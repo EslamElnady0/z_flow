@@ -4,11 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/utils/tasks%20utils/delete_task.dart';
 import 'package:z_flow/core/widgets/build_overlay_menu.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/routes/app_router.dart';
 import '../../../../../core/utils/tasks utils/update_task.dart';
+import '../../../../../generated/l10n.dart';
 import 'custom_pop_up_menu_item.dart';
 
 class TaskOptionsMenuBody extends StatelessWidget {
@@ -25,7 +24,7 @@ class TaskOptionsMenuBody extends StatelessWidget {
               task.isFavourited = !task.isFavourited;
               await updateTask(task: task);
             },
-            title: AppTexts.favourite,
+            title: S.of(context).favourite,
             icon: SvgPicture.asset(
               task.isFavourited ? Assets.starIcon : Assets.favStarOutLined,
               width: 18.w,
@@ -42,7 +41,7 @@ class TaskOptionsMenuBody extends StatelessWidget {
               Navigator.of(context)
                   .pushNamed(AppRouter.editTask, arguments: task);
             },
-            title: AppTexts.edit,
+            title: S.of(context).edit,
             icon: SvgPicture.asset(
               Assets.settingsIcon,
               width: 18.w,
@@ -56,7 +55,7 @@ class TaskOptionsMenuBody extends StatelessWidget {
               BuildOverlayMenu.removeOverlay();
               deleteTask(task: task);
             },
-            title: AppTexts.delete,
+            title: S.of(context).delete,
             icon: SvgPicture.asset(
               Assets.deleteIcon,
               width: 18.w,

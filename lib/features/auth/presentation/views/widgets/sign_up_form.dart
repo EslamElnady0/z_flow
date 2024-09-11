@@ -1,6 +1,6 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/sigup_button_bloc_provider.dart';
 
@@ -35,7 +35,7 @@ class SignUpForm extends StatelessWidget {
               text: Column(
             children: [
               Text(
-                AppTexts.getStarted,
+                S.of(context).getStarted,
                 style: Styles.style14w400
                     .copyWith(fontWeight: FontWeight.w600, color: Colors.white),
               ),
@@ -43,7 +43,7 @@ class SignUpForm extends StatelessWidget {
                 height: 4.h,
               ),
               Text(
-                AppTexts.signUpToUnlock,
+                S.of(context).signUpToUnlock,
                 style: Styles.style14w400,
                 textAlign: TextAlign.center,
               )
@@ -53,28 +53,28 @@ class SignUpForm extends StatelessWidget {
             height: 20.h,
           ),
           CustomAuthTextField(
-              hintText: AppTexts.firstName,
+              hintText: S.of(context).firstName,
               icon: FontAwesomeIcons.circleUser,
               controller: firstNameController),
           SizedBox(
             height: 16.h,
           ),
           CustomAuthTextField(
-              hintText: AppTexts.lastName,
+              hintText: S.of(context).lastName,
               icon: FontAwesomeIcons.circleUser,
               controller: lastNameController),
           SizedBox(
             height: 16.h,
           ),
           CustomAuthTextField(
-              hintText: AppTexts.email,
+              hintText: S.of(context).email,
               icon: Icons.email_outlined,
               controller: emailController),
           SizedBox(
             height: 16.h,
           ),
           CustomAuthTextField(
-              hintText: AppTexts.password,
+              hintText: S.of(context).password,
               icon: Icons.lock_outline,
               isPassword: true,
               controller: passwordController),
@@ -82,7 +82,7 @@ class SignUpForm extends StatelessWidget {
             height: 16.h,
           ),
           CustomAuthTextField(
-              hintText: AppTexts.confirmPassword,
+              hintText: S.of(context).confirmPassword,
               icon: Icons.lock_outline,
               isPassword: true,
               controller: confirmPasswordController),

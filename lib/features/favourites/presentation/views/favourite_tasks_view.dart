@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
 
 import '../../../../core/styles/styles.dart';
@@ -13,7 +13,7 @@ class FavouriteTasksView extends StatelessWidget {
     return CustomScaffold(
       appBar: AppBar(
         title: Text(
-          AppTexts.favTasks,
+          S.of(context).favTasks,
           style: Styles.style18w600,
         ),
         centerTitle: true,

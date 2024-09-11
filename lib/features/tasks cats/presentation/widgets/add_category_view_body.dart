@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/utils/tasks%20utils/categories/add_task_categories.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
@@ -46,12 +46,12 @@ class _AddCategoryViewBodyState extends State<AddCategoryViewBody> {
             SizedBox(
               height: 12.h,
             ),
-            Text(AppTexts.addNewCategoryToList, style: Styles.style14w400),
+            Text(S.of(context).addNewCategoryToList, style: Styles.style14w400),
             SizedBox(
               height: 20.h,
             ),
             CustomAuthTextField(
-                hintText: AppTexts.title,
+                hintText: S.of(context).title,
                 suffix: Padding(
                   padding: const EdgeInsets.all(14.0),
                   child: SvgPicture.asset(
@@ -65,7 +65,7 @@ class _AddCategoryViewBodyState extends State<AddCategoryViewBody> {
               height: 25.h,
             ),
             CustomLightColorsGradientButton(
-              text: AppTexts.addNewCategory,
+              text: S.of(context).addNewCategory,
               icon: Assets.addIcon,
               onTap: () async {
                 if (formKey.currentState!.validate()) {

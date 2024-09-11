@@ -1,11 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:z_flow/core/errors/failure.dart';
 
 import '../model/event_model.dart';
 
 abstract class EventsRepo {
   Future<Either<Failure, List<EventModel>>> getEvents(
-      {required bool isConnected, required bool isAnonymous});
+      {required bool isConnected,
+      required bool isAnonymous,
+      required BuildContext context});
 
   Future<Either<Failure, void>> addEvent(
       {required EventModel event,

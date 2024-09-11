@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_habit_item.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/ongoing_habits_view_all_row.dart';
@@ -38,7 +38,7 @@ class OneHabitListEmpty extends StatelessWidget {
               GlobalKey actionKey = GlobalKey();
               return Container(
                   width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(right: 10.w),
+                  margin: EdgeInsetsDirectional.only(end: 10.w),
                   child: CustomHabitItem(
                     actionKey: actionKey,
                     habit: habits[index],
@@ -63,7 +63,7 @@ class OneHabitListEmpty extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed(AppRouter.addHabit);
             },
-            text: AppTexts.addNewHabit,
+            text: S.of(context).addNewHabit,
           ),
         ),
         SizedBox(

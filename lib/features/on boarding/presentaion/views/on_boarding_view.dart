@@ -8,9 +8,10 @@ import 'package:z_flow/core/widgets/custom_scaffold.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/widgets/custom_on_boarding_next_button.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/widgets/custom_on_boarding_skip_button.dart';
 import 'package:z_flow/features/on%20boarding/presentaion/views/widgets/on_boarding_item.dart';
-
-import '../../../../core/constants/constants.dart';
+import '../../../../core/constants/assets.dart';
 import '../../../../core/routes/app_router.dart';
+import '../../../../generated/l10n.dart';
+import '../../data/on_boarding_model.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -21,6 +22,7 @@ class OnBoardingView extends StatefulWidget {
 
 class _OnBoardingViewState extends State<OnBoardingView> {
   late PageController _pageController;
+
   int currentIndex = 0;
   @override
   void initState() {
@@ -36,6 +38,24 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   @override
   Widget build(BuildContext context) {
+    List<OnboardingModel> onBoardingScreens = [
+      OnboardingModel(
+          image: Assets.firstOnBoarding,
+          text: S.of(context).firstOnBoarding,
+          desc: S.of(context).firstOnBoardingDesc),
+      OnboardingModel(
+          image: Assets.secondOnBoarding,
+          text: S.of(context).secondOnBoarding,
+          desc: S.of(context).secondOnBoardingDesc),
+      OnboardingModel(
+          image: Assets.thirdOnBoarding,
+          text: S.of(context).thirdOnBoarding,
+          desc: S.of(context).thirdOnBoardingDesc),
+      OnboardingModel(
+          image: Assets.forthOnBoarding,
+          text: S.of(context).fourthOnBoarding,
+          desc: S.of(context).fourthOnBoardingDesc),
+    ];
     return CustomScaffold(
       body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -57,7 +77,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                             });
                           },
                           controller: _pageController,
-                          itemCount: Constants.onBoardingScreens.length,
+                          itemCount: onBoardingScreens.length,
                           itemBuilder: (context, index) {
                             var scale = index == currentIndex ? 1.0 : 0.5;
                             return TweenAnimationBuilder(
@@ -65,8 +85,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                               tween: Tween(begin: scale, end: scale),
                               curve: Curves.easeInOut,
                               child: OnBoardingItem(
-                                onboardingModel:
-                                    Constants.onBoardingScreens[index],
+                                onboardingModel: onBoardingScreens[index],
                               ),
                               builder: (context, value, child) {
                                 return Transform.scale(
@@ -76,7 +95,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                           }),
                     ),
                     Text(
-                      Constants.onBoardingScreens[currentIndex].text,
+                      onBoardingScreens[currentIndex].text,
                       style: Styles.style34W700blue,
                       textAlign: TextAlign.center,
                     ),
@@ -84,7 +103,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       height: 20.h,
                     ),
                     Text(
-                      Constants.onBoardingScreens[currentIndex].desc,
+                      onBoardingScreens[currentIndex].desc,
                       style: Styles.style16W500grey.copyWith(
                         height: 1.6.h,
                       ),
@@ -96,7 +115,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     const Spacer(),
                     SmoothPageIndicator(
                       controller: _pageController,
-                      count: Constants.onBoardingScreens.length,
+                      count: onBoardingScreens.length,
                       effect: const SwapEffect(
                         dotHeight: 8,
                         dotWidth: 10,
@@ -110,8 +129,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       height: 40.h,
                     ),
                     CustomOnBoardingNextButton(
-                        currentIndex: currentIndex,
-                        pageController: _pageController),
+                      currentIndex: currentIndex,
+                      pageController: _pageController,
+                      onBoardingScreens: onBoardingScreens,
+                    ),
                     SizedBox(
                       height: 17.h,
                     ),

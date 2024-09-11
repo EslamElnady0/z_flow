@@ -4,11 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/utils/habits%20utils/delete_habit.dart';
 import 'package:z_flow/core/widgets/build_overlay_menu.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/routes/app_router.dart';
 import '../../../../../core/utils/habits utils/update_habit.dart';
+import '../../../../../generated/l10n.dart';
 import 'custom_pop_up_menu_item.dart';
 
 class HabitOptionsMenuBody extends StatelessWidget {
@@ -24,9 +23,9 @@ class HabitOptionsMenuBody extends StatelessWidget {
               BuildOverlayMenu.removeOverlay();
               habit.isFavourited = !habit.isFavourited;
 
-              await updateHabit(habit: habit);
+              await updateHabit(habit: habit, context: context);
             },
-            title: AppTexts.favourite,
+            title: S.of(context).favourite,
             icon: SvgPicture.asset(
               habit.isFavourited ? Assets.starIcon : Assets.favStarOutLined,
               width: 18.w,
@@ -43,7 +42,7 @@ class HabitOptionsMenuBody extends StatelessWidget {
               Navigator.of(context)
                   .pushNamed(AppRouter.editHabit, arguments: habit);
             },
-            title: AppTexts.edit,
+            title: S.of(context).edit,
             icon: SvgPicture.asset(
               Assets.settingsIcon,
               width: 18.w,
@@ -55,9 +54,9 @@ class HabitOptionsMenuBody extends StatelessWidget {
         CustomPopUpMenuItem(
             onTap: () async {
               BuildOverlayMenu.removeOverlay();
-              await deleteHabit(habit: habit);
+              await deleteHabit(habit: habit, context: context);
             },
-            title: AppTexts.delete,
+            title: S.of(context).delete,
             icon: SvgPicture.asset(
               Assets.deleteIcon,
               width: 18.w,

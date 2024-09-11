@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/widgets/one_task_list_empty.dart';
 
 import '../../../home/data/models/task model/task_model.dart';
@@ -24,7 +24,7 @@ class NoEmptyTaskList extends StatelessWidget {
           OneTaskListEmpty(
             category: category,
             tasks: onGoingTasks,
-            text: AppTexts.onGoingTasks,
+            text: S.of(context).onGoingTasks,
           ),
           SizedBox(
             height: 16.h,
@@ -32,7 +32,7 @@ class NoEmptyTaskList extends StatelessWidget {
           OneTaskListEmpty(
             tasks: doneTasks,
             category: category,
-            text: AppTexts.tasksFinished,
+            text: S.of(context).tasksFinished,
           ),
         ],
       ),

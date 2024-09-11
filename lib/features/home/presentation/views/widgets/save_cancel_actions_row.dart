@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../on boarding/presentaion/views/widgets/custom_on_boarding_skip_button.dart';
 
 class BottomScreenActions extends StatelessWidget {
@@ -25,7 +24,7 @@ class BottomScreenActions extends StatelessWidget {
         Expanded(
             child: CustomButton(
           onTap: onPrimaryButtonPressed,
-          text: primaryButtonText ?? AppTexts.save,
+          text: primaryButtonText ?? S.of(context).save,
           gradient: Constants.customButtonGradient,
           raduis: 16.r,
         )),

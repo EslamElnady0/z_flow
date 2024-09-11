@@ -5,9 +5,8 @@ import 'package:z_flow/core/utils/tasks%20utils/delete_task.dart';
 import 'package:z_flow/core/utils/tasks%20utils/update_task.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/utils/tasks utils/categories/get_tasks_categories.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../tasks cats/presentation/view models/get tasks categories cubit/get_tasks_categories_cubit.dart';
 import 'task_data_form.dart';
 
@@ -32,7 +31,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
   late TextEditingController subTaskFiveController;
   @override
   void initState() {
-    getTasksCategories();
+    getTasksCategories(context);
 
     taskController = TextEditingController(text: widget.task.title);
     endsInController = TextEditingController(text: widget.task.deadline);
@@ -89,7 +88,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
                   subTaskFourController,
                   subTaskFiveController
                 ],
-                text: AppTexts.easilyEditTasks,
+                text: S.of(context).easilyEditTasks,
                 isEdit: true,
                 formKey: formKey),
           ),
@@ -129,7 +128,7 @@ class _EditTaskViewBodyState extends State<EditTaskViewBody> {
                       Navigator.of(context).pop();
                     }
                   },
-                  otherButtonText: AppTexts.delete,
+                  otherButtonText: S.of(context).delete,
                 ),
                 SizedBox(
                   height: 60.h,

@@ -1,12 +1,13 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:z_flow/core/services/local_notifications.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
 
 import '../../features/reminder/data/model/event_model.dart';
-import '../constants/app_texts.dart';
+import '../../generated/l10n.dart';
 
 int eventsOffset = 3000000;
 int tasksOffset = 1000000;
@@ -17,20 +18,22 @@ int generateUniqueNotificationId() {
 
 DateTime? parseDateString(String dateString) {
   try {
-    return DateFormat.yMMMd().parse(dateString);
+    return DateFormat.yMMMd('en_US').parse(dateString);
   } catch (e) {
     log('Error parsing date: $e');
     return null;
   }
 }
 
-Future<void> scheduleEventNotification(EventModel event) async {
+Future<void> scheduleEventNotification(
+    EventModel event, BuildContext context) async {
   DateTime? eventStartDate = DateTime.parse(event.startDate);
 
   await LocalNotifications.showSchadualedNotification(
       title: event.title,
-      body: AppTexts.bigEventAwaitsYou,
+      body: S.of(context).bigEventAwaitsYou,
       payload: "",
+      context: context,
       hours: event.timeOfEvent.isEmpty
           ? 7
           : int.parse(event.timeOfEvent.split(":")[0]),
@@ -41,23 +44,26 @@ Future<void> scheduleEventNotification(EventModel event) async {
       id: event.id + eventsOffset);
 }
 
-Future<void> scheduleTaskNotification(TaskModel task) async {
+Future<void> scheduleTaskNotification(
+    TaskModel task, BuildContext context) async {
   DateTime? taskDate = parseDateString(task.deadline);
 
   if (taskDate != null && taskDate.isAfter(DateTime.now())) {
     await LocalNotifications.showSchadualedNotification(
         title: task.title,
-        body: AppTexts.yourTaskDeadLineIsComing,
+        context: context,
+        body: S.of(context).yourTaskDeadLineIsComing,
         payload: "",
         scheduledDateTime: taskDate,
         id: task.id + tasksOffset);
   }
 }
 
-Future<void> setDailyHabitsNotification(HabitModel habit) async {
+Future<void> setDailyHabitsNotification(
+    HabitModel habit, BuildContext context) async {
   await LocalNotifications.showPeriodicNotification(
       title: habit.title,
-      body: AppTexts.habitsTodo,
+      body: S.of(context).habitsTodo,
       payload: "",
       id: habit.id + habitsOffset);
 }

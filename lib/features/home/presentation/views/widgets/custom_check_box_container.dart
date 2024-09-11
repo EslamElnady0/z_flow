@@ -15,7 +15,7 @@ class CustomCheckBoxContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 54.h,
-      padding: EdgeInsets.only(left: 12.w),
+      padding: EdgeInsetsDirectional.only(start: 12.w),
       width: double.infinity,
       decoration: BoxDecoration(
           gradient: Constants.customButtonGradient,

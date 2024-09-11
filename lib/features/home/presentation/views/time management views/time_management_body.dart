@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/styles/styles.dart';
@@ -19,7 +19,7 @@ class TimeManagementBody extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            AppTexts.hereYouCanFindOutYourTime,
+            S.of(context).hereYouCanFindOutYourTime,
             style: Styles.style16W600grey,
           ),
           SizedBox(
@@ -37,7 +37,7 @@ class TimeManagementBody extends StatelessWidget {
             height: 90.h,
           ),
           CustomButton(
-            text: AppTexts.timeOfUse,
+            text: S.of(context).timeOfUse,
             gradient: Constants.customButtonGradient,
             onTap: () {
               Navigator.pushNamed(context, AppRouter.timeOfUse);
@@ -50,7 +50,7 @@ class TimeManagementBody extends StatelessWidget {
             height: 30.h,
           ),
           // CustomButton(
-          //   text: AppTexts.limitationsOfUse,
+          //   text: S.of(context).limitationsOfUse,
           //   gradient: Constants.customButtonGradient,
           //   style: Styles.style27W600,
           //   height: 66.h,

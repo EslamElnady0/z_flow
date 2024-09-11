@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/auth_screens_header.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
@@ -30,7 +30,7 @@ class LoginForm extends StatelessWidget {
               text: Column(
             children: [
               Text(
-                AppTexts.welcomeBack,
+                S.of(context).welcomeBack,
                 style: Styles.style14w400
                     .copyWith(fontWeight: FontWeight.w600, color: Colors.white),
               ),
@@ -38,7 +38,7 @@ class LoginForm extends StatelessWidget {
                 height: 4.h,
               ),
               Text(
-                AppTexts.pleaseLogin,
+                S.of(context).pleaseLogin,
                 style: Styles.style14w400,
                 textAlign: TextAlign.center,
               )
@@ -48,7 +48,7 @@ class LoginForm extends StatelessWidget {
             height: 25.h,
           ),
           CustomAuthTextField(
-              hintText: AppTexts.email,
+              hintText: S.of(context).email,
               icon: Icons.email_outlined,
               controller: emailController),
           SizedBox(
@@ -56,7 +56,7 @@ class LoginForm extends StatelessWidget {
           ),
           CustomAuthTextField(
               isPassword: true,
-              hintText: AppTexts.password,
+              hintText: S.of(context).password,
               icon: Icons.lock_outline,
               controller: passwordController),
           SizedBox(
@@ -69,7 +69,7 @@ class LoginForm extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 10.w),
               child: Text(
-                AppTexts.forgotPassword,
+                S.of(context).forgotPassword,
                 style: Styles.style12w600,
               ),
             ),

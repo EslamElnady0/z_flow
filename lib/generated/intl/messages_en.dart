@@ -41,8 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add a task to the list"),
         "addToYourCategories":
             MessageLookupByLibrary.simpleMessage("Add to your categories?"),
+        "allDoneHabits":
+            MessageLookupByLibrary.simpleMessage("All Done Habits"),
         "allFinishedTasks":
             MessageLookupByLibrary.simpleMessage("All Finished Tasks"),
+        "allOngoingHabits":
+            MessageLookupByLibrary.simpleMessage("All Ongoing Habits"),
         "allTasks": MessageLookupByLibrary.simpleMessage("All tasks"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
@@ -58,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "connectedToInternet": MessageLookupByLibrary.simpleMessage(
+            "All set! You\'re connected to the internet."),
         "continueWithGoogle":
             MessageLookupByLibrary.simpleMessage("Continue with google"),
         "continue_": MessageLookupByLibrary.simpleMessage("Continue"),
@@ -68,7 +74,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "daily": MessageLookupByLibrary.simpleMessage("Daily"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "description": MessageLookupByLibrary.simpleMessage("Description.."),
+        "disconnectedFromInternet": MessageLookupByLibrary.simpleMessage(
+            "Oops, it looks like you\'re offline!"),
         "doneHabits": MessageLookupByLibrary.simpleMessage("Done Habits"),
+        "doneHabits28Days":
+            MessageLookupByLibrary.simpleMessage("Done Habits Last 28 Days"),
+        "doneHabits7Days":
+            MessageLookupByLibrary.simpleMessage("Done Habits Last 7 Days"),
+        "doneHabitsLastDay":
+            MessageLookupByLibrary.simpleMessage("Done Habits Last Day"),
         "easilyAddANewLink":
             MessageLookupByLibrary.simpleMessage("Easily add a new link!"),
         "easilyAddANewList":
@@ -116,6 +130,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "financialSupport":
             MessageLookupByLibrary.simpleMessage("Financial support"),
         "finishTask": MessageLookupByLibrary.simpleMessage("Finish the task"),
+        "finishedTasksLast28Days":
+            MessageLookupByLibrary.simpleMessage("Finished Tasks Last 28 Days"),
+        "finishedTasksLast7Days":
+            MessageLookupByLibrary.simpleMessage("Finished Tasks Last 7 Days"),
+        "finishedTasksLastDay":
+            MessageLookupByLibrary.simpleMessage("Finished Tasks Last Day"),
         "firstName": MessageLookupByLibrary.simpleMessage("FirstName"),
         "firstOnBoarding":
             MessageLookupByLibrary.simpleMessage("Organize Your Tasks"),
@@ -173,11 +193,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "lock": MessageLookupByLibrary.simpleMessage("Lock"),
         "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
+        "loggedInSuccess":
+            MessageLookupByLibrary.simpleMessage("Logged in successfully"),
         "manage": MessageLookupByLibrary.simpleMessage("Manage"),
         "mentalHealth": MessageLookupByLibrary.simpleMessage("Mental Health"),
         "minutes": MessageLookupByLibrary.simpleMessage("Minutes"),
         "myGoals": MessageLookupByLibrary.simpleMessage("My Goals"),
         "myLists": MessageLookupByLibrary.simpleMessage("My lists"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noLinksYet": MessageLookupByLibrary.simpleMessage(
             "You didn\'t add any links here yet :("),
         "noWorries": MessageLookupByLibrary.simpleMessage(
@@ -187,6 +210,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "onGoingTasks": MessageLookupByLibrary.simpleMessage("Ongoing Tasks"),
         "onThisPage": MessageLookupByLibrary.simpleMessage(
             "On this page, you can write down your future goals here!"),
+        "ongoingHabitsLast28Days":
+            MessageLookupByLibrary.simpleMessage("Ongoing Habits Last 28 Days"),
+        "ongoingHabitsLast7Days":
+            MessageLookupByLibrary.simpleMessage("Ongoing Habits Last 7 Days"),
+        "ongoingHabitsLastDay":
+            MessageLookupByLibrary.simpleMessage("Ongoing Habits Last Day"),
         "organizingTasks": MessageLookupByLibrary.simpleMessage(
             "Organizing tasks into categories helps you keep your workflow efficient and ensures nothing gets overlooked."),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -209,6 +238,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "reminderToHabit":
             MessageLookupByLibrary.simpleMessage("Reminder of this habit"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "searchForHabits":
+            MessageLookupByLibrary.simpleMessage("Search For Habits"),
+        "searchForTasks":
+            MessageLookupByLibrary.simpleMessage("Search For Tasks"),
         "secondOnBoarding":
             MessageLookupByLibrary.simpleMessage("Manage Your Calendar"),
         "secondOnBoardingDesc": MessageLookupByLibrary.simpleMessage(

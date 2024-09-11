@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
-
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
 import '../widgets/edit_category_list_view_body.dart';
 
 class EditCategoryListView extends StatelessWidget {
@@ -17,7 +16,7 @@ class EditCategoryListView extends StatelessWidget {
     return CustomScaffold(
       appBar: AppBar(
         title: Text(
-          AppTexts.editCategoryList,
+          S.of(context).editCategoryList,
           style: Styles.style18w600,
         ),
         centerTitle: true,

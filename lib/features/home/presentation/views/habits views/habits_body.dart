@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/no_empty_habit_list_empty.dart';
@@ -18,7 +18,7 @@ class HabitsBody extends StatefulWidget {
 class _HabitsBodyState extends State<HabitsBody> {
   @override
   void initState() {
-    getHabits();
+    getHabits(context);
     super.initState();
   }
 
@@ -32,14 +32,14 @@ class _HabitsBodyState extends State<HabitsBody> {
             getIt.get<GetHabitCubit>().doneHabits.isEmpty) {
           return OneHabitListEmpty(
             habits: context.read<GetHabitCubit>().onGoinghabits,
-            text: AppTexts.habitsToAccomplishToday,
+            text: S.of(context).habitsToAccomplishToday,
             isDoneHabits: false,
           );
         } else if (getIt.get<GetHabitCubit>().onGoinghabits.isEmpty &&
             getIt.get<GetHabitCubit>().doneHabits.isNotEmpty) {
           return OneHabitListEmpty(
             habits: context.read<GetHabitCubit>().todaysDoneHabits,
-            text: AppTexts.habitsYouCompletedToday,
+            text: S.of(context).habitsYouCompletedToday,
             isDoneHabits: true,
           );
         } else {

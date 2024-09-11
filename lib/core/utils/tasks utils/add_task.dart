@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:z_flow/core/services/local_notifications.dart';
 import 'package:z_flow/core/utils/increament_id_methods.dart';
 import 'package:z_flow/core/utils/notifications_helpers.dart';
@@ -10,9 +11,8 @@ import '../../DI/service_locator.dart';
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 import 'get_tasks.dart';
 
-Future<void> addTask({
-  required TaskModel task,
-}) async {
+Future<void> addTask(
+    {required TaskModel task, required BuildContext context}) async {
   await getIt.get<AddTaskCubit>().addTask(
       task: task,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
@@ -23,7 +23,9 @@ Future<void> addTask({
   incrementTasksId();
   if (task.deadline != "") {
     await LocalNotifications.requestNotificationPermission();
-    scheduleTaskNotification(task);
+    if (context.mounted) {
+      scheduleTaskNotification(task, context);
+    }
   }
   await getTasks();
 }

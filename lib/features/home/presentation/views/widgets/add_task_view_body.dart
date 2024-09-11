@@ -8,10 +8,9 @@ import 'package:z_flow/core/utils/tasks%20utils/add_task.dart';
 import 'package:z_flow/core/utils/tasks%20utils/categories/get_tasks_categories.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/utils/show_suggest_category_selection_dialog.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/task model/task_model.dart';
 import '../../view models/tasks/get task cubit/get_task_cubit.dart';
 import 'task_data_form.dart';
@@ -39,7 +38,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
 
   @override
   void initState() {
-    getTasksCategories();
+    getTasksCategories(context);
     taskController = TextEditingController();
     endsInController = TextEditingController();
     noteController = TextEditingController();
@@ -90,7 +89,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                   subTaskFourController,
                   subTaskFiveController
                 ],
-                text: AppTexts.easilyAddYourTasks,
+                text: S.of(context).easilyAddYourTasks,
                 formKey: formKey),
           ),
         ),
@@ -102,7 +101,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
               children: [
                 const Spacer(),
                 BottomScreenActions(
-                  otherButtonText: AppTexts.cancel,
+                  otherButtonText: S.of(context).cancel,
                   onOtherButtonPressed: () => Navigator.of(context).pop(),
                   onPrimaryButtonPressed: () async {
                     if (formKey.currentState!.validate()) {
@@ -119,7 +118,8 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                         title: taskController.text,
                         notes: noteController.text,
                         id: id,
-                        createdAt: DateFormat.yMMMd().format(DateTime.now()),
+                        createdAt:
+                            DateFormat.yMMMd('en_US').format(DateTime.now()),
                         deadline: endsInController.text,
                         category: categoryController.text.split(", "),
                       );
@@ -130,6 +130,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                       } else {
                         await addTask(
                           task: task,
+                          context: context,
                         );
                         if (widget.category != null) {
                           getIt

@@ -20,7 +20,7 @@ class CustomCategoryCheckboxItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(12.w, 3.h, 1.w, 3.h),
+      padding: EdgeInsetsDirectional.fromSTEB(12.w, 3.h, 1.w, 3.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
           gradient: Constants.customButtonGradient),

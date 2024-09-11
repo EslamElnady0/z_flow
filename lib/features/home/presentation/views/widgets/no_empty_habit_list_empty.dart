@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/ongoing_habits_view_all_row.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/routes/app_router.dart';
+import '../../../../../generated/l10n.dart';
 import 'custom_habit_item.dart';
 import 'custom_light_colors_gradient_button.dart';
 
@@ -23,7 +22,7 @@ class NoEmptyHabitListEmpty extends StatelessWidget {
               Navigator.pushNamed(context, AppRouter.allHabits,
                   arguments: false);
             },
-            text: AppTexts.habitsToAccomplishToday),
+            text: S.of(context).habitsToAccomplishToday),
         SizedBox(
           height: 16.h,
         ),
@@ -34,7 +33,7 @@ class NoEmptyHabitListEmpty extends StatelessWidget {
               GlobalKey actionKey = GlobalKey();
               return Container(
                   width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(right: 10.w),
+                  margin: EdgeInsetsDirectional.only(end: 10.w),
                   child: CustomHabitItem(
                     actionKey: actionKey,
                     habit: onGoingHabits[index],
@@ -57,7 +56,7 @@ class NoEmptyHabitListEmpty extends StatelessWidget {
               Navigator.pushNamed(context, AppRouter.allHabits,
                   arguments: true);
             },
-            text: AppTexts.habitsYouCompletedToday),
+            text: S.of(context).habitsYouCompletedToday),
         SizedBox(
           height: 16.h,
         ),
@@ -68,7 +67,7 @@ class NoEmptyHabitListEmpty extends StatelessWidget {
               GlobalKey actionKey = GlobalKey();
               return Container(
                   width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(right: 10.w),
+                  margin: EdgeInsetsDirectional.only(end: 10.w),
                   child: CustomHabitItem(
                     actionKey: actionKey,
                     habit: doneHabits[index],
@@ -93,7 +92,7 @@ class NoEmptyHabitListEmpty extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed(AppRouter.addHabit);
             },
-            text: AppTexts.addNewHabit,
+            text: S.of(context).addNewHabit,
           ),
         ),
         SizedBox(

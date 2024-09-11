@@ -6,10 +6,9 @@ import 'package:z_flow/core/utils/tasks%20utils/categories/delete_task_category.
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
-
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/constants/assets.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
 import 'categorized_tasks_body.dart';
 import 'custom_task_category_item.dart';
 
@@ -43,7 +42,7 @@ class _EditCategoryListViewBodyState extends State<EditCategoryListViewBody> {
           SizedBox(
             height: 12.h,
           ),
-          Text(AppTexts.easilyManageYourCategorizedTasks,
+          Text(S.of(context).easilyManageYourCategorizedTasks,
               style: Styles.style14w400),
           SizedBox(
             height: 12.h,
@@ -64,7 +63,7 @@ class _EditCategoryListViewBodyState extends State<EditCategoryListViewBody> {
             height: 20.h,
           ),
           CustomLightColorsGradientButton(
-              text: AppTexts.addTaskToCategoryList,
+              text: S.of(context).addTaskToCategoryList,
               icon: Assets.addIcon,
               onTap: () {
                 Navigator.pushNamed(context, AppRouter.addTask,
@@ -75,13 +74,13 @@ class _EditCategoryListViewBodyState extends State<EditCategoryListViewBody> {
           ),
           BottomScreenActions(
               onOtherButtonPressed: () {
-                deleteTaskCategory(category: widget.category);
+                deleteTaskCategory(category: widget.category, context: context);
                 Navigator.pop(context);
               },
               onPrimaryButtonPressed: () {
                 Navigator.pop(context);
               },
-              otherButtonText: AppTexts.delete),
+              otherButtonText: S.of(context).delete),
           SizedBox(
             height: 48.h,
           )

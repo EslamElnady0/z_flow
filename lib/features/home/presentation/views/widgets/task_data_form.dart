@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
@@ -53,12 +53,12 @@ class _TaskDataFormState extends State<TaskDataForm> {
           Column(
             children: [
               CustomDataEntryTextField(
-                  hintText: AppTexts.subTask,
+                  hintText: S.of(context).subTask,
                   validator: (value) {
                     return null;
                   },
                   icon: Padding(
-                    padding: EdgeInsets.only(right: 15.w),
+                    padding: EdgeInsetsDirectional.only(end: 15.w),
                     child: SvgPicture.asset(
                       Assets.tasksIcon,
                       height: 16.h,
@@ -100,9 +100,9 @@ class _TaskDataFormState extends State<TaskDataForm> {
             height: 14.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.task,
+              hintText: S.of(context).task,
               icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
+                padding: EdgeInsetsDirectional.only(end: 15.w),
                 child: SvgPicture.asset(
                   Assets.tasksIcon,
                   height: 16.h,
@@ -118,7 +118,7 @@ class _TaskDataFormState extends State<TaskDataForm> {
               validator: (value) {
                 return null;
               },
-              hintText: AppTexts.endsIn,
+              hintText: S.of(context).endsIn,
               keyboardType: TextInputType.none,
               onTap: () {
                 showDatePicker(
@@ -131,13 +131,13 @@ class _TaskDataFormState extends State<TaskDataForm> {
                   } else {
                     setState(() {
                       widget.endsInController.text =
-                          DateFormat.yMMMd().format(value);
+                          DateFormat.yMMMd('en_US').format(value);
                     });
                   }
                 });
               },
               icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
+                padding: EdgeInsetsDirectional.only(end: 15.w),
                 child: SvgPicture.asset(
                   Assets.calenderIcon,
                   height: 16.h,
@@ -150,12 +150,12 @@ class _TaskDataFormState extends State<TaskDataForm> {
             height: 16.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.note,
+              hintText: S.of(context).note,
               validator: (value) {
                 return null;
               },
               icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
+                padding: EdgeInsetsDirectional.only(end: 15.w),
                 child: SvgPicture.asset(
                   Assets.editIcon,
                   height: 16.h,
@@ -170,7 +170,7 @@ class _TaskDataFormState extends State<TaskDataForm> {
             height: 16.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.selectCategory,
+              hintText: S.of(context).selectCategory,
               keyboardType: TextInputType.none,
               onTap: () {
                 showCategoryBottomSheet(
@@ -182,7 +182,7 @@ class _TaskDataFormState extends State<TaskDataForm> {
                 return null;
               },
               icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
+                padding: EdgeInsetsDirectional.only(end: 15.w),
                 child: SvgPicture.asset(
                   Assets.taskCategoryIcon,
                   height: 16.h,
@@ -200,7 +200,7 @@ class _TaskDataFormState extends State<TaskDataForm> {
           currentSubTasks == maxSubTasks
               ? const SizedBox.shrink()
               : CustomLightColorsGradientButton(
-                  text: AppTexts.addSubTask,
+                  text: S.of(context).addSubTask,
                   icon: Assets.addIcon,
                   onTap: () {
                     setState(() {
@@ -208,9 +208,10 @@ class _TaskDataFormState extends State<TaskDataForm> {
                         Column(
                           children: [
                             CustomDataEntryTextField(
-                                hintText: AppTexts.subTask,
+                                hintText: S.of(context).subTask,
                                 icon: Padding(
-                                  padding: EdgeInsets.only(right: 15.w),
+                                  padding:
+                                      EdgeInsetsDirectional.only(end: 15.w),
                                   child: SvgPicture.asset(
                                     Assets.tasksIcon,
                                     height: 16.h,
@@ -245,7 +246,7 @@ class _TaskDataFormState extends State<TaskDataForm> {
                         });
                       },
                       value: widget.task!.isDone,
-                      text: AppTexts.finishTask,
+                      text: S.of(context).finishTask,
                     )
                   ],
                 )

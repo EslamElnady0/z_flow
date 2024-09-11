@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
 
@@ -54,7 +54,7 @@ class CategoriesBlocBuilder extends StatelessWidget {
                 ),
                 SizedBox(height: 24.h),
                 CustomLightColorsGradientButton(
-                    text: AppTexts.addNewCategory,
+                    text: S.of(context).addNewCategory,
                     icon: Assets.addIcon,
                     onTap: () {
                       Navigator.of(context).pushNamed(AppRouter.addNewCat);

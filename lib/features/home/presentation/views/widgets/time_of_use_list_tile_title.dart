@@ -1,7 +1,7 @@
 import 'package:app_usage/app_usage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
 class TimeOfUseListTileTitle extends StatelessWidget {
@@ -35,7 +35,7 @@ class TimeOfUseListTileTitle extends StatelessWidget {
           style: Styles.style12w600grey,
         ),
         Text(
-          "${AppTexts.hours} ",
+          "${S.of(context).hours} ",
           style: Styles.style12w600grey,
         ),
         Text(
@@ -43,7 +43,7 @@ class TimeOfUseListTileTitle extends StatelessWidget {
           style: Styles.style12w600grey,
         ),
         Text(
-          AppTexts.minutes,
+          S.of(context).minutes,
           style: Styles.style12w600grey,
         ),
       ],

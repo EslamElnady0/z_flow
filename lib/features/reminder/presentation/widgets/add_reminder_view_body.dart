@@ -8,10 +8,9 @@ import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_acti
 import 'package:z_flow/features/reminder/data/model/event_model.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/add%20event%20cubit/add_event_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/widgets/event_data_form.dart';
-
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
 
 class AddReminderViewBody extends StatefulWidget {
   const AddReminderViewBody({super.key});
@@ -63,7 +62,7 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
                     height: 12.h,
                   ),
                   Text(
-                    AppTexts.helpYouStayOrganized,
+                    S.of(context).helpYouStayOrganized,
                     style: Styles.style14w400,
                   ),
                   SizedBox(
@@ -100,17 +99,17 @@ class _AddReminderViewBodyState extends State<AddReminderViewBody> {
                             timeOfEvent:
                                 context.read<AddEventCubit>().timeIn24Format,
                             note: eventNote.text,
-                            createdAt:
-                                DateFormat.yMMMd().format(DateTime.now()),
+                            createdAt: DateFormat.yMMMd('en_US')
+                                .format(DateTime.now()),
                             id: id);
-                        await addEvent(event: event);
+                        await addEvent(event: event, context: context);
                         if (context.mounted) {
                           Navigator.pop(context);
                         }
                       }
                     },
                     onOtherButtonPressed: () => Navigator.pop(context),
-                    otherButtonText: AppTexts.cancel,
+                    otherButtonText: S.of(context).cancel,
                   ),
                   SizedBox(
                     height: 48.h,

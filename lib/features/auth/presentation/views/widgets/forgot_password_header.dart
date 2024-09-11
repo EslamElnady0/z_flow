@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
@@ -26,14 +26,14 @@ class ForgotPasswordHeader extends StatelessWidget {
           height: 18.h,
         ),
         Text(
-          AppTexts.forgotPassword,
+          S.of(context).forgotPassword,
           style: Styles.style24W600.copyWith(color: Colors.white),
         ),
         SizedBox(
           height: 12.h,
         ),
         Text(
-          AppTexts.noWorries,
+          S.of(context).noWorries,
           textAlign: TextAlign.center,
           style: Styles.style14w400,
         ),

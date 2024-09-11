@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/image_switcher.dart';
@@ -23,7 +23,7 @@ class WorkSessionInitialBody extends StatelessWidget {
         SizedBox(
           height: 14.h,
         ),
-        Text(AppTexts.youAreAboutToOpenWorkSession,
+        Text(S.of(context).youAreAboutToOpenWorkSession,
             style: Styles.style14w400, textAlign: TextAlign.center),
         SizedBox(
           height: 30.h,
@@ -38,16 +38,16 @@ class WorkSessionInitialBody extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const WorkSessionTimeContainer(text: AppTexts.fiftyMinWork),
+            WorkSessionTimeContainer(text: S.of(context).fiftyMinWork),
             SvgPicture.asset(
               Assets.addIcon,
             ),
-            const WorkSessionTimeContainer(text: AppTexts.fiveMinBreak),
+            WorkSessionTimeContainer(text: S.of(context).fiveMinBreak),
           ],
         ),
         const Spacer(),
         CustomLightColorsGradientButton(
-          text: AppTexts.startNow,
+          text: S.of(context).startNow,
           icon: Assets.playIcon,
           onTap: () {
             context.read<WorkSessionCubit>().startWorking();

@@ -31,7 +31,7 @@ class OneTaskListEmpty extends StatelessWidget {
               GlobalKey actionKey = GlobalKey();
               return Container(
                   width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(right: 10.w),
+                  margin: EdgeInsetsDirectional.only(end: 10.w),
                   child: CustomTaskItem(
                     task: tasks[index],
                     actionKey: actionKey,

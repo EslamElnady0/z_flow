@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../core/errors/failure.dart';
 import '../../models/habit model/habit_model.dart';
@@ -22,5 +23,6 @@ abstract class HabitsRepo {
   Future<Either<Failure, List<HabitModel>>> getHabits(
       {required bool isConnected,
       required bool isAnonymous,
+      required BuildContext context,
       required String uid});
 }

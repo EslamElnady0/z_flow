@@ -43,7 +43,7 @@ class _CustomHabitFavItemState extends State<CustomHabitFavItem> {
           if (!widget.habit.isFavourited) {
             context.read<FavouriteHabitsCubit>().favHabits.remove(widget.habit);
           }
-          await updateHabit(habit: widget.habit);
+          await updateHabit(habit: widget.habit, context: context);
           if (context.mounted) {
             context.read<FavouriteHabitsCubit>().getFavHabits();
           }
@@ -59,8 +59,8 @@ class _CustomHabitFavItemState extends State<CustomHabitFavItem> {
       ),
       Expanded(
         child: Container(
-          padding: EdgeInsets.only(left: 12.w),
-          alignment: Alignment.centerLeft,
+          padding: EdgeInsetsDirectional.only(start: 12.w),
+          alignment: AlignmentDirectional.centerStart,
           height: 50.h,
           decoration: BoxDecoration(
               gradient: Constants.customItemsGradient,

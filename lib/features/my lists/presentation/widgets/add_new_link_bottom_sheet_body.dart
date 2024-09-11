@@ -7,12 +7,11 @@ import 'package:z_flow/core/utils/links%20lists%20utils/get_links_lists.dart';
 import 'package:z_flow/core/utils/links%20lists%20utils/update_links_list.dart';
 import 'package:z_flow/features/my%20lists/data/models/link%20item%20model/link_item.dart';
 import 'package:z_flow/features/my%20lists/presentation/view%20models/update%20links%20list%20cubit/update_links_list_cubit.dart';
-
 import '../../../../core/DI/service_locator.dart';
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/constants/assets.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
 import '../../../auth/presentation/views/widgets/custom_auth_textfield.dart';
 import '../../../home/presentation/views/widgets/save_cancel_actions_row.dart';
 import '../../data/models/links list model/links_list_model.dart';
@@ -93,7 +92,7 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
                                 },
                                 child: const Icon(Icons.close))),
                         Text(
-                          AppTexts.addNewLink,
+                          S.of(context).addNewLink,
                           style:
                               Styles.style18w500.copyWith(color: Colors.white),
                         ),
@@ -102,12 +101,13 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
                     Divider(
                       height: 25.h,
                     ),
-                    Text(AppTexts.easilyAddANewLink, style: Styles.style14w400),
+                    Text(S.of(context).easilyAddANewLink,
+                        style: Styles.style14w400),
                     SizedBox(
                       height: 16.h,
                     ),
                     CustomAuthTextField(
-                        hintText: AppTexts.title,
+                        hintText: S.of(context).title,
                         suffix: Padding(
                           padding: EdgeInsets.all(12.r),
                           child: SvgPicture.asset(
@@ -123,7 +123,7 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
                       height: 12.h,
                     ),
                     CustomAuthTextField(
-                        hintText: AppTexts.description,
+                        hintText: S.of(context).description,
                         suffix: Padding(
                           padding: EdgeInsets.all(13.5.r),
                           child: SvgPicture.asset(
@@ -175,7 +175,7 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
                         onOtherButtonPressed: () {
                           Navigator.of(context).pop();
                         },
-                        otherButtonText: AppTexts.cancel,
+                        otherButtonText: S.of(context).cancel,
                         onPrimaryButtonPressed: () async {
                           if (formKey.currentState!.validate()) {
                             LinkItem linkItem = LinkItem(
@@ -191,7 +191,9 @@ class _AddNewLinkBottomSheetBodyState extends State<AddNewLinkBottomSheetBody> {
                             await updateLinksList(
                                 linksList: widget.linksListModel,
                                 context: context);
-                            await getLinksLists();
+                            if (context.mounted) {
+                              await getLinksLists(context);
+                            }
                             if (context.mounted) {
                               Navigator.of(context).pop();
                             }

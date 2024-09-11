@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
@@ -14,11 +14,7 @@ class TextSwitcher extends StatefulWidget {
 }
 
 class _TextSwitcherState extends State<TextSwitcher> {
-  List<String> switchingTexts = [
-    AppTexts.twentyFourHoursADay7Days,
-    AppTexts.yourContinuedUse,
-    AppTexts.toSetUsageLimitsForEach
-  ];
+  late List<String> switchingTexts;
   int _currentIndex = 0;
   late PageController _pageController;
   late Timer _timer;
@@ -53,6 +49,11 @@ class _TextSwitcherState extends State<TextSwitcher> {
 
   @override
   Widget build(BuildContext context) {
+    switchingTexts = [
+      S.of(context).twentyFourHoursADay7Days,
+      S.of(context).yourContinuedUse,
+      S.of(context).toSetUsageLimitsForEach
+    ];
     return SizedBox(
       height: 60.h,
       child: PageView.builder(
@@ -65,6 +66,7 @@ class _TextSwitcherState extends State<TextSwitcher> {
                 switchingTexts[index],
                 style: Styles.style24W600
                     .copyWith(color: ColorManager.primaryColorAccent),
+                textAlign: TextAlign.center,
               ),
             );
           }),

@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/features/home/presentation/view%20models/habits/get%20habits%20cubit/get_habit_cubit.dart';
-
 import 'package:z_flow/features/home/presentation/views/widgets/account_section.dart';
-
-import '../../../../../core/constants/app_texts.dart';
+import '../../../../../generated/l10n.dart';
 import '../../view models/tasks/get task cubit/get_task_cubit.dart';
 import '../widgets/all_habits_duration_options.dart';
 import '../widgets/custom_profile_stats_item.dart';
@@ -40,9 +38,9 @@ class _ProfileBodyState extends State<ProfileBody> {
           BlocBuilder<GetTaskCubit, GetTaskState>(
             builder: (context, state) {
               return CustomProfileStatsItem(
-                title: AppTexts.tasks,
-                completedText: AppTexts.completedTasks,
-                pendingText: AppTexts.pendingTasks,
+                title: S.of(context).tasks,
+                completedText: S.of(context).completedTasks,
+                pendingText: S.of(context).pendingTasks,
                 optionsWidget: const FinishedTasksDurationOptions(),
                 completed: getIt.get<GetTaskCubit>().recentDoneTasks,
                 onGoing: getIt.get<GetTaskCubit>().recentOngoingTasks,
@@ -58,10 +56,10 @@ class _ProfileBodyState extends State<ProfileBody> {
           BlocBuilder<GetHabitCubit, GetHabitState>(
             builder: (context, state) {
               return CustomProfileStatsItem(
-                title: AppTexts.habits,
+                title: S.of(context).habits,
                 optionsWidget: const AllHabitsDurationOptions(),
-                completedText: AppTexts.completedHabits,
-                pendingText: AppTexts.pendingHabits,
+                completedText: S.of(context).completedHabits,
+                pendingText: S.of(context).pendingHabits,
                 completed: getIt.get<GetHabitCubit>().recentDoneHabits,
                 onGoing: getIt.get<GetHabitCubit>().recentOnGoingHabits,
               );

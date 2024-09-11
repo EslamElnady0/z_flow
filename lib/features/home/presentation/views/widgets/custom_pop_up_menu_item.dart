@@ -23,10 +23,19 @@ class CustomPopUpMenuItem extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            title,
-            style: Styles.style16W600grey.copyWith(color: Colors.white),
-          ),
+          icon != null
+              ? Text(
+                  title,
+                  style: Styles.style16W600grey.copyWith(color: Colors.white),
+                  textAlign: TextAlign.center,
+                )
+              : Flexible(
+                  child: Text(
+                    title,
+                    style: Styles.style16W600grey.copyWith(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
           icon != null
               ? Expanded(
                   child: Row(

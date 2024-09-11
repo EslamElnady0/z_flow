@@ -1889,6 +1889,176 @@ class S {
       args: [],
     );
   }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All set! You're connected to the internet.`
+  String get connectedToInternet {
+    return Intl.message(
+      'All set! You\'re connected to the internet.',
+      name: 'connectedToInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Oops, it looks like you're offline!`
+  String get disconnectedFromInternet {
+    return Intl.message(
+      'Oops, it looks like you\'re offline!',
+      name: 'disconnectedFromInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finished Tasks Last Day`
+  String get finishedTasksLastDay {
+    return Intl.message(
+      'Finished Tasks Last Day',
+      name: 'finishedTasksLastDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finished Tasks Last 7 Days`
+  String get finishedTasksLast7Days {
+    return Intl.message(
+      'Finished Tasks Last 7 Days',
+      name: 'finishedTasksLast7Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finished Tasks Last 28 Days`
+  String get finishedTasksLast28Days {
+    return Intl.message(
+      'Finished Tasks Last 28 Days',
+      name: 'finishedTasksLast28Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done Habits Last Day`
+  String get doneHabitsLastDay {
+    return Intl.message(
+      'Done Habits Last Day',
+      name: 'doneHabitsLastDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done Habits Last 7 Days`
+  String get doneHabits7Days {
+    return Intl.message(
+      'Done Habits Last 7 Days',
+      name: 'doneHabits7Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done Habits Last 28 Days`
+  String get doneHabits28Days {
+    return Intl.message(
+      'Done Habits Last 28 Days',
+      name: 'doneHabits28Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Done Habits`
+  String get allDoneHabits {
+    return Intl.message(
+      'All Done Habits',
+      name: 'allDoneHabits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ongoing Habits Last Day`
+  String get ongoingHabitsLastDay {
+    return Intl.message(
+      'Ongoing Habits Last Day',
+      name: 'ongoingHabitsLastDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ongoing Habits Last 7 Days`
+  String get ongoingHabitsLast7Days {
+    return Intl.message(
+      'Ongoing Habits Last 7 Days',
+      name: 'ongoingHabitsLast7Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ongoing Habits Last 28 Days`
+  String get ongoingHabitsLast28Days {
+    return Intl.message(
+      'Ongoing Habits Last 28 Days',
+      name: 'ongoingHabitsLast28Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All Ongoing Habits`
+  String get allOngoingHabits {
+    return Intl.message(
+      'All Ongoing Habits',
+      name: 'allOngoingHabits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logged in successfully`
+  String get loggedInSuccess {
+    return Intl.message(
+      'Logged in successfully',
+      name: 'loggedInSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search For Tasks`
+  String get searchForTasks {
+    return Intl.message(
+      'Search For Tasks',
+      name: 'searchForTasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search For Habits`
+  String get searchForHabits {
+    return Intl.message(
+      'Search For Habits',
+      name: 'searchForHabits',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

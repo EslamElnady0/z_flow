@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
 class HabitsViewAllRow extends StatelessWidget {
@@ -24,7 +24,7 @@ class HabitsViewAllRow extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  AppTexts.viewAll,
+                  S.of(context).viewAll,
                   style: Styles.style16W500grey,
                 ),
                 Icon(

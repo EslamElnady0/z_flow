@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
 import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task%20cubit/get_task_cubit.dart';
@@ -28,7 +28,7 @@ class _TasksBodyState extends State<TasksBody> {
   @override
   void initState() {
     getTasks();
-    getHabits();
+    getHabits(context);
     super.initState();
   }
 
@@ -56,7 +56,7 @@ class _TasksBodyState extends State<TasksBody> {
                   Navigator.pushNamed(context, AppRouter.tasksFinished);
                 },
                 child: Text(
-                  AppTexts.tasksFinished,
+                  S.of(context).tasksFinished,
                   style: Styles.style16W400white.copyWith(
                       decoration: TextDecoration.underline,
                       decorationColor: ColorManager.lightGrey),
@@ -72,7 +72,7 @@ class _TasksBodyState extends State<TasksBody> {
           padding: EdgeInsets.symmetric(horizontal: 64.w),
           child: CustomLightColorsGradientButton(
             icon: Assets.addIcon,
-            text: AppTexts.addNewTask,
+            text: S.of(context).addNewTask,
             onTap: () {
               Navigator.of(context).pushNamed(AppRouter.addTask);
             },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/my%20lists/presentation/widgets/add_new_links_list_botom_sheet_body.dart';
@@ -46,7 +46,7 @@ class _MyListsViewBodyState extends State<MyListsViewBody> {
           SizedBox(
             height: 12.h,
           ),
-          Text(AppTexts.createCustomLists,
+          Text(S.of(context).createCustomLists,
               style: Styles.style14w400, textAlign: TextAlign.center),
           SizedBox(
             height: 12.h,
@@ -56,7 +56,7 @@ class _MyListsViewBodyState extends State<MyListsViewBody> {
             height: 24.h,
           ),
           CustomLightColorsGradientButton(
-            text: AppTexts.addNewList,
+            text: S.of(context).addNewList,
             icon: Assets.addIcon,
             onTap: () {
               showAddNewLinksListBottomSheet(context);

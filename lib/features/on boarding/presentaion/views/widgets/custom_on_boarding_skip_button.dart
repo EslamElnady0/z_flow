@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/constants/colors.dart';
+import 'package:z_flow/generated/l10n.dart';
 
 import '../../../../../core/styles/styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -11,6 +12,7 @@ class CustomHollowButton extends StatelessWidget {
   final double? height;
   final void Function()? onTap;
   final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
   const CustomHollowButton({
     super.key,
     this.text,
@@ -18,6 +20,7 @@ class CustomHollowButton extends StatelessWidget {
     this.margin,
     this.style,
     this.height,
+    this.padding,
   });
 
   @override
@@ -25,13 +28,14 @@ class CustomHollowButton extends StatelessWidget {
     return CustomButton(
       margin: margin,
       height: height,
+      padding: padding,
       onTap: onTap,
       raduis: 16.r,
       border: Border.all(color: ColorManager.primaryColor, width: 2),
       color: Colors.transparent,
       child: Center(
         child: Text(
-          text ?? "Skip",
+          text ?? S.of(context).skip,
           style: style ??
               Styles.style20W700white
                   .copyWith(color: ColorManager.primaryColor),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
-
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
 import '../widgets/add_category_view_body.dart';
 
 class AddCategoryView extends StatelessWidget {
@@ -13,7 +12,7 @@ class AddCategoryView extends StatelessWidget {
     return CustomScaffold(
       appBar: AppBar(
         title: Text(
-          AppTexts.addNewCategory,
+          S.of(context).addNewCategory,
           style: Styles.style18w600,
         ),
         centerTitle: true,

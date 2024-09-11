@@ -7,11 +7,10 @@ import 'package:z_flow/core/utils/links%20lists%20utils/add_links_list.dart';
 import 'package:z_flow/core/utils/links%20lists%20utils/get_links_lists.dart';
 import 'package:z_flow/features/my%20lists/data/models/links%20list%20model/links_list_model.dart';
 import 'package:z_flow/features/my%20lists/presentation/view%20models/add%20links%20list%20cubit/add_links_list_cubit.dart';
-
 import '../../../../core/DI/service_locator.dart';
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/constants/assets.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
 import '../../../auth/presentation/views/widgets/custom_auth_textfield.dart';
 import '../../../home/presentation/views/widgets/save_cancel_actions_row.dart';
 
@@ -70,7 +69,7 @@ class _AddNewLinksListBotomSheetBodyState
                                 },
                                 child: const Icon(Icons.close))),
                         Text(
-                          AppTexts.addNewList,
+                          S.of(context).addNewList,
                           style:
                               Styles.style18w500.copyWith(color: Colors.white),
                         ),
@@ -79,12 +78,13 @@ class _AddNewLinksListBotomSheetBodyState
                     Divider(
                       height: 25.h,
                     ),
-                    Text(AppTexts.easilyAddANewList, style: Styles.style14w400),
+                    Text(S.of(context).easilyAddANewList,
+                        style: Styles.style14w400),
                     SizedBox(
                       height: 20.h,
                     ),
                     CustomAuthTextField(
-                        hintText: AppTexts.title,
+                        hintText: S.of(context).title,
                         suffix: Padding(
                           padding: EdgeInsets.all(16.r),
                           child: SvgPicture.asset(
@@ -103,7 +103,7 @@ class _AddNewLinksListBotomSheetBodyState
                         onOtherButtonPressed: () {
                           Navigator.of(context).pop();
                         },
-                        otherButtonText: AppTexts.cancel,
+                        otherButtonText: S.of(context).cancel,
                         onPrimaryButtonPressed: () async {
                           if (formKey.currentState!.validate()) {
                             LinksListModel linksList = LinksListModel(
@@ -113,7 +113,7 @@ class _AddNewLinksListBotomSheetBodyState
                             await addLinksList(
                                 linksList: linksList, context: context);
                             if (context.mounted) {
-                              getLinksLists();
+                              getLinksLists(context);
                             }
                           }
                         })

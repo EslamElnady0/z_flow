@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/constants.dart';
-
-import '../../../../core/constants/app_texts.dart';
+import '../../../../core/constants/assets.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
+import '../ui model/settings_item_model.dart';
 import 'custom_settings_item.dart';
 
 class SettingsViewBody extends StatelessWidget {
@@ -11,6 +11,17 @@ class SettingsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<SettingsItemModel> settingsItems;
+    settingsItems = [
+      SettingsItemModel(title: S.of(context).account, icon: Assets.accoutIcon),
+      SettingsItemModel(
+          title: S.of(context).language, icon: Assets.iosArrowForwardSmall),
+      SettingsItemModel(title: S.of(context).shareApp, icon: Assets.share),
+      SettingsItemModel(
+          title: S.of(context).helpAndFeedback, icon: Assets.feedBackIcon),
+      SettingsItemModel(
+          title: S.of(context).about, icon: Assets.iosArrowForwardSmall),
+    ];
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Column(
@@ -22,7 +33,7 @@ class SettingsViewBody extends StatelessWidget {
             height: 12.h,
           ),
           Text(
-            AppTexts.controlAppSettings,
+            S.of(context).controlAppSettings,
             style: Styles.style14w400,
           ),
           SizedBox(
@@ -31,12 +42,12 @@ class SettingsViewBody extends StatelessWidget {
           Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) => CustomSettingsItem(
-                model: Constants.settingsItems[index],
+                model: settingsItems[index],
                 index: index,
                 onTap: () {},
               ),
               separatorBuilder: (context, index) => SizedBox(height: 16.h),
-              itemCount: Constants.settingsItems.length,
+              itemCount: settingsItems.length,
             ),
           )
         ],

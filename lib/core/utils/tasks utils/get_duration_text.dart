@@ -1,15 +1,19 @@
-String getDurationText({required Duration? duration}) {
+import 'package:flutter/material.dart';
+import 'package:z_flow/generated/l10n.dart';
+
+String getDurationText(
+    {required Duration? duration, required BuildContext context}) {
   switch (duration?.inHours) {
     case const (24):
-      return "Finished Tasks Last Day";
+      return S.of(context).finishedTasksLastDay;
     case const (24 * 7):
-      return "Finished Tasks Last 7 Days";
+      return S.of(context).finishedTasksLast7Days;
     case const (24 * 28):
-      return "Finished Tasks Last 28 Days";
+      return S.of(context).finishedTasksLast28Days;
     case null:
-      return "All Finished Tasks";
+      return S.of(context).allFinishedTasks;
 
     default:
-      return "All Finished Tasks";
+      return S.of(context).allFinishedTasks;
   }
 }

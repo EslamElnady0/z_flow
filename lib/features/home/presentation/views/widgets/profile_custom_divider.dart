@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
 class ProfileCustomDivider extends StatelessWidget {
@@ -18,7 +18,7 @@ class ProfileCustomDivider extends StatelessWidget {
           endIndent: 7.w,
         )),
         Text(
-          AppTexts.youCanTrackYourProgress,
+          S.of(context).youCanTrackYourProgress,
           style: Styles.style16W500grey,
         ),
         Expanded(

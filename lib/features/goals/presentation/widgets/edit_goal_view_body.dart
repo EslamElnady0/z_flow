@@ -4,10 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/utils/goals%20utils/delete_goal.dart';
 import 'package:z_flow/core/utils/goals%20utils/edit_goal.dart';
 import 'package:z_flow/features/goals/data/model/goal_model.dart';
-
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/constants/assets.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
 import '../../../home/presentation/views/widgets/custom_data_entry_text_field.dart';
 import '../../../home/presentation/views/widgets/save_cancel_actions_row.dart';
 
@@ -52,7 +51,7 @@ class _EditGoalViewBodyState extends State<EditGoalViewBody> {
                       height: 12.h,
                     ),
                     Text(
-                      AppTexts.editExistingGoal,
+                      S.of(context).editExistingGoal,
                       style: Styles.style14w400,
                       textAlign: TextAlign.center,
                     ),
@@ -62,9 +61,9 @@ class _EditGoalViewBodyState extends State<EditGoalViewBody> {
                     CustomDataEntryTextField(
                         minLines: 5,
                         maxLines: 20,
-                        hintText: AppTexts.writeYourGoal,
+                        hintText: S.of(context).writeYourGoal,
                         icon: Padding(
-                          padding: EdgeInsets.only(right: 15.w),
+                          padding: EdgeInsetsDirectional.only(end: 15.w),
                           child: SvgPicture.asset(
                             Assets.editIcon,
                             height: 16.h,
@@ -103,7 +102,7 @@ class _EditGoalViewBodyState extends State<EditGoalViewBody> {
                         Navigator.pop(context);
                       }
                     },
-                    otherButtonText: AppTexts.delete,
+                    otherButtonText: S.of(context).delete,
                   ),
                   SizedBox(
                     height: 48.h,

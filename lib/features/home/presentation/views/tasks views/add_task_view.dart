@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/styles/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/add_task_view_body.dart';
 
 class AddTaskView extends StatelessWidget {
@@ -17,7 +16,7 @@ class AddTaskView extends StatelessWidget {
       ),
       appBar: AppBar(
         title: Text(
-          AppTexts.addNewTask,
+          S.of(context).addNewTask,
           style: Styles.style18w600,
         ),
         centerTitle: true,

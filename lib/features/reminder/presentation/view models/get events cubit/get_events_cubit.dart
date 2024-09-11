@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 
@@ -16,10 +17,12 @@ class GetEventsCubit extends Cubit<GetEventsState> {
   DateTime focusedDay = DateTime.now();
 
   Future<void> getEvents(
-      {required bool isConnected, required bool isAnonymous}) async {
+      {required bool isConnected,
+      required bool isAnonymous,
+      required BuildContext context}) async {
     emit(GetEventsLoading());
     var result = await eventsRepo.getEvents(
-        isConnected: isConnected, isAnonymous: isAnonymous);
+        isConnected: isConnected, isAnonymous: isAnonymous, context: context);
     result.fold((failure) {
       emit(GetEventsFailure(message: failure.errMessage));
     }, (eventsList) {

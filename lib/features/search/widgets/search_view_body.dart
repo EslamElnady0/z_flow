@@ -6,6 +6,7 @@ import 'package:z_flow/features/home/presentation/views/widgets/custom_habit_ite
 import 'package:z_flow/features/home/presentation/views/widgets/custom_task_item.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 
+import '../../../generated/l10n.dart';
 import 'custom_search_text_field.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -43,8 +44,9 @@ class SearchViewBody extends StatelessWidget {
                       gradient: Constants.customItemsGradient,
                       borderRadius: BorderRadius.circular(16.r)),
                   child: CustomSearchTextField(
-                    hintText:
-                        flag == 0 ? "Search For Tasks" : "Search For Habits",
+                    hintText: flag == 0
+                        ? S.of(context).searchForTasks
+                        : S.of(context).searchForHabits,
                     onChanged: (value) {
                       flag == 0
                           ? context

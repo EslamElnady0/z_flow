@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/get%20tasks%20categories%20cubit/get_tasks_categories_cubit.dart';
 import '../../../../core/DI/service_locator.dart';
 import '../../../../core/styles/styles.dart';
@@ -37,7 +37,7 @@ class _TasksCategoriesViewBodyState extends State<TasksCategoriesViewBody> {
             height: 12.h,
           ),
           Text(
-            AppTexts.exploreYourTasksCategorize,
+            S.of(context).exploreYourTasksCategorize,
             style: Styles.style14w400,
             textAlign: TextAlign.center,
           ),

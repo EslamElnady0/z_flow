@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20out%20cubit/log_out_cubit.dart';
@@ -24,13 +24,15 @@ class SignedInAccountSection extends StatelessWidget {
               height: 8.h,
             ),
             Text.rich(TextSpan(children: [
-              TextSpan(text: AppTexts.welcome, style: Styles.style20W700white),
+              TextSpan(
+                  text: S.of(context).welcome, style: Styles.style20W700white),
               TextSpan(
                   text:
                       "${getIt.get<FirebaseAuth>().currentUser!.displayName?.split(" ")[0] ?? "user"} ",
                   style: Styles.style20W700white
                       .copyWith(color: ColorManager.primaryColorAccent)),
-              TextSpan(text: AppTexts.toZFlow, style: Styles.style20W700white),
+              TextSpan(
+                  text: S.of(context).toZFlow, style: Styles.style20W700white),
             ])),
             SizedBox(
               height: 12.h,

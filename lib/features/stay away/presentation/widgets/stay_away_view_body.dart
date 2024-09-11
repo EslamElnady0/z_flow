@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/styles/styles.dart';
@@ -62,7 +62,7 @@ class _StayAwayViewBodyState extends State<StayAwayViewBody> {
             height: 12.h,
           ),
           Text(
-            AppTexts.takeABreak,
+            S.of(context).takeABreak,
             style: Styles.style14w400,
           ),
           SizedBox(
@@ -113,7 +113,7 @@ class _StayAwayViewBodyState extends State<StayAwayViewBody> {
               await BlocProvider.of<StayAwayCubit>(context).startLockService();
             },
             raduis: 12.r,
-            text: AppTexts.lock,
+            text: S.of(context).lock,
             style: Styles.style24W600.copyWith(color: Colors.white),
           ),
           const Spacer()

@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20ano%20cubit/log_in_ano_cubit.dart';
-
-import '../../../../../core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import '../../../../../core/styles/styles.dart';
 
 class CustomAuthFooter extends StatelessWidget {
@@ -33,7 +32,7 @@ class CustomAuthFooter extends StatelessWidget {
                       size: 22.r,
                     ),
                     Text(
-                      AppTexts.back,
+                      S.of(context).back,
                       style: Styles.style16W600grey.copyWith(
                         color: Colors.white,
                       ),
@@ -55,7 +54,7 @@ class CustomAuthFooter extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      AppTexts.skip,
+                      S.of(context).skip,
                       style: Styles.style16W600grey.copyWith(
                         color: Colors.white,
                       ),

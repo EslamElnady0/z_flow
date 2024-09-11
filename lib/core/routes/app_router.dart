@@ -325,6 +325,7 @@ class AppRouter {
             builder: (context) => BlocProvider(
                   create: (context) => getIt.get<GetTasksCategoriesCubit>()
                     ..getTasksCategories(
+                        context: context,
                         isConnected:
                             getIt<InternetCheckCubit>().isDeviceConnected,
                         isAnonymous:
@@ -339,7 +340,7 @@ class AppRouter {
                       create: (context) => getIt<AddTasksCategoryCubit>(),
                     ),
                     BlocProvider.value(
-                      value: getIt<GetTasksCategoriesCubit>(),
+                      value: getIt.get<GetTasksCategoriesCubit>(),
                     ),
                   ],
                   child: const AddCategoryView(),
@@ -393,6 +394,7 @@ class AppRouter {
           builder: (context) => BlocProvider(
             create: (context) => getIt.get<GetLinksListsCubit>()
               ..getLinksLists(
+                context: context,
                 isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
                 isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
               ),

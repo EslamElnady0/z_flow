@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
@@ -60,7 +60,7 @@ class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
                       child: Form(
                         key: formKey,
                         child: CustomAuthTextField(
-                            hintText: AppTexts.email,
+                            hintText: S.of(context).email,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return "Please, enter your email";
@@ -96,7 +96,7 @@ class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
                   child: Material(
                     type: MaterialType.transparency,
                     child: CustomButton(
-                      text: AppTexts.confirm,
+                      text: S.of(context).confirm,
                       gradient: Constants.customButtonGradient,
                       raduis: 16.r,
                       onTap: () async {
@@ -106,7 +106,7 @@ class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
                               .sendPasswordResetEmail(
                                   email: emailController.text);
                           Fluttertoast.showToast(
-                              msg: AppTexts.sentPasswordResetEmail +
+                              msg: S.of(context).sentPasswordResetEmail +
                                   emailController.text);
                         }
                       },

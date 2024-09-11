@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/styles/styles.dart';
+import '../../../../../generated/l10n.dart';
 import 'custom_check_box_container.dart';
 import 'custom_data_entry_text_field.dart';
 
@@ -55,9 +55,9 @@ class _HabitDataFormState extends State<HabitDataForm> {
             height: 40.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.habit,
+              hintText: S.of(context).habit,
               icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
+                padding: EdgeInsetsDirectional.only(end: 15.w),
                 child: SvgPicture.asset(
                   Assets.tasksIcon,
                   height: 16.h,
@@ -70,7 +70,7 @@ class _HabitDataFormState extends State<HabitDataForm> {
             height: 16.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.endsIn,
+              hintText: S.of(context).endsIn,
               keyboardType: TextInputType.none,
               onTap: () {
                 showDatePicker(
@@ -83,13 +83,13 @@ class _HabitDataFormState extends State<HabitDataForm> {
                   } else {
                     setState(() {
                       widget.endsInController.text =
-                          DateFormat.yMMMd().format(value);
+                          DateFormat.yMMMd('en_US').format(value);
                     });
                   }
                 });
               },
               icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
+                padding: EdgeInsetsDirectional.only(end: 15.w),
                 child: SvgPicture.asset(
                   Assets.calenderIcon,
                   height: 16.h,
@@ -102,12 +102,12 @@ class _HabitDataFormState extends State<HabitDataForm> {
             height: 16.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.note,
+              hintText: S.of(context).note,
               validator: (value) {
                 return null;
               },
               icon: Padding(
-                padding: EdgeInsets.only(right: 15.w),
+                padding: EdgeInsetsDirectional.only(end: 15.w),
                 child: SvgPicture.asset(
                   Assets.editIcon,
                   height: 16.h,
@@ -122,7 +122,7 @@ class _HabitDataFormState extends State<HabitDataForm> {
             height: 16.h,
           ),
           CustomCheckBoxContainer(
-            text: AppTexts.remiderToHabit,
+            text: S.of(context).reminderToHabit,
             value: widget.habit.isIterable,
             onChanged: (value) {
               setState(() {

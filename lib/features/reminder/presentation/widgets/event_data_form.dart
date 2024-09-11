@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/widgets/custom_svg_icon_widget.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_data_entry_text_field.dart';
@@ -37,14 +37,14 @@ class _EventDataFormState extends State<EventDataForm> {
       child: Column(
         children: [
           CustomDataEntryTextField(
-              hintText: AppTexts.event,
+              hintText: S.of(context).event,
               icon: const CustomSvgIconWidget(icon: Assets.tasksIcon),
               controller: widget.eventTitle),
           SizedBox(
             height: 12.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.startIn,
+              hintText: S.of(context).startIn,
               icon: const CustomSvgIconWidget(icon: Assets.calenderIcon),
               onTap: () {
                 showDatePicker(
@@ -56,7 +56,8 @@ class _EventDataFormState extends State<EventDataForm> {
                     widget.eventStart.text = '';
                   } else {
                     setState(() {
-                      widget.eventStart.text = DateFormat.yMMMd().format(value);
+                      widget.eventStart.text =
+                          DateFormat.yMMMd('en_US').format(value);
                       context.read<AddEventCubit>().startDateWithNoFormating =
                           value.toString();
                     });
@@ -69,7 +70,7 @@ class _EventDataFormState extends State<EventDataForm> {
             height: 12.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.endsIn,
+              hintText: S.of(context).endsIn,
               onTap: () {
                 showDatePicker(
                         context: context,
@@ -80,7 +81,8 @@ class _EventDataFormState extends State<EventDataForm> {
                     widget.eventEnd.text = '';
                   } else {
                     setState(() {
-                      widget.eventEnd.text = DateFormat.yMMMd().format(value);
+                      widget.eventEnd.text =
+                          DateFormat.yMMMd('en_US').format(value);
                       context.read<AddEventCubit>().endDateWithNoFormating =
                           value.toString();
                     });
@@ -95,7 +97,7 @@ class _EventDataFormState extends State<EventDataForm> {
             height: 12.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.timeHint,
+              hintText: S.of(context).timeHint,
               onTap: () {
                 showTimePicker(context: context, initialTime: TimeOfDay.now())
                     .then((value) {
@@ -118,7 +120,7 @@ class _EventDataFormState extends State<EventDataForm> {
             height: 12.h,
           ),
           CustomDataEntryTextField(
-              hintText: AppTexts.note,
+              hintText: S.of(context).note,
               icon: const CustomSvgIconWidget(icon: Assets.editIcon),
               validator: (p0) => null,
               minLines: 5,

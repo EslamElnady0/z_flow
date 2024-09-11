@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 
 import 'package:z_flow/core/errors/failure.dart';
 import 'package:z_flow/core/utils/notifications_helpers.dart';
@@ -66,7 +67,9 @@ class EventsRepoImpl implements EventsRepo {
 
   @override
   Future<Either<Failure, List<EventModel>>> getEvents(
-      {required bool isConnected, required bool isAnonymous}) async {
+      {required bool isConnected,
+      required bool isAnonymous,
+      required BuildContext context}) async {
     try {
       List<EventModel> events = eventsLocalDataSource.getEvents();
       if (events.isNotEmpty) {
@@ -77,7 +80,7 @@ class EventsRepoImpl implements EventsRepo {
           await LocalNotifications.requestNotificationPermission();
           for (var event in events) {
             eventsLocalDataSource.addEvent(event);
-            scheduleEventNotification(event);
+            scheduleEventNotification(event, context);
           }
           return right(events);
         }

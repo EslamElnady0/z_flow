@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/widgets/build_custom_appbar.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
 
@@ -11,7 +11,7 @@ class AddGoalView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      appBar: buildInnerPagesAppBar(text: AppTexts.addAGoal),
+      appBar: buildInnerPagesAppBar(text: S.of(context).addAGoal),
       body: const AddGoalViewBody(),
     );
   }

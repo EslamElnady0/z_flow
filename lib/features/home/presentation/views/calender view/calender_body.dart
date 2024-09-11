@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_task_item.dart';
@@ -32,7 +32,7 @@ class _CalenderBodyState extends State<CalenderBody> {
       child: Column(
         children: [
           Text(
-            AppTexts.gregorianCalendar,
+            S.of(context).gregorianCalendar,
             style: Styles.style16W600grey,
           ),
           SizedBox(
@@ -58,7 +58,7 @@ class _CalenderBodyState extends State<CalenderBody> {
             height: 16.h,
           ),
           Text(
-            AppTexts.yourTasksForThatDay,
+            S.of(context).yourTasksForThatDay,
             style: Styles.style16W600grey,
           ),
           SizedBox(
@@ -74,7 +74,7 @@ class _CalenderBodyState extends State<CalenderBody> {
                     GlobalKey actionKey = GlobalKey();
                     return Container(
                         width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.only(right: 10.w),
+                        margin: EdgeInsetsDirectional.only(end: 10.w),
                         child: CustomTaskItem(
                           task: getIt
                               .get<GetTaskCubit>()

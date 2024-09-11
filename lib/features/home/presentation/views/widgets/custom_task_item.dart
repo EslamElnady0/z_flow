@@ -49,8 +49,8 @@ class _CustomTaskItemState extends State<CustomTaskItem> {
       ),
       Expanded(
         child: Container(
-          padding: EdgeInsets.only(left: 12.w),
-          alignment: Alignment.centerLeft,
+          padding: EdgeInsetsDirectional.only(start: 12.w),
+          alignment: AlignmentDirectional.centerStart,
           height: 50.h,
           decoration: BoxDecoration(
               gradient: Constants.customItemsGradient,

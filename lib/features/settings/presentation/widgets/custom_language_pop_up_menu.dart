@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/constants/assets.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomLanguagePopUpMenu extends StatelessWidget {
   const CustomLanguagePopUpMenu({super.key});
@@ -26,11 +25,11 @@ class CustomLanguagePopUpMenu extends StatelessWidget {
               onTap: () {},
               child:
                   //TODO: Will compare stored locale with value of pop up menu and then build child
-                  Text(AppTexts.arabic),
+                  Text(S.of(context).arabic),
             ),
             PopupMenuItem(
               onTap: () {},
-              child: Text(AppTexts.english),
+              child: Text(S.of(context).english),
             ),
           ];
         });

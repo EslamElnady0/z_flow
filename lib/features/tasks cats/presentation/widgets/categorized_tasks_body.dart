@@ -5,7 +5,7 @@ import 'package:z_flow/features/home/presentation/view%20models/tasks/get%20task
 import 'package:z_flow/features/tasks%20cats/presentation/widgets/no_empty_task_list.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/widgets/one_task_list_empty.dart';
 
-import '../../../../core/constants/app_texts.dart';
+import '../../../../generated/l10n.dart';
 
 class CategorizedTasksBody extends StatelessWidget {
   final String category;
@@ -24,14 +24,14 @@ class CategorizedTasksBody extends StatelessWidget {
             getIt.get<GetTaskCubit>().categorizedDoneTasks.isEmpty) {
           return OneTaskListEmpty(
             tasks: getIt.get<GetTaskCubit>().categorizedOngoingTasks,
-            text: AppTexts.onGoingTasks,
+            text: S.of(context).onGoingTasks,
             category: category,
           );
         } else if (getIt.get<GetTaskCubit>().categorizedOngoingTasks.isEmpty &&
             getIt.get<GetTaskCubit>().categorizedDoneTasks.isNotEmpty) {
           return OneTaskListEmpty(
             tasks: getIt.get<GetTaskCubit>().categorizedDoneTasks,
-            text: AppTexts.tasksFinished,
+            text: S.of(context).tasksFinished,
             category: category,
           );
         } else {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/core/widgets/build_overlay_menu.dart';
 
@@ -29,7 +29,7 @@ class _CustomTasksFilterRowState extends State<CustomTasksFilterRow> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          AppTexts.filter,
+          S.of(context).filter,
           style: Styles.style20W600.copyWith(color: Colors.white),
         ),
         GestureDetector(

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/select%20task%20categories%20cubit/select_task_categories_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/save_cancel_actions_row.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/add%20tasks%20category%20cubit/add_tasks_category_cubit.dart';
@@ -62,7 +62,7 @@ class _BottomSheetAddCategoryBodyState
                             },
                             child: const Icon(Icons.close))),
                     Text(
-                      AppTexts.addNewCategory,
+                      S.of(context).addNewCategory,
                       style: Styles.style18w500.copyWith(color: Colors.white),
                     ),
                   ],
@@ -70,12 +70,13 @@ class _BottomSheetAddCategoryBodyState
                 Divider(
                   height: 25.h,
                 ),
-                Text(AppTexts.addNewCategoryToList, style: Styles.style14w400),
+                Text(S.of(context).addNewCategoryToList,
+                    style: Styles.style14w400),
                 SizedBox(
                   height: 20.h,
                 ),
                 CustomAuthTextField(
-                    hintText: AppTexts.title,
+                    hintText: S.of(context).title,
                     suffix: Padding(
                       padding: EdgeInsets.all(16.r),
                       child: SvgPicture.asset(
@@ -94,7 +95,7 @@ class _BottomSheetAddCategoryBodyState
                     onOtherButtonPressed: () {
                       Navigator.of(context).pop();
                     },
-                    otherButtonText: AppTexts.cancel,
+                    otherButtonText: S.of(context).cancel,
                     onPrimaryButtonPressed: () {
                       if (formKey.currentState!.validate()) {
                         addTaskCategory(

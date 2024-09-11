@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/utils/goals%20utils/add_goal.dart';
 import 'package:z_flow/features/goals/data/model/goal_model.dart';
@@ -52,7 +52,7 @@ class _AddGoalViewBodyState extends State<AddGoalViewBody> {
                       height: 12.h,
                     ),
                     Text(
-                      AppTexts.writeAGoal,
+                      S.of(context).writeAGoal,
                       style: Styles.style14w400,
                       textAlign: TextAlign.center,
                     ),
@@ -62,9 +62,9 @@ class _AddGoalViewBodyState extends State<AddGoalViewBody> {
                     CustomDataEntryTextField(
                         minLines: 5,
                         maxLines: 20,
-                        hintText: AppTexts.writeYourGoal,
+                        hintText: S.of(context).writeYourGoal,
                         icon: Padding(
-                          padding: EdgeInsets.only(right: 15.w),
+                          padding: EdgeInsetsDirectional.only(end: 15.w),
                           child: SvgPicture.asset(
                             Assets.editIcon,
                             height: 16.h,
@@ -94,7 +94,7 @@ class _AddGoalViewBodyState extends State<AddGoalViewBody> {
                             title: controller.text,
                             id: id,
                             createdAt: DateTime.now().toString());
-                        await addGoal(goal: goal);
+                        await addGoal(goal: goal, context: context);
                         if (context.mounted) {
                           Navigator.pop(context);
                         }
@@ -103,7 +103,7 @@ class _AddGoalViewBodyState extends State<AddGoalViewBody> {
                     onOtherButtonPressed: () {
                       Navigator.pop(context);
                     },
-                    otherButtonText: AppTexts.cancel,
+                    otherButtonText: S.of(context).cancel,
                   ),
                   SizedBox(
                     height: 48.h,

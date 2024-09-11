@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/styles/styles.dart';
 
@@ -21,7 +21,7 @@ class CustomManageListButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.r),
               gradient: Constants.customButtonGradient),
           child: Text(
-            AppTexts.manage,
+            S.of(context).manage,
             style: Styles.style16W600grey.copyWith(color: Colors.white),
           )),
     );

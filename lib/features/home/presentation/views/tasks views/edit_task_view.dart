@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:z_flow/core/widgets/custom_scaffold.dart';
 import 'package:z_flow/features/home/data/models/task%20model/task_model.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/styles/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/edit_task_view_body.dart';
 
 class EditTaskView extends StatelessWidget {
@@ -15,7 +14,7 @@ class EditTaskView extends StatelessWidget {
     return CustomScaffold(
       appBar: AppBar(
         title: Text(
-          AppTexts.editTask,
+          S.of(context).editTask,
           style: Styles.style18w600,
         ),
         centerTitle: true,

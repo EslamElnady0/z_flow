@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 import '../constants/constants.dart';
 
@@ -17,7 +18,9 @@ class BuildOverlayMenu {
         child: Stack(
           children: [
             Positioned(
-              left: position.dx - 115.w,
+              left: Intl.getCurrentLocale() == "en"
+                  ? position.dx - 115.w
+                  : position.dx,
               top: position.dy,
               child: Material(
                 color: Colors.transparent,

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/assets.dart';
 import '../../../../../core/routes/app_router.dart';
+import '../../../../../generated/l10n.dart';
 import 'custom_light_colors_gradient_button.dart';
 
 class NoHabitsBody extends StatelessWidget {
@@ -28,7 +27,7 @@ class NoHabitsBody extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed(AppRouter.addHabit);
             },
-            text: AppTexts.addNewHabit,
+            text: S.of(context).addNewHabit,
           ),
         ),
         SizedBox(

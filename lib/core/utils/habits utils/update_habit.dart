@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/services/local_notifications.dart';
 import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
@@ -9,7 +10,8 @@ import '../../../features/home/presentation/view models/habits/get habits cubit/
 import '../../core cubits/internet check cubit/internet_check_cubit.dart';
 import '../notifications_helpers.dart';
 
-Future<void> updateHabit({required HabitModel habit}) async {
+Future<void> updateHabit(
+    {required HabitModel habit, required BuildContext context}) async {
   await getIt.get<UpdateHabitCubit>().updateHabit(
       habit: habit,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
@@ -21,10 +23,14 @@ Future<void> updateHabit({required HabitModel habit}) async {
   } else {
     getIt.get<GetHabitCubit>().doneHabits.remove(habit);
   }
-  await getHabits();
+  if (context.mounted) {
+    await getHabits(context);
+  }
   if (!habit.isIterable) {
     LocalNotifications.cancelNotification(id: habit.id + habitsOffset);
   } else if (habit.isIterable) {
-    setDailyHabitsNotification(habit);
+    if (context.mounted) {
+      setDailyHabitsNotification(habit, context);
+    }
   }
 }

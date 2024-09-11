@@ -4,8 +4,7 @@ import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/my%20lists/data/models/links%20list%20model/links_list_model.dart';
-
-import '../../../../core/constants/app_texts.dart';
+import '../../../../generated/l10n.dart';
 import 'custom_link_item_row.dart';
 import 'custom_manage_list_button.dart';
 
@@ -32,7 +31,7 @@ class LinksListItemDynamicPart extends StatelessWidget {
               ),
               linksList.links.isEmpty
                   ? Text(
-                      AppTexts.noLinksYet,
+                      S.of(context).noLinksYet,
                       style:
                           Styles.style16W600grey.copyWith(color: Colors.black),
                       textAlign: TextAlign.center,

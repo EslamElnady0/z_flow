@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/widgets/build_custom_snack_bar.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
 import 'package:z_flow/features/auth/presentation/view%20models/log%20in%20cubit/log_in_cubit.dart';
@@ -43,7 +43,7 @@ class LogInButtonBlocProvider extends StatelessWidget {
             },
             child: CustomButton(
               gradient: Constants.customButtonGradient,
-              text: AppTexts.logIn,
+              text: S.of(context).logIn,
               raduis: 16.r,
               onTap: () {
                 if (formKey.currentState!.validate()) {

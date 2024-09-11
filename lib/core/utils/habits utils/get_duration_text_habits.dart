@@ -1,20 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:z_flow/generated/l10n.dart';
+
 String getDurationTextHabits(
-    {required Duration? duration, required bool isDoneHabits}) {
+    {required Duration? duration,
+    required bool isDoneHabits,
+    required BuildContext context}) {
   switch (duration?.inHours) {
     case const (24):
-      return isDoneHabits ? "Done Habits Last Day" : "Ongoing Habits Last Day";
+      return isDoneHabits
+          ? S.of(context).doneHabitsLastDay
+          : S.of(context).ongoingHabitsLastDay;
     case const (24 * 7):
       return isDoneHabits
-          ? "Done Habits Last 7 Days"
-          : "Ongoing Habits Last 7 Days";
+          ? S.of(context).doneHabits7Days
+          : S.of(context).ongoingHabitsLast7Days;
     case const (24 * 28):
       return isDoneHabits
-          ? "Done Habits Last 28 Days"
-          : "Ongoing Habits Last 28 Days";
+          ? S.of(context).doneHabits28Days
+          : S.of(context).ongoingHabitsLast28Days;
     case null:
-      return isDoneHabits ? "All Done Habits" : "All Ongoing Habits";
+      return isDoneHabits
+          ? S.of(context).allDoneHabits
+          : S.of(context).allOngoingHabits;
 
     default:
-      return isDoneHabits ? "All Done Habits" : "All Ongoing Habits";
+      return isDoneHabits
+          ? S.of(context).allDoneHabits
+          : S.of(context).allOngoingHabits;
   }
 }

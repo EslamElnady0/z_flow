@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20cubits/select%20task%20categories%20cubit/select_task_categories_cubit.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
@@ -18,7 +18,7 @@ class BottomSheetFooterBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         if (context.read<SelectTaskCategoriesCubit>().taskCategories.isEmpty) {
           return CustomLightColorsGradientButton(
-            text: AppTexts.addNewCategory,
+            text: S.of(context).addNewCategory,
             margin: EdgeInsets.symmetric(horizontal: 18.w),
             icon: Assets.addIcon,
             onTap: () {
@@ -39,7 +39,7 @@ class BottomSheetFooterBlocBuilder extends StatelessWidget {
               onOtherButtonPressed: () {
                 Navigator.pop(context);
               },
-              otherButtonText: AppTexts.cancel,
+              otherButtonText: S.of(context).cancel,
             ),
           );
         }

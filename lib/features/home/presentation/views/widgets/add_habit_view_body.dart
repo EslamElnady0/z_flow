@@ -4,9 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:z_flow/core/utils/habits%20utils/add_habit.dart';
 import 'package:z_flow/core/utils/habits%20utils/get_habits.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/constants/constants.dart';
+import '../../../../../generated/l10n.dart';
 import 'habit_data_form.dart';
 import 'save_cancel_actions_row.dart';
 
@@ -54,7 +53,7 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
             child: HabitDataForm(
               habitController: habitController,
               endsInController: endsInController,
-              text: AppTexts.youAreAboutToAddHabit,
+              text: S.of(context).youAreAboutToAddHabit,
               habit: habit,
               formKey: formKey,
               noteController: noteController,
@@ -69,7 +68,7 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
               children: [
                 const Spacer(),
                 BottomScreenActions(
-                  otherButtonText: AppTexts.cancel,
+                  otherButtonText: S.of(context).cancel,
                   onOtherButtonPressed: () => Navigator.of(context).pop(),
                   onPrimaryButtonPressed: () async {
                     if (formKey.currentState!.validate()) {
@@ -81,10 +80,10 @@ class _AddHabitViewBodyState extends State<AddHabitViewBody> {
                       habit.id = id;
                       habit.note = noteController.text;
                       formKey.currentState!.save();
-                      await addHabit(
-                        habit: habit,
-                      );
-                      await getHabits();
+                      await addHabit(habit: habit, context: context);
+                      if (context.mounted) {
+                        await getHabits(context);
+                      }
                       if (context.mounted) {
                         Navigator.pop(context);
                       }

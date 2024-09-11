@@ -104,7 +104,7 @@ class GetTaskCubit extends Cubit<GetTaskState> {
   }
 
   List<TaskModel> getTasksByDate(DateTime date) {
-    String keyDate = DateFormat.yMMMd().format(date);
+    String keyDate = DateFormat.yMMMd('en_US').format(date);
     return groupedTasks[keyDate] ?? [];
   }
 
@@ -122,7 +122,7 @@ class GetTaskCubit extends Cubit<GetTaskState> {
     DateTime day,
   ) {
     for (var task in tasks) {
-      if (task.createdAt == DateFormat.yMMMd().format(day)) {
+      if (task.createdAt == DateFormat.yMMMd('en_US').format(day)) {
         if (!specificDayTasksList.contains(task)) {
           specificDayTasksList.add(task);
         }

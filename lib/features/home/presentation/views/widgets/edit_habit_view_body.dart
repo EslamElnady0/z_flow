@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:z_flow/core/utils/habits%20utils/update_habit.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
-
-import '../../../../../core/constants/app_texts.dart';
 import '../../../../../core/utils/habits utils/delete_habit.dart';
+import '../../../../../generated/l10n.dart';
 import 'habit_data_form.dart';
 import 'save_cancel_actions_row.dart';
 
@@ -55,7 +54,7 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
               isEdit: true,
               habitController: taskController,
               endsInController: endsInController,
-              text: AppTexts.youCanEditHabit,
+              text: S.of(context).youCanEditHabit,
               formKey: formKey,
               noteController: noteController,
             ),
@@ -69,21 +68,21 @@ class _EditHabitViewBodyState extends State<EditHabitViewBody> {
               children: [
                 const Spacer(),
                 BottomScreenActions(
-                  otherButtonText: AppTexts.delete,
+                  otherButtonText: S.of(context).delete,
                   onPrimaryButtonPressed: () async {
                     if (formKey.currentState!.validate()) {
                       widget.habit.title = taskController.text;
                       widget.habit.deadline = endsInController.text;
                       widget.habit.note = noteController.text;
                       formKey.currentState!.save();
-                      await updateHabit(habit: widget.habit);
+                      await updateHabit(habit: widget.habit, context: context);
                       if (context.mounted) {
                         Navigator.of(context).pop();
                       }
                     }
                   },
                   onOtherButtonPressed: () async {
-                    await deleteHabit(habit: widget.habit);
+                    await deleteHabit(habit: widget.habit, context: context);
                     if (context.mounted) {
                       Navigator.of(context).pop();
                     }

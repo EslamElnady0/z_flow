@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:z_flow/core/utils/notifications_helpers.dart';
 import 'package:z_flow/features/home/data/models/habit%20model/habit_model.dart';
@@ -22,10 +23,14 @@ class GetHabitCubit extends Cubit<GetHabitState> {
   Future<void> getHabits(
       {required String uid,
       required bool isConnected,
+      required BuildContext context,
       required bool isAnonymous}) async {
     emit(GetHabitLoading());
     final result = await habitRepo.getHabits(
-        isConnected: isConnected, isAnonymous: isAnonymous, uid: uid);
+        context: context,
+        isConnected: isConnected,
+        isAnonymous: isAnonymous,
+        uid: uid);
     result.fold((failure) {
       emit(GetHabitFailure(failure.errMessage));
     }, (habitsList) async {

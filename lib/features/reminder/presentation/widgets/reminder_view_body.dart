@@ -11,9 +11,8 @@ import 'package:z_flow/core/widgets/custom_calender.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/custom_light_colors_gradient_button.dart';
 import 'package:z_flow/features/home/presentation/views/widgets/image_switcher.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
-
 import '../../../../core/DI/service_locator.dart';
-import '../../../../core/constants/app_texts.dart';
+import '../../../../generated/l10n.dart';
 import 'selected_day_events_bloc_builder.dart';
 
 class ReminderViewBody extends StatefulWidget {
@@ -25,7 +24,7 @@ class ReminderViewBody extends StatefulWidget {
 
 class _ReminderViewBodyState extends State<ReminderViewBody> {
   Future<void> getTodaysEvents() async {
-    await getEvents();
+    await getEvents(context);
     getIt
         .get<GetEventsCubit>()
         .getSpecificDayEvents(getIt.get<GetEventsCubit>().focusedDay);
@@ -65,7 +64,7 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                           height: 12.h,
                         ),
                         Text(
-                          AppTexts.helpYouStayOrganized,
+                          S.of(context).helpYouStayOrganized,
                           style: Styles.style14w400,
                         ),
                         ImageSwitcher(
@@ -89,7 +88,7 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                           height: 12.h,
                         ),
                         Text(
-                          AppTexts.yourEvents,
+                          S.of(context).yourEvents,
                           style: Styles.style15w400,
                         ),
                         SizedBox(
@@ -117,7 +116,7 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                 onTap: () {
                   Navigator.pushNamed(context, AppRouter.addReminder);
                 },
-                text: AppTexts.addANewEvent,
+                text: S.of(context).addANewEvent,
                 icon: Assets.addIcon),
             SizedBox(
               height: 48.h,

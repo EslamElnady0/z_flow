@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/styles/styles.dart';
+import '../../../../generated/l10n.dart';
 import '../ui cubits/timer cubit/timer_cubit.dart';
 import 'custom_pause_play_button.dart';
 import 'custom_timer_with_text.dart';
@@ -56,7 +54,7 @@ class _WorkSessionBreakBodyState extends State<WorkSessionBreakBody> {
               height: 14.h,
             ),
             Text(
-              AppTexts.inBreakSession,
+              S.of(context).inBreakSession,
               style: Styles.style14w400,
             ),
             SizedBox(

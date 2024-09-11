@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/services/local_notifications.dart';
 import 'package:z_flow/core/styles/styles.dart';
@@ -34,7 +34,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
           padding: EdgeInsets.symmetric(horizontal: 18.w),
           child: AuthScreensHeader(
             text: Text(
-              AppTexts.effortlesslyManage,
+              S.of(context).effortlesslyManage,
               style: Styles.style14w400,
               textAlign: TextAlign.center,
             ),
@@ -49,7 +49,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
             type: MaterialType.transparency,
             child: CustomHollowButton(
               margin: EdgeInsets.symmetric(horizontal: 18.w),
-              text: AppTexts.logIn,
+              text: S.of(context).logIn,
               style: Styles.style20W700white,
               onTap: () {
                 Navigator.of(context)
@@ -67,7 +67,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
             type: MaterialType.transparency,
             child: CustomButton(
               gradient: Constants.customButtonGradient,
-              text: AppTexts.signUp,
+              text: S.of(context).signUp,
               margin: EdgeInsets.symmetric(horizontal: 18.w),
               raduis: 16.r,
               onTap: () {
@@ -101,7 +101,7 @@ class _AuthViewBodyState extends State<AuthViewBody> {
         SizedBox(
           height: 26.h,
         ),
-        Text(AppTexts.youCanContinueWith, style: Styles.style16W400white),
+        Text(S.of(context).youCanContinueWith, style: Styles.style16W400white),
         SizedBox(
           height: 26.h,
         ),

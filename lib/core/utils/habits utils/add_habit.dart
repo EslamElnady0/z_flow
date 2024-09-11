@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_check_cubit.dart';
 import 'package:z_flow/core/utils/increament_id_methods.dart';
@@ -9,7 +10,8 @@ import 'package:z_flow/features/home/presentation/view%20models/habits/get%20hab
 
 import '../../services/local_notifications.dart';
 
-Future<void> addHabit({required HabitModel habit}) async {
+Future<void> addHabit(
+    {required HabitModel habit, required BuildContext context}) async {
   await getIt.get<AddHabitCubit>().addHabit(
         habit: habit,
         uid: getIt.get<FirebaseAuth>().currentUser!.uid,
@@ -23,6 +25,8 @@ Future<void> addHabit({required HabitModel habit}) async {
   if (habit.isIterable) {
     await LocalNotifications.requestNotificationPermission();
 
-    setDailyHabitsNotification(habit);
+    if (context.mounted) {
+      setDailyHabitsNotification(habit, context);
+    }
   }
 }

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:z_flow/core/utils/notifications_helpers.dart';
 
 import '../../../../../core/errors/failure.dart';
@@ -68,6 +69,7 @@ class HabitsRepoImpl implements HabitsRepo {
   Future<Either<Failure, List<HabitModel>>> getHabits(
       {required bool isConnected,
       required bool isAnonymous,
+      required BuildContext context,
       required String uid}) async {
     try {
       List<HabitModel>? habits = habitsLocalDataSource.getHabits();
@@ -81,7 +83,9 @@ class HabitsRepoImpl implements HabitsRepo {
           for (var habit in habits) {
             await habitsLocalDataSource.addHabit(habit);
             if (habit.isIterable) {
-              setDailyHabitsNotification(habit);
+              if (context.mounted) {
+                setDailyHabitsNotification(habit, context);
+              }
             }
           }
           return right(habits);

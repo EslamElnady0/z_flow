@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/widgets/inner_shadow.dart';
 import 'package:z_flow/features/home/presentation/view%20models/time%20management/time%20of%20use%20cubit/time_of_use_cubit.dart';
@@ -36,7 +36,7 @@ class _TimeOfUseViewBodyState extends State<TimeOfUseViewBody> {
             height: 12.h,
           ),
           Text(
-            AppTexts.easilyKnowHowLongYouUseApp,
+            S.of(context).easilyKnowHowLongYouUseApp,
             style: Styles.style14w400,
           ),
           SizedBox(

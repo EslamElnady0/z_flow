@@ -37,13 +37,13 @@ class _CustomHabitItemState extends State<CustomHabitItem> {
           widget.habit.isDone = !(widget.habit.isDone);
           widget.habit.doneAt =
               widget.habit.isDone ? DateTime.now().toString() : "";
-          await updateHabit(habit: widget.habit);
+          await updateHabit(habit: widget.habit, context: context);
         },
       ),
       Expanded(
         child: Container(
-          padding: EdgeInsets.only(left: 12.w),
-          alignment: Alignment.centerLeft,
+          padding: EdgeInsetsDirectional.only(start: 12.w),
+          alignment: AlignmentDirectional.centerStart,
           height: 50.h,
           decoration: BoxDecoration(
               gradient: Constants.customItemsGradient,

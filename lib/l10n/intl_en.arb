@@ -182,5 +182,22 @@
     "eventDays": "Event days",
     "addToYourCategories": "Add to your categories?",
     "organizingTasks": "Organizing tasks into categories helps you keep your workflow efficient and ensures nothing gets overlooked.",
-    "continue_": "Continue"
+    "continue_": "Continue",
+    "next": "Next",
+    "connectedToInternet": "All set! You're connected to the internet.",
+    "disconnectedFromInternet": "Oops, it looks like you're offline!",
+    "finishedTasksLastDay": "Finished Tasks Last Day",
+    "finishedTasksLast7Days": "Finished Tasks Last 7 Days",
+    "finishedTasksLast28Days": "Finished Tasks Last 28 Days",
+    "doneHabitsLastDay":"Done Habits Last Day",
+    "doneHabits7Days":"Done Habits Last 7 Days",
+    "doneHabits28Days":"Done Habits Last 28 Days",
+    "allDoneHabits":"All Done Habits",
+    "ongoingHabitsLastDay":"Ongoing Habits Last Day",
+    "ongoingHabitsLast7Days":"Ongoing Habits Last 7 Days",
+    "ongoingHabitsLast28Days":"Ongoing Habits Last 28 Days",
+    "allOngoingHabits":"All Ongoing Habits",
+    "loggedInSuccess":"Logged in successfully",
+    "searchForTasks":"Search For Tasks",
+    "searchForHabits":"Search For Habits"
 }

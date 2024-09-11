@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/work%20session/presentation/widgets/custom_pause_play_button.dart';
 import 'package:z_flow/features/work%20session/presentation/widgets/custom_timer_with_text.dart';
@@ -56,7 +56,7 @@ class _WorkSessionWorkingBodyState extends State<WorkSessionWorkingBody> {
               height: 14.h,
             ),
             Text(
-              AppTexts.inWorkSession,
+              S.of(context).inWorkSession,
               style: Styles.style14w400,
             ),
             SizedBox(

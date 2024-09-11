@@ -7,11 +7,10 @@ import 'package:z_flow/core/utils/links%20lists%20utils/update_links_list.dart';
 import 'package:z_flow/features/my%20lists/data/models/links%20list%20model/links_list_model.dart';
 import 'package:z_flow/features/my%20lists/presentation/view%20models/update%20links%20list%20cubit/update_links_list_cubit.dart';
 import 'package:z_flow/features/my%20lists/presentation/widgets/list_details_view_body.dart';
-
 import '../../../../core/DI/service_locator.dart';
-import '../../../../core/constants/app_texts.dart';
 import '../../../../core/constants/assets.dart';
 import '../../../../core/widgets/build_overlay_menu.dart';
+import '../../../../generated/l10n.dart';
 import '../../../home/presentation/views/widgets/custom_pop_up_menu_item.dart';
 import '../../data/models/link item model/link_item.dart';
 
@@ -37,7 +36,7 @@ class LinkOptionsMenuBody extends StatelessWidget {
                   BuildOverlayMenu.removeOverlay();
                   showAddNewLinkBottomSheet(context, linksListModel, index);
                 },
-                title: AppTexts.edit,
+                title: S.of(context).edit,
                 icon: SvgPicture.asset(
                   Assets.settingsIcon,
                   width: 18.w,
@@ -52,9 +51,11 @@ class LinkOptionsMenuBody extends StatelessWidget {
                   await updateLinksList(
                       linksList: linksListModel, context: context);
                   BuildOverlayMenu.removeOverlay();
-                  await getLinksLists();
+                  if (context.mounted) {
+                    await getLinksLists(context);
+                  }
                 },
-                title: AppTexts.delete,
+                title: S.of(context).delete,
                 icon: SvgPicture.asset(
                   Assets.deleteIcon,
                   width: 18.w,

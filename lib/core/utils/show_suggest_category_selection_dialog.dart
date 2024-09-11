@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:z_flow/core/constants/app_texts.dart';
+import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/constants/constants.dart';
 import 'package:z_flow/core/styles/styles.dart';
@@ -38,11 +38,11 @@ void showSuggestCategorySelectionDialog(BuildContext context,
                 width: 131.w,
               ),
               Text(
-                AppTexts.addToYourCategories,
+                S.of(context).addToYourCategories,
                 style: Styles.style26W600,
               ),
               Text(
-                AppTexts.organizingTasks,
+                S.of(context).organizingTasks,
                 textAlign: TextAlign.center,
                 style: Styles.style15w400.copyWith(color: Colors.black),
               ),
@@ -55,10 +55,11 @@ void showSuggestCategorySelectionDialog(BuildContext context,
                   Navigator.pop(context);
                   await addTask(
                     task: task,
+                    context: context,
                   );
                 },
-                otherButtonText: AppTexts.cancel,
-                primaryButtonText: AppTexts.continue_,
+                otherButtonText: S.of(context).cancel,
+                primaryButtonText: S.of(context).continue_,
                 onPrimaryButtonPressed: () {
                   Navigator.pop(context);
                   showCategoryBottomSheet(
