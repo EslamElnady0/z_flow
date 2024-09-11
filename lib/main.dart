@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
@@ -19,6 +20,7 @@ import 'core/core cubits/my_bloc_observer.dart';
 import 'core/services/local_notifications.dart';
 import 'features/home/data/models/habit model/habit_model.dart';
 import 'features/home/data/models/task model/task_model.dart';
+import 'generated/l10n.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -77,6 +79,13 @@ class ZFlowApp extends StatelessWidget {
           },
           child: MaterialApp(
             scaffoldMessengerKey: scaffoldMessengerKey,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
             theme: MainTheme.mainTheme,
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRouter.onGenerateRoute,

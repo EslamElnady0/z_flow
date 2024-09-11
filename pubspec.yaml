@@ -39,6 +39,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
+  flutter_localizations:
+    sdk: flutter
   flutter_local_notifications: ^17.2.2
   flutter_native_splash: ^2.4.1
   flutter_screenutil: ^5.9.3
@@ -104,3 +106,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
