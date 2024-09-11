@@ -6,6 +6,8 @@ class AppTexts {
   static const String skip = "Skip";
   static const String back = "Back";
   static const String lock = "Lock";
+  static const String controlAppSettings =
+      "Control the application settings easily from here!";
   static const String tasks = "Tasks";
   static const String work = "Work";
   static const String youCanManageTheList =
@@ -189,10 +191,10 @@ class AppTexts {
   static const String financialSupport = "Financial support";
   static const String settings = "Settings";
   static const String shareApp = "Share the app";
-  static const String controlAppSettings =
-      "Control the application settings easily from here!";
   static const String account = "ِAccount";
   static const String language = "Language";
+  static const String arabic = "Arabic";
+  static const String english = "English";
   static const String rateUs = "Rate us";
   static const String privacyPolicy = "privacy policy";
   static const String helpAndFeedback = "Help and feedback";

@@ -6,6 +6,7 @@ import 'package:z_flow/core/constants/colors.dart';
 import 'package:z_flow/core/routes/app_router.dart';
 import 'package:z_flow/features/home/presentation/ui%20logic/ui%20models/bottom_nav_bar_item_model.dart';
 import 'package:z_flow/features/my%20lists/data/models/links%20list%20model/links_list_model.dart';
+import 'package:z_flow/features/settings/presentation/ui%20model/settings_item_model.dart';
 
 import '../../features/home/presentation/ui logic/ui models/drawer_item_model.dart';
 import '../../features/on boarding/data/on_boarding_model.dart';
@@ -116,7 +117,15 @@ class Constants {
     LinksListModel(name: AppTexts.productivityTools, links: []),
     LinksListModel(name: AppTexts.readLater, links: []),
   ];
-
+  static List<SettingsItemModel> settingsItems = [
+    SettingsItemModel(title: AppTexts.account, icon: Assets.accoutIcon),
+    SettingsItemModel(
+        title: AppTexts.language, icon: Assets.iosArrowForwardSmall),
+    SettingsItemModel(title: AppTexts.shareApp, icon: Assets.share),
+    SettingsItemModel(
+        title: AppTexts.helpAndFeedback, icon: Assets.feedBackIcon),
+    SettingsItemModel(title: AppTexts.about, icon: Assets.iosArrowForwardSmall),
+  ];
   static List<DrawerItem> drawerItems = [
     DrawerItem(
         title: AppTexts.startWorkSession,
@@ -150,7 +159,10 @@ class Constants {
     //     title: AppTexts.addHomeWidget, icon: Assets.addWidget, route: ""),
     // DrawerItem(
     //     title: AppTexts.financialSupport, icon: Assets.dollar, route: ""),
-    DrawerItem(title: AppTexts.settings, icon: Assets.settingDrawer, route: ""),
+    DrawerItem(
+        title: AppTexts.settings,
+        icon: Assets.settingDrawer,
+        route: AppRouter.settings_),
     DrawerItem(title: AppTexts.shareApp, icon: Assets.share, route: ""),
   ];
   static List<String> switchingTimeManagementImages = [

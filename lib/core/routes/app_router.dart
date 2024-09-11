@@ -63,6 +63,7 @@ import '../../features/home/presentation/views/habits views/all_habits_view.dart
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/my lists/presentation/views/list_details_view.dart';
 import '../../features/reminder/presentation/view models/delete event cubit/delete_event_cubit.dart';
+import '../../features/settings/presentation/views/settings_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/stay away/presentation/cubit/stay_away_cubit.dart';
 import '../../features/tasks cats/presentation/views/tasks_categories_view.dart';
@@ -99,6 +100,7 @@ class AppRouter {
   static const String addReminder = '/addReminder';
   static const String myLists = '/myLists';
   static const String listDetails = '/listDetails';
+  static const String settings_ = '/settings';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -125,6 +127,10 @@ class AppRouter {
             create: (context) => getIt<LogInAnoCubit>(),
             child: const LogInView(),
           ),
+        );
+      case settings_:
+        return MaterialPageRoute(
+          builder: (context) => const SettingsView(),
         );
       case forgotPassword:
         return MaterialPageRoute(
