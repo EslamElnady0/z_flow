@@ -113,9 +113,17 @@ class AppRouter {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case splash:
-        return MaterialPageRoute(builder: (context) => const SplashView());
+        return MaterialPageRoute(
+            builder: (context) => WillPopScope(
+                onWillPop: () {
+                  return Future.value(false);
+                },
+                child: const SplashView()));
       case onBoarding:
-        return MaterialPageRoute(builder: (context) => const OnBoardingView());
+        return MaterialPageRoute(
+            builder: (context) => WillPopScope(
+                onWillPop: () => Future.value(false),
+                child: const OnBoardingView()));
       case auth:
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
@@ -127,7 +135,9 @@ class AppRouter {
                       create: (context) => getIt<LogInAnoCubit>(),
                     ),
                   ],
-                  child: const AuthView(),
+                  child: WillPopScope(
+                      onWillPop: () => Future.value(false),
+                      child: const AuthView()),
                 ));
       case logIn:
         return MaterialPageRoute(
@@ -232,7 +242,9 @@ class AppRouter {
                       value: getIt.get<GetHabitCubit>(),
                     ),
                   ],
-                  child: const HomeView(),
+                  child: WillPopScope(
+                      onWillPop: () => Future.value(false),
+                      child: const HomeView()),
                 ));
       case timeOfUse:
         return MaterialPageRoute(
