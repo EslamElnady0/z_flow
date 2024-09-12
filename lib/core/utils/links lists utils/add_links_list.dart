@@ -11,9 +11,10 @@ import 'get_links_lists.dart';
 Future<void> addLinksList(
     {required LinksListModel linksList, required BuildContext context}) async {
   await context.read<AddLinksListCubit>().addLinksList(
-      linksListModel: linksList,
-      isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous);
+        linksListModel: linksList,
+        isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
+        isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+      );
   if (context.mounted) {
     await getLinksLists(context);
   }

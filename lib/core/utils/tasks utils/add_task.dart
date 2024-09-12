@@ -16,8 +16,8 @@ Future<void> addTask(
   await getIt.get<AddTaskCubit>().addTask(
       task: task,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
-      uid: getIt.get<FirebaseAuth>().currentUser!.uid);
+      isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+      uid: getIt.get<FirebaseAuth>().currentUser?.uid ?? "");
   getIt.get<GetTaskCubit>().tasks.add(task);
 
   incrementTasksId();

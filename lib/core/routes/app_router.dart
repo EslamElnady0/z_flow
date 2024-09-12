@@ -260,10 +260,12 @@ class AppRouter {
             builder: (context) => BlocProvider(
                   create: (context) => getIt.get<GetGoalsCubit>()
                     ..getGoals(
-                        isConnected:
-                            getIt.get<InternetCheckCubit>().isDeviceConnected,
-                        isAnonymous:
-                            getIt.get<FirebaseAuth>().currentUser!.isAnonymous),
+                      isConnected:
+                          getIt.get<InternetCheckCubit>().isDeviceConnected,
+                      isAnonymous:
+                          getIt.get<FirebaseAuth>().currentUser?.isAnonymous ??
+                              true,
+                    ),
                   child: const GoalsView(),
                 ));
       case addGoal:
@@ -344,11 +346,13 @@ class AppRouter {
             builder: (context) => BlocProvider(
                   create: (context) => getIt.get<GetTasksCategoriesCubit>()
                     ..getTasksCategories(
-                        context: context,
-                        isConnected:
-                            getIt<InternetCheckCubit>().isDeviceConnected,
-                        isAnonymous:
-                            getIt<FirebaseAuth>().currentUser!.isAnonymous),
+                      context: context,
+                      isConnected:
+                          getIt<InternetCheckCubit>().isDeviceConnected,
+                      isAnonymous:
+                          getIt.get<FirebaseAuth>().currentUser?.isAnonymous ??
+                              true,
+                    ),
                   child: const TasksCategoriesView(),
                 ));
       case addNewCat:
@@ -423,7 +427,8 @@ class AppRouter {
               ..getLinksLists(
                 context: context,
                 isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-                isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
+                isAnonymous:
+                    getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
               ),
             child: const MyListsView(),
           ),
@@ -438,7 +443,11 @@ class AppRouter {
             settings: RouteSettings(arguments: args));
       default:
         return MaterialPageRoute(
-            builder: (context) => const Center(child: Text("7moksha")));
+            builder: (context) => const Scaffold(
+                  body: Center(
+                    child: Text("unknown route"),
+                  ),
+                ));
     }
   }
 }

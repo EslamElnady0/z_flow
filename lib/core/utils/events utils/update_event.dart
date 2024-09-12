@@ -12,9 +12,10 @@ import 'get_events.dart';
 Future<void> updateEvent(
     {required EventModel event, required BuildContext context}) async {
   await getIt<UpdateEventCubit>().updateEvent(
-      event: event,
-      isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt<FirebaseAuth>().currentUser!.isAnonymous);
+    event: event,
+    isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
+    isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+  );
 
   if (context.mounted) {
     scheduleEventNotification(event, context);

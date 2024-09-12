@@ -14,8 +14,8 @@ Future<void> deleteTask({required TaskModel task}) async {
   await getIt.get<DeleteTaskCubit>().deleteTask(
       task: task,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
-      uid: getIt.get<FirebaseAuth>().currentUser!.uid);
+      isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+      uid: getIt.get<FirebaseAuth>().currentUser?.uid ?? "");
 
   getIt.get<GetTaskCubit>().tasks.remove(task);
   getIt.get<GetTaskCubit>().specificDayTasksList.remove(task);

@@ -14,9 +14,9 @@ Future<void> addHabit(
     {required HabitModel habit, required BuildContext context}) async {
   await getIt.get<AddHabitCubit>().addHabit(
         habit: habit,
-        uid: getIt.get<FirebaseAuth>().currentUser!.uid,
+        uid: getIt.get<FirebaseAuth>().currentUser?.uid ?? "",
         isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-        isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
+        isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
       );
 
   getIt.get<GetHabitCubit>().habits.add(habit);

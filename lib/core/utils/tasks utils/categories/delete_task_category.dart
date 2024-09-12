@@ -11,7 +11,7 @@ Future<void> deleteTaskCategory(
   await getIt<DeleteTaskCategoryCubit>().deleteTaskCategory(
     category: category,
     isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
-    isAnonymous: getIt<FirebaseAuth>().currentUser!.isAnonymous,
+    isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
   );
   if (context.mounted) {
     await getTasksCategories(context);

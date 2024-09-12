@@ -13,8 +13,8 @@ Future<void> updateTask({required TaskModel task}) async {
   await getIt.get<UpdateTaskCubit>().updateTask(
       task: task,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
-      uid: getIt.get<FirebaseAuth>().currentUser!.uid);
+      isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+      uid: getIt.get<FirebaseAuth>().currentUser?.uid ?? "");
   if (task.isDone) {
     getIt.get<GetTaskCubit>().onGoingTasks.remove(task);
     getIt.get<GetTaskCubit>().categorizedOngoingTasks.remove(task);

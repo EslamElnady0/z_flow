@@ -16,8 +16,8 @@ Future<void> deleteHabit(
   await getIt.get<DeleteHabitCubit>().deleteHabit(
       habit: habit,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
-      uid: getIt.get<FirebaseAuth>().currentUser!.uid);
+      isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+      uid: getIt.get<FirebaseAuth>().currentUser?.uid ?? "");
 
   getIt.get<GetHabitCubit>().habits.remove(habit);
   getIt.get<GetHabitCubit>().doneHabits.remove(habit);

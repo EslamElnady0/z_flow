@@ -7,7 +7,8 @@ import '../../../core cubits/internet check cubit/internet_check_cubit.dart';
 
 Future<void> getTasksCategories(BuildContext context) async {
   await getIt.get<GetTasksCategoriesCubit>().getTasksCategories(
-      isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
-      context: context,
-      isAnonymous: getIt<FirebaseAuth>().currentUser!.isAnonymous);
+        isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
+        context: context,
+        isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+      );
 }

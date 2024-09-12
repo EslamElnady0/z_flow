@@ -15,8 +15,8 @@ Future<void> updateHabit(
   await getIt.get<UpdateHabitCubit>().updateHabit(
       habit: habit,
       isConnected: getIt.get<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt.get<FirebaseAuth>().currentUser!.isAnonymous,
-      uid: getIt.get<FirebaseAuth>().currentUser!.uid);
+      isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+      uid: getIt.get<FirebaseAuth>().currentUser?.uid ?? "");
   if (habit.isDone) {
     getIt.get<GetHabitCubit>().onGoinghabits.remove(habit);
     LocalNotifications.cancelNotification(id: habit.id + habitsOffset);

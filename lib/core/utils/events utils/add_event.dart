@@ -14,9 +14,10 @@ import 'get_events.dart';
 Future<void> addEvent(
     {required EventModel event, required BuildContext context}) async {
   await getIt<AddEventCubit>().addEvent(
-      event: event,
-      isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
-      isAnonymous: getIt<FirebaseAuth>().currentUser!.isAnonymous);
+    event: event,
+    isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
+    isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
+  );
 
   getIt.get<GetEventsCubit>().events.add(event);
   incrementEventsId();

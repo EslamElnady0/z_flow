@@ -11,7 +11,7 @@ Future<void> addTaskCategory(
   await getIt<AddTasksCategoryCubit>().addTaskCategory(
     category: category,
     isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
-    isAnonymous: getIt<FirebaseAuth>().currentUser!.isAnonymous,
+    isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
   );
 
   if (context.mounted) {

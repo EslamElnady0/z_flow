@@ -16,7 +16,7 @@ Future<void> deleteEvent(
   await getIt<DeleteEventCubit>().deleteEvent(
     event: event,
     isConnected: getIt<InternetCheckCubit>().isDeviceConnected,
-    isAnonymous: getIt<FirebaseAuth>().currentUser!.isAnonymous,
+    isAnonymous: getIt.get<FirebaseAuth>().currentUser?.isAnonymous ?? true,
   );
   getIt.get<GetEventsCubit>().events.remove(event);
   getIt.get<GetEventsCubit>().specificDayEventsList.remove(event);
