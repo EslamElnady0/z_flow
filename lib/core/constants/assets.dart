@@ -80,6 +80,12 @@ class Assets {
   static const String privacyIcon = "assets/images/svgs/privacyIcon.svg";
   static const String feedBackIcon = "assets/images/svgs/feedBackIcon.svg";
   static const String rateUsIcon = "assets/images/svgs/rateUsIcon.svg";
+  static const String aboutCopyLinkIcon =
+      "assets/images/svgs/aboutCopyLinkIcon.svg";
+  static const String aboutQRCodeIcon =
+      "assets/images/svgs/aboutQRCodeIcon.svg";
+  static const String aboutShareProfileIcon =
+      "assets/images/svgs/aboutShareProfileIcon.svg";
   static const String aboutInstaIcon = "assets/images/svgs/aboutInstaIcon.svg";
   static const String aboutLinkedInIcon =
       "assets/images/svgs/aboutLinkedInIcon.svg";

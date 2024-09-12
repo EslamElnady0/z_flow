@@ -1,7 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pulsator/pulsator.dart';
+import 'package:z_flow/features/settings/presentation/ui%20cubit/dialog%20cubit/dialog_cubit.dart';
 import '../../../../core/styles/styles.dart';
 import 'bottom_dialog_container.dart';
 import 'upper_dialog_container.dart';
@@ -52,32 +54,37 @@ class CustomContributerItem extends StatelessWidget {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Stack(
-          children: [
-            BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-              child: Container(
-                color: Colors.white.withOpacity(0.1),
-              ),
-            ),
-            Center(
-              child: Dialog(
-                insetPadding: EdgeInsets.symmetric(horizontal: 25.w),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    UpperDialogContainer(image: imagePath, name: name),
-                    const BottomDialogContainer()
-                  ],
+        return BlocProvider(
+          create: (context) => DialogCubit(),
+          child: Stack(
+            children: [
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                child: Container(
+                  color: Colors.white.withOpacity(0.1),
                 ),
               ),
-            ),
-          ],
+              Center(
+                child: Dialog(
+                  insetPadding: EdgeInsets.symmetric(horizontal: 25.w),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      UpperDialogContainer(image: imagePath, name: name),
+                      BottomDialogContainer(
+                        image: imagePath,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/styles/styles.dart';
 import 'package:z_flow/features/auth/presentation/views/widgets/custom_auth_textfield.dart';
-import 'package:z_flow/features/settings/presentation/account%20cubit/accout_cubit.dart';
+import 'package:z_flow/features/settings/presentation/view%20models/account%20cubit/accout_cubit.dart';
 import 'package:z_flow/features/settings/presentation/widgets/custom_profile_avatar.dart';
 import 'package:z_flow/generated/l10n.dart';
 

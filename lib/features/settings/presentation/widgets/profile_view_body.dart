@@ -9,7 +9,7 @@ import 'package:z_flow/core/DI/service_locator.dart';
 import 'package:z_flow/core/core%20cubits/internet%20check%20cubit/internet_check_cubit.dart';
 import 'package:z_flow/core/widgets/custom_button.dart';
 import 'package:z_flow/features/auth/data/models/user_model.dart';
-import 'package:z_flow/features/settings/presentation/account%20cubit/accout_cubit.dart';
+import 'package:z_flow/features/settings/presentation/view%20models/account%20cubit/accout_cubit.dart';
 import 'package:z_flow/features/settings/presentation/widgets/account_view_form.dart';
 
 import '../../../../core/constants/constants.dart';

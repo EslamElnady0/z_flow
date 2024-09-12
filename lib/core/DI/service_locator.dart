@@ -26,7 +26,7 @@ import 'package:z_flow/features/reminder/presentation/view%20models/delete%20eve
 import 'package:z_flow/features/reminder/presentation/view%20models/update%20event%20cubit/update_event_cubit.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/settings/data/repo/account_repo.dart';
-import 'package:z_flow/features/settings/presentation/account%20cubit/accout_cubit.dart';
+import 'package:z_flow/features/settings/presentation/view%20models/account%20cubit/accout_cubit.dart';
 import 'package:z_flow/features/tasks%20cats/data/data%20sources/task_cats_local_data_source.dart';
 import 'package:z_flow/features/tasks%20cats/data/repos/task_cats_repo_impl.dart';
 import 'package:z_flow/features/tasks%20cats/presentation/view%20models/add%20tasks%20category%20cubit/add_tasks_category_cubit.dart';

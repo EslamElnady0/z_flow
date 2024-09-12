@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/constants/assets.dart';
+import 'package:z_flow/features/settings/presentation/ui%20cubit/dialog%20cubit/dialog_cubit.dart';
 import '../../../../core/constants/constants.dart';
-import '../../../../core/styles/styles.dart';
-import '../../../../core/utils/links lists utils/launch_url.dart';
-import 'custom_social_media_item.dart';
+import 'about_dialog_initial_body.dart';
+import 'about_dialog_qr_code_body.dart';
 
 class UpperDialogContainer extends StatelessWidget {
   final String image;
@@ -14,80 +14,30 @@ class UpperDialogContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12.r),
-                topRight: Radius.circular(12.r)),
-            gradient: Constants.customAboutDialogGradient),
-        child: Column(
-          children: [
-            Image.asset(
-              image,
-              height: 200.h,
-              width: 200.w,
-            ),
-            SizedBox(height: 10.h),
-            Text(
-              name,
-              style: Styles.style24W600,
-            ),
-            SizedBox(height: 10.h),
-            Row(
-              children: [
-                CustomSocialMediaItem(
-                    image: name == "Eslam Elnady"
-                        ? Assets.aboutGitHubIcon
-                        : Assets.aboutYoutubeIcon,
-                    onPressed: () {}),
-                SizedBox(
-                  width: 13.w,
-                ),
-                CustomSocialMediaItem(
-                    image: Assets.aboutLinkedInIcon,
-                    onPressed: () {
-                      image == Assets.eslamFlutter
-                          ? launchLinkUrl(
-                              "https://www.linkedin.com/in/eslam-elnady-58062b25a/")
-                          : launchLinkUrl(
-                              "https://www.linkedin.com/in/adel-gabr-320752244/");
-                    }),
-                SizedBox(
-                  width: 13.w,
-                ),
-                CustomSocialMediaItem(
-                    image: Assets.aboutMailIcon,
-                    onPressed: () {
-                      image == Assets.eslamFlutter
-                          ? launchLinkUrl("eslamelnady254@gmail.com")
-                          : launchLinkUrl("contactadelgabr@gmail.com");
-                    }),
-                SizedBox(
-                  width: 13.w,
-                ),
-                CustomSocialMediaItem(
-                    image: Assets.aboutWhatsIcon,
-                    onPressed: () {
-                      image == Assets.eslamFlutter
-                          ? launchLinkUrl("https://wa.me/+201090964729")
-                          : launchLinkUrl("https://wa.me/+201121524545");
-                    }),
-                SizedBox(
-                  width: 13.w,
-                ),
-                CustomSocialMediaItem(
-                    image: Assets.aboutInstaIcon,
-                    onPressed: () {
-                      image == Assets.eslamFlutter
-                          ? launchLinkUrl(
-                              "https://www.instagram.com/eslam_elnady2002?igsh=d3FucWg1ZzI2b2pq")
-                          : launchLinkUrl(
-                              "https://www.instagram.com/adell.og/");
-                    }),
-              ],
-            )
-          ],
-        ));
+    return BlocBuilder<DialogCubit, DialogState>(
+      builder: (context, state) {
+        return Container(
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+            decoration: BoxDecoration(
+                color: context.read<DialogCubit>().isQrCodeShwowed
+                    ? Colors.white
+                    : null,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12.r),
+                    topRight: Radius.circular(12.r)),
+                gradient: context.read<DialogCubit>().isQrCodeShwowed
+                    ? null
+                    : Constants.customAboutDialogGradient),
+            child: context.read<DialogCubit>().isQrCodeShwowed
+                ? AboutDialogQrCodeBody(
+                    image: image,
+                    name: name,
+                  )
+                : AboutDialogInitialBody(
+                    image: image,
+                    name: name,
+                  ));
+      },
+    );
   }
 }

@@ -36,7 +36,7 @@ import 'package:z_flow/features/reminder/presentation/views/add_reminder_view.da
 import 'package:z_flow/features/reminder/presentation/views/reminder_view.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/search/views/search_view.dart';
-import 'package:z_flow/features/settings/presentation/account%20cubit/accout_cubit.dart';
+import 'package:z_flow/features/settings/presentation/view%20models/account%20cubit/accout_cubit.dart';
 import 'package:z_flow/features/settings/presentation/views/about_view.dart';
 import 'package:z_flow/features/settings/presentation/views/profile_view.dart';
 import 'package:z_flow/features/stay%20away/presentation/views/stay_away_view.dart';

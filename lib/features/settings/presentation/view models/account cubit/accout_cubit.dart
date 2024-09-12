@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:z_flow/features/settings/data/repo/account_repo.dart';
 
-import '../../../auth/data/models/user_model.dart';
+import '../../../../auth/data/models/user_model.dart';
 
 part 'accout_state.dart';
 

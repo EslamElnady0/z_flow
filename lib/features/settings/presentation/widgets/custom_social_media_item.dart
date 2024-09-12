@@ -11,18 +11,20 @@ class CustomSocialMediaItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        padding: EdgeInsets.all(9.r),
-        width: 45.w,
-        height: 45.h,
-        decoration: const BoxDecoration(
-          gradient: Constants.customButtonGradient,
-          shape: BoxShape.circle,
-        ),
-        child: SvgPicture.asset(
-          image,
+    return Expanded(
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          padding: EdgeInsets.all(9.r),
+          width: 45.w,
+          height: 45.h,
+          decoration: const BoxDecoration(
+            gradient: Constants.customButtonGradient,
+            shape: BoxShape.circle,
+          ),
+          child: SvgPicture.asset(
+            image,
+          ),
         ),
       ),
     );
