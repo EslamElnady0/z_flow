@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../core/constants/assets.dart';
 import '../../../../core/constants/constants.dart';
 
 class CustomSocialMediaItem extends StatelessWidget {
@@ -15,7 +16,7 @@ class CustomSocialMediaItem extends StatelessWidget {
       child: GestureDetector(
         onTap: onPressed,
         child: Container(
-          padding: EdgeInsets.all(9.r),
+          padding: EdgeInsets.all(image == Assets.aboutGitHubIcon ? 3.r : 9.r),
           width: 45.w,
           height: 45.h,
           decoration: const BoxDecoration(
