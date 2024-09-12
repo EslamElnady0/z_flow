@@ -17,8 +17,11 @@ class SelectedDayEventsBlocBuilder extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemBuilder: (context, index) {
+          GlobalKey actionKey = GlobalKey();
           return CustomEventItem(
-              event: getIt.get<GetEventsCubit>().specificDayEventsList[index]);
+            event: getIt.get<GetEventsCubit>().specificDayEventsList[index],
+            actionKey: actionKey,
+          );
         },
         separatorBuilder: (context, index) => SizedBox(
           height: 12.h,

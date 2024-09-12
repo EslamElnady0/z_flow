@@ -1540,6 +1540,16 @@ class S {
     );
   }
 
+  /// `Edit a reminder`
+  String get editReminder {
+    return Intl.message(
+      'Edit a reminder',
+      name: 'editReminder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last Day`
   String get lastDay {
     return Intl.message(

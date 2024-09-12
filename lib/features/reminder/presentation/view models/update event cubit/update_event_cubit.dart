@@ -10,6 +10,9 @@ class UpdateEventCubit extends Cubit<UpdateEventState> {
   UpdateEventCubit({required this.eventsRepo}) : super(UpdateEventInitial());
 
   final EventsRepo eventsRepo;
+  String timeIn24Format = '';
+  String startDateWithNoFormating = '';
+  String endDateWithNoFormating = '';
   Future<void> updateEvent(
       {required EventModel event,
       required bool isConnected,

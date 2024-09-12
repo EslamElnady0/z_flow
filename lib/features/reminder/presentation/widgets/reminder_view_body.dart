@@ -79,8 +79,12 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                                 focusedDay: getIt.get<GetEventsCubit>().today,
                                 selectedDayPredicate: (day) => isSameDay(
                                     day, getIt.get<GetEventsCubit>().today),
-                                onDaySelected:
-                                    getIt.get<GetEventsCubit>().onDaySelected,
+                                onDaySelected: (day, focusDay) {
+                                  getIt
+                                      .get<GetEventsCubit>()
+                                      .onDaySelected(day, focusDay);
+                                  getEvents(context);
+                                },
                                 margin: EdgeInsets.symmetric(horizontal: 15.w));
                           },
                         ),

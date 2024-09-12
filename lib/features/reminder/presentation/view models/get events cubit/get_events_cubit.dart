@@ -27,7 +27,7 @@ class GetEventsCubit extends Cubit<GetEventsState> {
       emit(GetEventsFailure(message: failure.errMessage));
     }, (eventsList) {
       events = eventsList;
-      _groupEventsByStartDate();
+      groupEventsByStartDate();
       emit(GetEventsSuccess());
     });
   }
@@ -60,7 +60,7 @@ class GetEventsCubit extends Cubit<GetEventsState> {
     emit(DaySelectedState());
   }
 
-  Map<String, List<EventModel>> _groupEventsByStartDate() {
+  Map<String, List<EventModel>> groupEventsByStartDate() {
     groupedEvents = {};
 
     for (var event in events) {

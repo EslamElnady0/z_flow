@@ -107,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "أنت الآن على وشك تعديل هدف موجود!"),
         "editGoal": MessageLookupByLibrary.simpleMessage("تعديل الهدف"),
         "editHabit": MessageLookupByLibrary.simpleMessage("تعديل العادة"),
+        "editReminder": MessageLookupByLibrary.simpleMessage("تعديل التذكير"),
         "editTask": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
         "education": MessageLookupByLibrary.simpleMessage("التعليم"),
         "educationAndCourses":

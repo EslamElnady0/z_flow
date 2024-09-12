@@ -33,6 +33,7 @@ import 'package:z_flow/features/reminder/presentation/view%20models/add%20event%
 import 'package:z_flow/features/reminder/presentation/view%20models/get%20events%20cubit/get_events_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/view%20models/update%20event%20cubit/update_event_cubit.dart';
 import 'package:z_flow/features/reminder/presentation/views/add_reminder_view.dart';
+import 'package:z_flow/features/reminder/presentation/views/edit_reminder_view.dart';
 import 'package:z_flow/features/reminder/presentation/views/reminder_view.dart';
 import 'package:z_flow/features/search/search%20cubit/search_cubit.dart';
 import 'package:z_flow/features/search/views/search_view.dart';
@@ -65,6 +66,7 @@ import '../../features/home/presentation/view models/tasks/delete task cubit/del
 import '../../features/home/presentation/views/habits views/all_habits_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/my lists/presentation/views/list_details_view.dart';
+import '../../features/reminder/data/model/event_model.dart';
 import '../../features/reminder/presentation/view models/delete event cubit/delete_event_cubit.dart';
 import '../../features/settings/presentation/views/settings_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
@@ -101,6 +103,7 @@ class AppRouter {
   static const String editGoal = '/editGoal';
   static const String reminder = '/reminder';
   static const String addReminder = '/addReminder';
+  static const String editReminder = '/editReminder';
   static const String myLists = '/myLists';
   static const String listDetails = '/listDetails';
   static const String settings_ = '/settings';
@@ -404,6 +407,14 @@ class AppRouter {
                   create: (context) => getIt<AddEventCubit>(),
                   child: const AddReminderView(),
                 ));
+      case editReminder:
+        var args = settings.arguments as EventModel;
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<UpdateEventCubit>(),
+                  child: const EditReminderView(),
+                ),
+            settings: RouteSettings(arguments: args));
       case myLists:
         reinitializeGetLinksListsCubitIfNeeded();
         return MaterialPageRoute(

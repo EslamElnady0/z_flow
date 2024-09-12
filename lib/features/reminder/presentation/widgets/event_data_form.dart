@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:z_flow/features/reminder/presentation/view%20models/update%20event%20cubit/update_event_cubit.dart';
 import 'package:z_flow/generated/l10n.dart';
 import 'package:z_flow/core/constants/assets.dart';
 import 'package:z_flow/core/widgets/custom_svg_icon_widget.dart';
@@ -16,6 +17,7 @@ class EventDataForm extends StatefulWidget {
   final TextEditingController eventEnd;
   final TextEditingController timeController;
   final TextEditingController eventNote;
+  final bool isEdit;
   const EventDataForm(
       {super.key,
       required this.formKey,
@@ -23,7 +25,8 @@ class EventDataForm extends StatefulWidget {
       required this.eventStart,
       required this.eventEnd,
       required this.eventNote,
-      required this.timeController});
+      required this.timeController,
+      this.isEdit = false});
 
   @override
   State<EventDataForm> createState() => _EventDataFormState();
@@ -58,8 +61,13 @@ class _EventDataFormState extends State<EventDataForm> {
                     setState(() {
                       widget.eventStart.text =
                           DateFormat.yMMMd('en_US').format(value);
-                      context.read<AddEventCubit>().startDateWithNoFormating =
-                          value.toString();
+                      widget.isEdit
+                          ? context
+                              .read<UpdateEventCubit>()
+                              .startDateWithNoFormating = value.toString()
+                          : context
+                              .read<AddEventCubit>()
+                              .startDateWithNoFormating = value.toString();
                     });
                   }
                 });
@@ -83,8 +91,13 @@ class _EventDataFormState extends State<EventDataForm> {
                     setState(() {
                       widget.eventEnd.text =
                           DateFormat.yMMMd('en_US').format(value);
-                      context.read<AddEventCubit>().endDateWithNoFormating =
-                          value.toString();
+                      widget.isEdit
+                          ? context
+                              .read<UpdateEventCubit>()
+                              .endDateWithNoFormating = value.toString()
+                          : context
+                              .read<AddEventCubit>()
+                              .endDateWithNoFormating = value.toString();
                     });
                   }
                 });
@@ -106,8 +119,11 @@ class _EventDataFormState extends State<EventDataForm> {
                   } else {
                     setState(() {
                       widget.timeController.text = value.format(context);
-                      context.read<AddEventCubit>().timeIn24Format =
-                          '${value.hour.toString().padLeft(2, '0')}:${value.minute.toString().padLeft(2, '0')}';
+                      widget.isEdit
+                          ? context.read<UpdateEventCubit>().timeIn24Format =
+                              '${value.hour.toString().padLeft(2, '0')}:${value.minute.toString().padLeft(2, '0')}'
+                          : context.read<AddEventCubit>().timeIn24Format =
+                              '${value.hour.toString().padLeft(2, '0')}:${value.minute.toString().padLeft(2, '0')}';
                     });
                   }
                 });
