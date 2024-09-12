@@ -52,16 +52,20 @@ class CustomContributerItem extends StatelessWidget {
 
   void _showFocusedContributer(BuildContext context, String imagePath) {
     showDialog(
+      barrierDismissible: true,
       context: context,
       builder: (BuildContext context) {
         return BlocProvider(
           create: (context) => DialogCubit(),
           child: Stack(
             children: [
-              BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                child: Container(
-                  color: Colors.white.withOpacity(0.1),
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                  child: Container(
+                    color: Colors.white.withOpacity(0.1),
+                  ),
                 ),
               ),
               Center(
