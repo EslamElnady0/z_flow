@@ -7,7 +7,9 @@ import 'package:z_flow/core/styles/styles.dart';
 SnackBar buildCustomSnackBar(
     {required String message, bool isError = false, BuildContext? context}) {
   return SnackBar(
+    behavior: SnackBarBehavior.floating,
     padding: EdgeInsets.zero,
+    margin: EdgeInsets.only(bottom: 10.h, right: 20.w, left: 20.w),
     elevation: 0,
     content: Container(
       width: 375.w,

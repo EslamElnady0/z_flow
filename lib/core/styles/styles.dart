@@ -48,7 +48,7 @@ class Styles {
         Shadow(
             offset: const Offset(0, 4),
             blurRadius: 18.5,
-            color: Colors.white.withOpacity(0.25))
+            color: const Color(0xff0B3F7D).withOpacity(0.25))
       ],
       color: ColorManager.primaryColor);
   static TextStyle style10w600 = TextStyle(
