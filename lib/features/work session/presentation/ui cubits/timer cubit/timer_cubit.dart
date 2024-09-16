@@ -8,8 +8,8 @@ class TimerCubit extends Cubit<TimerState> {
   Duration duration = const Duration();
   int workingSeconds = 60 * 50;
   int workingCounter = 60 * 50;
-  int breakSeconds = 60 * 5;
-  int breakCounter = 60 * 5;
+  int breakSeconds = 60 * 10;
+  int breakCounter = 60 * 10;
   bool isPaused = false;
 
   updateTimer() {

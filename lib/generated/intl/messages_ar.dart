@@ -150,7 +150,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "fitness": MessageLookupByLibrary.simpleMessage("اللياقة البدنية"),
         "fiveDaysAweek":
             MessageLookupByLibrary.simpleMessage("5 أيام في الأسبوع"),
-        "fiveMinBreak": MessageLookupByLibrary.simpleMessage("5 دقائق استراحة"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "fourDaysAweek":
@@ -287,6 +286,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tasks": MessageLookupByLibrary.simpleMessage("المهام"),
         "tasksFinished":
             MessageLookupByLibrary.simpleMessage("المهام المنتهية"),
+        "tenMinBreak": MessageLookupByLibrary.simpleMessage("10 دقائق استراحة"),
         "thirdOnBoarding": MessageLookupByLibrary.simpleMessage("الإنتاجية"),
         "thirdOnBoardingDesc": MessageLookupByLibrary.simpleMessage(
             "تابع كيفية قضاء وقتك مع ميزة تتبع الوقت المدمجة لدينا. حدد أنماط إنتاجيتك واتخذ قرارات مدروسة لتحسين الكفاءة. اعمل بذكاء، وليس بجهد أكبر."),
@@ -312,7 +312,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "youAreAboutToAddHabit": MessageLookupByLibrary.simpleMessage(
             "أنت الآن على وشك إضافة عادة جديدة!"),
         "youAreAboutToOpenWorkSession": MessageLookupByLibrary.simpleMessage(
-            "أنت على وشك فتح جلسة عمل لمدة 50 دقيقة مع استراحة لمدة 5 دقائق"),
+            "أنت على وشك فتح جلسة عمل لمدة 50 دقيقة مع استراحة لمدة 10 دقائق"),
         "youAreNotConnectedToTheInternet":
             MessageLookupByLibrary.simpleMessage("أنت غير متصل بالإنترنت"),
         "youCanContinueWith":

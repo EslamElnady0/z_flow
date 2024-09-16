@@ -33,7 +33,7 @@ class WorkSessionViewBody extends StatelessWidget {
                 listener: (context, state) {
                   if (context.read<TimerCubit>().breakCounter == 0) {
                     context.read<WorkSessionCubit>().backToInitial();
-                    context.read<TimerCubit>().breakCounter = 5 * 60;
+                    context.read<TimerCubit>().breakCounter = 10 * 60;
                     context.read<TimerCubit>().workingCounter = 50 * 60;
                   }
                 },

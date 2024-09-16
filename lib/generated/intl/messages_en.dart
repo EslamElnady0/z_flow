@@ -150,7 +150,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Start by organizing all your tasks in one place. Our intuitive task manager helps you prioritize and keep track of what needs to be done. Add deadlines, set priorities, and never miss an important task again."),
         "fitness": MessageLookupByLibrary.simpleMessage("Fitness"),
         "fiveDaysAweek": MessageLookupByLibrary.simpleMessage("5 days a week"),
-        "fiveMinBreak": MessageLookupByLibrary.simpleMessage("5 min Break"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot your password?"),
         "fourDaysAweek": MessageLookupByLibrary.simpleMessage("4 days a week"),
@@ -285,6 +284,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Task classifications"),
         "tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
         "tasksFinished": MessageLookupByLibrary.simpleMessage("Tasks finished"),
+        "tenMinBreak": MessageLookupByLibrary.simpleMessage("10 min Break"),
         "thirdOnBoarding": MessageLookupByLibrary.simpleMessage("Productivity"),
         "thirdOnBoardingDesc": MessageLookupByLibrary.simpleMessage(
             "Keep track of how you spend your time with our built-in time tracking feature. Identify your productivity patterns and make informed decisions to improve efficiency. Work smarter, not harder."),
@@ -311,7 +311,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "youAreAboutToAddHabit": MessageLookupByLibrary.simpleMessage(
             "You are now about to add a new habit!"),
         "youAreAboutToOpenWorkSession": MessageLookupByLibrary.simpleMessage(
-            "You are about to open a 50-minute session with a 5-minute break"),
+            "You are about to open a 50-minute session with a 10-minute break"),
         "youAreNotConnectedToTheInternet": MessageLookupByLibrary.simpleMessage(
             "You are not connected to the internet"),
         "youCanContinueWith":

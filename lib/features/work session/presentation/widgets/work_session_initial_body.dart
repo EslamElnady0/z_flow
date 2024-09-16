@@ -42,7 +42,7 @@ class WorkSessionInitialBody extends StatelessWidget {
             SvgPicture.asset(
               Assets.addIcon,
             ),
-            WorkSessionTimeContainer(text: S.of(context).fiveMinBreak),
+            WorkSessionTimeContainer(text: S.of(context).tenMinBreak),
           ],
         ),
         const Spacer(),

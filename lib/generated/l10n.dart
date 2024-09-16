@@ -770,10 +770,10 @@ class S {
     );
   }
 
-  /// `You are about to open a 50-minute session with a 5-minute break`
+  /// `You are about to open a 50-minute session with a 10-minute break`
   String get youAreAboutToOpenWorkSession {
     return Intl.message(
-      'You are about to open a 50-minute session with a 5-minute break',
+      'You are about to open a 50-minute session with a 10-minute break',
       name: 'youAreAboutToOpenWorkSession',
       desc: '',
       args: [],
@@ -790,11 +790,11 @@ class S {
     );
   }
 
-  /// `5 min Break`
-  String get fiveMinBreak {
+  /// `10 min Break`
+  String get tenMinBreak {
     return Intl.message(
-      '5 min Break',
-      name: 'fiveMinBreak',
+      '10 min Break',
+      name: 'tenMinBreak',
       desc: '',
       args: [],
     );
