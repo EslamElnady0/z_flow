@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:z_flow/core/constants/colors.dart';
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/l10n.dart';
@@ -34,6 +35,7 @@ class BottomScreenActions extends StatelessWidget {
         Expanded(
             child: CustomHollowButton(
           text: otherButtonText,
+          color: ColorManager.primaryColorAccent,
           onTap: onOtherButtonPressed,
         )),
       ],

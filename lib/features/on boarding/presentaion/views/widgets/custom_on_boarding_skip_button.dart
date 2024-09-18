@@ -11,6 +11,7 @@ class CustomHollowButton extends StatelessWidget {
   final TextStyle? style;
   final double? height;
   final void Function()? onTap;
+  final Color? color;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
   const CustomHollowButton({
@@ -21,6 +22,7 @@ class CustomHollowButton extends StatelessWidget {
     this.style,
     this.height,
     this.padding,
+    this.color,
   });
 
   @override
@@ -31,14 +33,14 @@ class CustomHollowButton extends StatelessWidget {
       padding: padding,
       onTap: onTap,
       raduis: 16.r,
-      border: Border.all(color: ColorManager.primaryColor, width: 2),
+      border: Border.all(color: color ?? ColorManager.primaryColor, width: 2),
       color: Colors.transparent,
       child: Center(
         child: Text(
           text ?? S.of(context).skip,
           style: style ??
               Styles.style20W700white
-                  .copyWith(color: ColorManager.primaryColor),
+                  .copyWith(color: color ?? ColorManager.primaryColor),
         ),
       ),
     );
