@@ -20,9 +20,13 @@ class CustomLinkItemRow extends StatelessWidget {
         SizedBox(
           width: 16.w,
         ),
-        Text(
-          title,
-          style: Styles.style16W500grey.copyWith(color: Colors.black),
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: Text(
+            title,
+            style: Styles.style16W500grey.copyWith(color: Colors.black),
+            overflow: TextOverflow.ellipsis,
+          ),
         )
       ],
     );

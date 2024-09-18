@@ -55,16 +55,23 @@ class _CustomLinkItemState extends State<CustomLinkItem> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.linkItem.name,
-              style: Styles.style20W700white,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.66,
+              child: Text(
+                widget.linkItem.name,
+                style: Styles.style20W700white,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             SizedBox(
               height: 8.h,
             ),
-            Text(
-              widget.linkItem.description,
-              style: Styles.style16W500grey,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.66,
+              child: Text(
+                widget.linkItem.description,
+                style: Styles.style16W500grey,
+              ),
             ),
             SizedBox(
               height: 10.h,
