@@ -29,65 +29,73 @@ class ZFlowApp extends StatelessWidget {
                 getIt.get<InternetCheckCubit>()..checkInternetConnection(),
           ),
           BlocProvider(
-            create: (context) => LocalizationCubit()
-              ..changeAppLanguage(LanguageEnum.initialLang),
+            create: (context) =>
+                LocalizationCubit()
+                  ..changeAppLanguage(LanguageEnum.initialLang),
           ),
         ],
         child: BlocListener<InternetCheckCubit, InternetCheckState>(
-            listener: (context, state) {
-          if (state is InternetCheckConnected) {
-            scaffoldMessengerKey.currentState?.showSnackBar(buildCustomSnackBar(
-                message: Intl.getCurrentLocale() == "en"
-                    ? "All set! You're connected to the internet."
-                    : "كل شيء جاهز! أنت متصل بالإنترنت.",
-                isError: false));
-          } else if (state is InternetCheckDisconnected) {
-            scaffoldMessengerKey.currentState?.showSnackBar(buildCustomSnackBar(
-                message: Intl.getCurrentLocale() == "en"
-                    ? "Oops, it looks like you're offline!"
-                    : "عذرًا، يبدو أنك غير متصل بالإنترنت!",
-                isError: true));
-          }
-        }, child: BlocBuilder<LocalizationCubit, LocalizationState>(
-                builder: (context, state) {
-          if (state is LocalizationChanged) {
-            return MaterialApp(
-              locale: Locale(state.languageCode ?? "en"),
-              scaffoldMessengerKey: scaffoldMessengerKey,
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              theme: MainTheme.mainTheme,
-              debugShowCheckedModeBanner: false,
-              onGenerateRoute: AppRouter.onGenerateRoute,
-              initialRoute: AppRouter.splash,
-            );
-          } else {
-            return MaterialApp(
-              scaffoldMessengerKey: scaffoldMessengerKey,
-              locale: const Locale("en"),
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [
-                Locale("en"),
-                Locale("ar"),
-              ],
-              theme: MainTheme.mainTheme,
-              debugShowCheckedModeBanner: false,
-              onGenerateRoute: AppRouter.onGenerateRoute,
-              initialRoute: AppRouter.splash,
-            );
-          }
-        })),
+          listener: (context, state) {
+            if (state is InternetCheckConnected) {
+              scaffoldMessengerKey.currentState?.showSnackBar(
+                buildCustomSnackBar(
+                  message: Intl.getCurrentLocale() == "en"
+                      ? "All set! You're connected to the internet."
+                      : "كل شيء جاهز! أنت متصل بالإنترنت.",
+                  isError: false,
+                ),
+              );
+            } else if (state is InternetCheckDisconnected) {
+              scaffoldMessengerKey.currentState?.showSnackBar(
+                buildCustomSnackBar(
+                  message: Intl.getCurrentLocale() == "en"
+                      ? "Oops, it looks like you're offline!"
+                      : "عذرًا، يبدو أنك غير متصل بالإنترنت!",
+                  isError: true,
+                ),
+              );
+            }
+          },
+          child: BlocBuilder<LocalizationCubit, LocalizationState>(
+            builder: (context, state) {
+              if (state is LocalizationChanged) {
+                return MaterialApp(
+                  locale: Locale(state.languageCode ?? "en"),
+                  scaffoldMessengerKey: scaffoldMessengerKey,
+                  localizationsDelegates: const [
+                    S.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  supportedLocales: S.delegate.supportedLocales,
+                  theme: MainTheme.mainTheme,
+                  debugShowCheckedModeBanner: false,
+                  onGenerateRoute: AppRouter.onGenerateRoute,
+                  initialRoute: AppRouter.splash,
+                );
+              } else {
+                return MaterialApp(
+                  scaffoldMessengerKey: scaffoldMessengerKey,
+                  locale: const Locale("en"),
+                  localizationsDelegates: const [
+                    S.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  supportedLocales: const [Locale("en"), Locale("ar")],
+                  theme: MainTheme.mainTheme,
+                  debugShowCheckedModeBanner: false,
+                  onGenerateRoute: AppRouter.onGenerateRoute,
+                  initialRoute: AppRouter.splash,
+                );
+              }
+            },
+          ),
+        ),
       ),
     );
   }
 }
+//fnkjsdbfjhsdjfsdjgfjsgfjsdgbhgddfghjv
